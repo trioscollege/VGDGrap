@@ -32,3 +32,9 @@
 
 # Visual Studio cache folder
 .vs/
+
+# OS X temporary files
+.DS_Store
+
+# Xcode user settings
+xcuserdata/
