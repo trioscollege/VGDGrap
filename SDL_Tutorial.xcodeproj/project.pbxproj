@@ -5,6 +5,7 @@
 	};
 	objectVersion = 50;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		7B392114234E1E190047FB73 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392113234E1E190047FB73 /* main.cpp */; };
 		7B39211D234E1EE40047FB73 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B39211B234E1E880047FB73 /* SDL2.framework */; };
