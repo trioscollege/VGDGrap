@@ -35,6 +35,23 @@
 
 # OS X temporary files
 .DS_Store
+*.swp
+*.lock
+profile
+
+# Xcode temporary files
+*~.nib
 
 # Xcode user settings
 xcuserdata/
+*.xcuserstate
+!default.pbxuser
+
+# Xcode build files
+DerivedData/
+build/
+Builds/
+
+# Other Xcode files
+*.heap
+*.ipa
