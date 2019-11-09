@@ -98,3 +98,7 @@ GameEntity * GameEntity::Parent() const
 void GameEntity::Translate(Vector2 vec) {
 	mPosition += vec;
 }
+
+void GameEntity::Rotate(float amount) {
+	mRotation += amount;
+}
