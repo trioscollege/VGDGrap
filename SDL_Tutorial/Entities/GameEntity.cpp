@@ -1,7 +1,7 @@
 #include "GameEntity.hpp"
 
 GameEntity::GameEntity(float x, float y)
-	: mPosition(x, y), mRotation(0.0f), mActive(true), mParent(nullptr) {}
+	: mPosition(x, y), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {}
 
 
 GameEntity::~GameEntity() {
@@ -40,6 +40,22 @@ float GameEntity::Rotation(Space space) {
 	return mParent->Rotation(World) + mRotation;
 }
 
+void GameEntity::Scale(Vector2 scale) {
+    mScale = scale;
+}
+
+Vector2 GameEntity::Scale(Space space) {
+    if (space == Local || mParent == nullptr) {
+        return mScale;
+    }
+    
+    Vector2 scale = mParent->Scale(World);
+    scale.x *= mScale.x;
+    scale.y *= mScale.y;
+    
+    return scale;
+}
+
 void GameEntity::Active(bool active) {
 	mActive = active;
 }
@@ -61,4 +77,8 @@ GameEntity * GameEntity::Parent() const
 
 void GameEntity::Translate(Vector2 vec) {
 	mPosition += vec;
+}
+
+void GameEntity::Rotate(float amount) {
+    mRotation += amount;
 }

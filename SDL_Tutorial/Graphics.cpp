@@ -58,8 +58,8 @@ SDL_Texture * Graphics::CreateTextTexture(TTF_Font * font, std::string text, SDL
 	return tex;
 }
 
-void Graphics::DrawTexture(SDL_Texture * tex, SDL_Rect * srcRect, SDL_Rect * dstRect) {
-	SDL_RenderCopy(mRenderer, tex, srcRect, dstRect);
+void Graphics::DrawTexture(SDL_Texture * tex, SDL_Rect * srcRect, SDL_Rect * dstRect, float angle, SDL_RendererFlip flip) {
+	SDL_RenderCopyEx(mRenderer, tex, srcRect, dstRect, angle, nullptr, flip);
 }
 
 void Graphics::ClearBackBuffer() {

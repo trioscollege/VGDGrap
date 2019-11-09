@@ -51,5 +51,5 @@ void Texture::Render() {
 	mDestinationRect.x = (int)(pos.x - mWidth * 0.5f);
 	mDestinationRect.y = (int)(pos.y - mHeight * 0.5f);
 
-	mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect);
+	mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
 }
