@@ -55,7 +55,6 @@ GameManager::GameManager() : mQuit(false) {
 	// set parent of mChild to mParent
 	mChild->Parent(mParent);
 	mParent->Rotation(0.0f);
-    mParent->Scale(Vector2(2.0f,2.0f));
 
 	// print local position of mChild with parent set
 	printf("Child local pos: (%f, %f)\n",
