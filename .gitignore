@@ -33,6 +33,11 @@
 # Visual Studio cache folder
 .vs/
 
+# Visual Studio build folders
+x64/
+Debug/
+Release/
+
 # OS X temporary files
 .DS_Store
 *.swp
