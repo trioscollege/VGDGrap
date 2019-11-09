@@ -11,6 +11,7 @@ public:
 private:
 	Vector2 mPosition;
 	float mRotation;
+    Vector2 mScale;
 
 	bool mActive;
 	GameEntity * mParent;
@@ -24,6 +25,9 @@ public:
 
 	void Rotation(float rot);
 	float Rotation(Space space = World);
+    
+    void Scale(Vector2 scale);
+    Vector2 Scale(Space space = World);
 
 	void Active(bool active);
 	bool Active();

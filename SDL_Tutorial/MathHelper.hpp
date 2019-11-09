@@ -34,7 +34,7 @@ inline Vector2 operator-(const Vector2 & lhs, const Vector2 & rhs) {
 	return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
 }
 
-inline Vector2 RotateVector(Vector2 & vec, float angle) {
+inline Vector2 RotateVector(const Vector2 & vec, float angle) {
 	float radAngle = (float)(angle * DEG_TO_RAD);
 
 	return Vector2(
@@ -42,4 +42,10 @@ inline Vector2 RotateVector(Vector2 & vec, float angle) {
 		(float)(vec.x * sin(radAngle) + vec.y * cos(radAngle))
 	);
 }
+
+const Vector2 Vec2_Zero = { 0.0f, 0.0f };
+const Vector2 Vec2_One = { 1.0f, 1.0f };
+const Vector2 Vec2_Up = { 0.0f, 1.0f };
+const Vector2 Vec2_Right = { 1.0f, 0.0f };
+
 #endif
