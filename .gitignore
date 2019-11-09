@@ -38,7 +38,7 @@ x64/
 Debug/
 Release/
 # Whitelist
-!devel/x64
+!dep/devel/x64
 
 # OS X temporary files
 .DS_Store
