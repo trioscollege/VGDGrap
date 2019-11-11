@@ -28,11 +28,24 @@ void GameManager::Run() {
 		}
 
 		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-			std::cout << "Detla time: " << mTimer->DeltaTime() << std::endl;
-			mGraphics->Render();
+			Update();
+			LateUpdate();
+			Render();
 			mTimer->Reset();
 		}
 	}
+}
+
+void GameManager::Update() {
+	std::cout << "Delta time: " << mTimer->DeltaTime() << std::endl;
+}
+
+void GameManager::LateUpdate() {
+	
+}
+
+void GameManager::Render() {
+	mGraphics->Render();
 }
 
 GameManager::GameManager() : mQuit(false) {
