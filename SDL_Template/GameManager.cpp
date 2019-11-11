@@ -28,21 +28,48 @@ void GameManager::Run() {
 		}
 
 		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-			mInputManager->Update();
-			
-			if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
-				mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
-			}
-			else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
-				mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
-			}
-
-			mGraphics->ClearBackBuffer();
-			mTex->Render();
-			mGraphics->Render();
+			Update();
+			LateUpdate();
+			Render();
 			mTimer->Reset();
 		}
 	}
+}
+
+void GameManager::Update() {
+	mInputManager->Update();
+
+	if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
+		mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
+	}
+	else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
+		mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
+	}
+
+	if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
+		std::cout << "Space pressed!" << std::endl;
+	}
+	if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
+		std::cout << "Space released!" << std::endl;
+	}
+
+	if (mInputManager->MouseButtonPressed(InputManager::Left)) {
+		std::cout << "Left mouse button pressed!" << std::endl;
+	}
+
+	if (mInputManager->MouseButtonReleased(InputManager::Left)) {
+		std::cout << "Left mouse button released!" << std::endl;
+	}
+}
+
+void GameManager::LateUpdate() {
+	mInputManager->UpdatePrevInput();
+}
+
+void GameManager::Render() {
+	mGraphics->ClearBackBuffer();
+	mTex->Render();
+	mGraphics->Render();
 }
 
 GameManager::GameManager() : mQuit(false) {

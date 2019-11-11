@@ -29,6 +29,11 @@ public:
 
 	void Run();
 
+	void Update();
+	void LateUpdate();
+
+	void Render();
+
 	GameManager();
 	~GameManager();
 };
