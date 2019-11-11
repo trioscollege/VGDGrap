@@ -45,6 +45,7 @@ void GameManager::LateUpdate() {
 }
 
 void GameManager::Render() {
+	mGraphics->ClearBackBuffer();
 	mGraphics->Render();
 }
 
