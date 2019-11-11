@@ -28,7 +28,9 @@ void GameManager::Run() {
 		}
 
 		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-			mGraphics->Render();
+			Update();
+			LateUpdate();
+			Render();
 			mTimer->Reset();
 		}
 	}
@@ -63,6 +65,18 @@ GameManager::GameManager() : mQuit(false) {
 	printf("Child world pos: (%f, %f)\n",
 		mChild->Position(GameEntity::World).x,
 		mChild->Position(GameEntity::World).y);
+}
+
+void GameManager::Update() {
+
+}
+
+void GameManager::LateUpdate() {
+
+}
+
+void GameManager::Render() {
+	mGraphics->Render();
 }
 
 GameManager::~GameManager() {
