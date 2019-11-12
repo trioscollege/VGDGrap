@@ -28,10 +28,25 @@ void GameManager::Run() {
 		}
 
 		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-			mGraphics->Render();
+            Update();
+            LateUpdate();
+            Render();
 			mTimer->Reset();
 		}
 	}
+}
+
+void GameManager::Update() {
+    
+}
+
+void GameManager::LateUpdate() {
+    
+}
+
+void GameManager::Render() {
+    mGraphics->ClearBackBuffer();
+    mGraphics->Render();
 }
 
 GameManager::GameManager() : mQuit(false) {
