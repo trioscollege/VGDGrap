@@ -30,9 +30,9 @@ public:
 	bool KeyPressed(SDL_Scancode scancode);
 	bool KeyReleased(SDL_Scancode scancode);
 
-	bool MouseButtonDown(MouseButton mouseButton);
-	bool MouseButtonPressed(MouseButton mouseButton);
-	bool MouseButtonReleased(MouseButton mouseButton);
+	bool MouseButtonDown(MouseButton button);
+	bool MouseButtonPressed(MouseButton button);
+	bool MouseButtonReleased(MouseButton button);
 
 	Vector2 MousePosition();
 
