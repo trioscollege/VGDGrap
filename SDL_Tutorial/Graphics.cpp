@@ -62,11 +62,11 @@ void Graphics::DrawTexture(SDL_Texture * tex, SDL_Rect * srcRect, SDL_Rect * dst
 	SDL_RenderCopyEx(mRenderer, tex, srcRect, dstRect, angle, nullptr, flip);
 }
 
+//public member functions
 void Graphics::ClearBackBuffer() {
 	SDL_RenderClear(mRenderer);
 }
 
-//public member functions
 void Graphics::Render() {
 	SDL_RenderPresent(mRenderer);
 }

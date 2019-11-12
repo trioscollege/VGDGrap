@@ -31,6 +31,11 @@ public:
 	static void Release();
 
 	void Run();
+    
+    void Update();
+    void LateUpdate();
+    
+    void Render();
 
 	GameManager();
 	~GameManager();
