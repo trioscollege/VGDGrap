@@ -23,6 +23,7 @@ public:
 	static void Release();
 	static bool Initialized();
 
+	void ClearBackBuffer();
 	void Render();
 
 private:

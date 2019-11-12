@@ -23,6 +23,10 @@ bool Graphics::Initialized() {
 }
 
 //public member functions
+void Graphics::ClearBackBuffer() {
+	SDL_RenderClear(mRenderer);
+}
+
 void Graphics::Render() {
 	SDL_RenderPresent(mRenderer);
 }
