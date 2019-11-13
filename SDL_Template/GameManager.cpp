@@ -1,111 +1,112 @@
 #include "GameManager.h"
 
-using namespace SDLFramework;
+namespace SDLFramework {
 
-GameManager * GameManager::sInstance = nullptr;
+	GameManager * GameManager::sInstance = nullptr;
 
-GameManager * GameManager::Instance()
-{
-	if (sInstance == nullptr) {
-		sInstance = new GameManager();
+	GameManager * GameManager::Instance()
+	{
+		if (sInstance == nullptr) {
+			sInstance = new GameManager();
+		}
+		return sInstance;
 	}
-	return sInstance;
-}
 
-void GameManager::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-}
+	void GameManager::Release() {
+		delete sInstance;
+		sInstance = nullptr;
+	}
 
-void GameManager::Run() {
-	while (!mQuit) {
-		mTimer->Update();
+	void GameManager::Run() {
+		while (!mQuit) {
+			mTimer->Update();
 
-		while (SDL_PollEvent(&mEvent)) {
-			switch (mEvent.type) {
-			case SDL_QUIT:
-				mQuit = true;
-				break;
+			while (SDL_PollEvent(&mEvent)) {
+				switch (mEvent.type) {
+				case SDL_QUIT:
+					mQuit = true;
+					break;
+				}
+			}
+
+			if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
+				Update();
+				LateUpdate();
+				Render();
+				mTimer->Reset();
 			}
 		}
+	}
 
-		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-			Update();
-			LateUpdate();
-			Render();
-			mTimer->Reset();
+	void GameManager::Update() {
+		mInputManager->Update();
+
+		if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
+			mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
+		}
+		else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
+			mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
+		}
+
+		if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
+			std::cout << "Space pressed!" << std::endl;
+		}
+		if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
+			std::cout << "Space released!" << std::endl;
+		}
+
+		if (mInputManager->MouseButtonPressed(InputManager::Left)) {
+			std::cout << "Left mouse button pressed!" << std::endl;
+		}
+
+		if (mInputManager->MouseButtonReleased(InputManager::Left)) {
+			std::cout << "Left mouse button released!" << std::endl;
 		}
 	}
-}
 
-void GameManager::Update() {
-	mInputManager->Update();
-
-	if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
-		mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
-	}
-	else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
-		mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
+	void GameManager::LateUpdate() {
+		mInputManager->UpdatePrevInput();
 	}
 
-	if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
-		std::cout << "Space pressed!" << std::endl;
-	}
-	if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
-		std::cout << "Space released!" << std::endl;
-	}
-
-	if (mInputManager->MouseButtonPressed(InputManager::Left)) {
-		std::cout << "Left mouse button pressed!" << std::endl;
+	void GameManager::Render() {
+		mGraphics->ClearBackBuffer();
+		mTex->Render();
+		mGraphics->Render();
 	}
 
-	if (mInputManager->MouseButtonReleased(InputManager::Left)) {
-		std::cout << "Left mouse button released!" << std::endl;
-	}
-}
+	GameManager::GameManager() : mQuit(false) {
+		mGraphics = Graphics::Instance();
 
-void GameManager::LateUpdate() {
-	mInputManager->UpdatePrevInput();
-}
+		if (!Graphics::Initialized()) {
+			mQuit = true;
+		}
 
-void GameManager::Render() {
-	mGraphics->ClearBackBuffer();
-	mTex->Render();
-	mGraphics->Render();
-}
+		mAssetManager = AssetManager::Instance();
+		mInputManager = InputManager::Instance();
 
-GameManager::GameManager() : mQuit(false) {
-	mGraphics = Graphics::Instance();
+		mTimer = Timer::Instance();
 
-	if (!Graphics::Initialized()) {
-		mQuit = true;
+		mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22);
+		mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
 	}
 
-	mAssetManager = AssetManager::Instance();
-	mInputManager = InputManager::Instance();
+	GameManager::~GameManager() {
+		delete mTex;
+		mTex = nullptr;
 
-	mTimer = Timer::Instance();
+		Timer::Release();
+		mTimer = nullptr;
 
-	mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22);
-	mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
-}
+		InputManager::Release();
+		mInputManager = nullptr;
 
-GameManager::~GameManager() {
-	delete mTex;
-	mTex = nullptr;
+		AssetManager::Release();
+		mAssetManager = nullptr;
 
-	Timer::Release();
-	mTimer = nullptr;
+		Graphics::Release();
+		mGraphics = nullptr;
 
-	InputManager::Release();
-	mInputManager = nullptr;
-
-	AssetManager::Release();
-	mAssetManager = nullptr;
-
-	Graphics::Release();
-	mGraphics = nullptr;
-
-	// Quit SDL subsystems
-	SDL_Quit();
+		// Quit SDL subsystems
+		SDL_Quit();
+	}
 }
