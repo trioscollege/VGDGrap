@@ -1,5 +1,7 @@
 #include "Graphics.h"
 
+using namespace SDLFramework;
+
 Graphics * Graphics::sInstance = nullptr;
 bool Graphics::sInitialized = false;
 
