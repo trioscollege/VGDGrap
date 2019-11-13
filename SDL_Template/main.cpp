@@ -1,9 +1,6 @@
-#include <iostream>
-#include <SDL.h>
-// MacOS using XCode
-// #include <SDL2/SDL.h>
-
 #include "GameManager.h"
+
+using SDLFramework::GameManager;
 
 int main(int argc, char * args[])
 {
