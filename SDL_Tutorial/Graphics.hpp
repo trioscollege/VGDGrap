@@ -1,35 +1,36 @@
 #ifndef __GRAPHICS_H
 #define __GRAPHICS_H
-
 #include <SDL2/SDL.h>
 #include <iostream>
 
-class Graphics
-{
-public:
-	static const short SCREEN_WIDTH = 800;
-	static const short SCREEN_HEIGHT = 600;
+namespace SDLFramework {
 
-private:
-	static Graphics * sInstance;
-	static bool sInitialized;
+    class Graphics
+    {
+    public:
+        static const short SCREEN_WIDTH = 800;
+        static const short SCREEN_HEIGHT = 600;
 
-	SDL_Window * mWindow;
-	SDL_Renderer * mRenderer;
+    private:
+        static Graphics * sInstance;
+        static bool sInitialized;
 
-public:
-	static Graphics * Instance();
-	static void Release();
-	static bool Initialized();
+        SDL_Window * mWindow;
+        SDL_Renderer * mRenderer;
 
-    void ClearBackBuffer();
-	void Render();
+    public:
+        static Graphics * Instance();
+        static void Release();
+        static bool Initialized();
 
-private:
-	Graphics();
-	~Graphics();
+        void ClearBackBuffer();
+        void Render();
 
-	bool Init();
-};
+    private:
+        Graphics();
+        ~Graphics();
 
+        bool Init();
+    };
+}
 #endif

@@ -1,67 +1,70 @@
 #include "Graphics.hpp"
 
-Graphics * Graphics::sInstance = nullptr;
-bool Graphics::sInitialized = false;
+namespace SDLFramework {
 
-// static member functions
-Graphics * Graphics::Instance() {
-	if (sInstance == nullptr) {
-		sInstance = new Graphics();
-	}
+    Graphics * Graphics::sInstance = nullptr;
+    bool Graphics::sInitialized = false;
 
-	return sInstance;
-}
+    // static member functions
+    Graphics * Graphics::Instance() {
+        if (sInstance == nullptr) {
+            sInstance = new Graphics();
+        }
 
-void Graphics::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-	sInitialized = false;
-}
+        return sInstance;
+    }
 
-bool Graphics::Initialized() {
-	return sInitialized;
-}
+    void Graphics::Release() {
+        delete sInstance;
+        sInstance = nullptr;
+        sInitialized = false;
+    }
 
-//public member functions
-void Graphics::ClearBackBuffer() {
-    SDL_RenderClear(mRenderer);
-}
+    bool Graphics::Initialized() {
+        return sInitialized;
+    }
 
-void Graphics::Render() {
-	SDL_RenderPresent(mRenderer);
-}
+    //public member functions
+    void Graphics::ClearBackBuffer() {
+        SDL_RenderClear(mRenderer);
+    }
 
-//private member functions
-Graphics::Graphics() : mRenderer(nullptr) {
-	sInitialized = Init();
-}
+    void Graphics::Render() {
+        SDL_RenderPresent(mRenderer);
+    }
 
-Graphics::~Graphics() {
-	SDL_DestroyRenderer(mRenderer);
-	SDL_DestroyWindow(mWindow);
-}
+    //private member functions
+    Graphics::Graphics() : mRenderer(nullptr) {
+        sInitialized = Init();
+    }
 
-bool Graphics::Init() {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
-		return false;
-	}
-	mWindow = SDL_CreateWindow(
-		"SDL Tutorial",				// window title
-		SDL_WINDOWPOS_UNDEFINED,	// window x pos
-		SDL_WINDOWPOS_UNDEFINED,	// window y pos
-		SCREEN_WIDTH,				// window width
-		SCREEN_HEIGHT,				// window height
-		SDL_WINDOW_SHOWN);			// window flags
-	if (mWindow == nullptr) {
-		std::cerr << "Unable to create Window! SDL Error: " << SDL_GetError() << std::endl;
-		return false;
-	}
+    Graphics::~Graphics() {
+        SDL_DestroyRenderer(mRenderer);
+        SDL_DestroyWindow(mWindow);
+    }
 
-	mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
-	if (mRenderer == nullptr) {
-		std::cerr << "Unable to create renderer! SDL Error: " << SDL_GetError() << std::endl;
-		return false;
-	}
-	return true;
+    bool Graphics::Init() {
+        if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+            std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
+            return false;
+        }
+        mWindow = SDL_CreateWindow(
+            "SDL Tutorial",				// window title
+            SDL_WINDOWPOS_UNDEFINED,	// window x pos
+            SDL_WINDOWPOS_UNDEFINED,	// window y pos
+            SCREEN_WIDTH,				// window width
+            SCREEN_HEIGHT,				// window height
+            SDL_WINDOW_SHOWN);			// window flags
+        if (mWindow == nullptr) {
+            std::cerr << "Unable to create Window! SDL Error: " << SDL_GetError() << std::endl;
+            return false;
+        }
+
+        mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
+        if (mRenderer == nullptr) {
+            std::cerr << "Unable to create renderer! SDL Error: " << SDL_GetError() << std::endl;
+            return false;
+        }
+        return true;
+    }
 }

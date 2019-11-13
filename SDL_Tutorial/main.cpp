@@ -1,7 +1,6 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-
 #include "GameManager.hpp"
+
+using SDLFramework::GameManager;
 
 int main(int argc, char * args[])
 {

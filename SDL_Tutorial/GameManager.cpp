@@ -1,71 +1,74 @@
 #include "GameManager.hpp"
 
-GameManager * GameManager::sInstance = nullptr;
+namespace SDLFramework {
 
-GameManager * GameManager::Instance()
-{
-	if (sInstance == nullptr) {
-		sInstance = new GameManager();
-	}
-	return sInstance;
-}
+    GameManager * GameManager::sInstance = nullptr;
 
-void GameManager::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-}
+    GameManager * GameManager::Instance()
+    {
+        if (sInstance == nullptr) {
+            sInstance = new GameManager();
+        }
+        return sInstance;
+    }
 
-void GameManager::Run() {
-	while (!mQuit) {
-		mTimer->Update();
+    void GameManager::Release() {
+        delete sInstance;
+        sInstance = nullptr;
+    }
 
-		while (SDL_PollEvent(&mEvent)) {
-			switch (mEvent.type) {
-			case SDL_QUIT:
-				mQuit = true;
-				break;
-			}
-		}
+    void GameManager::Run() {
+        while (!mQuit) {
+            mTimer->Update();
 
-		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-            Update();
-            LateUpdate();
-            Render();
-			mTimer->Reset();
-		}
-	}
-}
+            while (SDL_PollEvent(&mEvent)) {
+                switch (mEvent.type) {
+                case SDL_QUIT:
+                    mQuit = true;
+                    break;
+                }
+            }
 
-void GameManager::Update() {
-    std::cout << "Delta time: " << mTimer->DeltaTime() << std:: endl;
-}
+            if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
+                Update();
+                LateUpdate();
+                Render();
+                mTimer->Reset();
+            }
+        }
+    }
 
-void GameManager::LateUpdate() {
-    
-}
+    void GameManager::Update() {
+        std::cout << "Delta time: " << mTimer->DeltaTime() << std:: endl;
+    }
 
-void GameManager::Render() {
-    mGraphics->ClearBackBuffer();
-    mGraphics->Render();
-}
+    void GameManager::LateUpdate() {
+        
+    }
 
-GameManager::GameManager() : mQuit(false) {
-	mGraphics = Graphics::Instance();
+    void GameManager::Render() {
+        mGraphics->ClearBackBuffer();
+        mGraphics->Render();
+    }
 
-	if (!Graphics::Initialized()) {
-		mQuit = true;
-	}
+    GameManager::GameManager() : mQuit(false) {
+        mGraphics = Graphics::Instance();
 
-	mTimer = Timer::Instance();
-}
+        if (!Graphics::Initialized()) {
+            mQuit = true;
+        }
 
-GameManager::~GameManager() {
-	Timer::Release();
-	mTimer = nullptr;
-	
-	Graphics::Release();
-	mGraphics = nullptr;
+        mTimer = Timer::Instance();
+    }
 
-	// Quit SDL subsystems
-	SDL_Quit();
+    GameManager::~GameManager() {
+        Timer::Release();
+        mTimer = nullptr;
+        
+        Graphics::Release();
+        mGraphics = nullptr;
+
+        // Quit SDL subsystems
+        SDL_Quit();
+    }
 }
