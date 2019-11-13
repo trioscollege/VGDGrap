@@ -1,41 +1,42 @@
 #include "AssetManager.h"
 
-using namespace SDLFramework;
+namespace SDLFramework {
 
-AssetManager * AssetManager::sInstance = nullptr;
+	AssetManager * AssetManager::sInstance = nullptr;
 
-AssetManager * AssetManager::Instance() {
-	if (sInstance == nullptr) {
-		sInstance = new AssetManager();
-	}
-
-	return sInstance;
-}
-
-void AssetManager::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-}
-
-AssetManager::AssetManager() {
-}
-
-AssetManager::~AssetManager() {
-	for (auto tex : mTextures) {
-		if (tex.second != nullptr) {
-			SDL_DestroyTexture(tex.second);
+	AssetManager * AssetManager::Instance() {
+		if (sInstance == nullptr) {
+			sInstance = new AssetManager();
 		}
-	}
-	mTextures.clear();
-}
 
-SDL_Texture * AssetManager::GetTexture(std::string filename) {
-	std::string fullPath = SDL_GetBasePath();
-	fullPath.append("Assets/" + filename);
-
-	if (mTextures[fullPath] == nullptr) {
-		mTextures[fullPath] = Graphics::Instance()->LoadTexture(fullPath);
+		return sInstance;
 	}
 
-	return mTextures[fullPath];
+	void AssetManager::Release() {
+		delete sInstance;
+		sInstance = nullptr;
+	}
+
+	AssetManager::AssetManager() {
+	}
+
+	AssetManager::~AssetManager() {
+		for (auto tex : mTextures) {
+			if (tex.second != nullptr) {
+				SDL_DestroyTexture(tex.second);
+			}
+		}
+		mTextures.clear();
+	}
+
+	SDL_Texture * AssetManager::GetTexture(std::string filename) {
+		std::string fullPath = SDL_GetBasePath();
+		fullPath.append("Assets/" + filename);
+
+		if (mTextures[fullPath] == nullptr) {
+			mTextures[fullPath] = Graphics::Instance()->LoadTexture(fullPath);
+		}
+
+		return mTextures[fullPath];
+	}
 }
