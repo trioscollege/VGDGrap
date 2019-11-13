@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SDL_Tutorial.xcodeproj">
+      location = "self:/Users/jeffgauvin/Documents/GitHub/VGDGrap/GalagaSDL.xcodeproj">
    </FileRef>
 </Workspace>

@@ -20,6 +20,7 @@
 		7B591477237469A400C597D5 /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B591476237469A400C597D5 /* AudioManager.cpp */; };
 		7B6A3553235FA32D00F80D46 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A3551235FA32D00F80D46 /* AssetManager.cpp */; };
 		7B6A3556235FA74E00F80D46 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A3554235FA74E00F80D46 /* Texture.cpp */; };
+		7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */; };
 		7BF952B323687792004A2957 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7BF952B223687792004A2957 /* Assets */; };
 		7BF952B6236A0966004A2957 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BF952B4236A0966004A2957 /* InputManager.cpp */; };
 /* End PBXBuildFile section */
@@ -38,7 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7B392110234E1E190047FB73 /* SDL_Tutorial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_Tutorial; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B392110234E1E190047FB73 /* GalagaSDL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GalagaSDL; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B392113234E1E190047FB73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B39211B234E1E880047FB73 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		7B39211F235DE39A0047FB73 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
@@ -61,6 +62,8 @@
 		7B6A3552235FA32D00F80D46 /* AssetManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AssetManager.hpp; sourceTree = "<group>"; };
 		7B6A3554235FA74E00F80D46 /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		7B6A3555235FA74E00F80D46 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		7B72DE6E237CB3A40036C2D5 /* StartScreen.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StartScreen.hpp; sourceTree = "<group>"; };
+		7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StartScreen.cpp; sourceTree = "<group>"; };
 		7BF952B223687792004A2957 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = SDL_Tutorial/Assets; sourceTree = "<group>"; };
 		7BF952B4236A0966004A2957 /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
 		7BF952B5236A0966004A2957 /* InputManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputManager.hpp; sourceTree = "<group>"; };
@@ -85,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				7BF952B223687792004A2957 /* Assets */,
-				7B392112234E1E190047FB73 /* SDL_Tutorial */,
+				7B392112234E1E190047FB73 /* GalagaSDL */,
 				7B392111234E1E190047FB73 /* Products */,
 				7B39211A234E1E880047FB73 /* Frameworks */,
 			);
@@ -94,14 +97,15 @@
 		7B392111234E1E190047FB73 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B392110234E1E190047FB73 /* SDL_Tutorial */,
+				7B392110234E1E190047FB73 /* GalagaSDL */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B392112234E1E190047FB73 /* SDL_Tutorial */ = {
+		7B392112234E1E190047FB73 /* GalagaSDL */ = {
 			isa = PBXGroup;
 			children = (
+				7B72DE6D237CB3820036C2D5 /* Galaga */,
 				7B39211E235A17D30047FB73 /* Entities */,
 				7B591476237469A400C597D5 /* AudioManager.cpp */,
 				7B591475237469A400C597D5 /* AudioManager.hpp */,
@@ -118,7 +122,7 @@
 				7BF952B4236A0966004A2957 /* InputManager.cpp */,
 				7BF952B5236A0966004A2957 /* InputManager.hpp */,
 			);
-			path = SDL_Tutorial;
+			path = GalagaSDL;
 			sourceTree = "<group>";
 		};
 		7B39211A234E1E880047FB73 /* Frameworks */ = {
@@ -145,12 +149,21 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		7B72DE6D237CB3820036C2D5 /* Galaga */ = {
+			isa = PBXGroup;
+			children = (
+				7B72DE6E237CB3A40036C2D5 /* StartScreen.hpp */,
+				7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */,
+			);
+			path = Galaga;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B39210F234E1E190047FB73 /* SDL_Tutorial */ = {
+		7B39210F234E1E190047FB73 /* GalagaSDL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B392117234E1E190047FB73 /* Build configuration list for PBXNativeTarget "SDL_Tutorial" */;
+			buildConfigurationList = 7B392117234E1E190047FB73 /* Build configuration list for PBXNativeTarget "GalagaSDL" */;
 			buildPhases = (
 				7B39210C234E1E190047FB73 /* Sources */,
 				7B39210D234E1E190047FB73 /* Frameworks */,
@@ -160,9 +173,9 @@
 			);
 			dependencies = (
 			);
-			name = SDL_Tutorial;
+			name = GalagaSDL;
 			productName = SDL_Tutorial;
-			productReference = 7B392110234E1E190047FB73 /* SDL_Tutorial */;
+			productReference = 7B392110234E1E190047FB73 /* GalagaSDL */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -179,7 +192,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7B39210B234E1E190047FB73 /* Build configuration list for PBXProject "SDL_Tutorial" */;
+			buildConfigurationList = 7B39210B234E1E190047FB73 /* Build configuration list for PBXProject "GalagaSDL" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -192,7 +205,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B39210F234E1E190047FB73 /* SDL_Tutorial */,
+				7B39210F234E1E190047FB73 /* GalagaSDL */,
 			);
 		};
 /* End PBXProject section */
@@ -211,6 +224,7 @@
 				7B591477237469A400C597D5 /* AudioManager.cpp in Sources */,
 				7B453D7E235F558C0064FC0D /* GameEntity.cpp in Sources */,
 				7B392114234E1E190047FB73 /* main.cpp in Sources */,
+				7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */,
 				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +370,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B39210B234E1E190047FB73 /* Build configuration list for PBXProject "SDL_Tutorial" */ = {
+		7B39210B234E1E190047FB73 /* Build configuration list for PBXProject "GalagaSDL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B392115234E1E190047FB73 /* Debug */,
@@ -365,7 +379,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B392117234E1E190047FB73 /* Build configuration list for PBXNativeTarget "SDL_Tutorial" */ = {
+		7B392117234E1E190047FB73 /* Build configuration list for PBXNativeTarget "GalagaSDL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B392118234E1E190047FB73 /* Debug */,
