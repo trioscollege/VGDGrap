@@ -1,5 +1,7 @@
 #include "GameManager.h"
 
+using SDLFramework::GameManager;
+
 int main(int argc, char * args[])
 {
 	GameManager * game = new GameManager();

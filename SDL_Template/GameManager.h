@@ -1,40 +1,44 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
-
 #include <SDL.h>
+// MacOS using XCode
+// #include <SDL2/SDL.h>
 #include "Texture.h"
 #include "Timer.h"
 #include "InputManager.h"
 
-class GameManager
-{
-private:
-	static GameManager * sInstance;
-	const int FRAME_RATE = 60;
+namespace SDLFramework {
 
-	bool mQuit;
-	Graphics * mGraphics;
-	AssetManager * mAssetManager;
-	InputManager * mInputManager;
+	class GameManager
+	{
+	private:
+		static GameManager * sInstance;
+		const int FRAME_RATE = 60;
 
-	Timer * mTimer;
+		bool mQuit;
+		Graphics * mGraphics;
+		AssetManager * mAssetManager;
+		InputManager * mInputManager;
 
-	SDL_Event mEvent;
+		Timer * mTimer;
 
-	Texture * mTex;
+		SDL_Event mEvent;
 
-public:
-	static GameManager * Instance();
-	static void Release();
+		Texture * mTex;
 
-	void Run();
+	public:
+		static GameManager * Instance();
+		static void Release();
 
-	void Update();
-	void LateUpdate();
+		void Run();
 
-	void Render();
+		void Update();
+		void LateUpdate();
 
-	GameManager();
-	~GameManager();
-};
+		void Render();
+
+		GameManager();
+		~GameManager();
+	};
+}
 #endif

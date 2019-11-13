@@ -3,20 +3,23 @@
 #include "Graphics.h"
 #include <map>
 
-class AssetManager
-{
-private:
-	static AssetManager * sInstance;
+namespace SDLFramework {
 
-	std::map<std::string, SDL_Texture *> mTextures;
+	class AssetManager
+	{
+	private:
+		static AssetManager * sInstance;
 
-	AssetManager();
-	~AssetManager();
+		std::map<std::string, SDL_Texture *> mTextures;
 
-public:
-	static AssetManager * Instance();
-	static void Release();
+		AssetManager();
+		~AssetManager();
 
-	SDL_Texture * GetTexture(std::string filename);
-};
+	public:
+		static AssetManager * Instance();
+		static void Release();
+
+		SDL_Texture * GetTexture(std::string filename);
+	};
+}
 #endif

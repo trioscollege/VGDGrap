@@ -1,5 +1,7 @@
 #include "Texture.h"
 
+using namespace SDLFramework;
+
 Texture::Texture(std::string filename) {
 	mGraphics = Graphics::Instance();
 	mTex = AssetManager::Instance()->GetTexture(filename);

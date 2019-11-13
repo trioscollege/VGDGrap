@@ -1,5 +1,7 @@
 #include "GameManager.h"
 
+using namespace SDLFramework;
+
 GameManager * GameManager::sInstance = nullptr;
 
 GameManager * GameManager::Instance()

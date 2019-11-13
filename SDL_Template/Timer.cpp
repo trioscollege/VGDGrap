@@ -1,5 +1,7 @@
 #include "Timer.h"
 
+using namespace SDLFramework;
+
 Timer * Timer::sInstance = nullptr;
 
 Timer * Timer::Instance() {

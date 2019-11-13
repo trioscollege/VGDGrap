@@ -1,46 +1,51 @@
 #ifndef __INPUTMANAGER_H
 #define __INPUTMANAGER_H
 #include <SDL.h>
+// MacOS using XCode
+// #include <SDL2/SDL.h>
 #include <string>
 #include "MathHelper.h"
 
-class InputManager
-{
-public:
-	enum MouseButton { Left = 0, Right, Middle, Back, Forward };
+namespace SDLFramework {
 
-private:
-	static InputManager * sInstance;
-	const Uint8 * mKeyboardState;
-	Uint8 * mPrevKeyboardState;
-	int mKeyLength;
+	class InputManager
+	{
+	public:
+		enum MouseButton { Left = 0, Right, Middle, Back, Forward };
 
-	Uint32 mPrevMouseState;
-	Uint32 mMouseState;
+	private:
+		static InputManager * sInstance;
+		const Uint8 * mKeyboardState;
+		Uint8 * mPrevKeyboardState;
+		int mKeyLength;
 
-	int mMouseXPos;
-	int mMouseYPos;
+		Uint32 mPrevMouseState;
+		Uint32 mMouseState;
 
-public:
+		int mMouseXPos;
+		int mMouseYPos;
 
-	static InputManager * Instance();
-	static void Release();
+	public:
 
-	bool KeyDown(SDL_Scancode scancode);
-	bool KeyPressed(SDL_Scancode scancode);
-	bool KeyReleased(SDL_Scancode scancode);
+		static InputManager * Instance();
+		static void Release();
 
-	bool MouseButtonDown(MouseButton button);
-	bool MouseButtonPressed(MouseButton button);
-	bool MouseButtonReleased(MouseButton button);
+		bool KeyDown(SDL_Scancode scancode);
+		bool KeyPressed(SDL_Scancode scancode);
+		bool KeyReleased(SDL_Scancode scancode);
 
-	Vector2 MousePosition();
+		bool MouseButtonDown(MouseButton button);
+		bool MouseButtonPressed(MouseButton button);
+		bool MouseButtonReleased(MouseButton button);
 
-	void Update();
-	void UpdatePrevInput();
+		Vector2 MousePosition();
 
-private:
-	InputManager();
-	~InputManager();
-};
+		void Update();
+		void UpdatePrevInput();
+
+	private:
+		InputManager();
+		~InputManager();
+	};
+}
 #endif

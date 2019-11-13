@@ -1,5 +1,7 @@
 #include "AssetManager.h"
 
+using namespace SDLFramework;
+
 AssetManager * AssetManager::sInstance = nullptr;
 
 AssetManager * AssetManager::Instance() {

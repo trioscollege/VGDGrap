@@ -1,5 +1,7 @@
 #include "InputManager.h"
 
+using namespace SDLFramework;
+
 InputManager * InputManager::sInstance = nullptr;
 
 InputManager * InputManager::Instance() {

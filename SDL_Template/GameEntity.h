@@ -2,44 +2,47 @@
 #define __GAMEENTITY_H
 #include "MathHelper.h"
 
-class GameEntity
-{
-public:
+namespace SDLFramework {
 
-	enum Space { Local = 0, World = 1 };
+	class GameEntity
+	{
+	public:
 
-private:
-	Vector2 mPosition;
-	float mRotation;
-	Vector2 mScale;
+		enum Space { Local = 0, World = 1 };
 
-	bool mActive;
-	GameEntity * mParent;
+	private:
+		Vector2 mPosition;
+		float mRotation;
+		Vector2 mScale;
 
-public:
-	GameEntity(float x = 0.0f, float y = 0.0f);
-	~GameEntity();
+		bool mActive;
+		GameEntity * mParent;
 
-	void Position(const Vector2 & pos);
-	Vector2 Position(Space space = World);
+	public:
+		GameEntity(float x = 0.0f, float y = 0.0f);
+		~GameEntity();
 
-	void Rotation(float rot);
-	float Rotation(Space space = World);
+		void Position(const Vector2 & pos);
+		Vector2 Position(Space space = World);
 
-	void Scale(Vector2 scale);
-	Vector2 Scale(Space space = World);
+		void Rotation(float rot);
+		float Rotation(Space space = World);
 
-	void Active(bool active);
-	bool Active() const;
+		void Scale(Vector2 scale);
+		Vector2 Scale(Space space = World);
 
-	void Parent(GameEntity * parent);
-	GameEntity * Parent() const;
+		void Active(bool active);
+		bool Active() const;
 
-	void Translate(Vector2 vec);
-	void Rotate(float amount);
+		void Parent(GameEntity * parent);
+		GameEntity * Parent() const;
 
-	virtual void Update() {};
-	virtual void Render() {};
+		void Translate(Vector2 vec);
+		void Rotate(float amount);
 
-};
+		virtual void Update() {};
+		virtual void Render() {};
+
+	};
+}
 #endif
