@@ -1,98 +1,101 @@
 #include "GameManager.hpp"
 
-GameManager * GameManager::sInstance = nullptr;
+namespace SDLFramework {
 
-GameManager * GameManager::Instance()
-{
-	if (sInstance == nullptr) {
-		sInstance = new GameManager();
-	}
-	return sInstance;
-}
+    GameManager * GameManager::sInstance = nullptr;
 
-void GameManager::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-}
+    GameManager * GameManager::Instance()
+    {
+        if (sInstance == nullptr) {
+            sInstance = new GameManager();
+        }
+        return sInstance;
+    }
 
-void GameManager::Run() {
-	while (!mQuit) {
-		mTimer->Update();
+    void GameManager::Release() {
+        delete sInstance;
+        sInstance = nullptr;
+    }
 
-		while (SDL_PollEvent(&mEvent)) {
-			switch (mEvent.type) {
-			case SDL_QUIT:
-				mQuit = true;
-				break;
-			}
-		}
+    void GameManager::Run() {
+        while (!mQuit) {
+            mTimer->Update();
 
-		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-            Update();
-            LateUpdate();
-            Render();
-			mTimer->Reset();
-		}
-	}
-}
+            while (SDL_PollEvent(&mEvent)) {
+                switch (mEvent.type) {
+                case SDL_QUIT:
+                    mQuit = true;
+                    break;
+                }
+            }
 
-void GameManager::Update() {
-    
-}
+            if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
+                Update();
+                LateUpdate();
+                Render();
+                mTimer->Reset();
+            }
+        }
+    }
 
-void GameManager::LateUpdate() {
-    
-}
+    void GameManager::Update() {
+        
+    }
 
-void GameManager::Render() {
-    mGraphics->ClearBackBuffer();
-    mGraphics->Render();
-}
+    void GameManager::LateUpdate() {
+        
+    }
 
-GameManager::GameManager() : mQuit(false) {
-	mGraphics = Graphics::Instance();
+    void GameManager::Render() {
+        mGraphics->ClearBackBuffer();
+        mGraphics->Render();
+    }
 
-	if (!Graphics::Initialized()) {
-		mQuit = true;
-	}
+    GameManager::GameManager() : mQuit(false) {
+        mGraphics = Graphics::Instance();
 
-	mTimer = Timer::Instance();
+        if (!Graphics::Initialized()) {
+            mQuit = true;
+        }
 
-	// sanity test
-	mParent = new GameEntity(100.0f, 400.0f);
-	mChild = new GameEntity(100.0f, 500.0f);
+        mTimer = Timer::Instance();
 
-	// print local position of mChild with no parent set
-	printf("Child local pos: (%f, %f)\n",
-		mChild->Position(GameEntity::Local).x,
-		mChild->Position(GameEntity::Local).y);
+        // sanity test
+        mParent = new GameEntity(100.0f, 400.0f);
+        mChild = new GameEntity(100.0f, 500.0f);
 
-	// set parent of mChild to mParent
-	mChild->Parent(mParent);
-	mParent->Rotation(0.0f);
+        // print local position of mChild with no parent set
+        printf("Child local pos: (%f, %f)\n",
+            mChild->Position(GameEntity::Local).x,
+            mChild->Position(GameEntity::Local).y);
 
-	// print local position of mChild with parent set
-	printf("Child local pos: (%f, %f)\n",
-		mChild->Position(GameEntity::Local).x,
-		mChild->Position(GameEntity::Local).y);
-	printf("Child world pos: (%f, %f)\n",
-		mChild->Position(GameEntity::World).x,
-		mChild->Position(GameEntity::World).y);
-}
+        // set parent of mChild to mParent
+        mChild->Parent(mParent);
+        mParent->Rotation(0.0f);
 
-GameManager::~GameManager() {
-    delete mChild;
-    mChild = nullptr;
-    
-    delete mParent;
-    mParent = nullptr;
-    
-	Timer::Release();
-	mTimer = nullptr;
-	
-	Graphics::Release();
-	mGraphics = nullptr;
+        // print local position of mChild with parent set
+        printf("Child local pos: (%f, %f)\n",
+            mChild->Position(GameEntity::Local).x,
+            mChild->Position(GameEntity::Local).y);
+        printf("Child world pos: (%f, %f)\n",
+            mChild->Position(GameEntity::World).x,
+            mChild->Position(GameEntity::World).y);
+    }
 
-	// Quit SDL subsystems
-	SDL_Quit();
+    GameManager::~GameManager() {
+        delete mChild;
+        mChild = nullptr;
+        
+        delete mParent;
+        mParent = nullptr;
+        
+        Timer::Release();
+        mTimer = nullptr;
+        
+        Graphics::Release();
+        mGraphics = nullptr;
+
+        // Quit SDL subsystems
+        SDL_Quit();
+    }
 }
