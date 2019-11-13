@@ -4,24 +4,28 @@
 #include "GameEntity.hpp"
 #include "AssetManager.hpp"
 
-class Texture : public GameEntity {
-protected:
-	SDL_Texture * mTex;
-	Graphics * mGraphics;
+namespace SDLFramework {
 
-	int mWidth;
-	int mHeight;
+    class Texture : public GameEntity {
+    protected:
+        SDL_Texture * mTex;
+        Graphics * mGraphics;
 
-	bool mClipped;
-	SDL_Rect mSourceRect;
-	SDL_Rect mDestinationRect;
+        int mWidth;
+        int mHeight;
 
-public:
-	Texture(std::string filename);
-	Texture(std::string filename, int x, int y, int w, int h);
-	Texture(std::string text, std::string fontPath, int size, SDL_Color color);
-	~Texture();
+        bool mClipped;
+        SDL_Rect mSourceRect;
+        SDL_Rect mDestinationRect;
 
-	void Render() override;
-};
+    public:
+        Texture(std::string filename);
+        Texture(std::string filename, int x, int y, int w, int h);
+        Texture(std::string text, std::string fontPath, int size, SDL_Color color);
+        ~Texture();
+
+        void Render() override;
+    };
+
+}
 #endif

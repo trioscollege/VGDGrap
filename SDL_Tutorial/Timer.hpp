@@ -1,32 +1,34 @@
 #ifndef __TIMER_H
 #define __TIMER_H
-
 #include <SDL2/SDL.h>
 
-class Timer
-{
-private:
-	static Timer * sInstance;
+namespace SDLFramework {
 
-	unsigned int mStartTicks;
-	unsigned int mElapsedTicks;
-	float mDeltaTime;
-	float mTimeScale;
+    class Timer
+    {
+    private:
+        static Timer * sInstance;
 
-public:
-	static Timer * Instance();
-	static void Release();
+        unsigned int mStartTicks;
+        unsigned int mElapsedTicks;
+        float mDeltaTime;
+        float mTimeScale;
 
-	void Reset();
-	float DeltaTime() const;
+    public:
+        static Timer * Instance();
+        static void Release();
 
-	void TimeScale(float ts);
-	float TimeScale() const;
+        void Reset();
+        float DeltaTime() const;
 
-	void Update();
+        void TimeScale(float ts);
+        float TimeScale() const;
 
-private:
-	Timer();
-	~Timer();
-};
+        void Update();
+
+    private:
+        Timer();
+        ~Timer();
+    };
+}
 #endif

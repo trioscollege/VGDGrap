@@ -2,23 +2,26 @@
 #define __AUDIOMANAGER_H
 #include "AssetManager.hpp"
 
-class AudioManager {
-private:
-	static AudioManager * sInstance;
-	AssetManager * mAssetManager;
+namespace SDLFramework {
 
-public:
-	static AudioManager * Instance();
-	static void Release();
+    class AudioManager {
+    private:
+        static AudioManager * sInstance;
+        AssetManager * mAssetManager;
 
-	void PlayMusic(std::string filename, int loops = -1);
-	void PauseMusic();
-	void ResumeMusic();
+    public:
+        static AudioManager * Instance();
+        static void Release();
 
-	void PlaySFX(std::string filename, int loops = 0, int channel = -1);
+        void PlayMusic(std::string filename, int loops = -1);
+        void PauseMusic();
+        void ResumeMusic();
 
-private:
-	AudioManager();
-	~AudioManager();
-};
+        void PlaySFX(std::string filename, int loops = 0, int channel = -1);
+
+    private:
+        AudioManager();
+        ~AudioManager();
+    };
+}
 #endif

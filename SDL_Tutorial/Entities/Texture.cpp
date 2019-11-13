@@ -1,55 +1,58 @@
 #include "Texture.hpp"
 
-Texture::Texture(std::string filename) {
-	mGraphics = Graphics::Instance();
-	mTex = AssetManager::Instance()->GetTexture(filename);
+namespace SDLFramework {
 
-	SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
+    Texture::Texture(std::string filename) {
+        mGraphics = Graphics::Instance();
+        mTex = AssetManager::Instance()->GetTexture(filename);
 
-	mClipped = false;
-	mDestinationRect.w = mWidth;
-	mDestinationRect.h = mHeight;
-}
+        SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
-Texture::Texture(std::string filename, int x, int y, int w, int h) {
-	mGraphics = Graphics::Instance();
-	mTex = AssetManager::Instance()->GetTexture(filename);
+        mClipped = false;
+        mDestinationRect.w = mWidth;
+        mDestinationRect.h = mHeight;
+    }
 
-	mWidth = w;
-	mHeight = h;
+    Texture::Texture(std::string filename, int x, int y, int w, int h) {
+        mGraphics = Graphics::Instance();
+        mTex = AssetManager::Instance()->GetTexture(filename);
 
-	mClipped = true;
-	mDestinationRect.w = mWidth;
-	mDestinationRect.h = mHeight;
+        mWidth = w;
+        mHeight = h;
 
-	mSourceRect.x = x;
-	mSourceRect.y = y;
-	mSourceRect.w = mWidth;
-	mSourceRect.h = mHeight;
-}
+        mClipped = true;
+        mDestinationRect.w = mWidth;
+        mDestinationRect.h = mHeight;
 
-Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color) {
-	mGraphics = Graphics::Instance();
-	mTex = AssetManager::Instance()->GetText(text, fontPath, size, color);
+        mSourceRect.x = x;
+        mSourceRect.y = y;
+        mSourceRect.w = mWidth;
+        mSourceRect.h = mHeight;
+    }
 
-	mClipped = false;
+    Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color) {
+        mGraphics = Graphics::Instance();
+        mTex = AssetManager::Instance()->GetText(text, fontPath, size, color);
 
-	SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
+        mClipped = false;
 
-	mDestinationRect.w = mWidth;
-	mDestinationRect.h = mHeight;
-}
+        SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
-Texture::~Texture() {
-	SDL_DestroyTexture(mTex);
-	mTex = nullptr;
-	mGraphics = nullptr;
-}
+        mDestinationRect.w = mWidth;
+        mDestinationRect.h = mHeight;
+    }
 
-void Texture::Render() {
-	Vector2 pos = Position(World);
-	mDestinationRect.x = (int)(pos.x - mWidth * 0.5f);
-	mDestinationRect.y = (int)(pos.y - mHeight * 0.5f);
+    Texture::~Texture() {
+        SDL_DestroyTexture(mTex);
+        mTex = nullptr;
+        mGraphics = nullptr;
+    }
 
-	mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
+    void Texture::Render() {
+        Vector2 pos = Position(World);
+        mDestinationRect.x = (int)(pos.x - mWidth * 0.5f);
+        mDestinationRect.y = (int)(pos.y - mHeight * 0.5f);
+
+        mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
+    }
 }

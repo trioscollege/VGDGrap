@@ -1,127 +1,130 @@
 #include "GameManager.hpp"
 
-GameManager * GameManager::sInstance = nullptr;
+namespace SDLFramework {
 
-GameManager * GameManager::Instance()
-{
-	if (sInstance == nullptr) {
-		sInstance = new GameManager();
-	}
-	return sInstance;
-}
+    GameManager * GameManager::sInstance = nullptr;
 
-void GameManager::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-}
-
-void GameManager::Run() {
-	while (!mQuit) {
-		mTimer->Update();
-
-		while (SDL_PollEvent(&mEvent)) {
-			switch (mEvent.type) {
-			case SDL_QUIT:
-				mQuit = true;
-				break;
-			}
-		}
-
-		if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-            Update();
-            LateUpdate();
-            Render();
-			mTimer->Reset();
-		}
-	}
-}
-
-void GameManager::Update() {
-    mInputManager->Update();
-    
-    if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
-        mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
-    }
-    else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
-        mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
-    }
-    
-    if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
-        std::cout << "Space pressed!" << std::endl;
-    }
-    
-    if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
-        std::cout << "Space released!" << std::endl;
-    }
-    
-    if (mInputManager->MouseButtonPressed(InputManager::Left)) {
-        std::cout << "Left mouse button pressed!" << std::endl;
-    }
-    
-    if (mInputManager->MouseButtonReleased(InputManager::Left)) {
-        std::cout << "Left mouse button released!" << std::endl;
+    GameManager * GameManager::Instance()
+    {
+        if (sInstance == nullptr) {
+            sInstance = new GameManager();
+        }
+        return sInstance;
     }
 
-    if (mInputManager->KeyDown(SDL_SCANCODE_1)) {
-        mAudioManager->PlaySFX("SFX/coin_credit.wav", 0, 0);
+    void GameManager::Release() {
+        delete sInstance;
+        sInstance = nullptr;
     }
 
-    mTex->Update();
-}
+    void GameManager::Run() {
+        while (!mQuit) {
+            mTimer->Update();
 
-void GameManager::LateUpdate() {
-    mInputManager->UpdatePrevInput();
-}
+            while (SDL_PollEvent(&mEvent)) {
+                switch (mEvent.type) {
+                case SDL_QUIT:
+                    mQuit = true;
+                    break;
+                }
+            }
 
-void GameManager::Render() {
-    mGraphics->ClearBackBuffer();
-    mFontTex->Render();
-    mTex->Render();
-    mGraphics->Render();
-}
+            if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
+                Update();
+                LateUpdate();
+                Render();
+                mTimer->Reset();
+            }
+        }
+    }
 
-GameManager::GameManager() : mQuit(false) {
-	mGraphics = Graphics::Instance();
+    void GameManager::Update() {
+        mInputManager->Update();
+        
+        if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
+            mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
+        }
+        else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
+            mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
+        }
+        
+        if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
+            std::cout << "Space pressed!" << std::endl;
+        }
+        
+        if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
+            std::cout << "Space released!" << std::endl;
+        }
+        
+        if (mInputManager->MouseButtonPressed(InputManager::Left)) {
+            std::cout << "Left mouse button pressed!" << std::endl;
+        }
+        
+        if (mInputManager->MouseButtonReleased(InputManager::Left)) {
+            std::cout << "Left mouse button released!" << std::endl;
+        }
 
-	if (!Graphics::Initialized()) {
-		mQuit = true;
-	}
+        if (mInputManager->KeyDown(SDL_SCANCODE_1)) {
+            mAudioManager->PlaySFX("SFX/coin_credit.wav", 0, 0);
+        }
 
-	mAssetManager = AssetManager::Instance();
-	mInputManager = InputManager::Instance();
-	mAudioManager = AudioManager::Instance();
+        mTex->Update();
+    }
 
-	mTimer = Timer::Instance();
+    void GameManager::LateUpdate() {
+        mInputManager->UpdatePrevInput();
+    }
 
-	mTex = new AnimatedTexture("SpriteSheet.png", 204, 45, 40, 38, 4, 0.5f, AnimatedTexture::Horizontal);
-	mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
+    void GameManager::Render() {
+        mGraphics->ClearBackBuffer();
+        mFontTex->Render();
+        mTex->Render();
+        mGraphics->Render();
+    }
 
-	mFontTex = new Texture("Hello World!", "ARCADE.TTF", 72, { 255, 0, 0 });
-	mFontTex->Position(Vector2(400, 200));
-}
+    GameManager::GameManager() : mQuit(false) {
+        mGraphics = Graphics::Instance();
 
-GameManager::~GameManager() {
-	delete mTex;
-	mTex = nullptr;
+        if (!Graphics::Initialized()) {
+            mQuit = true;
+        }
 
-	delete mFontTex;
-	mFontTex = nullptr;
-	
-	Timer::Release();
-	mTimer = nullptr;
+        mAssetManager = AssetManager::Instance();
+        mInputManager = InputManager::Instance();
+        mAudioManager = AudioManager::Instance();
 
-	AudioManager::Release();
-	mAudioManager = nullptr;
+        mTimer = Timer::Instance();
 
-	InputManager::Release();
-	mInputManager = nullptr;
+        mTex = new AnimatedTexture("SpriteSheet.png", 204, 45, 40, 38, 4, 0.5f, AnimatedTexture::Horizontal);
+        mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
 
-	AssetManager::Release();
-	mAssetManager = nullptr;
+        mFontTex = new Texture("Hello World!", "ARCADE.TTF", 72, { 255, 0, 0 });
+        mFontTex->Position(Vector2(400, 200));
+    }
 
-	Graphics::Release();
-	mGraphics = nullptr;
+    GameManager::~GameManager() {
+        delete mTex;
+        mTex = nullptr;
 
-	// Quit SDL subsystems
-	SDL_Quit();
+        delete mFontTex;
+        mFontTex = nullptr;
+        
+        Timer::Release();
+        mTimer = nullptr;
+
+        AudioManager::Release();
+        mAudioManager = nullptr;
+
+        InputManager::Release();
+        mInputManager = nullptr;
+
+        AssetManager::Release();
+        mAssetManager = nullptr;
+
+        Graphics::Release();
+        mGraphics = nullptr;
+
+        // Quit SDL subsystems
+        SDL_Quit();
+    }
 }

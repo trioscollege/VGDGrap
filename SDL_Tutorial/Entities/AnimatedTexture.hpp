@@ -3,36 +3,38 @@
 #include "Texture.hpp"
 #include "Timer.hpp"
 
-class AnimatedTexture :
-	public Texture
-{
-public:
-	enum WrapMode { Once = 0, Loop = 1 };
-	enum AnimDir { Horizontal = 0, Vertical = 1} ;
+namespace SDLFramework {
 
-private:
-	Timer * mTimer;
-	int mStartX;
-	int mStartY;
+    class AnimatedTexture :
+        public Texture
+    {
+    public:
+        enum WrapMode { Once = 0, Loop = 1 };
+        enum AnimDir { Horizontal = 0, Vertical = 1} ;
 
-	int mFrameCount; // total frames
+    private:
+        Timer * mTimer;
+        int mStartX;
+        int mStartY;
 
-	float mAnimationSpeed; // in seconds
-	float mTimePerFrame; // time to display
-	float mAnimationTimer; // time displayed
+        int mFrameCount; // total frames
 
-	WrapMode mWrapMode;
-	AnimDir mAnimationDirection;
+        float mAnimationSpeed; // in seconds
+        float mTimePerFrame; // time to display
+        float mAnimationTimer; // time displayed
 
-	bool mAnimationDone;
+        WrapMode mWrapMode;
+        AnimDir mAnimationDirection;
 
-public:
-	AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir);
-	~AnimatedTexture();
+        bool mAnimationDone;
 
-	void SetWrapMode(WrapMode mode);
+    public:
+        AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir);
+        ~AnimatedTexture();
 
-	void Update();
-};
+        void SetWrapMode(WrapMode mode);
+
+        void Update();
+    };
+}
 #endif
-

@@ -4,42 +4,45 @@
 #include <string>
 #include "MathHelper.hpp"
 
-class InputManager
-{
-public:
-    enum MouseButton { Left = 0, Right, Middle, Back, Forward };
-    
-private:
-	static InputManager * sInstance;
-	const Uint8 * mKeyboardState;
-    Uint8 * mPrevKeyboardState;
-    int mKeyLength;
-    
-    Uint32 mPrevMouseState;
-    Uint32 mMouseState;
-    
-    int mMouseXPos;
-    int mMouseYPos;
+namespace SDLFramework {
 
-public:
-	static InputManager * Instance();
-	static void Release();
+    class InputManager
+    {
+    public:
+        enum MouseButton { Left = 0, Right, Middle, Back, Forward };
+        
+    private:
+        static InputManager * sInstance;
+        const Uint8 * mKeyboardState;
+        Uint8 * mPrevKeyboardState;
+        int mKeyLength;
+        
+        Uint32 mPrevMouseState;
+        Uint32 mMouseState;
+        
+        int mMouseXPos;
+        int mMouseYPos;
 
-	bool KeyDown(SDL_Scancode scancode);
-    bool KeyPressed(SDL_Scancode scancode);
-    bool KeyReleased(SDL_Scancode scancode);
-    
-    bool MouseButtonDown(MouseButton button);
-    bool MouseButtonPressed(MouseButton button);
-    bool MouseButtonReleased(MouseButton button);
-    
-    Vector2 MousePosition();
-    
-	void Update();
-    void UpdatePrevInput();
+    public:
+        static InputManager * Instance();
+        static void Release();
 
-private:
-	InputManager();
-	~InputManager();
-};
+        bool KeyDown(SDL_Scancode scancode);
+        bool KeyPressed(SDL_Scancode scancode);
+        bool KeyReleased(SDL_Scancode scancode);
+        
+        bool MouseButtonDown(MouseButton button);
+        bool MouseButtonPressed(MouseButton button);
+        bool MouseButtonReleased(MouseButton button);
+        
+        Vector2 MousePosition();
+        
+        void Update();
+        void UpdatePrevInput();
+
+    private:
+        InputManager();
+        ~InputManager();
+    };
+}
 #endif

@@ -1,43 +1,45 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
-
 #include <SDL2/SDL.h>
 #include "AnimatedTexture.hpp"
 #include "Timer.hpp"
 #include "InputManager.hpp"
 #include "AudioManager.hpp"
 
-class GameManager
-{
-private:
-	static GameManager * sInstance;
-	const int FRAME_RATE = 60;
+namespace SDLFramework {
 
-	bool mQuit;
-	Graphics * mGraphics;
-	AssetManager * mAssetManager;
-	InputManager * mInputManager;
-	AudioManager * mAudioManager;
+    class GameManager
+    {
+    private:
+        static GameManager * sInstance;
+        const int FRAME_RATE = 60;
 
-	Timer * mTimer;
+        bool mQuit;
+        Graphics * mGraphics;
+        AssetManager * mAssetManager;
+        InputManager * mInputManager;
+        AudioManager * mAudioManager;
 
-	SDL_Event mEvent;
+        Timer * mTimer;
 
-	AnimatedTexture * mTex;
-	Texture * mFontTex;
+        SDL_Event mEvent;
 
-public:
-	static GameManager * Instance();
-	static void Release();
+        AnimatedTexture * mTex;
+        Texture * mFontTex;
 
-	void Run();
-    
-    void Update();
-    void LateUpdate();
-    
-    void Render();
+    public:
+        static GameManager * Instance();
+        static void Release();
 
-	GameManager();
-	~GameManager();
-};
+        void Run();
+        
+        void Update();
+        void LateUpdate();
+        
+        void Render();
+
+        GameManager();
+        ~GameManager();
+    };
+}
 #endif
