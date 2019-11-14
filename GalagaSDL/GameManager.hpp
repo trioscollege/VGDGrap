@@ -1,10 +1,9 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
 #include <SDL2/SDL.h>
-#include "AnimatedTexture.hpp"
 #include "Timer.hpp"
-#include "InputManager.hpp"
 #include "AudioManager.hpp"
+#include "StartScreen.hpp"
 
 namespace SDLFramework {
 
@@ -24,8 +23,7 @@ namespace SDLFramework {
 
         SDL_Event mEvent;
 
-        AnimatedTexture * mTex;
-        Texture * mFontTex;
+        StartScreen * mStartScreen;
 
     public:
         static GameManager * Instance();

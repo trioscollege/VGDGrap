@@ -21,7 +21,7 @@
 		7B6A3553235FA32D00F80D46 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A3551235FA32D00F80D46 /* AssetManager.cpp */; };
 		7B6A3556235FA74E00F80D46 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A3554235FA74E00F80D46 /* Texture.cpp */; };
 		7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */; };
-		7BF952B323687792004A2957 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7BF952B223687792004A2957 /* Assets */; };
+		7BCB98EC237CF160009CBBA1 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7BCB98EB237CF15F009CBBA1 /* Assets */; };
 		7BF952B6236A0966004A2957 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BF952B4236A0966004A2957 /* InputManager.cpp */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				7BF952B323687792004A2957 /* Assets in CopyFiles */,
+				7BCB98EC237CF160009CBBA1 /* Assets in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,7 @@
 		7B6A3555235FA74E00F80D46 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		7B72DE6E237CB3A40036C2D5 /* StartScreen.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StartScreen.hpp; sourceTree = "<group>"; };
 		7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StartScreen.cpp; sourceTree = "<group>"; };
-		7BF952B223687792004A2957 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = SDL_Tutorial/Assets; sourceTree = "<group>"; };
+		7BCB98EB237CF15F009CBBA1 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = GalagaSDL/Assets; sourceTree = "<group>"; };
 		7BF952B4236A0966004A2957 /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
 		7BF952B5236A0966004A2957 /* InputManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 		7B392107234E1E190047FB73 = {
 			isa = PBXGroup;
 			children = (
-				7BF952B223687792004A2957 /* Assets */,
+				7BCB98EB237CF15F009CBBA1 /* Assets */,
 				7B392112234E1E190047FB73 /* GalagaSDL */,
 				7B392111234E1E190047FB73 /* Products */,
 				7B39211A234E1E880047FB73 /* Frameworks */,

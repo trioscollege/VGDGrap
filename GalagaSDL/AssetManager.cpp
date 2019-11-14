@@ -90,7 +90,7 @@ namespace SDLFramework {
         std::stringstream ss;
         ss << size << (int)color.r << (int)color.g << (int)color.b;
         std::string key = text + filename + ss.str();
-        std::cout << key << std::endl;
+        
         if (mText[key] == nullptr) {
             TTF_Font * font = GetFont(filename, size);
             mText[key] = Graphics::Instance()->CreateTextTexture(font, text, color);

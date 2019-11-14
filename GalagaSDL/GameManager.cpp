@@ -40,35 +40,7 @@ namespace SDLFramework {
 
     void GameManager::Update() {
         mInputManager->Update();
-        
-        if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
-            mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
-        }
-        else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
-            mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
-        }
-        
-        if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
-            std::cout << "Space pressed!" << std::endl;
-        }
-        
-        if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
-            std::cout << "Space released!" << std::endl;
-        }
-        
-        if (mInputManager->MouseButtonPressed(InputManager::Left)) {
-            std::cout << "Left mouse button pressed!" << std::endl;
-        }
-        
-        if (mInputManager->MouseButtonReleased(InputManager::Left)) {
-            std::cout << "Left mouse button released!" << std::endl;
-        }
-
-        if (mInputManager->KeyDown(SDL_SCANCODE_1)) {
-            mAudioManager->PlaySFX("SFX/coin_credit.wav", 0, 0);
-        }
-
-        mTex->Update();
+        mStartScreen->Update();
     }
 
     void GameManager::LateUpdate() {
@@ -77,8 +49,7 @@ namespace SDLFramework {
 
     void GameManager::Render() {
         mGraphics->ClearBackBuffer();
-        mFontTex->Render();
-        mTex->Render();
+        mStartScreen->Render();
         mGraphics->Render();
     }
 
@@ -95,19 +66,12 @@ namespace SDLFramework {
 
         mTimer = Timer::Instance();
 
-        mTex = new AnimatedTexture("SpriteSheet.png", 204, 45, 40, 38, 4, 0.5f, AnimatedTexture::Horizontal);
-        mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
-
-        mFontTex = new Texture("Hello World!", "ARCADE.TTF", 72, { 255, 0, 0 });
-        mFontTex->Position(Vector2(400, 200));
+        mStartScreen = new StartScreen();
     }
 
     GameManager::~GameManager() {
-        delete mTex;
-        mTex = nullptr;
-
-        delete mFontTex;
-        mFontTex = nullptr;
+        delete mStartScreen;
+        mStartScreen = nullptr;
         
         Timer::Release();
         mTimer = nullptr;
