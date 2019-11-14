@@ -2,6 +2,7 @@
 #define __STARTSCREEN_H
 #include "AnimatedTexture.h"
 #include "InputManager.h"
+#include "BackgroundStars.h"
 
 using namespace SDLFramework;
 
@@ -42,6 +43,9 @@ private:
 	float mAnimationTotalTime;
 	float mAnimationTimer;
 	bool mAnimationDone;
+
+	// stars
+	BackgroundStars * mStars;
 
 public:
 	StartScreen();

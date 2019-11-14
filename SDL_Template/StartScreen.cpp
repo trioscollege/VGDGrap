@@ -71,6 +71,9 @@ StartScreen::StartScreen() {
 	mAnimationDone = false;
 
 	Position(mAnimationStartPos);
+
+	mStars = BackgroundStars::Instance();
+	mStars->Scroll(true);
 }
 
 
@@ -132,7 +135,7 @@ void StartScreen::ChangeSelectedMode(int change) {
 		mSelectedMode = 0;
 	}
 
-	mCursor->Position(mCursorStartPos + mCursorOffset * mSelectedMode);
+	mCursor->Position(mCursorStartPos + mCursorOffset * (float)mSelectedMode);
 }
 
 void StartScreen::Update() {
@@ -142,6 +145,7 @@ void StartScreen::Update() {
 
 		if (mAnimationTimer >= mAnimationTotalTime) {
 			mAnimationDone = true;
+			mStars->Scroll(false);
 		}
 
 		if (mInput->KeyPressed(SDL_SCANCODE_DOWN) || mInput->KeyPressed(SDL_SCANCODE_UP)) {
