@@ -5,24 +5,25 @@
 
 namespace SDLFramework {
 
-	class RandomMT
+	class Random
 	{
 	private:
-		static RandomMT * sInstance;
+		static Random * sInstance;
 
 		std::mt19937 gen;
 
 	public:
-		static RandomMT * Instance();
+		static Random * Instance();
 		static void Release();
 
-		int Random();
+		unsigned RandomInt();
+		float RandomFloat();
 		int RandomRange(int lo, int hi);
 		float RandomRange(float lo, float hi);
 
 	private:
-		RandomMT();
-		~RandomMT();
+		Random();
+		~Random();
 	};
 	
 }

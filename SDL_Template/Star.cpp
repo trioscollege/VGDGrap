@@ -9,13 +9,13 @@ void Star::Scroll(bool b) {
 Star::Star(int layer) 
 : Texture("Stars.png", 0, 0, 4, 4) {
 	mTimer = Timer::Instance();
-	mRand = RandomMT::Instance();
+	mRand = Random::Instance();
 
-	int starColor = mRand->Random() % 4;
+	int starColor = mRand->RandomInt() % 4;
 
 	mSourceRect.x = starColor * 4;
 
-	Position(Vector2((float)(mRand->Random() % Graphics::Instance()->SCREEN_WIDTH), (float)(mRand->Random() % Graphics::Instance()->SCREEN_HEIGHT)));
+	Position(Vector2((float)(mRand->RandomInt() % Graphics::Instance()->SCREEN_WIDTH), (float)(mRand->RandomInt() % Graphics::Instance()->SCREEN_HEIGHT)));
 
 	mFlickerTimer = 0.0f;
 	mFlickerSpeed = 0.15f + mRand->RandomRange(0.0f, 1.0f) * 0.45f;
@@ -38,7 +38,7 @@ void Star::ScrollStar() {
 
 	if (pos.y > Graphics::Instance()->SCREEN_HEIGHT) {
 		pos.y = 0.0f;
-		pos.x = (float)(mRand->Random() % Graphics::Instance()->SCREEN_WIDTH);
+		pos.x = (float)(mRand->RandomInt() % Graphics::Instance()->SCREEN_WIDTH);
 		Position(pos);
 	}
 }

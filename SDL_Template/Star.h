@@ -4,7 +4,7 @@
 #include <chrono>
 #include "Texture.h"
 #include "Timer.h"
-#include "RandomMT.h"
+#include "Random.h"
 
 using namespace SDLFramework;
 
@@ -14,7 +14,7 @@ private:
 	static bool mScroll;
 
 	Timer * mTimer;
-	RandomMT * mRand;
+	Random * mRand;
 
 	bool mVisible;
 	float mFlickerTimer;
