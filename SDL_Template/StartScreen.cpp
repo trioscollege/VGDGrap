@@ -9,15 +9,27 @@ StartScreen::StartScreen() {
 	mPlayerOne = new Texture("1UP", "emulogic.ttf", 32, { 200, 0, 0 });
 	mPlayerTwo = new Texture("2UP", "emulogic.ttf", 32, { 200, 0, 0 });
 	mHiScore = new Texture("HI SCORE", "emulogic.ttf", 32, { 200, 0, 0 });
+	mPlayerOneScore = new Scoreboard();
+	mPlayerTwoScore = new Scoreboard();
+	mTopScore = new Scoreboard();
 
 	mTopBar->Parent(this);
 	mPlayerOne->Parent(mTopBar);
 	mPlayerTwo->Parent(mTopBar);
 	mHiScore->Parent(mTopBar);
+	mPlayerOneScore->Parent(mTopBar);
+	mPlayerTwoScore->Parent(mTopBar);
+	mTopScore->Parent(mTopBar);
 
 	mPlayerOne->Position(Vector2(-Graphics::Instance()->SCREEN_WIDTH * 0.35f, 0.0f));
 	mPlayerTwo->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.2f, 0.0f));
-	mHiScore->Position(Vec2_Zero);
+	mHiScore->Position(Vector2(-30.0f, 0.0f));
+
+	mPlayerOneScore->Position(Vector2(-Graphics::Instance()->SCREEN_WIDTH * 0.23f, 40.0f));
+	mPlayerTwoScore->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.32f, 40.0f));
+	mTopScore->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.05f, 40.0f));
+
+	mTopScore->Score(645987);
 
 	// logo entities
 	mLogo = new Texture("GalagaLogo.png", 0, 0, 360, 180);
@@ -81,46 +93,42 @@ StartScreen::~StartScreen() {
 	// top bar entities
 	delete mTopBar;
 	mTopBar = nullptr;
-
 	delete mPlayerOne;
 	mPlayerOne = nullptr;
-
 	delete mPlayerTwo;
 	mPlayerTwo = nullptr;
-
 	delete mHiScore;
 	mHiScore = nullptr;
-
-	delete mCursor;
-	mCursor = nullptr;
+	delete mPlayerOneScore;
+	mPlayerOneScore = nullptr;
+	delete mPlayerTwoScore;
+	mPlayerTwoScore = nullptr;
+	delete mTopScore;
+	mTopScore = nullptr;
 
 	// logo entities
 	delete mLogo;
 	mLogo = nullptr;
-	
 	delete mAnimatedLogo;
 	mAnimatedLogo = nullptr;
 
 	// play mode entities
 	delete mPlayModes;
 	mPlayModes = nullptr;
-
 	delete mOnePlayerMode;
 	mOnePlayerMode = nullptr;
-
 	delete mTwoPlayerMode;
 	mTwoPlayerMode = nullptr;
+	delete mCursor;
+	mCursor = nullptr;
 
 	// bottom bar entities
 	delete mBottomBar;
 	mBottomBar = nullptr;
-
 	delete mNamco;
 	mNamco = nullptr;
-
 	delete mDates;
 	mDates = nullptr;
-
 	delete mRights;
 	mRights = nullptr;
 }
@@ -168,6 +176,9 @@ void StartScreen::Render() {
 	mPlayerOne->Render();
 	mPlayerTwo->Render();
 	mHiScore->Render();
+	mPlayerOneScore->Render();
+	mPlayerTwoScore->Render();
+	mTopScore->Render();
 
 	if (!mAnimationDone) {
 		mLogo->Render();

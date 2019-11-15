@@ -65,6 +65,10 @@ namespace SDLFramework {
 			mTextures[fullPath] = Graphics::Instance()->LoadTexture(fullPath);
 		}
 
+		if (mTextures[fullPath] != nullptr) {
+			mTextureRefCount[mTextures[fullPath]] += 1;
+		}
+
 		return mTextures[fullPath];
 	}
 
@@ -96,6 +100,10 @@ namespace SDLFramework {
 			mText[key] = Graphics::Instance()->CreateTextTexture(font, text, color);
 		}
 
+		if (mText[key] != nullptr) {
+			mTextureRefCount[mText[key]] += 1;
+		}
+
 		return mText[key];
 	}
 
@@ -105,10 +113,13 @@ namespace SDLFramework {
 
 		if (mMusic[fullPath] == nullptr) {
 			mMusic[fullPath] = Mix_LoadMUS(fullPath.c_str());
+		}
 
-			if (mMusic[fullPath] == nullptr) {
-				std::cerr << "Unable to load music " << filename << "! Mix error: " << Mix_GetError() << std::endl;
-			}
+		if (mMusic[fullPath] == nullptr) {
+			std::cerr << "Unable to load music " << filename << "! Mix error: " << Mix_GetError() << std::endl;
+		}
+		else {
+			mMusicRefCount[mMusic[fullPath]] += 1;
 		}
 
 		return mMusic[fullPath];
@@ -120,12 +131,68 @@ namespace SDLFramework {
 
 		if (mSFX[fullPath] == nullptr) {
 			mSFX[fullPath] = Mix_LoadWAV(fullPath.c_str());
+		}
 
-			if (mSFX[fullPath] == nullptr) {
-				std::cerr << "Unable to load SFX " << filename << "! Mix error: " << Mix_GetError() << std::endl;
-			}
+		if (mSFX[fullPath] == nullptr) {
+			std::cerr << "Unable to load SFX " << filename << "! Mix error: " << Mix_GetError() << std::endl;
+		}
+		else {
+			mSFXRefCount[mSFX[fullPath]] += 1;
 		}
 
 		return mSFX[fullPath];
+	}
+
+	void AssetManager::DestroyTexture(SDL_Texture * texture) {
+		
+		if (mTextureRefCount.find(texture) != mTextureRefCount.end())
+		{
+			mTextureRefCount[texture] -= 1;
+			if (mTextureRefCount[texture] == 0) {
+				for (auto elem : mTextures) {
+					if (elem.second == texture) {
+						SDL_DestroyTexture(elem.second);
+						mTextures.erase(elem.first);
+						return;
+					}
+				}
+
+				for (auto elem : mText) {
+					if (elem.second == texture) {
+						SDL_DestroyTexture(elem.second);
+						mText.erase(elem.first);
+						return;
+					}
+				}
+			}
+		}
+	}
+
+	void AssetManager::DestroyMusic(Mix_Music * music) {
+		for (auto elem : mMusic) {
+			if (elem.second == music) {
+				mMusicRefCount[elem.second] -= 1;
+
+				if (mMusicRefCount[elem.second] == 0) {
+					Mix_FreeMusic(elem.second);
+					mMusic.erase(elem.first);
+				}
+				return;
+			}
+		}
+	}
+
+	void AssetManager::DestroySFX(Mix_Chunk * sfx) {
+		for (auto elem : mSFX) {
+			if (elem.second == sfx) {
+				mSFXRefCount[elem.second] -= 1;
+
+				if (mSFXRefCount[elem.second] == 0) {
+					Mix_FreeChunk(elem.second);
+					mSFX.erase(elem.first);
+				}
+				return;
+			}
+		}
 	}
 }
