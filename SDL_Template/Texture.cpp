@@ -43,7 +43,6 @@ namespace SDLFramework {
 	}
 
 	Texture::~Texture() {
-		AssetManager::Instance()->DestroyTexture(mTex);
 		mTex = nullptr;
 		mGraphics = nullptr;
 	}
