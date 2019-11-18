@@ -62,6 +62,12 @@ namespace SDLFramework {
 		if (mInputManager->MouseButtonReleased(InputManager::Left)) {
 			std::cout << "Left mouse button released!" << std::endl;
 		}
+
+		if (mInputManager->KeyDown(SDL_SCANCODE_1)) {
+			mAudioManager->PlaySFX("SFX\\coin_credit.wav", 0, 0);
+		}
+
+		mTex->Update();
 	}
 
 	void GameManager::LateUpdate() {
@@ -70,6 +76,7 @@ namespace SDLFramework {
 
 	void GameManager::Render() {
 		mGraphics->ClearBackBuffer();
+		mFontTex->Render();
 		mTex->Render();
 		mGraphics->Render();
 	}
@@ -83,19 +90,29 @@ namespace SDLFramework {
 
 		mAssetManager = AssetManager::Instance();
 		mInputManager = InputManager::Instance();
+		mAudioManager = AudioManager::Instance();
 
 		mTimer = Timer::Instance();
 
-		mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22);
+		mTex = new AnimatedTexture("SpriteSheet.png", 204, 45, 40, 38, 4, 0.5f, AnimatedTexture::Horizontal);
 		mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
+
+		mFontTex = new Texture("Hello World!", "ARCADE.TTF", 72, { 255, 0, 0 });
+		mFontTex->Position(Vector2(400, 200));
 	}
 
 	GameManager::~GameManager() {
 		delete mTex;
 		mTex = nullptr;
 
+		delete mFontTex;
+		mFontTex = nullptr;
+
 		Timer::Release();
 		mTimer = nullptr;
+
+		AudioManager::Release();
+		mAudioManager = nullptr;
 
 		InputManager::Release();
 		mInputManager = nullptr;

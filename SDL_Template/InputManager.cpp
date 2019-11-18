@@ -103,8 +103,7 @@ namespace SDLFramework {
 		return (mPrevMouseState & mask) && !(mMouseState & mask);
 	}
 
-	Vector2 InputManager::MousePosition()
-	{
+	Vector2 InputManager::MousePosition() {
 		return Vector2((float)mMouseXPos, (float)mMouseYPos);
 	}
 

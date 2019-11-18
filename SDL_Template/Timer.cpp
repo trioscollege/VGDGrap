@@ -31,7 +31,7 @@ namespace SDLFramework {
 		mDeltaTime = 0.0f;
 	}
 
-	float Timer::DeltaTime() {
+	float Timer::DeltaTime() const {
 		return mDeltaTime;
 	}
 
@@ -39,7 +39,7 @@ namespace SDLFramework {
 		mTimeScale = ts;
 	}
 
-	float Timer::TimeScale() {
+	float Timer::TimeScale() const {
 		return mTimeScale;
 	}
 

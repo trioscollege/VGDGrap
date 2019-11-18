@@ -3,9 +3,10 @@
 #include <SDL.h>
 // MacOS using XCode
 // #include <SDL2/SDL.h>
-#include "Texture.h"
+#include "AnimatedTexture.h"
 #include "Timer.h"
 #include "InputManager.h"
+#include "AudioManager.h"
 
 namespace SDLFramework {
 
@@ -19,12 +20,14 @@ namespace SDLFramework {
 		Graphics * mGraphics;
 		AssetManager * mAssetManager;
 		InputManager * mInputManager;
+		AudioManager * mAudioManager;
 
 		Timer * mTimer;
 
 		SDL_Event mEvent;
 
-		Texture * mTex;
+		AnimatedTexture * mTex;
+		Texture * mFontTex;
 
 	public:
 		static GameManager * Instance();
