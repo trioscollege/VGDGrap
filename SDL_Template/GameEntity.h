@@ -23,6 +23,7 @@ namespace SDLFramework {
 		GameEntity(const Vector2 & position);
 		~GameEntity();
 
+		void Position(float x, float y);
 		void Position(const Vector2 & pos);
 		Vector2 Position(Space space = World);
 

@@ -21,13 +21,13 @@ StartScreen::StartScreen() {
 	mPlayerTwoScore->Parent(mTopBar);
 	mTopScore->Parent(mTopBar);
 
-	mPlayerOne->Position(Vector2(-Graphics::Instance()->SCREEN_WIDTH * 0.35f, 0.0f));
-	mPlayerTwo->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.2f, 0.0f));
-	mHiScore->Position(Vector2(-30.0f, 0.0f));
+	mPlayerOne->Position(-Graphics::Instance()->SCREEN_WIDTH * 0.35f, 0.0f);
+	mPlayerTwo->Position(Graphics::Instance()->SCREEN_WIDTH * 0.2f, 0.0f);
+	mHiScore->Position(-30.0f, 0.0f);
 
-	mPlayerOneScore->Position(Vector2(-Graphics::Instance()->SCREEN_WIDTH * 0.23f, 40.0f));
-	mPlayerTwoScore->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.32f, 40.0f));
-	mTopScore->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.05f, 40.0f));
+	mPlayerOneScore->Position(-Graphics::Instance()->SCREEN_WIDTH * 0.23f, 40.0f);
+	mPlayerTwoScore->Position(Graphics::Instance()->SCREEN_WIDTH * 0.32f, 40.0f);
+	mTopScore->Position(Graphics::Instance()->SCREEN_WIDTH * 0.05f, 40.0f);
 
 	mTopScore->Score(645987);
 
@@ -38,8 +38,8 @@ StartScreen::StartScreen() {
 	mLogo->Parent(this);
 	mAnimatedLogo->Parent(this);
 
-	mLogo->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.32f));
-	mAnimatedLogo->Position(Vector2(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.32f));
+	mLogo->Position(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.32f);
+	mAnimatedLogo->Position(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.32f);
 
 	// play mode entities
 	mPlayModes = new GameEntity(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.55f);
@@ -52,9 +52,9 @@ StartScreen::StartScreen() {
 	mTwoPlayerMode->Parent(mPlayModes);
 	mCursor->Parent(mPlayModes);
 
-	mOnePlayerMode->Position(Vector2(0.0f, -35.0f));
-	mTwoPlayerMode->Position(Vector2(0.0f, 35.0f));
-	mCursor->Position(Vector2(-175.0f, -35.0f));
+	mOnePlayerMode->Position(0.0f, -35.0f);
+	mTwoPlayerMode->Position(0.0f, 35.0f);
+	mCursor->Position(-175.0f, -35.0f);
 
 	mCursorStartPos = mCursor->Position(Local);
 	mCursorOffset = Vector2(0.0f, 70.0f);
@@ -72,8 +72,8 @@ StartScreen::StartScreen() {
 	mRights->Parent(mBottomBar);
 
 	mNamco->Position(Vec2_Zero);
-	mDates->Position(Vector2(0.0f, 90.0f));
-	mRights->Position(Vector2(0.0f, 170.0f));
+	mDates->Position(0.0f, 90.0f);
+	mRights->Position(0.0f, 170.0f);
 
 	// screen animation variables
 	mAnimationStartPos = Vector2(0.0f, Graphics::Instance()->SCREEN_HEIGHT);
@@ -131,6 +131,9 @@ StartScreen::~StartScreen() {
 	mDates = nullptr;
 	delete mRights;
 	mRights = nullptr;
+
+	mTimer = nullptr;
+	mInput = nullptr;
 }
 
 void StartScreen::ChangeSelectedMode(int change) {
