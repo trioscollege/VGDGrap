@@ -24,11 +24,34 @@ namespace SDLFramework {
 		return sInitialized;
 	}
 
-	//public member functions
+	SDL_Texture * Graphics::LoadTexture(std::string path) {
+		SDL_Texture * tex = nullptr;
+		SDL_Surface * surface = IMG_Load(path.c_str());
+
+		if (surface == nullptr) {
+			std::cerr << "Unable to load " << path << ". IMG Error: " << IMG_GetError() << std::endl;
+			return nullptr;
+		}
+
+		tex = SDL_CreateTextureFromSurface(mRenderer, surface);
+		if (tex == nullptr) {
+			std::cerr << "Unable to create texture from surface! IMG Error: " << IMG_GetError() << std::endl;
+			return nullptr;
+		}
+
+		SDL_FreeSurface(surface);
+		return tex;
+	}
+
+	void Graphics::DrawTexture(SDL_Texture * tex, SDL_Rect * srcRect, SDL_Rect * dstRect, float angle, SDL_RendererFlip flip) {
+		SDL_RenderCopyEx(mRenderer, tex, srcRect, dstRect, angle, nullptr, flip);
+	}
+
 	void Graphics::ClearBackBuffer() {
 		SDL_RenderClear(mRenderer);
 	}
 
+	//public member functions
 	void Graphics::Render() {
 		SDL_RenderPresent(mRenderer);
 	}
@@ -44,6 +67,8 @@ namespace SDLFramework {
 
 		mRenderer = nullptr;
 		mWindow = nullptr;
+
+		IMG_Quit();
 	}
 
 	bool Graphics::Init() {
@@ -66,6 +91,12 @@ namespace SDLFramework {
 		mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
 		if (mRenderer == nullptr) {
 			std::cerr << "Unable to create renderer! SDL Error: " << SDL_GetError() << std::endl;
+			return false;
+		}
+
+		int flags = IMG_INIT_PNG;
+		if (!(IMG_Init(flags) & flags)) {
+			std::cerr << "Unable to initialize SDL_image! IMG Error: " << IMG_GetError() << std::endl;
 			return false;
 		}
 
