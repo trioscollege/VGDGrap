@@ -41,6 +41,9 @@ namespace SDLFramework {
 	Graphics::~Graphics() {
 		SDL_DestroyRenderer(mRenderer);
 		SDL_DestroyWindow(mWindow);
+
+		mRenderer = nullptr;
+		mWindow = nullptr;
 	}
 
 	bool Graphics::Init() {
@@ -65,6 +68,7 @@ namespace SDLFramework {
 			std::cerr << "Unable to create renderer! SDL Error: " << SDL_GetError() << std::endl;
 			return false;
 		}
+
 		return true;
 	}
 }

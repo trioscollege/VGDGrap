@@ -39,7 +39,7 @@ namespace SDLFramework {
 	}
 
 	void GameManager::Update() {
-		std::cout << "Delta time: " << mTimer->DeltaTime() << std::endl;
+
 	}
 
 	void GameManager::LateUpdate() {
@@ -59,14 +59,35 @@ namespace SDLFramework {
 		}
 
 		mTimer = Timer::Instance();
+
+		// sanity test
+		mParent = new GameEntity(100.0f, 400.0f);
+		mChild = new GameEntity(100.0f, 500.0f);
+
+		// print local position of mChild with no parent set
+		printf("Child local pos: (%f, %f)\n",
+			mChild->Position(GameEntity::Local).x,
+			mChild->Position(GameEntity::Local).y);
+
+		// set parent of mChild to mParent
+		mChild->Parent(mParent);
+		mParent->Rotation(90.0f);
+
+		// print local position of mChild with parent set
+		printf("Child local pos: (%f, %f)\n",
+			mChild->Position(GameEntity::Local).x,
+			mChild->Position(GameEntity::Local).y);
+		printf("Child world pos: (%f, %f)\n",
+			mChild->Position(GameEntity::World).x,
+			mChild->Position(GameEntity::World).y);
 	}
 
 	GameManager::~GameManager() {
-		Timer::Release();
-		mTimer = nullptr;
-
 		Graphics::Release();
 		mGraphics = nullptr;
+
+		Timer::Release();
+		mTimer = nullptr;
 
 		// Quit SDL subsystems
 		SDL_Quit();

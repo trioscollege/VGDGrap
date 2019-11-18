@@ -5,6 +5,7 @@
 // #include <SDL2/SDL.h>
 #include "Graphics.h"
 #include "Timer.h"
+#include "GameEntity.h"
 
 namespace SDLFramework {
 
@@ -19,6 +20,10 @@ namespace SDLFramework {
 
 		Timer * mTimer;
 
+		// sanity test
+		GameEntity * mParent;
+		GameEntity * mChild;
+
 		SDL_Event mEvent;
 
 	public:
@@ -29,6 +34,7 @@ namespace SDLFramework {
 
 		void Update();
 		void LateUpdate();
+
 		void Render();
 
 		GameManager();
