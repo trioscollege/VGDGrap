@@ -18,7 +18,7 @@ Star::Star(int layer)
 	Position(Vector2((float)(mRand->RandomInt() % Graphics::Instance()->SCREEN_WIDTH), (float)(mRand->RandomInt() % Graphics::Instance()->SCREEN_HEIGHT)));
 
 	mFlickerTimer = 0.0f;
-	mFlickerSpeed = 0.15f + mRand->RandomRange(0.0f, 1.0f) * 0.45f;
+	mFlickerSpeed = mRand->RandomRange(0.15f, 1.0f);
 
 	float inverseLayer = 1.0f / layer;
 	Scale(Vec2_One * inverseLayer);

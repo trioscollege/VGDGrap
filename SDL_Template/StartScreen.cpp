@@ -5,7 +5,7 @@ StartScreen::StartScreen() {
 	mInput = InputManager::Instance();
 
 	// top bar entities
-	mTopBar = new GameEntity(Graphics::Instance()->SCREEN_WIDTH * 0.5f, 80.0f);
+	mTopBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, 80.0f);
 	mPlayerOne = new Texture("1UP", "emulogic.ttf", 32, { 200, 0, 0 });
 	mPlayerTwo = new Texture("2UP", "emulogic.ttf", 32, { 200, 0, 0 });
 	mHiScore = new Texture("HI SCORE", "emulogic.ttf", 32, { 200, 0, 0 });
@@ -21,13 +21,13 @@ StartScreen::StartScreen() {
 	mPlayerTwoScore->Parent(mTopBar);
 	mTopScore->Parent(mTopBar);
 
-	mPlayerOne->Position(-Graphics::Instance()->SCREEN_WIDTH * 0.35f, 0.0f);
-	mPlayerTwo->Position(Graphics::Instance()->SCREEN_WIDTH * 0.2f, 0.0f);
+	mPlayerOne->Position(-Graphics::SCREEN_WIDTH * 0.35f, 0.0f);
+	mPlayerTwo->Position(Graphics::SCREEN_WIDTH * 0.2f, 0.0f);
 	mHiScore->Position(-30.0f, 0.0f);
 
-	mPlayerOneScore->Position(-Graphics::Instance()->SCREEN_WIDTH * 0.23f, 40.0f);
-	mPlayerTwoScore->Position(Graphics::Instance()->SCREEN_WIDTH * 0.32f, 40.0f);
-	mTopScore->Position(Graphics::Instance()->SCREEN_WIDTH * 0.05f, 40.0f);
+	mPlayerOneScore->Position(-Graphics::SCREEN_WIDTH * 0.23f, 40.0f);
+	mPlayerTwoScore->Position(Graphics::SCREEN_WIDTH * 0.32f, 40.0f);
+	mTopScore->Position(Graphics::SCREEN_WIDTH * 0.05f, 40.0f);
 
 	mTopScore->Score(645987);
 
@@ -38,11 +38,11 @@ StartScreen::StartScreen() {
 	mLogo->Parent(this);
 	mAnimatedLogo->Parent(this);
 
-	mLogo->Position(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.32f);
-	mAnimatedLogo->Position(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.32f);
+	mLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
+	mAnimatedLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 
 	// play mode entities
-	mPlayModes = new GameEntity(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.55f);
+	mPlayModes = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
 	mOnePlayerMode = new Texture("1 Player ", "emulogic.ttf", 32, { 230, 230, 230 });
 	mTwoPlayerMode = new Texture("2 Players", "emulogic.ttf", 32, { 230, 230, 230 });
 	mCursor = new Texture("Cursor.png");
@@ -61,7 +61,7 @@ StartScreen::StartScreen() {
 	mSelectedMode = 0;
 
 	// bottom bar entities
-	mBottomBar = new GameEntity(Graphics::Instance()->SCREEN_WIDTH * 0.5f, Graphics::Instance()->SCREEN_HEIGHT * 0.7f);
+	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.7f);
 	mNamco = new Texture("namcot", "namco__.ttf", 36, { 200, 0, 0 });
 	mDates = new Texture("1981 1985 NAMCO LTD.", "emulogic.ttf", 32, { 230, 230, 230 });
 	mRights = new Texture("ALL RIGHTS RESERVED", "emulogic.ttf", 32, { 230, 230, 230 });
@@ -76,7 +76,7 @@ StartScreen::StartScreen() {
 	mRights->Position(0.0f, 170.0f);
 
 	// screen animation variables
-	mAnimationStartPos = Vector2(0.0f, Graphics::Instance()->SCREEN_HEIGHT);
+	mAnimationStartPos = Vector2(0.0f, Graphics::SCREEN_HEIGHT);
 	mAnimationEndPos = Vec2_Zero;
 	mAnimationTotalTime = 5.0f;
 	mAnimationTimer = 0.0f;

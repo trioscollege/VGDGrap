@@ -1,7 +1,5 @@
 #ifndef __STAR_H
 #define __STAR_H
-#include <random>
-#include <chrono>
 #include "Texture.h"
 #include "Timer.h"
 #include "Random.h"
