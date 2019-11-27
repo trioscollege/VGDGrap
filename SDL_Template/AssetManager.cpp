@@ -153,7 +153,7 @@ namespace SDLFramework {
 					if (elem.second == texture) {
 						SDL_DestroyTexture(elem.second);
 						mTextures.erase(elem.first);
-						return;
+						return; // work finished, leave function
 					}
 				}
 
@@ -161,7 +161,7 @@ namespace SDLFramework {
 					if (elem.second == texture) {
 						SDL_DestroyTexture(elem.second);
 						mText.erase(elem.first);
-						return;
+						return; // work finished, leave function
 					}
 				}
 			}
