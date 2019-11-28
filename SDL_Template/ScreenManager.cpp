@@ -28,6 +28,8 @@ void ScreenManager::Update() {
 		}
 		break;
 	case Play:
+		mPlayScreen->Update();
+
 		if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE)) {
 			mCurrentScreen = Start;
 		}
@@ -43,6 +45,7 @@ void ScreenManager::Render() {
 		mStartScreen->Render();
 		break;
 	case Play:
+		mPlayScreen->Render();
 		break;
 	}
 }
@@ -52,6 +55,7 @@ ScreenManager::ScreenManager() {
 
 	mBackgroundStars = BackgroundStars::Instance();
 	mStartScreen = new StartScreen();
+	mPlayScreen = new PlayScreen();
 
 	mCurrentScreen = Start;
 }
@@ -64,4 +68,7 @@ ScreenManager::~ScreenManager() {
 
 	delete mStartScreen;
 	mStartScreen = nullptr;
+
+	delete mPlayScreen;
+	mPlayScreen = nullptr;
 }
