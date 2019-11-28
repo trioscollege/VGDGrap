@@ -10,7 +10,8 @@ PlayScreen::PlayScreen() {
 	mSideBar->Parent(this);
 	mSideBar->Position(Graphics::SCREEN_WIDTH * 0.87f, Graphics::SCREEN_HEIGHT * 0.05f);
 	mSideBar->SetHighScore(30000);
-	mSideBar->SetPlayerScore(50000);
+	mSideBar->SetShips(3);
+	mSideBar->SetLevel(3);
 }
 
 PlayScreen::~PlayScreen() {
