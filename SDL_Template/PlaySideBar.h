@@ -6,6 +6,8 @@
 
 class PlaySideBar : public GameEntity {
 private:
+	static const int MAX_SHIP_TEXTURES = 5;
+
 	Timer * mTimer;
 	AudioManager * mAudio;
 
@@ -21,6 +23,10 @@ private:
 	bool mPlayerOneLabelVisible;
 
 	Scoreboard * mPlayerOneScore;
+
+	GameEntity * mShips;
+	Texture * mShipTextures[MAX_SHIP_TEXTURES];
+	int mTotalShips;
 
 public:
 	PlaySideBar();
