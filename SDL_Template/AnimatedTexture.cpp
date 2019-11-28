@@ -2,8 +2,8 @@
 
 namespace SDLFramework {
 
-	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir)
-		: Texture(filename, x, y, w, h) {
+	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed)
+		: Texture(filename, x, y, w, h, managed) {
 		mTimer = Timer::Instance();
 
 		mStartX = x;
