@@ -11,29 +11,29 @@ void PlaySideBar::ClearFlags() {
 
 void PlaySideBar::AddNextFlag() {
 	if (mRemainingLevels >= 50) {
-		AddFlag("LevelFlags.png", 60, 50);
+		AddFlag("LevelFlags.png", 62, 50);
 	}
 	else if (mRemainingLevels >= 30) {
-		AddFlag("LevelFlags.png", 60, 30);
+		AddFlag("LevelFlags.png", 62, 30);
 	}
 	else if (mRemainingLevels >= 20) {
-		AddFlag("LevelFlags.png", 60, 20);
+		AddFlag("LevelFlags.png", 62, 20);
 	}
 	else if (mRemainingLevels >= 10) {
-		AddFlag("LevelFlags.png", 52, 10);
+		AddFlag("LevelFlags.png", 54, 10);
 	}
 	else if (mRemainingLevels >= 5) {
-		AddFlag("LevelFlags.png", 28, 5);
+		AddFlag("LevelFlags.png", 30, 5);
 	}
 	else {
-		AddFlag("LevelFlags.png", 28, 1);
+		AddFlag("LevelFlags.png", 30, 1);
 	}
 }
 
 void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 	int index = (int)mFlagTextures.size();
 	if (index > 0) {
-		mFlagXOffset += width * 0.55f;
+		mFlagXOffset += width * 0.50f;
 	}
 
 	mRemainingLevels -= value;
@@ -58,10 +58,12 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 		break;
 	}
 
-	mFlagTextures.push_back(new Texture(filename, x, 0, (int)width, 64, false));
+	mFlagTextures.push_back(new Texture(filename, x, 0, (int)width - 2, 64, false));
 	mFlagTextures[index]->Parent(mFlags);
 	mFlagTextures[index]->Position(Vec2_Right * mFlagXOffset);
-	mFlagXOffset += width * 0.55f;
+	mFlagXOffset += width * 0.50f;
+
+	mAudio->PlaySFX("SFX\\FlagSound.wav");
 }
 
 PlaySideBar::PlaySideBar() {
@@ -99,7 +101,7 @@ PlaySideBar::PlaySideBar() {
 
 	mShips = new GameEntity();
 	mShips->Parent(this);
-	mShips->Position(-50.0f, 450.0f);
+	mShips->Position(-40.0f, 420.0f);
 
 	for (int i = 0; i < MAX_SHIP_TEXTURES; ++i) {
 		mShipTextures[i] = new Texture("PlayerShips.png", 0, 0, 60, 64, false);
@@ -113,10 +115,10 @@ PlaySideBar::PlaySideBar() {
 
 	mFlags = new GameEntity();
 	mFlags->Parent(this);
-	mFlags->Position(-40.0f, 650.0f);
+	mFlags->Position(-50.0f, 650.0f);
 
 	mFlagTimer = 0.0f;
-	mFlagInterval = 0.5f;
+	mFlagInterval = 0.25f;
 }
 
 PlaySideBar::~PlaySideBar() {
