@@ -2,100 +2,111 @@
 
 namespace SDLFramework {
 
-    GameManager * GameManager::sInstance = nullptr;
+	GameManager * GameManager::sInstance = nullptr;
 
-    GameManager * GameManager::Instance()
-    {
-        if (sInstance == nullptr) {
-            sInstance = new GameManager();
-        }
-        return sInstance;
-    }
+	GameManager * GameManager::Instance()
+	{
+		if (sInstance == nullptr) {
+			sInstance = new GameManager();
+		}
+		return sInstance;
+	}
 
-    void GameManager::Release() {
-        delete sInstance;
-        sInstance = nullptr;
-    }
+	void GameManager::Release() {
+		delete sInstance;
+		sInstance = nullptr;
+	}
 
-    void GameManager::Run() {
-        while (!mQuit) {
-            mTimer->Update();
+	void GameManager::Run() {
+		while (!mQuit) {
+			mTimer->Update();
 
-            while (SDL_PollEvent(&mEvent)) {
-                switch (mEvent.type) {
-                case SDL_QUIT:
-                    mQuit = true;
-                    break;
-                }
-            }
+			while (SDL_PollEvent(&mEvent)) {
+				switch (mEvent.type) {
+				case SDL_QUIT:
+					mQuit = true;
+					break;
+				}
+			}
 
-            if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-                Update();
-                LateUpdate();
-                Render();
-                mTimer->Reset();
-            }
-        }
-    }
+			if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
+				Update();
+				LateUpdate();
+				Render();
+				mTimer->Reset();
+			}
+		}
+	}
 
-    void GameManager::Update() {
-        
-    }
+	void GameManager::Update() {
+		mInputManager->Update();
 
-    void GameManager::LateUpdate() {
-        
-    }
+		if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
+			mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
+		}
+		else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
+			mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
+		}
 
-    void GameManager::Render() {
-        mGraphics->ClearBackBuffer();
-        mGraphics->Render();
-    }
+		if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
+			std::cout << "Space pressed!" << std::endl;
+		}
+		if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
+			std::cout << "Space released!" << std::endl;
+		}
 
-    GameManager::GameManager() : mQuit(false) {
-        mGraphics = Graphics::Instance();
+		if (mInputManager->MouseButtonPressed(InputManager::Left)) {
+			std::cout << "Left mouse button pressed!" << std::endl;
+		}
 
-        if (!Graphics::Initialized()) {
-            mQuit = true;
-        }
+		if (mInputManager->MouseButtonReleased(InputManager::Left)) {
+			std::cout << "Left mouse button released!" << std::endl;
+		}
+	}
 
-        mTimer = Timer::Instance();
+	void GameManager::LateUpdate() {
+		mInputManager->UpdatePrevInput();
+	}
 
-        // sanity test
-        mParent = new GameEntity(100.0f, 400.0f);
-        mChild = new GameEntity(100.0f, 500.0f);
+	void GameManager::Render() {
+		mGraphics->ClearBackBuffer();
+		mTex->Render();
+		mGraphics->Render();
+	}
 
-        // print local position of mChild with no parent set
-        printf("Child local pos: (%f, %f)\n",
-            mChild->Position(GameEntity::Local).x,
-            mChild->Position(GameEntity::Local).y);
+	GameManager::GameManager() : mQuit(false) {
+		mGraphics = Graphics::Instance();
 
-        // set parent of mChild to mParent
-        mChild->Parent(mParent);
-        mParent->Rotation(0.0f);
+		if (!Graphics::Initialized()) {
+			mQuit = true;
+		}
 
-        // print local position of mChild with parent set
-        printf("Child local pos: (%f, %f)\n",
-            mChild->Position(GameEntity::Local).x,
-            mChild->Position(GameEntity::Local).y);
-        printf("Child world pos: (%f, %f)\n",
-            mChild->Position(GameEntity::World).x,
-            mChild->Position(GameEntity::World).y);
-    }
+		mAssetManager = AssetManager::Instance();
+		mInputManager = InputManager::Instance();
 
-    GameManager::~GameManager() {
-        delete mChild;
-        mChild = nullptr;
-        
-        delete mParent;
-        mParent = nullptr;
-        
-        Timer::Release();
-        mTimer = nullptr;
-        
-        Graphics::Release();
-        mGraphics = nullptr;
+		mTimer = Timer::Instance();
 
-        // Quit SDL subsystems
-        SDL_Quit();
-    }
+		mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22);
+		mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
+	}
+
+	GameManager::~GameManager() {
+		delete mTex;
+		mTex = nullptr;
+
+		Timer::Release();
+		mTimer = nullptr;
+
+		InputManager::Release();
+		mInputManager = nullptr;
+
+		AssetManager::Release();
+		mAssetManager = nullptr;
+
+		Graphics::Release();
+		mGraphics = nullptr;
+
+		// Quit SDL subsystems
+		SDL_Quit();
+	}
 }

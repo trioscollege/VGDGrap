@@ -2,73 +2,104 @@
 
 namespace SDLFramework {
 
-    Graphics * Graphics::sInstance = nullptr;
-    bool Graphics::sInitialized = false;
+	Graphics * Graphics::sInstance = nullptr;
+	bool Graphics::sInitialized = false;
 
-    // static member functions
-    Graphics * Graphics::Instance() {
-        if (sInstance == nullptr) {
-            sInstance = new Graphics();
-        }
+	// static member functions
+	Graphics * Graphics::Instance() {
+		if (sInstance == nullptr) {
+			sInstance = new Graphics();
+		}
 
-        return sInstance;
-    }
+		return sInstance;
+	}
 
-    void Graphics::Release() {
-        delete sInstance;
-        sInstance = nullptr;
-        sInitialized = false;
-    }
+	void Graphics::Release() {
+		delete sInstance;
+		sInstance = nullptr;
+		sInitialized = false;
+	}
 
-    bool Graphics::Initialized() {
-        return sInitialized;
-    }
+	bool Graphics::Initialized() {
+		return sInitialized;
+	}
 
-    //public member functions
-    void Graphics::ClearBackBuffer() {
-        SDL_RenderClear(mRenderer);
-    }
+	SDL_Texture * Graphics::LoadTexture(std::string path) {
+		SDL_Texture * tex = nullptr;
+		SDL_Surface * surface = IMG_Load(path.c_str());
 
-    void Graphics::Render() {
-        SDL_RenderPresent(mRenderer);
-    }
+		if (surface == nullptr) {
+			std::cerr << "Unable to load " << path << ". IMG Error: " << IMG_GetError() << std::endl;
+			return nullptr;
+		}
 
-    //private member functions
-    Graphics::Graphics() : mRenderer(nullptr) {
-        sInitialized = Init();
-    }
+		tex = SDL_CreateTextureFromSurface(mRenderer, surface);
+		if (tex == nullptr) {
+			std::cerr << "Unable to create texture from surface! IMG Error: " << IMG_GetError() << std::endl;
+			return nullptr;
+		}
 
-    Graphics::~Graphics() {
-        SDL_DestroyRenderer(mRenderer);
-        SDL_DestroyWindow(mWindow);
+		SDL_FreeSurface(surface);
+		return tex;
+	}
 
-        mRenderer = nullptr;
-        mWindow = nullptr;
-    }
+	void Graphics::DrawTexture(SDL_Texture * tex, SDL_Rect * srcRect, SDL_Rect * dstRect, float angle, SDL_RendererFlip flip) {
+		SDL_RenderCopyEx(mRenderer, tex, srcRect, dstRect, angle, nullptr, flip);
+	}
 
-    bool Graphics::Init() {
-        if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-            std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
-            return false;
-        }
-        mWindow = SDL_CreateWindow(
-            "SDL Tutorial",				// window title
-            SDL_WINDOWPOS_UNDEFINED,	// window x pos
-            SDL_WINDOWPOS_UNDEFINED,	// window y pos
-            SCREEN_WIDTH,				// window width
-            SCREEN_HEIGHT,				// window height
-            SDL_WINDOW_SHOWN);			// window flags
-        if (mWindow == nullptr) {
-            std::cerr << "Unable to create Window! SDL Error: " << SDL_GetError() << std::endl;
-            return false;
-        }
+	void Graphics::ClearBackBuffer() {
+		SDL_RenderClear(mRenderer);
+	}
 
-        mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
-        if (mRenderer == nullptr) {
-            std::cerr << "Unable to create renderer! SDL Error: " << SDL_GetError() << std::endl;
-            return false;
-        }
+	//public member functions
+	void Graphics::Render() {
+		SDL_RenderPresent(mRenderer);
+	}
 
-        return true;
-    }
+	//private member functions
+	Graphics::Graphics() : mRenderer(nullptr) {
+		sInitialized = Init();
+	}
+
+	Graphics::~Graphics() {
+		SDL_DestroyRenderer(mRenderer);
+		SDL_DestroyWindow(mWindow);
+
+		mRenderer = nullptr;
+		mWindow = nullptr;
+
+		IMG_Quit();
+	}
+
+	bool Graphics::Init() {
+		if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+			std::cerr << "Unable to initialize SDL! SDL Error: " << SDL_GetError() << std::endl;
+			return false;
+		}
+		mWindow = SDL_CreateWindow(
+			"SDL Tutorial",				// window title
+			SDL_WINDOWPOS_UNDEFINED,	// window x pos
+			SDL_WINDOWPOS_UNDEFINED,	// window y pos
+			SCREEN_WIDTH,				// window width
+			SCREEN_HEIGHT,				// window height
+			SDL_WINDOW_SHOWN);			// window flags
+		if (mWindow == nullptr) {
+			std::cerr << "Unable to create Window! SDL Error: " << SDL_GetError() << std::endl;
+			return false;
+		}
+
+		mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
+		if (mRenderer == nullptr) {
+			std::cerr << "Unable to create renderer! SDL Error: " << SDL_GetError() << std::endl;
+			return false;
+		}
+
+		int flags = IMG_INIT_PNG;
+		if (!(IMG_Init(flags) & flags)) {
+			std::cerr << "Unable to initialize SDL_image! IMG Error: " << IMG_GetError() << std::endl;
+			return false;
+		}
+
+		return true;
+	}
 }

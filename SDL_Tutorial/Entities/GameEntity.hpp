@@ -4,43 +4,45 @@
 
 namespace SDLFramework {
 
-    class GameEntity
-    {
-    public:
+	class GameEntity
+	{
+	public:
 
-        enum Space {Local = 0, World = 1};
+		enum Space { Local = 0, World = 1 };
 
-    private:
-        Vector2 mPosition;
-        float mRotation;
-        Vector2 mScale;
+	private:
+		Vector2 mPosition;
+		float mRotation;
+		Vector2 mScale;
 
-        bool mActive;
-        GameEntity * mParent;
+		bool mActive;
+		GameEntity * mParent;
 
-    public:
-        GameEntity(float x = 0.0f, float y = 0.0f);
-        ~GameEntity();
+	public:
+		GameEntity(float x = 0.0f, float y = 0.0f);
+		~GameEntity();
 
-        void Position(const Vector2 & pos);
-        Vector2 Position(Space space = World);
+		void Position(const Vector2 & pos);
+		Vector2 Position(Space space = World);
 
-        void Rotation(float rot);
-        float Rotation(Space space = World);
-        
-        void Scale(Vector2 scale);
-        Vector2 Scale(Space space = World);
+		void Rotation(float rot);
+		float Rotation(Space space = World);
 
-        void Active(bool active);
-        bool Active();
+		void Scale(Vector2 scale);
+		Vector2 Scale(Space space = World);
 
-        void Parent(GameEntity * parent);
-        GameEntity * Parent();
+		void Active(bool active);
+		bool Active() const;
 
-        virtual void Update() {};
-        virtual void Render() {};
+		void Parent(GameEntity * parent);
+		GameEntity * Parent() const;
 
-    };
+		void Translate(Vector2 vec);
+		void Rotate(float amount);
+
+		virtual void Update() {};
+		virtual void Render() {};
+
+	};
 }
 #endif
-
