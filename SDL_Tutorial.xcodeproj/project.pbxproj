@@ -39,6 +39,7 @@
 		7B030CDB2391B46200CD6622 /* AssetManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AssetManager.hpp; sourceTree = "<group>"; };
 		7B030CDC2391B46200CD6622 /* InputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
 		7B030CDF2391BD7600CD6622 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		7B030CE72391BF4C00CD6622 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		7B392110234E1E190047FB73 /* SDL_Tutorial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_Tutorial; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B392113234E1E190047FB73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B39211B234E1E880047FB73 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		7B392112234E1E190047FB73 /* SDL_Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				7B030CE72391BF4C00CD6622 /* Assets */,
 				7B39211E235A17D30047FB73 /* Entities */,
 				7B030CDA2391B46200CD6622 /* AssetManager.cpp */,
 				7B030CDB2391B46200CD6622 /* AssetManager.hpp */,
