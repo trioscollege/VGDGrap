@@ -3,8 +3,7 @@
 #include <SDL2/SDL.h>
 #include "Timer.hpp"
 #include "AudioManager.hpp"
-#include "StartScreen.hpp"
-#include "BackgroundStars.hpp"
+#include "ScreenManager.hpp"
 
 namespace SDLFramework {
 
@@ -24,8 +23,7 @@ namespace SDLFramework {
 
 		SDL_Event mEvent;
 
-		BackgroundStars * mStars;
-		StartScreen * mStartScreen;
+		ScreenManager * mScreenManager;
 
 	public:
 		static GameManager * Instance();
