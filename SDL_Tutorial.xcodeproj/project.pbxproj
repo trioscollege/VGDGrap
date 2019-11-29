@@ -11,6 +11,7 @@
 		7B030CDD2391B46300CD6622 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CDA2391B46200CD6622 /* AssetManager.cpp */; };
 		7B030CDE2391B46300CD6622 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CDC2391B46200CD6622 /* InputManager.cpp */; };
 		7B030CE02391BD7600CD6622 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B030CDF2391BD7600CD6622 /* SDL2_image.framework */; };
+		7B030CEA2391C16500CD6622 /* Assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B030CE72391BF4C00CD6622 /* Assets */; };
 		7B392114234E1E190047FB73 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392113234E1E190047FB73 /* main.cpp */; };
 		7B39211D234E1EE40047FB73 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B39211B234E1E880047FB73 /* SDL2.framework */; };
 		7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392120235DE4A80047FB73 /* Graphics.cpp */; };
@@ -22,12 +23,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		7B39210E234E1E190047FB73 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				7B030CEA2391C16500CD6622 /* Assets in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -71,6 +73,7 @@
 		7B392107234E1E190047FB73 = {
 			isa = PBXGroup;
 			children = (
+				7B030CE72391BF4C00CD6622 /* Assets */,
 				7B392112234E1E190047FB73 /* SDL_Tutorial */,
 				7B392111234E1E190047FB73 /* Products */,
 				7B39211A234E1E880047FB73 /* Frameworks */,
@@ -88,7 +91,6 @@
 		7B392112234E1E190047FB73 /* SDL_Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				7B030CE72391BF4C00CD6622 /* Assets */,
 				7B39211E235A17D30047FB73 /* Entities */,
 				7B030CDA2391B46200CD6622 /* AssetManager.cpp */,
 				7B030CDB2391B46200CD6622 /* AssetManager.hpp */,
