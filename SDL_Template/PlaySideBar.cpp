@@ -36,6 +36,11 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 		mFlagXOffset += width * 0.50f;
 	}
 
+	if (mFlagXOffset > 140) {
+		mFlagYOffset += 66;
+		mFlagXOffset = 0;
+	}
+
 	mRemainingLevels -= value;
 	int x = 0;
 	int w = 28;
@@ -60,7 +65,8 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 
 	mFlagTextures.push_back(new Texture(filename, x, 0, (int)width - 2, 64, false));
 	mFlagTextures[index]->Parent(mFlags);
-	mFlagTextures[index]->Position(Vec2_Right * mFlagXOffset);
+	
+	mFlagTextures[index]->Position(mFlagXOffset, mFlagYOffset);
 	mFlagXOffset += width * 0.50f;
 
 	mAudio->PlaySFX("SFX\\FlagSound.wav");
@@ -115,7 +121,7 @@ PlaySideBar::PlaySideBar() {
 
 	mFlags = new GameEntity();
 	mFlags->Parent(this);
-	mFlags->Position(-50.0f, 650.0f);
+	mFlags->Position(-50.0f, 600.0f);
 
 	mFlagTimer = 0.0f;
 	mFlagInterval = 0.25f;

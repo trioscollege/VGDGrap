@@ -33,6 +33,7 @@ private:
 	std::vector<Texture *> mFlagTextures;
 	int mRemainingLevels;
 	float mFlagXOffset;
+	float mFlagYOffset;
 	float mFlagTimer;
 	float mFlagInterval;
 
