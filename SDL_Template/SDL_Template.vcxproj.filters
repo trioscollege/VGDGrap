@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{f9466212-6740-4289-8872-a695cfe44fe4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{1098076a-d004-4006-aa58-c559f025220c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{43e9b4d6-a99b-491b-ac2b-e9c3ba38f52c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,21 +60,6 @@
     <ClCompile Include="Scoreboard.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -83,6 +74,21 @@
     </ClCompile>
     <ClCompile Include="PlaySideBar.cpp">
       <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,21 +116,6 @@
     <ClInclude Include="Scoreboard.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MathHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -142,6 +133,21 @@
     </ClInclude>
     <ClInclude Include="PlaySideBar.h">
       <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
