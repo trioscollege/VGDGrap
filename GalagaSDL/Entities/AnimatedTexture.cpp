@@ -2,52 +2,52 @@
 
 namespace SDLFramework {
 
-    AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir)
-        : Texture(filename, x, y, w, h) {
-        mTimer = Timer::Instance();
+	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed)
+		: Texture(filename, x, y, w, h, managed) {
+		mTimer = Timer::Instance();
 
-        mStartX = x;
-        mStartY = y;
+		mStartX = x;
+		mStartY = y;
 
-        mFrameCount = frameCount;
-        mAnimationSpeed = animationSpeed;
-        mTimePerFrame = mAnimationSpeed / mFrameCount;
-        mAnimationTimer = 0.0f;
+		mFrameCount = frameCount;
+		mAnimationSpeed = animationSpeed;
+		mTimePerFrame = mAnimationSpeed / mFrameCount;
+		mAnimationTimer = 0.0f;
 
-        mWrapMode = Loop;
-        mAnimationDirection = animationDir;
+		mWrapMode = Loop;
+		mAnimationDirection = animationDir;
 
-        mAnimationDone = false;
-    }
+		mAnimationDone = false;
+	}
 
-    AnimatedTexture::~AnimatedTexture() { }
+	AnimatedTexture::~AnimatedTexture() { }
 
-    void AnimatedTexture::SetWrapMode(WrapMode wrapMode) {
-        mWrapMode = wrapMode;
-    }
+	void AnimatedTexture::SetWrapMode(WrapMode wrapMode) {
+		mWrapMode = wrapMode;
+	}
 
-    void AnimatedTexture::Update() {
-        if (!mAnimationDone) {
-            mAnimationTimer += mTimer->DeltaTime();
+	void AnimatedTexture::Update() {
+		if (!mAnimationDone) {
+			mAnimationTimer += mTimer->DeltaTime();
 
-            if (mAnimationTimer >= mAnimationSpeed) {
-                if (mWrapMode == Loop) {
-                    // reset timer, accounting for extra time
-                    mAnimationTimer -= mAnimationSpeed;
-                }
-                else {
-                    mAnimationDone = true;
-                    // back up the timer to the last frame
-                    mAnimationTimer = mAnimationSpeed - mTimePerFrame;
-                }
-            }
+			if (mAnimationTimer >= mAnimationSpeed) {
+				if (mWrapMode == Loop) {
+					// reset timer, accounting for extra time
+					mAnimationTimer -= mAnimationSpeed;
+				}
+				else {
+					mAnimationDone = true;
+					// back up the timer to the last frame
+					mAnimationTimer = mAnimationSpeed - mTimePerFrame;
+				}
+			}
 
-            if (mAnimationDirection == Horizontal) {
-                mSourceRect.x = mStartX + (int)(mAnimationTimer / mTimePerFrame) * mWidth;
-            }
-            else {
-                mSourceRect.y = mStartY + (int)(mAnimationTimer / mTimePerFrame) * mHeight;
-            }
-        }
-    }
+			if (mAnimationDirection == Horizontal) {
+				mSourceRect.x = mStartX + (int)(mAnimationTimer / mTimePerFrame) * mWidth;
+			}
+			else {
+				mSourceRect.y = mStartY + (int)(mAnimationTimer / mTimePerFrame) * mHeight;
+			}
+		}
+	}
 }

@@ -4,45 +4,47 @@
 
 namespace SDLFramework {
 
-    class GameEntity
-    {
-    public:
+	class GameEntity
+	{
+	public:
 
-        enum Space {Local = 0, World = 1};
+		enum Space { Local = 0, World = 1 };
 
-    private:
-        Vector2 mPosition;
-        float mRotation;
-        Vector2 mScale;
+	private:
+		Vector2 mPosition;
+		float mRotation;
+		Vector2 mScale;
 
-        bool mActive;
-        GameEntity * mParent;
+		bool mActive;
+		GameEntity * mParent;
 
-    public:
-        GameEntity(float x = 0.0f, float y = 0.0f);
-        ~GameEntity();
+	public:
+		GameEntity(float x = 0.0f, float y = 0.0f);
+		GameEntity(const Vector2 & position);
+		~GameEntity();
 
-        void Position(const Vector2 & pos);
-        Vector2 Position(Space space = World);
+		void Position(float x, float y);
+		void Position(const Vector2 & pos);
+		Vector2 Position(Space space = World);
 
-        void Rotation(float rot);
-        float Rotation(Space space = World);
-        
-        void Scale(Vector2 scale);
-        Vector2 Scale(Space space = World);
+		void Rotation(float rot);
+		float Rotation(Space space = World);
 
-        void Active(bool active);
-        bool Active() const;
+		void Scale(Vector2 scale);
+		Vector2 Scale(Space space = World);
 
-        void Parent(GameEntity * parent);
-        GameEntity * Parent() const;
+		void Active(bool active);
+		bool Active() const;
 
-        void Translate(Vector2 vec);
-        void Rotate(float amount);
+		void Parent(GameEntity * parent);
+		GameEntity * Parent() const;
 
-        virtual void Update() {};
-        virtual void Render() {};
+		void Translate(Vector2 vec);
+		void Rotate(float amount);
 
-    };
+		virtual void Update() {};
+		virtual void Render() {};
+
+	};
 }
 #endif

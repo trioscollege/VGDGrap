@@ -4,40 +4,42 @@
 #include "Timer.hpp"
 #include "AudioManager.hpp"
 #include "StartScreen.hpp"
+#include "BackgroundStars.hpp"
 
 namespace SDLFramework {
 
-    class GameManager
-    {
-    private:
-        static GameManager * sInstance;
-        const int FRAME_RATE = 60;
+	class GameManager
+	{
+	private:
+		static GameManager * sInstance;
+		const int FRAME_RATE = 60;
 
-        bool mQuit;
-        Graphics * mGraphics;
-        AssetManager * mAssetManager;
-        InputManager * mInputManager;
-        AudioManager * mAudioManager;
+		bool mQuit;
+		Graphics * mGraphics;
+		AssetManager * mAssetManager;
+		InputManager * mInputManager;
+		AudioManager * mAudioManager;
 
-        Timer * mTimer;
+		Timer * mTimer;
 
-        SDL_Event mEvent;
+		SDL_Event mEvent;
 
-        StartScreen * mStartScreen;
+		BackgroundStars * mStars;
+		StartScreen * mStartScreen;
 
-    public:
-        static GameManager * Instance();
-        static void Release();
+	public:
+		static GameManager * Instance();
+		static void Release();
 
-        void Run();
-        
-        void Update();
-        void LateUpdate();
-        
-        void Render();
+		void Run();
 
-        GameManager();
-        ~GameManager();
-    };
+		void Update();
+		void LateUpdate();
+
+		void Render();
+
+		GameManager();
+		~GameManager();
+	};
 }
 #endif

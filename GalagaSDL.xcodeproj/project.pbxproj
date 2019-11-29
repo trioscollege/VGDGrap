@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B030CF32391CBE000CD6622 /* Scoreboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CEB2391CBDF00CD6622 /* Scoreboard.cpp */; };
+		7B030CF42391CBE000CD6622 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CEE2391CBDF00CD6622 /* Star.cpp */; };
+		7B030CF52391CBE000CD6622 /* StarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF12391CBE000CD6622 /* StarLayer.cpp */; };
+		7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */; };
+		7B030CF92391CC3600CD6622 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF72391CC3600CD6622 /* Random.cpp */; };
 		7B392114234E1E190047FB73 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392113234E1E190047FB73 /* main.cpp */; };
 		7B39211D234E1EE40047FB73 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B39211B234E1E880047FB73 /* SDL2.framework */; };
 		7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392120235DE4A80047FB73 /* Graphics.cpp */; };
@@ -39,6 +44,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B030CEB2391CBDF00CD6622 /* Scoreboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scoreboard.cpp; sourceTree = "<group>"; };
+		7B030CEC2391CBDF00CD6622 /* Scoreboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scoreboard.hpp; sourceTree = "<group>"; };
+		7B030CED2391CBDF00CD6622 /* Star.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Star.hpp; sourceTree = "<group>"; };
+		7B030CEE2391CBDF00CD6622 /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Star.cpp; sourceTree = "<group>"; };
+		7B030CEF2391CBE000CD6622 /* BackgroundStars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackgroundStars.hpp; sourceTree = "<group>"; };
+		7B030CF02391CBE000CD6622 /* StarLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarLayer.hpp; sourceTree = "<group>"; };
+		7B030CF12391CBE000CD6622 /* StarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarLayer.cpp; sourceTree = "<group>"; };
+		7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundStars.cpp; sourceTree = "<group>"; };
+		7B030CF72391CC3600CD6622 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		7B030CF82391CC3600CD6622 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
 		7B392110234E1E190047FB73 /* GalagaSDL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GalagaSDL; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B392113234E1E190047FB73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B39211B234E1E880047FB73 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -107,20 +122,22 @@
 			children = (
 				7B72DE6D237CB3820036C2D5 /* Galaga */,
 				7B39211E235A17D30047FB73 /* Entities */,
-				7B591476237469A400C597D5 /* AudioManager.cpp */,
-				7B591475237469A400C597D5 /* AudioManager.hpp */,
-				7B392113234E1E190047FB73 /* main.cpp */,
-				7B39211F235DE39A0047FB73 /* Graphics.hpp */,
-				7B392120235DE4A80047FB73 /* Graphics.cpp */,
-				7B392122235DE6E20047FB73 /* GameManager.cpp */,
-				7B392123235DE6E20047FB73 /* GameManager.hpp */,
-				7B392125235DEA740047FB73 /* Timer.cpp */,
-				7B392126235DEA740047FB73 /* Timer.hpp */,
-				7B453D7B235F52F00064FC0D /* MathHelper.hpp */,
 				7B6A3551235FA32D00F80D46 /* AssetManager.cpp */,
 				7B6A3552235FA32D00F80D46 /* AssetManager.hpp */,
+				7B591476237469A400C597D5 /* AudioManager.cpp */,
+				7B591475237469A400C597D5 /* AudioManager.hpp */,
+				7B392122235DE6E20047FB73 /* GameManager.cpp */,
+				7B392123235DE6E20047FB73 /* GameManager.hpp */,
+				7B39211F235DE39A0047FB73 /* Graphics.hpp */,
+				7B392120235DE4A80047FB73 /* Graphics.cpp */,
 				7BF952B4236A0966004A2957 /* InputManager.cpp */,
 				7BF952B5236A0966004A2957 /* InputManager.hpp */,
+				7B392113234E1E190047FB73 /* main.cpp */,
+				7B453D7B235F52F00064FC0D /* MathHelper.hpp */,
+				7B030CF72391CC3600CD6622 /* Random.cpp */,
+				7B030CF82391CC3600CD6622 /* Random.hpp */,
+				7B392125235DEA740047FB73 /* Timer.cpp */,
+				7B392126235DEA740047FB73 /* Timer.hpp */,
 			);
 			path = GalagaSDL;
 			sourceTree = "<group>";
@@ -152,6 +169,14 @@
 		7B72DE6D237CB3820036C2D5 /* Galaga */ = {
 			isa = PBXGroup;
 			children = (
+				7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */,
+				7B030CEF2391CBE000CD6622 /* BackgroundStars.hpp */,
+				7B030CEB2391CBDF00CD6622 /* Scoreboard.cpp */,
+				7B030CEC2391CBDF00CD6622 /* Scoreboard.hpp */,
+				7B030CEE2391CBDF00CD6622 /* Star.cpp */,
+				7B030CED2391CBDF00CD6622 /* Star.hpp */,
+				7B030CF12391CBE000CD6622 /* StarLayer.cpp */,
+				7B030CF02391CBE000CD6622 /* StarLayer.hpp */,
 				7B72DE6E237CB3A40036C2D5 /* StartScreen.hpp */,
 				7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */,
 			);
@@ -184,7 +209,7 @@
 		7B392108234E1E190047FB73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Jeff Gauvin";
 				TargetAttributes = {
 					7B39210F234E1E190047FB73 = {
@@ -220,12 +245,17 @@
 				7B5914742374697400C597D5 /* AnimatedTexture.cpp in Sources */,
 				7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */,
 				7B392124235DE6E20047FB73 /* GameManager.cpp in Sources */,
+				7B030CF52391CBE000CD6622 /* StarLayer.cpp in Sources */,
 				7BF952B6236A0966004A2957 /* InputManager.cpp in Sources */,
 				7B591477237469A400C597D5 /* AudioManager.cpp in Sources */,
+				7B030CF42391CBE000CD6622 /* Star.cpp in Sources */,
 				7B453D7E235F558C0064FC0D /* GameEntity.cpp in Sources */,
 				7B392114234E1E190047FB73 /* main.cpp in Sources */,
+				7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */,
+				7B030CF92391CC3600CD6622 /* Random.cpp in Sources */,
 				7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */,
 				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
+				7B030CF32391CBE000CD6622 /* Scoreboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +374,7 @@
 		7B392118234E1E190047FB73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -357,6 +388,7 @@
 		7B392119234E1E190047FB73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				FRAMEWORK_SEARCH_PATHS = (

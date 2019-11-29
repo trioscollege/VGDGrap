@@ -2,49 +2,49 @@
 
 namespace SDLFramework {
 
-    Timer * Timer::sInstance = nullptr;
+	Timer * Timer::sInstance = nullptr;
 
-    Timer * Timer::Instance() {
-        if (sInstance == nullptr) {
-            sInstance = new Timer();
-        }
-        return sInstance;
-    }
+	Timer * Timer::Instance() {
+		if (sInstance == nullptr) {
+			sInstance = new Timer();
+		}
+		return sInstance;
+	}
 
-    void Timer::Release() {
-        delete sInstance;
-        sInstance = nullptr;
-    }
+	void Timer::Release() {
+		delete sInstance;
+		sInstance = nullptr;
+	}
 
-    Timer::Timer() {
-        Reset();
-        mTimeScale = 1.0f;
-    }
+	Timer::Timer() {
+		Reset();
+		mTimeScale = 1.0f;
+	}
 
 
-    Timer::~Timer() {
-    }
+	Timer::~Timer() {
+	}
 
-    void Timer::Reset() {
-        mStartTicks = SDL_GetTicks();
-        mElapsedTicks = 0;
-        mDeltaTime = 0.0f;
-    }
+	void Timer::Reset() {
+		mStartTicks = SDL_GetTicks();
+		mElapsedTicks = 0;
+		mDeltaTime = 0.0f;
+	}
 
-    float Timer::DeltaTime() const {
-        return mDeltaTime;
-    }
+	float Timer::DeltaTime() const {
+		return mDeltaTime;
+	}
 
-    void Timer::TimeScale(float ts) {
-        mTimeScale = ts;
-    }
+	void Timer::TimeScale(float ts) {
+		mTimeScale = ts;
+	}
 
-    float Timer::TimeScale() const {
-        return mTimeScale;
-    }
+	float Timer::TimeScale() const {
+		return mTimeScale;
+	}
 
-    void Timer::Update() {
-        mElapsedTicks = SDL_GetTicks() - mStartTicks;
-        mDeltaTime = mElapsedTicks * 0.001f;
-    }
+	void Timer::Update() {
+		mElapsedTicks = SDL_GetTicks() - mStartTicks;
+		mDeltaTime = mElapsedTicks * 0.001f;
+	}
 }

@@ -2,93 +2,100 @@
 
 namespace SDLFramework {
 
-    GameManager * GameManager::sInstance = nullptr;
+	GameManager * GameManager::sInstance = nullptr;
 
-    GameManager * GameManager::Instance()
-    {
-        if (sInstance == nullptr) {
-            sInstance = new GameManager();
-        }
-        return sInstance;
-    }
+	GameManager * GameManager::Instance()
+	{
+		if (sInstance == nullptr) {
+			sInstance = new GameManager();
+		}
+		return sInstance;
+	}
 
-    void GameManager::Release() {
-        delete sInstance;
-        sInstance = nullptr;
-    }
+	void GameManager::Release() {
+		delete sInstance;
+		sInstance = nullptr;
+	}
 
-    void GameManager::Run() {
-        while (!mQuit) {
-            mTimer->Update();
+	void GameManager::Run() {
+		while (!mQuit) {
+			mTimer->Update();
 
-            while (SDL_PollEvent(&mEvent)) {
-                switch (mEvent.type) {
-                case SDL_QUIT:
-                    mQuit = true;
-                    break;
-                }
-            }
+			while (SDL_PollEvent(&mEvent)) {
+				switch (mEvent.type) {
+				case SDL_QUIT:
+					mQuit = true;
+					break;
+				}
+			}
 
-            if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
-                Update();
-                LateUpdate();
-                Render();
-                mTimer->Reset();
-            }
-        }
-    }
+			if (mTimer->DeltaTime() >= 1.0f / FRAME_RATE) {
+				Update();
+				LateUpdate();
+				Render();
+				mTimer->Reset();
+			}
+		}
+	}
 
-    void GameManager::Update() {
-        mInputManager->Update();
-        mStartScreen->Update();
-    }
+	void GameManager::Update() {
+		mInputManager->Update();
 
-    void GameManager::LateUpdate() {
-        mInputManager->UpdatePrevInput();
-    }
+		mStars->Update();
+		mStartScreen->Update();
+	}
 
-    void GameManager::Render() {
-        mGraphics->ClearBackBuffer();
-        mStartScreen->Render();
-        mGraphics->Render();
-    }
+	void GameManager::LateUpdate() {
+		mInputManager->UpdatePrevInput();
+	}
 
-    GameManager::GameManager() : mQuit(false) {
-        mGraphics = Graphics::Instance();
+	void GameManager::Render() {
+		mGraphics->ClearBackBuffer();
+		mStars->Render();
+		mStartScreen->Render();
+		mGraphics->Render();
+	}
 
-        if (!Graphics::Initialized()) {
-            mQuit = true;
-        }
+	GameManager::GameManager() : mQuit(false) {
+		mGraphics = Graphics::Instance();
 
-        mAssetManager = AssetManager::Instance();
-        mInputManager = InputManager::Instance();
-        mAudioManager = AudioManager::Instance();
+		if (!Graphics::Initialized()) {
+			mQuit = true;
+		}
 
-        mTimer = Timer::Instance();
+		mAssetManager = AssetManager::Instance();
+		mInputManager = InputManager::Instance();
+		mAudioManager = AudioManager::Instance();
 
-        mStartScreen = new StartScreen();
-    }
+		mTimer = Timer::Instance();
 
-    GameManager::~GameManager() {
-        delete mStartScreen;
-        mStartScreen = nullptr;
-        
-        Timer::Release();
-        mTimer = nullptr;
+		mStars = BackgroundStars::Instance();
+		mStartScreen = new StartScreen();
+	}
 
-        AudioManager::Release();
-        mAudioManager = nullptr;
+	GameManager::~GameManager() {
+		delete mStartScreen;
+		mStartScreen = nullptr;
 
-        InputManager::Release();
-        mInputManager = nullptr;
+		BackgroundStars::Release();
+		mStars = nullptr;
 
-        AssetManager::Release();
-        mAssetManager = nullptr;
+		Timer::Release();
+		mTimer = nullptr;
 
-        Graphics::Release();
-        mGraphics = nullptr;
+		AudioManager::Release();
+		mAudioManager = nullptr;
 
-        // Quit SDL subsystems
-        SDL_Quit();
-    }
+		InputManager::Release();
+		mInputManager = nullptr;
+
+		AssetManager::Release();
+		mAssetManager = nullptr;
+
+		Graphics::Release();
+		mGraphics = nullptr;
+
+		// Quit SDL subsystems
+		SDL_Quit();
+	}
 }
