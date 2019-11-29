@@ -1,7 +1,7 @@
 #include "PlaySideBar.h"
 
 void PlaySideBar::ClearFlags() {
-	for (int i = 0; i < mFlagTextures.size(); ++i) {
+	for (unsigned i = 0; i < mFlagTextures.size(); ++i) {
 		delete mFlagTextures[i];
 		mFlagTextures[i] = nullptr;
 	}
@@ -224,7 +224,7 @@ void PlaySideBar::Render() {
 		mTotalShipsLabel->Render();
 	}
 	
-	for (int i = 0; i < mFlagTextures.size(); ++i) {
+	for (unsigned i = 0; i < mFlagTextures.size(); ++i) {
 		mFlagTextures[i]->Render();
 	}
 }
