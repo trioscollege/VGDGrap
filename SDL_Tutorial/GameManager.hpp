@@ -3,35 +3,40 @@
 #include <SDL2/SDL.h>
 #include "Graphics.hpp"
 #include "Timer.hpp"
+#include "GameEntity.hpp"
 
 namespace SDLFramework {
 
-    class GameManager
-    {
-    private:
-        static GameManager * sInstance;
-        const int FRAME_RATE = 60;
+	class GameManager
+	{
+	private:
+		static GameManager * sInstance;
+		const int FRAME_RATE = 60;
 
-        bool mQuit;
-        Graphics * mGraphics;
+		bool mQuit;
+		Graphics * mGraphics;
 
-        Timer * mTimer;
+		Timer * mTimer;
 
-        SDL_Event mEvent;
+		// sanity test
+		GameEntity * mParent;
+		GameEntity * mChild;
 
-    public:
-        static GameManager * Instance();
-        static void Release();
+		SDL_Event mEvent;
 
-        void Run();
-        
-        void Update();
-        void LateUpdate();
-        
-        void Render();
+	public:
+		static GameManager * Instance();
+		static void Release();
 
-        GameManager();
-        ~GameManager();
-    };
+		void Run();
+
+		void Update();
+		void LateUpdate();
+
+		void Render();
+
+		GameManager();
+		~GameManager();
+	};
 }
 #endif
