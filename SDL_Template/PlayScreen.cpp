@@ -32,6 +32,7 @@ PlayScreen::PlayScreen() {
 PlayScreen::~PlayScreen() {
 	mTimer = nullptr;
 	mInput = nullptr;
+	mAudio = nullptr;
 
 	mStars = nullptr;
 

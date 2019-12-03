@@ -5,17 +5,16 @@
 
 class ScreenManager {
 private:
-	enum Screens { Start, Play };
-
 	static ScreenManager * sInstance;
+
+	enum Screens { Start, Play };
+	Screens mCurrentScreen;
 
 	InputManager * mInput;
 
 	BackgroundStars * mBackgroundStars;
 	StartScreen * mStartScreen;
 	PlayScreen * mPlayScreen;
-
-	Screens mCurrentScreen;
 
 public:
 	static ScreenManager * Instance();
