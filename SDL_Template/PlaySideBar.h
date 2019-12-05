@@ -37,7 +37,6 @@ private:
 	float mFlagTimer;
 	float mFlagInterval;
 
-private:
 	void ClearFlags();
 	void AddNextFlag();
 	void AddFlag(std::string filename, float width, int value);

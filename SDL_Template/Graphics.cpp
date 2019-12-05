@@ -112,8 +112,6 @@ namespace SDLFramework {
 			return false;
 		}
 
-		//SDL_SetRenderDrawColor(mRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
 		int flags = IMG_INIT_PNG;
 		if (!(IMG_Init(flags) & flags)) {
 			std::cerr << "Unable to initialize SDL_image! IMG Error: " << IMG_GetError() << std::endl;

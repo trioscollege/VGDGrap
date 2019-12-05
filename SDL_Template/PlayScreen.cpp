@@ -47,12 +47,12 @@ PlayScreen::~PlayScreen() {
 }
 
 void PlayScreen::StartNewGame() {
-	mStars->Scroll(false);
 	mSideBar->SetHighScore(30000);
 	mSideBar->SetShips(2);
+	mStars->Scroll(false);
 	mGameStarted = false;
-	mAudio->PlayMusic("MUS\\GameStart.wav", 0);
 	mCurrentStage = 0;
+	mAudio->PlayMusic("MUS\\GameStart.wav", 0);
 }
 
 void PlayScreen::Update() {
