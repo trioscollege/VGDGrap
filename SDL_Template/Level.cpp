@@ -4,7 +4,7 @@ void Level::StartStage() {
 	mStageStarted = true;
 }
 
-Level::Level(int stage, PlaySideBar * sideBar) {
+Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mTimer = Timer::Instance();
 	mSideBar = sideBar;
 	mSideBar->SetLevel(stage);
@@ -33,6 +33,8 @@ Level::Level(int stage, PlaySideBar * sideBar) {
 
 	mReadyLabelOnScreen = mStageLabelOffScreen;
 	mReadyLabelOffScreen = mReadyLabelOnScreen + 3.0f;
+
+	mPlayer = player;
 }
 
 Level::~Level() {
@@ -46,6 +48,8 @@ Level::~Level() {
 	mStageNumber = nullptr;
 	delete mReadyLabel;
 	mReadyLabel = nullptr;
+
+	mPlayer = nullptr;
 }
 
 void Level::Update() {
@@ -59,6 +63,8 @@ void Level::Update() {
 			else {
 				if (mLabelTimer >= mReadyLabelOffScreen) {
 					StartStage();
+					mPlayer->Active(true);
+					mPlayer->Visible(true);
 				}
 			}
 		}

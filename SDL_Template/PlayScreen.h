@@ -5,7 +5,6 @@
 class PlayScreen : public GameEntity {
 private:
 	Timer * mTimer;
-	InputManager * mInput;
 	AudioManager * mAudio;
 
 	BackgroundStars * mStars;
@@ -22,6 +21,8 @@ private:
 	Level * mLevel;
 	bool mLevelStarted;
 	int mCurrentStage;
+
+	Player * mPlayer;
 
 	void StartNextLevel();
 

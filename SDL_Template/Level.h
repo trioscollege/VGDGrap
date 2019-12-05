@@ -1,8 +1,8 @@
 #ifndef __LEVEL_H
 #define __LEVEL_H
-#include "InputManager.h"
 #include "PlaySideBar.h"
 #include "BackgroundStars.h"
+#include "Player.h"
 
 class Level : public GameEntity
 {
@@ -25,10 +25,12 @@ private:
 	float mReadyLabelOnScreen;
 	float mReadyLabelOffScreen;
 
+	Player * mPlayer;
+
 	void StartStage();
 
 public:
-	Level(int stage, PlaySideBar * sideBar);
+	Level(int stage, PlaySideBar * sideBar, Player * player);
 	~Level();
 
 	void Update();
