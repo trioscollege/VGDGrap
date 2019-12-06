@@ -39,7 +39,6 @@ namespace SDLFramework {
 
 		virtual void Update() {};
 		virtual void Render() {};
-
 	};
 }
 #endif
