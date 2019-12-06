@@ -5,7 +5,6 @@
 class PlayScreen : public GameEntity {
 private:
 	Timer * mTimer;
-	InputManager * mInput;
 	AudioManager * mAudio;
 
 	BackgroundStars * mStars;

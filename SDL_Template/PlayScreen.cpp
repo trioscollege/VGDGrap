@@ -11,7 +11,6 @@ void PlayScreen::StartNextLevel() {
 
 PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
-	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
 
 	mStars = BackgroundStars::Instance();
@@ -31,7 +30,6 @@ PlayScreen::PlayScreen() {
 
 PlayScreen::~PlayScreen() {
 	mTimer = nullptr;
-	mInput = nullptr;
 	mAudio = nullptr;
 
 	mStars = nullptr;

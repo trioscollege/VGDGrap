@@ -1,6 +1,5 @@
 #ifndef __LEVEL_H
 #define __LEVEL_H
-#include "InputManager.h"
 #include "PlaySideBar.h"
 #include "BackgroundStars.h"
 
