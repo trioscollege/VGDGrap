@@ -64,6 +64,13 @@ namespace SDLFramework {
 		SDL_RenderCopyEx(mRenderer, tex, srcRect, dstRect, angle, nullptr, flip);
 	}
 
+	void Graphics::DrawLine(float startX, float startY, float endX, float endY) {
+		SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+		SDL_RenderDrawLine(mRenderer, (int)startX, (int)startY, (int)endX, (int)endY);
+		SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+		std::cout << startX << " " << startY << " " << endX << " " << endY << " " << std::endl;
+	}
+
 	void Graphics::ClearBackBuffer() {
 		SDL_RenderClear(mRenderer);
 	}
