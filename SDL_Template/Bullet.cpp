@@ -41,6 +41,6 @@ void Bullet::Update() {
 
 void Bullet::Render() {
 	if (Active()) {
-		Render();
+		mTexture->Render();
 	}
 }
