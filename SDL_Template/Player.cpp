@@ -46,6 +46,7 @@ Player::Player() {
 Player::~Player() {
 	mTimer = nullptr;
 	mInput = nullptr;
+	mAudio = nullptr;
 
 	delete mShip;
 	mShip = nullptr;
