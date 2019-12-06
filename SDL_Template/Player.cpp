@@ -22,6 +22,7 @@ void Player::HandleMovement() {
 Player::Player() {
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
+	mAudio = AudioManager::Instance();
 
 	mVisible = false;
 	mAnimating = false;
@@ -35,6 +36,11 @@ Player::Player() {
 
 	mMoveSpeed = 100.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);
+
+	mDeathAnimation = new AnimatedTexture("PlayerExplosion.png", 0, 0, 128, 128, 4, 1.0f, AnimatedTexture::Horizontal);
+	mDeathAnimation->Parent(this);
+	mDeathAnimation->Position(Vec2_Zero);
+	mDeathAnimation->SetWrapMode(AnimatedTexture::Once);
 }
 
 Player::~Player() {
@@ -43,6 +49,9 @@ Player::~Player() {
 
 	delete mShip;
 	mShip = nullptr;
+
+	delete mDeathAnimation;
+	mDeathAnimation = nullptr;
 }
 
 void Player::Visible(bool visible) {
@@ -65,9 +74,17 @@ void Player::AddScore(int change) {
 	mScore += change;
 }
 
+void Player::WasHit() {
+	mLives -= 1;
+	mAnimating = true;
+	mDeathAnimation->ResetAnimation();
+	mAudio->PlaySFX("SFX\\PlayerExplosion.wav");
+}
+
 void Player::Update() {
 	if (mAnimating) {
-
+		mDeathAnimation->Update();
+		mAnimating = mDeathAnimation->IsAnimating();
 	}
 	else {
 		if (Active()) {
@@ -79,7 +96,7 @@ void Player::Update() {
 void Player::Render() {
 	if (mVisible) {
 		if (mAnimating) {
-
+			mDeathAnimation->Render();
 		}
 		else {
 			mShip->Render();
