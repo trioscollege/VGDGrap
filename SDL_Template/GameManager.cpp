@@ -42,10 +42,10 @@ namespace SDLFramework {
 		mInputManager->Update();
 
 		if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
-			mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime());
+			mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime(), GameEntity::World);
 		}
 		else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
-			mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime());
+			mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime(), GameEntity::World);
 		}
 
 		if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
