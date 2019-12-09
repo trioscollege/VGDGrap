@@ -1,8 +1,8 @@
 #ifndef __PLAYER_H
 #define __PLAYER_H
 #include "AnimatedTexture.h"
-#include "InputManager.h"
 #include "AudioManager.h"
+#include "InputManager.h"
 #include "Bullet.h"
 
 using namespace SDLFramework;
