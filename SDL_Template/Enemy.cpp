@@ -3,9 +3,14 @@
 std::vector<std::vector<Vector2>> Enemy::sPaths;
 
 void Enemy::CreatePaths() {
+	int screenMidPoint = (int)(Graphics::Instance()->SCREEN_WIDTH * 0.4f);
+
 	int currentPath = 0;
 	BezierPath * path = new BezierPath();
-	path->AddCurve({ Vector2(500.0f, 10.0f), Vector2(500.0f, 0.0f), Vector2(500.0f, 310.0f), Vector2(500.0f, 300.0f) }, 1);
+	//path->AddCurve({ Vector2(500.0f, 10.0f), Vector2(500.0f, 0.0f), Vector2(500.0f, 310.0f), Vector2(500.0f, 300.0f) }, 1);
+	path->AddCurve({ Vector2(screenMidPoint + 50.0f, -10.0f), Vector2(screenMidPoint + 50.0f, -20.0f), Vector2(screenMidPoint + 50.0f, 30.0f), Vector2(screenMidPoint + 50.0f, 20.0f) }, 1);
+	path->AddCurve({ Vector2(screenMidPoint + 50.0f, 20.0f), Vector2(screenMidPoint + 50.0f, 100.0f), Vector2(75.0f, 325.0f), Vector2(75.0f, 425.0f) }, 25);
+	path->AddCurve({ Vector2(75.0f, 425.0f), Vector2(75.0f, 650.0f), Vector2(350.0f, 650.0f), Vector2(350.0f, 425.0f) }, 25);
 
 	sPaths.push_back(std::vector<Vector2>());
 	path->Sample(&sPaths[currentPath]);
@@ -26,7 +31,7 @@ Enemy::Enemy(int path) {
 	mTexture->Parent(this);
 	mTexture->Position(Vec2_Zero);
 
-	mSpeed = 100.0f;
+	mSpeed = 400.0f;
 }
 
 Enemy::~Enemy() {
@@ -37,13 +42,18 @@ Enemy::~Enemy() {
 }
 
 void Enemy::HandleFlyInState() {
-	if ((sPaths[mCurrentPath][mCurrentWaypoint] - Position()).MagnitudeSqr() < EPSILON) {
+	Vector2 displacement = sPaths[mCurrentPath][mCurrentWaypoint] - Position();
+	Vector2 direction = displacement.Normalized();
+	Vector2 desiredPosition = Position() + (direction * mSpeed * mTimer->DeltaTime());
+
+	if ((sPaths[mCurrentPath][mCurrentWaypoint] - Position()).MagnitudeSqr() < EPSILON * mSpeed / 100.0f) {
 		mCurrentWaypoint++;
 	}
 
 	if (mCurrentWaypoint < sPaths[mCurrentPath].size()) {
 		Vector2 dist = sPaths[mCurrentPath][mCurrentWaypoint] - Position();
-		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime());
+		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
+		Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
 	}
 	else {
 		mCurrentState = Formation;

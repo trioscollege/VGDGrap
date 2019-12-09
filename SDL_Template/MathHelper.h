@@ -4,8 +4,9 @@
 
 namespace SDLFramework {
 
-#define PI 3.1415926535
+#define PI 3.1415926535f
 #define DEG_TO_RAD PI / 180.0f
+#define RAD_TO_DEG 180.0f / PI
 
 	struct Vector2 {
 		float x;
@@ -24,7 +25,12 @@ namespace SDLFramework {
 
 		Vector2 Normalized() const {
 			float mag = Magnitude();
-			return Vector2(x / mag, y / mag);
+			if (mag == 0) {
+				return Vector2(0.0f, 0.0f);
+			}
+			else {
+				return Vector2(x / mag, y / mag);
+			}
 		}
 
 		Vector2 & operator+=(const Vector2 & rhs) {
@@ -103,7 +109,7 @@ namespace SDLFramework {
 			float uu = u * u;
 			float uuu = uu * u;
 
-			Vector2 point = (uuu * p3) + (3 * uu * t * p1) + (3 * u * tt * p2) + (ttt * p3);
+			Vector2 point = (uuu * p0) + (3 * uu * t * p1) + (3 * u * tt * p2) + (ttt * p3);
 			point.x = (float)round(point.x);
 			point.y = (float)round(point.y);
 			return point;
