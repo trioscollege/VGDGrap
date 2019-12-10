@@ -100,7 +100,7 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 
 	mGameOverLabel = new Texture("GAME OVER", "emulogic.ttf", 32, { 150, 0, 0 });
 	mGameOverLabel->Parent(this);
-	mGameOverLabel->Position(Graphics::Instance()->SCREEN_WIDTH * 0.4f, Graphics::Instance()->SCREEN_HEIGHT * 0.5f);
+	mGameOverLabel->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.5f);
 
 	mGameOverDelay = 6.0f;
 	mGameOverTimer = 0.0f;
