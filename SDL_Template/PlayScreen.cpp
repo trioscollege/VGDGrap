@@ -81,26 +81,23 @@ void PlayScreen::Update() {
 				StartNextLevel();
 			}
 		}
-	}
-	else {
-		if (!Mix_PlayingMusic()) {
-			mGameStarted = true;
-		}
-	}
-	
-	if (mGameStarted) {
-		if (mCurrentStage > 0) {
-			mSideBar->Update();
-		}
-
-		if (mLevelStarted) {
+		else {
 			mLevel->Update();
 			if (mLevel->State() == Level::Finished) {
 				mLevelStarted = false;
 			}
 		}
 
+		if (mCurrentStage > 0) {
+			mSideBar->Update();
+		}
+
 		mPlayer->Update();
+	}
+	else {
+		if (!Mix_PlayingMusic()) {
+			mGameStarted = true;
+		}
 	}
 }
 
