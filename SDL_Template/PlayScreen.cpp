@@ -62,8 +62,11 @@ void PlayScreen::Update() {
 			}
 		}
 		else {
-			mSideBar->Update();
 			mLevel->Update();
+		}
+
+		if (mCurrentStage > 0) {
+			mSideBar->Update();
 		}
 	}
 	else {
