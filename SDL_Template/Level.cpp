@@ -1,9 +1,5 @@
 #include "Level.h"
 
-void Level::StartStage() {
-	mStageStarted = true;
-}
-
 void Level::HandleStartLabels() {
 	mLabelTimer += mTimer->DeltaTime();
 	if (mLabelTimer >= mStageLabelOffScreen) {
@@ -60,6 +56,10 @@ void Level::HandlePlayerDeath() {
 			}
 		}
 	}
+}
+
+void Level::StartStage() {
+	mStageStarted = true;
 }
 
 Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
