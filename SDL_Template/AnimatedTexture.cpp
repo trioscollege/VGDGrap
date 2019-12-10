@@ -26,6 +26,15 @@ namespace SDLFramework {
 		mWrapMode = wrapMode;
 	}
 
+	void AnimatedTexture::ResetAnimation() {
+		mAnimationTimer = 0.0f;
+		mAnimationDone = false;
+	}
+
+	bool AnimatedTexture::IsAnimating() {
+		return !mAnimationDone;
+	}
+
 	void AnimatedTexture::Update() {
 		if (!mAnimationDone) {
 			mAnimationTimer += mTimer->DeltaTime();
