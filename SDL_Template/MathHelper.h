@@ -24,7 +24,12 @@ namespace SDLFramework {
 
 		Vector2 Normalized() const {
 			float mag = Magnitude();
-			return Vector2(x / mag, y / mag);
+			if (mag == 0.0f) {
+				return Vector2(0.0f, 0.0f);
+			}
+			else {
+				return Vector2(x / mag, y / mag);
+			}
 		}
 
 		Vector2 & operator+=(const Vector2 & rhs) {
