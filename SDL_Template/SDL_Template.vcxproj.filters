@@ -97,7 +97,7 @@
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Galaga</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
