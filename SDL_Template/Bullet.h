@@ -7,7 +7,7 @@ using namespace SDLFramework;
 
 class Bullet : public GameEntity {
 private:
-	const int OFFSCREEN_BUFFER = 10;
+	static const int OFFSCREEN_BUFFER = 10;
 
 	Timer * mTimer;
 
