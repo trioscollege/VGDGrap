@@ -33,7 +33,6 @@ void Bullet::Update() {
 		Translate(-Vec2_Up * mSpeed * mTimer->DeltaTime());
 
 		Vector2 pos = Position();
-		std::cout << pos.y << std::endl;
 		if (pos.y < -OFFSCREEN_BUFFER) {
 			Reload();
 		}
