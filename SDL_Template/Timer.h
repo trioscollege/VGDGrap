@@ -21,10 +21,10 @@ namespace SDLFramework {
 		static void Release();
 
 		void Reset();
-		float DeltaTime();
+		float DeltaTime() const;
 
 		void TimeScale(float ts);
-		float TimeScale();
+		float TimeScale() const;
 
 		void Update();
 

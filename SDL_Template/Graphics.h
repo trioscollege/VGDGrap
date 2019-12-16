@@ -4,6 +4,7 @@
 // MacOS using XCode
 // #include <SDL2/SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <iostream>
 #include <string>
 
@@ -28,6 +29,7 @@ namespace SDLFramework {
 		static bool Initialized();
 
 		SDL_Texture * LoadTexture(std::string path);
+		SDL_Texture * CreateTextTexture(TTF_Font * font, std::string text, SDL_Color color);
 		void DrawTexture(SDL_Texture * tex, SDL_Rect * srcRect = nullptr, SDL_Rect * dstRect = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 		void ClearBackBuffer();
