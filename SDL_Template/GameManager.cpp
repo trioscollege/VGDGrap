@@ -39,15 +39,38 @@ namespace SDLFramework {
 	}
 
 	void GameManager::Update() {
+		mInputManager->Update();
 
+		if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
+			mTex->Translate(Vector2(0, -40.0f) * mTimer->DeltaTime(), GameEntity::World);
+		}
+		else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
+			mTex->Translate(Vector2(0, 40.0f) * mTimer->DeltaTime(), GameEntity::World);
+		}
+
+		if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
+			std::cout << "Space pressed!" << std::endl;
+		}
+		if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
+			std::cout << "Space released!" << std::endl;
+		}
+
+		if (mInputManager->MouseButtonPressed(InputManager::Left)) {
+			std::cout << "Left mouse button pressed!" << std::endl;
+		}
+
+		if (mInputManager->MouseButtonReleased(InputManager::Left)) {
+			std::cout << "Left mouse button released!" << std::endl;
+		}
 	}
 
 	void GameManager::LateUpdate() {
-
+		mInputManager->UpdatePrevInput();
 	}
 
 	void GameManager::Render() {
 		mGraphics->ClearBackBuffer();
+		mTex->Render();
 		mGraphics->Render();
 	}
 
@@ -58,36 +81,30 @@ namespace SDLFramework {
 			mQuit = true;
 		}
 
+		mAssetManager = AssetManager::Instance();
+		mInputManager = InputManager::Instance();
+
 		mTimer = Timer::Instance();
 
-		// sanity test
-		mParent = new GameEntity(100.0f, 400.0f);
-		mChild = new GameEntity(100.0f, 500.0f);
-
-		// print local position of mChild with no parent set
-		printf("Child local pos: (%f, %f)\n",
-			mChild->Position(GameEntity::Local).x,
-			mChild->Position(GameEntity::Local).y);
-
-		// set parent of mChild to mParent
-		mChild->Parent(mParent);
-		mParent->Rotation(90.0f);
-
-		// print local position of mChild with parent set
-		printf("Child local pos: (%f, %f)\n",
-			mChild->Position(GameEntity::Local).x,
-			mChild->Position(GameEntity::Local).y);
-		printf("Child world pos: (%f, %f)\n",
-			mChild->Position(GameEntity::World).x,
-			mChild->Position(GameEntity::World).y);
+		mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22);
+		mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
 	}
 
 	GameManager::~GameManager() {
-		Graphics::Release();
-		mGraphics = nullptr;
+		delete mTex;
+		mTex = nullptr;
 
 		Timer::Release();
 		mTimer = nullptr;
+
+		InputManager::Release();
+		mInputManager = nullptr;
+
+		AssetManager::Release();
+		mAssetManager = nullptr;
+
+		Graphics::Release();
+		mGraphics = nullptr;
 
 		// Quit SDL subsystems
 		SDL_Quit();

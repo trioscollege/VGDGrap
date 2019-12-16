@@ -14,17 +14,33 @@ namespace SDLFramework {
 		Vector2(float _x = 0.0f, float _y = 0.0f)
 			: x{ _x }, y{ _y } {}
 
-		float MagnitudeSqr() {
+		float MagnitudeSqr() const {
 			return x * x + y * y;
 		}
 
-		float Magnitude() {
+		float Magnitude() const {
 			return (float)sqrt(x * x + y * y);
 		}
 
-		Vector2 Normalized() {
+		Vector2 Normalized() const {
 			float mag = Magnitude();
 			return Vector2(x / mag, y / mag);
+		}
+
+		Vector2 & operator+=(const Vector2 & rhs) {
+			x += rhs.x;
+			y += rhs.y;
+			return *this;
+		}
+
+		Vector2 & operator-=(const Vector2 & rhs) {
+			x -= rhs.x;
+			y -= rhs.y;
+			return *this;
+		}
+
+		Vector2 operator-() const {
+			return Vector2(-x, -y);
 		}
 	};
 

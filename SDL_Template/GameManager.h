@@ -3,9 +3,9 @@
 #include <SDL.h>
 // MacOS using XCode
 // #include <SDL2/SDL.h>
-#include "Graphics.h"
+#include "Texture.h"
 #include "Timer.h"
-#include "GameEntity.h"
+#include "InputManager.h"
 
 namespace SDLFramework {
 
@@ -17,14 +17,14 @@ namespace SDLFramework {
 
 		bool mQuit;
 		Graphics * mGraphics;
+		AssetManager * mAssetManager;
+		InputManager * mInputManager;
 
 		Timer * mTimer;
 
-		// sanity test
-		GameEntity * mParent;
-		GameEntity * mChild;
-
 		SDL_Event mEvent;
+
+		Texture * mTex;
 
 	public:
 		static GameManager * Instance();

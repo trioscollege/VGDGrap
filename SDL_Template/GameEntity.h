@@ -37,8 +37,12 @@ namespace SDLFramework {
 		void Parent(GameEntity * parent);
 		GameEntity * Parent() const;
 
+		void Translate(Vector2 vec, Space space = Local);
+		void Rotate(float amount);
+
 		virtual void Update() {};
 		virtual void Render() {};
+
 	};
 }
 #endif
