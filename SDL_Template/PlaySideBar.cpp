@@ -68,7 +68,7 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 	mFlagTextures[index]->Position(mFlagXOffset, mFlagYOffset);
 	mFlagXOffset += width * 0.50f;
 
-	mAudio->PlaySFX("SFX\\FlagSound.wav");
+	mAudio->PlaySFX("SFX/FlagSound.wav", 0, -1, false);
 }
 
 PlaySideBar::PlaySideBar() {

@@ -13,11 +13,11 @@ namespace SDLFramework {
 		static AudioManager * Instance();
 		static void Release();
 
-		void PlayMusic(std::string filename, int loops = -1);
+		void PlayMusic(std::string filename, int loops = -1, bool managed = true);
 		void PauseMusic();
 		void ResumeMusic();
 
-		void PlaySFX(std::string filename, int loops = 0, int channel = -1);
+		void PlaySFX(std::string filename, int loops = 0, int channel = -1,bool managed = true);
 
 	private:
 		AudioManager();

@@ -61,6 +61,10 @@ namespace SDLFramework {
 		return Vector2(lhs.x * rhs, lhs.y * rhs);
 	}
 
+	inline Vector2 operator*(float lhs, const Vector2 & rhs) {
+		return Vector2(lhs * rhs.x, lhs * rhs.y);
+	}
+
 	inline Vector2 Lerp(const Vector2 & start, const Vector2 & end, float time) {
 		if (time <= 0.0f) {
 			return start;

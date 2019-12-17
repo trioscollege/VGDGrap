@@ -66,7 +66,7 @@ void PlayScreen::StartNewGame() {
 	mLevelStarted = false;
 	mLevelStartTimer = 0.0f;
 	mCurrentStage = 0;
-	mAudio->PlayMusic("MUS\\GameStart.wav", 0);
+	mAudio->PlayMusic("MUS/GameStart.wav", 0);
 }
 
 bool PlayScreen::GameOver() {
