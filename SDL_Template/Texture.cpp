@@ -2,9 +2,9 @@
 
 namespace SDLFramework {
 
-	Texture::Texture(std::string filename) {
+	Texture::Texture(std::string filename, bool managed) {
 		mGraphics = Graphics::Instance();
-		mTex = AssetManager::Instance()->GetTexture(filename);
+		mTex = AssetManager::Instance()->GetTexture(filename, managed);
 
 		SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
@@ -13,9 +13,9 @@ namespace SDLFramework {
 		mDestinationRect.h = mHeight;
 	}
 
-	Texture::Texture(std::string filename, int x, int y, int w, int h) {
+	Texture::Texture(std::string filename, int x, int y, int w, int h, bool managed) {
 		mGraphics = Graphics::Instance();
-		mTex = AssetManager::Instance()->GetTexture(filename);
+		mTex = AssetManager::Instance()->GetTexture(filename, managed);
 
 		mWidth = w;
 		mHeight = h;
