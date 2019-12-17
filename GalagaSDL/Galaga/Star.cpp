@@ -32,7 +32,7 @@ Star::~Star() {
 }
 
 void Star::ScrollStar() {
-	Translate(Vec2_Up * mScrollSpeed, World);
+	Translate(Vec2_Up * mScrollSpeed);
 
 	Vector2 pos = Position(Local);
 

@@ -1,7 +1,6 @@
 #ifndef __ASSETMANAGER_H
 #define __ASSETMANAGER_H
 #include "Graphics.h"
-
 #include <SDL2_mixer/SDL_mixer.h>
 #include <map>
 #include <sstream>

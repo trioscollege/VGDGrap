@@ -105,13 +105,8 @@ namespace SDLFramework {
 		return mParent;
 	}
 
-	void GameEntity::Translate(Vector2 vec, Space space) {
-		if (space == World) {
-			mPosition += vec;
-		}
-		else {
-			mPosition += RotateVector(vec, Rotation());
-		}
+	void GameEntity::Translate(Vector2 vec) {
+		mPosition += vec;
 	}
 
 	void GameEntity::Rotate(float amount) {
