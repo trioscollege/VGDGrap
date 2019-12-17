@@ -1,4 +1,4 @@
-#include "BackgroundStars.hpp"
+#include "BackgroundStars.h"
 
 BackgroundStars * BackgroundStars::sInstance = nullptr;
 

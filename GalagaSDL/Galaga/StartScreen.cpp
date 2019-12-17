@@ -1,4 +1,4 @@
-#include "StartScreen.hpp"
+#include "StartScreen.h"
 
 StartScreen::StartScreen() {
 	mTimer = Timer::Instance();
@@ -76,13 +76,7 @@ StartScreen::StartScreen() {
 	mRights->Position(0.0f, 170.0f);
 
 	// screen animation variables
-	mAnimationStartPos = Vector2(0.0f, Graphics::SCREEN_HEIGHT);
-	mAnimationEndPos = Vec2_Zero;
-	mAnimationTotalTime = 5.0f;
-	mAnimationTimer = 0.0f;
-	mAnimationDone = false;
-
-	Position(mAnimationStartPos);
+	ResetAnimation();
 
 	mStars = BackgroundStars::Instance();
 	mStars->Scroll(true);
@@ -134,6 +128,20 @@ StartScreen::~StartScreen() {
 
 	mTimer = nullptr;
 	mInput = nullptr;
+}
+
+void StartScreen::ResetAnimation() {
+	mAnimationStartPos = Vector2(0.0f, Graphics::SCREEN_HEIGHT);
+	mAnimationEndPos = Vec2_Zero;
+	mAnimationTotalTime = 5.0f;
+	mAnimationTimer = 0.0f;
+	mAnimationDone = false;
+
+	Position(mAnimationStartPos);
+}
+
+int StartScreen::SelectedMode() {
+	return mSelectedMode;
 }
 
 void StartScreen::ChangeSelectedMode(int change) {

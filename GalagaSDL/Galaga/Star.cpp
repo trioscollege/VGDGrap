@@ -1,4 +1,4 @@
-#include "Star.hpp"
+#include "Star.h"
 
 bool Star::mScroll = false;
 
@@ -32,7 +32,7 @@ Star::~Star() {
 }
 
 void Star::ScrollStar() {
-	Translate(Vec2_Up * mScrollSpeed);
+	Translate(Vec2_Up * mScrollSpeed, World);
 
 	Vector2 pos = Position(Local);
 

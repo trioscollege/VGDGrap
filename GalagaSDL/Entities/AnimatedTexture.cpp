@@ -1,4 +1,4 @@
-#include "AnimatedTexture.hpp"
+#include "AnimatedTexture.h"
 
 namespace SDLFramework {
 
@@ -24,6 +24,15 @@ namespace SDLFramework {
 
 	void AnimatedTexture::SetWrapMode(WrapMode wrapMode) {
 		mWrapMode = wrapMode;
+	}
+
+	void AnimatedTexture::ResetAnimation() {
+		mAnimationTimer = 0.0f;
+		mAnimationDone = false;
+	}
+
+	bool AnimatedTexture::IsAnimating() {
+		return !mAnimationDone;
 	}
 
 	void AnimatedTexture::Update() {

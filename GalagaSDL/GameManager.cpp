@@ -1,4 +1,4 @@
-#include "GameManager.hpp"
+#include "GameManager.h"
 
 namespace SDLFramework {
 
@@ -41,8 +41,7 @@ namespace SDLFramework {
 	void GameManager::Update() {
 		mInputManager->Update();
 
-		mStars->Update();
-		mStartScreen->Update();
+		mScreenManager->Update();
 	}
 
 	void GameManager::LateUpdate() {
@@ -51,8 +50,7 @@ namespace SDLFramework {
 
 	void GameManager::Render() {
 		mGraphics->ClearBackBuffer();
-		mStars->Render();
-		mStartScreen->Render();
+		mScreenManager->Render();
 		mGraphics->Render();
 	}
 
@@ -69,16 +67,12 @@ namespace SDLFramework {
 
 		mTimer = Timer::Instance();
 
-		mStars = BackgroundStars::Instance();
-		mStartScreen = new StartScreen();
+		mScreenManager = ScreenManager::Instance();
 	}
 
 	GameManager::~GameManager() {
-		delete mStartScreen;
-		mStartScreen = nullptr;
-
-		BackgroundStars::Release();
-		mStars = nullptr;
+		ScreenManager::Release();
+		mScreenManager = nullptr;
 
 		Timer::Release();
 		mTimer = nullptr;

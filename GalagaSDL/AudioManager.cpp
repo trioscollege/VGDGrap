@@ -1,4 +1,4 @@
-#include "AudioManager.hpp"
+#include "AudioManager.h"
 
 namespace SDLFramework {
 

@@ -1,4 +1,4 @@
-#include "StarLayer.hpp"
+#include "StarLayer.h"
 
 StarLayer::StarLayer(int layer) {
 	for (int i = 0; i < STAR_COUNT; i++) {

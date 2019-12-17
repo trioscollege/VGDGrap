@@ -1,10 +1,10 @@
-#include "GameManager.hpp"
+#include "GameManager.h"
 
 using SDLFramework::GameManager;
 
 int main(int argc, char * args[])
 {
-	GameManager * game = new GameManager();
+	GameManager * game = GameManager::Instance();
 
 	game->Run();
 
