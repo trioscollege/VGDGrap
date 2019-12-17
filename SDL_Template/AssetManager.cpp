@@ -59,7 +59,7 @@ namespace SDLFramework {
 
 	SDL_Texture * AssetManager::GetTexture(std::string filename, bool managed) {
 			std::string fullPath = SDL_GetBasePath();
-			fullPath.append("Assets\\" + filename);
+			fullPath.append("Assets/" + filename);
 
 			if (mTextures[fullPath] == nullptr) {
 				mTextures[fullPath] = Graphics::Instance()->LoadTexture(fullPath);
@@ -74,7 +74,7 @@ namespace SDLFramework {
 
 	TTF_Font * AssetManager::GetFont(std::string filename, int size) {
 		std::string fullPath = SDL_GetBasePath();
-		fullPath.append("Assets\\" + filename);
+		fullPath.append("Assets/" + filename);
 
 		std::stringstream ss;
 		ss << size;
@@ -100,7 +100,7 @@ namespace SDLFramework {
 			mText[key] = Graphics::Instance()->CreateTextTexture(font, text, color);
 		}
 
-		if (mText[key] != nullptr) {
+		if (mText[key] != nullptr && managed) {
 			mTextureRefCount[mText[key]] += 1;
 		}
 
@@ -109,7 +109,7 @@ namespace SDLFramework {
 
 	Mix_Music * AssetManager::GetMusic(std::string filename, bool managed) {
 		std::string fullPath = SDL_GetBasePath();
-		fullPath.append("Assets\\" + filename);
+		fullPath.append("Assets/" + filename);
 
 		if (mMusic[fullPath] == nullptr) {
 			mMusic[fullPath] = Mix_LoadMUS(fullPath.c_str());
@@ -127,7 +127,7 @@ namespace SDLFramework {
 
 	Mix_Chunk * AssetManager::GetSFX(std::string filename, bool managed) {
 		std::string fullPath = SDL_GetBasePath();
-		fullPath.append("Assets\\" + filename);
+		fullPath.append("Assets/" + filename);
 
 		if (mSFX[fullPath] == nullptr) {
 			mSFX[fullPath] = Mix_LoadWAV(fullPath.c_str());
@@ -177,7 +177,7 @@ namespace SDLFramework {
 					Mix_FreeMusic(elem.second);
 					mMusic.erase(elem.first);
 				}
-				return;
+				return; // work finished, leave function
 			}
 		}
 	}
@@ -191,7 +191,7 @@ namespace SDLFramework {
 					Mix_FreeChunk(elem.second);
 					mSFX.erase(elem.first);
 				}
-				return;
+				return; // work finished, leave function
 			}
 		}
 	}
