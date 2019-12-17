@@ -6,17 +6,9 @@ namespace SDLFramework {
 		: mPosition(x, y), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {
 	}
 
-	SDLFramework::GameEntity::GameEntity(const Vector2 & position)
-		: mPosition(position), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {
-	}
-
 
 	GameEntity::~GameEntity() {
 		mParent = nullptr;
-	}
-
-	void GameEntity::Position(float x, float y) {
-		mPosition = Vector2(x, y);
 	}
 
 	void GameEntity::Position(const Vector2 & pos) {
@@ -106,12 +98,12 @@ namespace SDLFramework {
 	}
 
 	void GameEntity::Translate(Vector2 vec, Space space) {
-        if (space == World) {
-            mPosition += vec;
-        }
-        else {
-            mPosition += RotateVector(vec, Rotation());
-        }
+		if (space == World) {
+			mPosition += vec;
+		}
+		else {
+			mPosition += RotateVector(vec, Rotation());
+		}
 	}
 
 	void GameEntity::Rotate(float amount) {

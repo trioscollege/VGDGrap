@@ -2,8 +2,8 @@
 
 namespace SDLFramework {
 
-	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed)
-		: Texture(filename, x, y, w, h, managed) {
+	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir)
+		: Texture(filename, x, y, w, h) {
 		mTimer = Timer::Instance();
 
 		mStartX = x;
@@ -24,6 +24,15 @@ namespace SDLFramework {
 
 	void AnimatedTexture::SetWrapMode(WrapMode wrapMode) {
 		mWrapMode = wrapMode;
+	}
+
+	void AnimatedTexture::ResetAnimation() {
+		mAnimationTimer = 0.0f;
+		mAnimationDone = false;
+	}
+
+	bool AnimatedTexture::IsAnimating() {
+		return !mAnimationDone;
 	}
 
 	void AnimatedTexture::Update() {
