@@ -1,4 +1,4 @@
-#include "Texture.hpp"
+#include "Texture.h"
 
 namespace SDLFramework {
 

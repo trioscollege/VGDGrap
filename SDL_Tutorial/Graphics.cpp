@@ -1,4 +1,4 @@
-#include "Graphics.hpp"
+#include "Graphics.h"
 
 namespace SDLFramework {
 
