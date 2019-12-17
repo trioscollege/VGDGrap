@@ -1,4 +1,4 @@
-#include "Texture.hpp"
+#include "Texture.h"
 
 namespace SDLFramework {
 
@@ -28,6 +28,18 @@ namespace SDLFramework {
 		mSourceRect.y = y;
 		mSourceRect.w = mWidth;
 		mSourceRect.h = mHeight;
+	}
+
+	Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color) {
+		mGraphics = Graphics::Instance();
+		mTex = AssetManager::Instance()->GetText(text, fontPath, size, color);
+
+		mClipped = false;
+
+		SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
+
+		mDestinationRect.w = mWidth;
+		mDestinationRect.h = mHeight;
 	}
 
 	Texture::~Texture() {
