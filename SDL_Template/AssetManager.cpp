@@ -100,7 +100,7 @@ namespace SDLFramework {
 			mText[key] = Graphics::Instance()->CreateTextTexture(font, text, color);
 		}
 
-		if (mText[key] != nullptr) {
+		if (mText[key] != nullptr && managed) {
 			mTextureRefCount[mText[key]] += 1;
 		}
 

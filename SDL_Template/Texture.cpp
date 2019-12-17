@@ -2,9 +2,9 @@
 
 namespace SDLFramework {
 
-	Texture::Texture(std::string filename) {
+	Texture::Texture(std::string filename, bool managed) {
 		mGraphics = Graphics::Instance();
-		mTex = AssetManager::Instance()->GetTexture(filename);
+		mTex = AssetManager::Instance()->GetTexture(filename, managed);
 
 		SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
@@ -13,9 +13,9 @@ namespace SDLFramework {
 		mDestinationRect.h = mHeight;
 	}
 
-	Texture::Texture(std::string filename, int x, int y, int w, int h) {
+	Texture::Texture(std::string filename, int x, int y, int w, int h, bool managed) {
 		mGraphics = Graphics::Instance();
-		mTex = AssetManager::Instance()->GetTexture(filename);
+		mTex = AssetManager::Instance()->GetTexture(filename, managed);
 
 		mWidth = w;
 		mHeight = h;
@@ -30,9 +30,9 @@ namespace SDLFramework {
 		mSourceRect.h = mHeight;
 	}
 
-	Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color) {
+	Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed) {
 		mGraphics = Graphics::Instance();
-		mTex = AssetManager::Instance()->GetText(text, fontPath, size, color);
+		mTex = AssetManager::Instance()->GetText(text, fontPath, size, color, managed);
 
 		mClipped = false;
 
@@ -43,7 +43,7 @@ namespace SDLFramework {
 	}
 
 	Texture::~Texture() {
-		SDL_DestroyTexture(mTex);
+		AssetManager::Instance()->DestroyTexture(mTex);
 		mTex = nullptr;
 		mGraphics = nullptr;
 	}
