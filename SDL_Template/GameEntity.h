@@ -7,7 +7,6 @@ namespace SDLFramework {
 	class GameEntity
 	{
 	public:
-
 		enum Space { Local = 0, World = 1 };
 
 	private:
@@ -22,6 +21,7 @@ namespace SDLFramework {
 		GameEntity(float x = 0.0f, float y = 0.0f);
 		~GameEntity();
 
+		void Position(float x, float y);
 		void Position(const Vector2 & pos);
 		Vector2 Position(Space space = World);
 
