@@ -50,7 +50,7 @@ void PlayScreen::StartNewGame() {
 	mStars->Scroll(false);
 	mGameStarted = false;
 	mCurrentStage = 0;
-	mAudio->PlayMusic("MUS\\GameStart.wav", 0);
+	mAudio->PlayMusic("MUS/GameStart.wav", 0);
 }
 
 void PlayScreen::Update() {
