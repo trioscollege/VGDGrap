@@ -1,4 +1,4 @@
-#include "GameEntity.hpp"
+#include "GameEntity.h"
 
 namespace SDLFramework {
 
