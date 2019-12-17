@@ -3,6 +3,7 @@
 #include "PlaySideBar.h"
 #include "BackgroundStars.h"
 #include "Player.h"
+#include "Enemy.h"
 
 class Level : public GameEntity
 {
@@ -41,6 +42,9 @@ private:
 
 	LevelStates mCurrentState;
 
+	Enemy * mEnemy;
+
+	void StartStage();
 	void HandleStartLabels();
 	void HandleCollisions();
 	void HandlePlayerDeath();

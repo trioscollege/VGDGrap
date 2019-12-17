@@ -28,6 +28,8 @@ PlayScreen::PlayScreen() {
 	mLevelStarted = false;
 
 	mPlayer = nullptr;
+
+	Enemy::CreatePaths();
 }
 
 PlayScreen::~PlayScreen() {
