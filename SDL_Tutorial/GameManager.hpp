@@ -1,9 +1,9 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
 #include <SDL2/SDL.h>
-#include "Graphics.hpp"
+#include "Texture.hpp"
 #include "Timer.hpp"
-#include "GameEntity.hpp"
+#include "InputManager.hpp"
 
 namespace SDLFramework {
 
@@ -15,14 +15,14 @@ namespace SDLFramework {
 
 		bool mQuit;
 		Graphics * mGraphics;
+		AssetManager * mAssetManager;
+		InputManager * mInputManager;
 
 		Timer * mTimer;
 
-		// sanity test
-		GameEntity * mParent;
-		GameEntity * mChild;
-
 		SDL_Event mEvent;
+
+		Texture * mTex;
 
 	public:
 		static GameManager * Instance();
