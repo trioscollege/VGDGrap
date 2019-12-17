@@ -12,6 +12,8 @@ namespace SDLFramework {
 
 		std::map<std::string, SDL_Texture *> mTextures;
 
+		std::map<SDL_Texture *, unsigned> mTextureRefCount;
+
 		AssetManager();
 		~AssetManager();
 
@@ -19,7 +21,9 @@ namespace SDLFramework {
 		static AssetManager * Instance();
 		static void Release();
 
-		SDL_Texture * GetTexture(std::string filename);
+		SDL_Texture * GetTexture(std::string filename, bool managed = true);
+
+		void DestroyTexture(SDL_Texture * texture);
 	};
 }
 #endif
