@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7B392114234E1E190047FB73 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392113234E1E190047FB73 /* main.cpp */; };
 		7B39211D234E1EE40047FB73 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B39211B234E1E880047FB73 /* SDL2.framework */; };
+		7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392120235DE4A80047FB73 /* Graphics.cpp */; };
+		7B392124235DE6E20047FB73 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392122235DE6E20047FB73 /* GameManager.cpp */; };
+		7B392127235DEA740047FB73 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392125235DEA740047FB73 /* Timer.cpp */; };
+		7BAB81F12391AC0B00976859 /* GameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB81EE2391AC0B00976859 /* GameEntity.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +31,15 @@
 		7B392110234E1E190047FB73 /* SDL_Tutorial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_Tutorial; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B392113234E1E190047FB73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B39211B234E1E880047FB73 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		7B39211F235DE39A0047FB73 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
+		7B392120235DE4A80047FB73 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
+		7B392122235DE6E20047FB73 /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		7B392123235DE6E20047FB73 /* GameManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
+		7B392125235DEA740047FB73 /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		7B392126235DEA740047FB73 /* Timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
+		7BAB81EE2391AC0B00976859 /* GameEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameEntity.cpp; sourceTree = "<group>"; };
+		7BAB81EF2391AC0B00976859 /* GameEntity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameEntity.hpp; sourceTree = "<group>"; };
+		7BAB81F02391AC0B00976859 /* MathHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathHelper.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +74,16 @@
 		7B392112234E1E190047FB73 /* SDL_Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				7BAB81EE2391AC0B00976859 /* GameEntity.cpp */,
+				7BAB81EF2391AC0B00976859 /* GameEntity.hpp */,
+				7BAB81F02391AC0B00976859 /* MathHelper.hpp */,
 				7B392113234E1E190047FB73 /* main.cpp */,
+				7B39211F235DE39A0047FB73 /* Graphics.hpp */,
+				7B392120235DE4A80047FB73 /* Graphics.cpp */,
+				7B392122235DE6E20047FB73 /* GameManager.cpp */,
+				7B392123235DE6E20047FB73 /* GameManager.hpp */,
+				7B392125235DEA740047FB73 /* Timer.cpp */,
+				7B392126235DEA740047FB73 /* Timer.hpp */,
 			);
 			path = SDL_Tutorial;
 			sourceTree = "<group>";
@@ -100,7 +122,7 @@
 		7B392108234E1E190047FB73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Jeff Gauvin";
 				TargetAttributes = {
 					7B39210F234E1E190047FB73 = {
@@ -131,7 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */,
+				7B392124235DE6E20047FB73 /* GameManager.cpp in Sources */,
+				7BAB81F12391AC0B00976859 /* GameEntity.cpp in Sources */,
 				7B392114234E1E190047FB73 /* main.cpp in Sources */,
+				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +276,7 @@
 		7B392118234E1E190047FB73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -262,6 +289,7 @@
 		7B392119234E1E190047FB73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
