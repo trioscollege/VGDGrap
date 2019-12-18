@@ -105,6 +105,12 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
+    <ClCompile Include="Formation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Butterfly.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -177,6 +183,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="Formation.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="Butterfly.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
   </ItemGroup>

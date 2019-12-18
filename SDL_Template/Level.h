@@ -3,10 +3,9 @@
 #include "PlaySideBar.h"
 #include "BackgroundStars.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "Butterfly.h"
 
-class Level : public GameEntity
-{
+class Level : public GameEntity {
 public:
 	enum LevelStates { Running, Finished, GameOver };
 
@@ -42,12 +41,20 @@ private:
 
 	LevelStates mCurrentState;
 
-	Enemy * mEnemy;
+	Formation * mFormation;
+
+	const int MAX_BUTTERFLIES = 16;
+
+	int mButterflyCount;
+	std::vector<Enemy*> mEnemies;
 
 	void StartStage();
 	void HandleStartLabels();
 	void HandleCollisions();
 	void HandlePlayerDeath();
+
+	void HandleEnemySpawning();
+	void HandleEnemyFormation();
 
 public:
 	Level(int stage, PlaySideBar * sideBar, Player * player);
