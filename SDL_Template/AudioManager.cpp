@@ -17,7 +17,7 @@ namespace SDLFramework {
 	}
 
 	void AudioManager::PlayMusic(std::string filename, int loops) {
-		Mix_PlayMusic(mAssetManager->GetMusic(filename, false), loops);
+		Mix_PlayMusic(mAssetManager->GetMusic(filename), loops);
 	}
 
 	void AudioManager::PlayMusic(Mix_Music * music, int loops) {
@@ -37,7 +37,7 @@ namespace SDLFramework {
 	}
 
 	void AudioManager::PlaySFX(std::string filename, int loops, int channel) {
-		Mix_PlayChannel(channel, mAssetManager->GetSFX(filename, false), loops);
+		Mix_PlayChannel(channel, mAssetManager->GetSFX(filename), loops);
 	}
 
 	void AudioManager::PlaySFX(Mix_Chunk * sfx, int loops, int channel) {

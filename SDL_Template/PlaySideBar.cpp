@@ -62,7 +62,7 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 		break;
 	}
 
-	mFlagTextures.push_back(new Texture(filename, x, 0, (int)width - 2, 64, false));
+	mFlagTextures.push_back(new Texture(filename, x, 0, (int)width - 2, 64));
 	mFlagTextures[index]->Parent(mFlags);
 	
 	mFlagTextures[index]->Position(mFlagXOffset, mFlagYOffset);
@@ -109,7 +109,7 @@ PlaySideBar::PlaySideBar() {
 	mShips->Position(-40.0f, 420.0f);
 
 	for (int i = 0; i < MAX_SHIP_TEXTURES; ++i) {
-		mShipTextures[i] = new Texture("PlayerShips.png", 0, 0, 60, 64, false);
+		mShipTextures[i] = new Texture("PlayerShips.png", 0, 0, 60, 64);
 		mShipTextures[i]->Parent(mShips);
 		mShipTextures[i]->Position(62.0f * (i % 3), 70.0f * (i / 3));
 	}
