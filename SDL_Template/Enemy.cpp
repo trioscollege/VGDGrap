@@ -58,17 +58,17 @@ Enemy::~Enemy() {
 }
 
 void Enemy::HandleFlyInState() {
-	if ((sPaths[mCurrentPath][mCurrentWaypoint] - Position()).MagnitudeSqr() < EPSILON * mSpeed / 100.0f) {
-		mCurrentWaypoint++;
-	}
-
 	if (mCurrentWaypoint < sPaths[mCurrentPath].size()) {
 		Vector2 dist = sPaths[mCurrentPath][mCurrentWaypoint] - Position();
 		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
 		Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
+
+		if ((sPaths[mCurrentPath][mCurrentWaypoint] - Position()).MagnitudeSqr() < EPSILON * mSpeed / 100.0f) {
+			mCurrentWaypoint++;
+		}
 	}
 	else {
-		mCurrentState = Formation;
+		mCurrentState = InFormation;
 	}
 }
 
@@ -86,7 +86,7 @@ void Enemy::HandleStates() {
 	case FlyIn:
 		HandleFlyInState();
 		break;
-	case Formation:
+	case InFormation:
 		HandleFormationState();
 		break;
 	case Dive:

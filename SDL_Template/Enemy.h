@@ -4,10 +4,11 @@
 #include "BezierPath.h"
 
 class Enemy : public GameEntity {
-private:
-	static std::vector<std::vector<Vector2>> sPaths;
+public:
+	enum States { FlyIn, InFormation, Dive, Dead };
 
-	enum States { FlyIn, Formation, Dive, Dead };
+protected:
+	static std::vector<std::vector<Vector2>> sPaths;
 
 	Timer * mTimer;
 
@@ -22,18 +23,18 @@ private:
 
 	float mSpeed;
 
-public:
-	static void CreatePaths();
-
-	Enemy(int path);
-	virtual ~Enemy();
-
 	virtual void HandleFlyInState();
 	virtual void HandleFormationState();
 	virtual void HandleDiveState();
 	virtual void HandleDeadState();
 
 	void HandleStates();
+
+public:
+	static void CreatePaths();
+
+	Enemy(int path);
+	virtual ~Enemy();
 
 	void Update();
 	void Render();
