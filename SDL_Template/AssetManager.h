@@ -21,7 +21,7 @@ namespace SDLFramework {
 		static AssetManager * Instance();
 		static void Release();
 
-		SDL_Texture * GetTexture(std::string filename, bool managed = true);
+		SDL_Texture * GetTexture(std::string filename, bool managed = false);
 
 		void DestroyTexture(SDL_Texture * texture);
 	};
