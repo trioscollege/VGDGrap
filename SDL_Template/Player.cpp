@@ -24,7 +24,8 @@ void Player::HandleFiring() {
 		for (int i = 0; i < MAX_BULLETS; ++i) {
 			if (!mBullets[i]->Active()) {
 				mBullets[i]->Fire(Position());
-				mAudio->PlaySFX("SFX\\Fire.wav");
+				//mAudio->PlaySFX("SFX/Fire.wav");
+				mAudio->PlaySFX(mFireSFX);
 				break;
 			}
 		}
@@ -54,6 +55,9 @@ Player::Player() {
 	mDeathAnimation->Position(Vec2_Zero);
 	mDeathAnimation->SetWrapMode(AnimatedTexture::Once);
 
+	mFireSFX = AssetManager::Instance()->GetSFX("SFX/Fire.wav");
+	mExplosionSFX = AssetManager::Instance()->GetSFX("SFX/PlayerExplosion.wav");
+
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i] = new Bullet();
 	}
@@ -69,6 +73,9 @@ Player::~Player() {
 
 	delete mDeathAnimation;
 	mDeathAnimation = nullptr;
+
+	AssetManager::Instance()->DestroySFX(mFireSFX);
+	AssetManager::Instance()->DestroySFX(mExplosionSFX);
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		delete mBullets[i];
@@ -100,7 +107,8 @@ void Player::WasHit() {
 	mLives -= 1;
 	mAnimating = true;
 	mDeathAnimation->ResetAnimation();
-	mAudio->PlaySFX("SFX\\PlayerExplosion.wav");
+	//mAudio->PlaySFX("SFX/PlayerExplosion.wav");
+	mAudio->PlaySFX(mExplosionSFX);
 }
 
 void Player::Update() {

@@ -49,8 +49,6 @@ private:
 	void HandleCollisions();
 	void HandlePlayerDeath();
 
-	void StartStage();
-
 public:
 	Level(int stage, PlaySideBar * sideBar, Player * player);
 	~Level();
