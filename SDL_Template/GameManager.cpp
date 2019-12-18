@@ -64,7 +64,7 @@ namespace SDLFramework {
 		}
 
 		if (mInputManager->KeyDown(SDL_SCANCODE_1)) {
-			mAudioManager->PlaySFX("SFX\\coin_credit.wav", 0, 0);
+			mAudioManager->PlaySFX("SFX/coin_credit.wav", 0, 0);
 		}
 
 		mTex->Update();
