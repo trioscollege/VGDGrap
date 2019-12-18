@@ -22,9 +22,6 @@ private:
 	Texture * mShip;
 	AnimatedTexture * mDeathAnimation;
 
-	Mix_Chunk * mFireSFX;
-	Mix_Chunk * mExplosionSFX;
-
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
 
