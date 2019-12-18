@@ -29,7 +29,7 @@ namespace SDLFramework {
 		bool mAnimationDone;
 
 	public:
-		AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed = true);
+		AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed = false);
 		~AnimatedTexture();
 
 		void SetWrapMode(WrapMode mode);
