@@ -20,7 +20,7 @@ namespace SDLFramework {
 
 	public:
 		Texture(std::string filename, bool managed = true);
-		Texture(std::string filename, int x, int y, int w, int h, bool managed = true);
+		Texture(std::string filename, int x, int y, int w, int h, bool managed = false);
 		~Texture();
 
 		void Render() override;
