@@ -7,25 +7,25 @@ void Enemy::CreatePaths() {
 
 	int currentPath = 0;
 	BezierPath * path = new BezierPath();
-	/*path->AddCurve({ 
-		Vector2(500.0f, 10.0f), 
-		Vector2(500.0f, 0.0f), 
-		Vector2(500.0f, 310.0f), 
+	/*path->AddCurve({
+		Vector2(500.0f, 10.0f),
+		Vector2(500.0f, 0.0f),
+		Vector2(500.0f, 310.0f),
 		Vector2(500.0f, 300.0f) }, 1);*/
-	path->AddCurve({ 
-		Vector2(screenMidPoint + 50.0f, -10.0f), 
-		Vector2(screenMidPoint + 50.0f, -20.0f), 
-		Vector2(screenMidPoint + 50.0f, 30.0f), 
+	path->AddCurve({
+		Vector2(screenMidPoint + 50.0f, -10.0f),
+		Vector2(screenMidPoint + 50.0f, -20.0f),
+		Vector2(screenMidPoint + 50.0f, 30.0f),
 		Vector2(screenMidPoint + 50.0f, 20.0f) }, 1);
-	path->AddCurve({ 
-		Vector2(screenMidPoint + 50.0f, 20.0f), 
-		Vector2(screenMidPoint + 50.0f, 100.0f), 
-		Vector2(75.0f, 325.0f), 
+	path->AddCurve({
+		Vector2(screenMidPoint + 50.0f, 20.0f),
+		Vector2(screenMidPoint + 50.0f, 100.0f),
+		Vector2(75.0f, 325.0f),
 		Vector2(75.0f, 425.0f) }, 25);
-	path->AddCurve({ 
-		Vector2(75.0f, 425.0f), 
-		Vector2(75.0f, 650.0f), 
-		Vector2(350.0f, 650.0f), 
+	path->AddCurve({
+		Vector2(75.0f, 425.0f),
+		Vector2(75.0f, 650.0f),
+		Vector2(350.0f, 650.0f),
 		Vector2(350.0f, 425.0f) }, 25);
 
 	sPaths.push_back(std::vector<Vector2>());
@@ -123,10 +123,9 @@ void Enemy::RenderStates() {
 	}
 }
 
-Enemy::Enemy(int path) {
+Enemy::Enemy(int path)
+	: mCurrentPath(path) {
 	mTimer = Timer::Instance();
-
-	mCurrentPath = path;
 
 	mCurrentState = FlyIn;
 
