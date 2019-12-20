@@ -56,9 +56,10 @@ Enemy::Enemy(int path, int index, bool challenge)
 Enemy::~Enemy() {
 	mTimer = nullptr;
 
-	delete[] mTextures;
-	mTextures[0] = nullptr;
-	mTextures[1] = nullptr;
+	for (int i = 0; i < 2; i++) {
+		delete mTextures[i];
+		mTextures[i] = nullptr;
+	}
 }
 
 void Enemy::PathComplete() {

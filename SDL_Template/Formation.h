@@ -9,12 +9,14 @@ class Formation : public GameEntity {
 private:
 	Timer * mTimer;
 
+	// side-to-side movement while still spawning
 	float mOffsetAmount;
 	float mOffsetTimer;
 	float mOffsetDelay;
 	int mOffsetCounter;
 	int mOffsetDirection;
 
+	// breathing animation when formation locked
 	float mSpreadTimer;
 	float mSpreadDelay;
 	int mSpreadCounter;
@@ -38,5 +40,4 @@ public:
 
 	void Update();
 };
-
 #endif

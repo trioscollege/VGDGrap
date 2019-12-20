@@ -50,7 +50,7 @@ void Formation::Update() {
 		mOffsetTimer += mTimer->DeltaTime();
 		if (mOffsetTimer >= mOffsetDelay) {
 			mOffsetCounter += 1;
-			Translate(Vec2_Right * mOffsetDirection * mOffsetAmount, World);
+			Translate(Vec2_Right * (float)mOffsetDirection * mOffsetAmount, World);
 
 			if (mOffsetCounter == 8) {
 				mOffsetCounter = 0;
