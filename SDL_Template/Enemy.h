@@ -5,7 +5,7 @@
 
 class Enemy : public GameEntity {
 public:
-	enum States { FlyIn, InFormation, Dive, Dead };
+	enum States { FlyIn, InFormation, Diving, Dead };
 
 protected:
 	static std::vector<std::vector<Vector2>> sPaths;
@@ -30,11 +30,20 @@ protected:
 
 	void HandleStates();
 
+	virtual void RenderFlyInState();
+	virtual void RenderFormationState();
+	virtual void RenderDiveState();
+	virtual void RenderDeadState();
+
+	void RenderStates();
+
 public:
 	static void CreatePaths();
 
 	Enemy(int path);
 	virtual ~Enemy();
+
+	States CurrentState();
 
 	void Update();
 	void Render();

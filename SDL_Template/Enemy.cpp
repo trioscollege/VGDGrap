@@ -40,14 +40,14 @@ Enemy::Enemy(int path) {
 
 	mCurrentState = FlyIn;
 
-	mCurrentWaypoint = 0;
-	Position(sPaths[mCurrentPath][mCurrentWaypoint]);
+	mCurrentWaypoint = 1;
+	Position(sPaths[mCurrentPath][0]);
 
 	mTexture = new Texture("AnimatedEnemies.png", 0, 0, 52, 40);
 	mTexture->Parent(this);
 	mTexture->Position(Vec2_Zero);
 
-	mSpeed = 100.0f;
+	mSpeed = 400.0f;
 }
 
 Enemy::~Enemy() {
@@ -57,13 +57,17 @@ Enemy::~Enemy() {
 	mTexture = nullptr;
 }
 
+Enemy::States Enemy::CurrentState() {
+	return mCurrentState;
+}
+
 void Enemy::HandleFlyInState() {
 	if (mCurrentWaypoint < sPaths[mCurrentPath].size()) {
 		Vector2 dist = sPaths[mCurrentPath][mCurrentWaypoint] - Position();
 		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
 		Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
 
-		if ((sPaths[mCurrentPath][mCurrentWaypoint] - Position()).MagnitudeSqr() < EPSILON * mSpeed / 100.0f) {
+		if ((sPaths[mCurrentPath][mCurrentWaypoint] - Position()).MagnitudeSqr() < EPSILON * mSpeed / 25.0f) {
 			mCurrentWaypoint++;
 		}
 	}
@@ -89,11 +93,52 @@ void Enemy::HandleStates() {
 	case InFormation:
 		HandleFormationState();
 		break;
-	case Dive:
+	case Diving:
 		HandleDiveState();
 		break;
 	case Dead:
 		HandleDeadState();
+		break;
+	}
+}
+
+void Enemy::RenderFlyInState() {
+	mTexture->Render();
+
+	for (unsigned i = 0; i < sPaths[mCurrentPath].size() - 1; ++i) {
+		Graphics::Instance()->DrawLine(
+			sPaths[mCurrentPath][i].x,
+			sPaths[mCurrentPath][i].y,
+			sPaths[mCurrentPath][i + 1].x,
+			sPaths[mCurrentPath][i + 1].y);
+	}
+}
+
+void Enemy::RenderFormationState() {
+	mTexture->Render();
+}
+
+void Enemy::RenderDiveState() {
+
+}
+
+void Enemy::RenderDeadState() {
+
+}
+
+void Enemy::RenderStates() {
+	switch (mCurrentState) {
+	case FlyIn:
+		RenderFlyInState();
+		break;
+	case InFormation:
+		RenderFormationState();
+		break;
+	case Diving:
+		RenderDiveState();
+		break;
+	case Dead:
+		RenderDeadState();
 		break;
 	}
 }
@@ -106,14 +151,6 @@ void Enemy::Update() {
 
 void Enemy::Render() {
 	if (Active()) {
-		mTexture->Render();
-
-		for (unsigned i = 0; i < sPaths[mCurrentPath].size() - 1; ++i) {
-			Graphics::Instance()->DrawLine(
-				sPaths[mCurrentPath][i].x, 
-				sPaths[mCurrentPath][i].y, 
-				sPaths[mCurrentPath][i + 1].x, 
-				sPaths[mCurrentPath][i + 1].y);
-		}
+		RenderStates();
 	}
 }
