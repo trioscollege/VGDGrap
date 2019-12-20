@@ -4,6 +4,8 @@
 #include "BackgroundStars.h"
 #include "Player.h"
 #include "Butterfly.h"
+#include "Wasp.h"
+#include "Boss.h"
 
 class Level : public GameEntity {
 public:
@@ -44,8 +46,12 @@ private:
 	Formation * mFormation;
 
 	const int MAX_BUTTERFLIES = 16;
+	const int MAX_WASPS = 20;
+	const int MAX_BOSSES = 4;
 
 	int mButterflyCount;
+	int mWaspCount;
+	int mBossCount;
 	std::vector<Enemy*> mEnemies;
 
 	void StartStage();
@@ -55,7 +61,7 @@ private:
 
 	void HandleEnemySpawning();
 	void HandleEnemyFormation();
-
+	void HandleEnemyDiving();
 public:
 	Level(int stage, PlaySideBar * sideBar, Player * player);
 	~Level();

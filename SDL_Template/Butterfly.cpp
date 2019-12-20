@@ -1,6 +1,6 @@
 #include "Butterfly.h"
 
-Vector2 Butterfly::FormationPosition()
+Vector2 Butterfly::LocalFormationPosition()
 {
 	Vector2 retVal;
 
@@ -18,16 +18,25 @@ void Butterfly::HandleDeadState()
 {
 }
 
+void Butterfly::RenderDiveState() {
+
+}
+
+void Butterfly::RenderDeadState() {
+}
+
 Butterfly::Butterfly(int path, int index, bool challenge)
 	: Enemy(path, index, challenge) {
 
-	if (!challenge) {
-		mTargetPosition = FormationPosition();
+	mTextures[0] = new Texture("AnimatedEnemies.png", 0, 0, 52, 40);
+	mTextures[1] = new Texture("AnimatedEnemies.png", 52, 0, 52, 40);
+	
+	for (int i = 0; i < 2; i++) {
+		mTextures[i]->Parent(this);
+		mTextures[i]->Position(Vec2_Zero);
 	}
 
-	mTexture = new Texture("AnimatedEnemies.png", 0, 0, 52, 40);
-	mTexture->Parent(this);
-	mTexture->Position(Vec2_Zero);
+	mType = Enemy::Butterfly;
 }
 
 Butterfly::~Butterfly() {

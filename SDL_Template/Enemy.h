@@ -6,7 +6,8 @@
 
 class Enemy : public GameEntity {
 public:
-	enum States { FlyIn, InFormation, Dive, Dead };
+	enum States { FlyIn, InFormation, Diving, Dead };
+	enum Types { Butterfly, Wasp, Boss };
 
 protected:
 	static std::vector<std::vector<Vector2>> sPaths;
@@ -14,7 +15,7 @@ protected:
 
 	Timer * mTimer;
 
-	Texture * mTexture;
+	Texture * mTextures[2];
 
 	States mCurrentState;
 
@@ -26,18 +27,20 @@ protected:
 	float mSpeed;
 
 	int mIndex;
-
-	Vector2 mTargetPosition;
+	Types mType;
 
 	bool mChallengeStage;
+
+	Vector2 mDiveStartPosition;
 
 protected:
 	virtual void PathComplete();
 
-	virtual Vector2 FlyInTargetPosition();
 	virtual void FlyInComplete();
 
-	virtual Vector2 FormationPosition() = 0;
+	void JoinFormation();
+	virtual Vector2 WorldFormationPosition();
+	virtual Vector2 LocalFormationPosition() = 0;
 
 	virtual void HandleFlyInState();
 	virtual void HandleFormationState();
@@ -45,6 +48,13 @@ protected:
 	virtual void HandleDeadState() = 0;
 
 	void HandleStates();
+
+	virtual void RenderFlyInState();
+	virtual void RenderFormationState();
+	virtual void RenderDiveState() = 0;
+	virtual void RenderDeadState() = 0;
+
+	void RenderStates();
 
 public:
 	static void CreatePaths();
@@ -54,6 +64,10 @@ public:
 	virtual ~Enemy();
 	
 	States CurrentState();
+
+	Types Type();
+
+	void Dive();
 
 	void Update();
 	void Render();

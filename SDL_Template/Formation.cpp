@@ -10,7 +10,7 @@ Formation::Formation() {
 	mOffsetDirection = 1;
 
 	mSpreadTimer = 0.0f;
-	mSpreadDelay = 1.0f;
+	mSpreadDelay = 0.6f;
 	mSpreadCounter = 0;
 	mSpreadDirection = 1;
 
@@ -28,8 +28,21 @@ Vector2 Formation::GridSize()
 	return mGridSize;
 }
 
+int Formation::GetTick() {
+	if (!mLocked || mOffsetCounter != 4) {
+		return mOffsetCounter;
+	}
+	else {
+		return mSpreadCounter;
+	}
+}
+
 void Formation::Lock() {
 	mLocked = true;
+}
+
+bool Formation::Locked() {
+	return mLocked && mOffsetCounter == 4;
 }
 
 void Formation::Update() {
@@ -45,6 +58,20 @@ void Formation::Update() {
 			}
 
 			mOffsetTimer = 0.0f;
+		}
+	}
+	else {
+		mSpreadTimer += mTimer->DeltaTime();
+		if (mSpreadTimer >= mSpreadDelay) {
+			mSpreadCounter += mSpreadDirection;
+
+			mGridSize.x += (mSpreadDirection * ((mSpreadCounter % 2) ? 1 : 2));
+
+			if (mSpreadCounter == 4 || mSpreadCounter == 0) {
+				mSpreadDirection *= -1;
+			}
+
+			mSpreadTimer = 0.0f;
 		}
 	}
 }

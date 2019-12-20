@@ -1,8 +1,8 @@
-#ifndef __BUTTERFLY_H
-#define __BUTTERFLY_H
+#ifndef __BOSS_H
+#define __BOSS_H
 #include "Enemy.h"
 
-class Butterfly : public Enemy {
+class Boss : public Enemy {
 private:
 	// Inherited via Enemy
 	Vector2 LocalFormationPosition() override;
@@ -14,7 +14,8 @@ private:
 	void RenderDeadState() override;
 
 public:
-	Butterfly(int path, int index, bool challenge);
-	~Butterfly();
+	Boss(int path, int index, bool challenge);
+	~Boss();
 };
+
 #endif
