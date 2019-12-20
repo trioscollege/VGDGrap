@@ -33,34 +33,6 @@ void Enemy::CreatePaths() {
 	delete path;
 }
 
-Enemy::Enemy(int path) {
-	mTimer = Timer::Instance();
-
-	mCurrentPath = path;
-
-	mCurrentState = FlyIn;
-
-	mCurrentWaypoint = 1;
-	Position(sPaths[mCurrentPath][0]);
-
-	mTexture = new Texture("AnimatedEnemies.png", 0, 0, 52, 40);
-	mTexture->Parent(this);
-	mTexture->Position(Vec2_Zero);
-
-	mSpeed = 400.0f;
-}
-
-Enemy::~Enemy() {
-	mTimer = nullptr;
-
-	delete mTexture;
-	mTexture = nullptr;
-}
-
-Enemy::States Enemy::CurrentState() {
-	return mCurrentState;
-}
-
 void Enemy::HandleFlyInState() {
 	if (mCurrentWaypoint < sPaths[mCurrentPath].size()) {
 		Vector2 dist = sPaths[mCurrentPath][mCurrentWaypoint] - Position();
@@ -116,6 +88,14 @@ void Enemy::RenderFlyInState() {
 
 void Enemy::RenderFormationState() {
 	mTexture->Render();
+
+	for (unsigned i = 0; i < sPaths[mCurrentPath].size() - 1; ++i) {
+		Graphics::Instance()->DrawLine(
+			sPaths[mCurrentPath][i].x,
+			sPaths[mCurrentPath][i].y,
+			sPaths[mCurrentPath][i + 1].x,
+			sPaths[mCurrentPath][i + 1].y);
+	}
 }
 
 void Enemy::RenderDiveState() {
@@ -141,6 +121,34 @@ void Enemy::RenderStates() {
 		RenderDeadState();
 		break;
 	}
+}
+
+Enemy::Enemy(int path) {
+	mTimer = Timer::Instance();
+
+	mCurrentPath = path;
+
+	mCurrentState = FlyIn;
+
+	mCurrentWaypoint = 1;
+	Position(sPaths[mCurrentPath][0]);
+
+	mTexture = new Texture("AnimatedEnemies.png", 0, 0, 52, 40);
+	mTexture->Parent(this);
+	mTexture->Position(Vec2_Zero);
+
+	mSpeed = 400.0f;
+}
+
+Enemy::~Enemy() {
+	mTimer = nullptr;
+
+	delete mTexture;
+	mTexture = nullptr;
+}
+
+Enemy::States Enemy::CurrentState() {
+	return mCurrentState;
 }
 
 void Enemy::Update() {
