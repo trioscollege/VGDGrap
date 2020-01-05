@@ -8,11 +8,6 @@ void Enemy::CreatePaths() {
 
 	int currentPath = 0;
 	BezierPath * path = new BezierPath();
-	/*path->AddCurve({
-		Vector2(500.0f, 10.0f),
-		Vector2(500.0f, 0.0f),
-		Vector2(500.0f, 310.0f),
-		Vector2(500.0f, 300.0f) }, 1);*/
 	path->AddCurve({
 		Vector2(screenMidPoint + 50.0f, -10.0f),
 		Vector2(screenMidPoint + 50.0f, -20.0f),
