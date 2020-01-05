@@ -100,7 +100,7 @@ namespace SDLFramework {
 			mText[key] = Graphics::Instance()->CreateTextTexture(font, text, color);
 		}
 
-		if (mText[key] != nullptr) {
+		if (mText[key] != nullptr && managed) {
 			mTextureRefCount[mText[key]] += 1;
 		}
 
@@ -177,7 +177,7 @@ namespace SDLFramework {
 					Mix_FreeMusic(elem.second);
 					mMusic.erase(elem.first);
 				}
-				return;
+				return; // work finished, leave function
 			}
 		}
 	}
@@ -191,7 +191,7 @@ namespace SDLFramework {
 					Mix_FreeChunk(elem.second);
 					mSFX.erase(elem.first);
 				}
-				return;
+				return; // work finished, leave function
 			}
 		}
 	}
