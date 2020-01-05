@@ -8,8 +8,7 @@
 
 namespace SDLFramework {
 
-	class AssetManager
-	{
+	class AssetManager {
 	private:
 		static AssetManager * sInstance;
 
