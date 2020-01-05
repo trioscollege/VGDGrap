@@ -1,4 +1,4 @@
-#include "StartScreen.hpp"
+#include "StartScreen.h"
 
 StartScreen::StartScreen() {
 	mTimer = Timer::Instance();

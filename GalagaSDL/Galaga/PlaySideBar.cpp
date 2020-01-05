@@ -1,7 +1,7 @@
-#include "PlaySideBar.hpp"
+#include "PlaySideBar.h"
 
 void PlaySideBar::ClearFlags() {
-	for (int i = 0; i < mFlagTextures.size(); ++i) {
+	for (unsigned i = 0; i < mFlagTextures.size(); ++i) {
 		delete mFlagTextures[i];
 		mFlagTextures[i] = nullptr;
 	}
@@ -33,7 +33,7 @@ void PlaySideBar::AddNextFlag() {
 void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 	int index = (int)mFlagTextures.size();
 	if (index > 0) {
-		mFlagXOffset += width * 0.50f;
+		mFlagXOffset += width * 0.5f;
 	}
 
 	if (mFlagXOffset > 140) {
@@ -77,8 +77,8 @@ PlaySideBar::PlaySideBar() {
 
 	mBackground = new Texture("Black.png");
 	mBackground->Parent(this);
-	mBackground->Position(45.0f, 380.0f);
 	mBackground->Scale(Vector2(3.0f, 10.0f));
+	mBackground->Position(45.0f, 380.0f);
 
 	mHighLabel = new Texture("HIGH", "emulogic.ttf", 32, { 150, 0, 0 });
 	mHighLabel->Parent(this);
@@ -223,7 +223,7 @@ void PlaySideBar::Render() {
 		mTotalShipsLabel->Render();
 	}
 	
-	for (int i = 0; i < mFlagTextures.size(); ++i) {
-		mFlagTextures[i]->Render();
+	for (auto flag : mFlagTextures) {
+		flag->Render();
 	}
 }

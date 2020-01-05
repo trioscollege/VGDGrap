@@ -49,51 +49,51 @@
 
 /* Begin PBXFileReference section */
 		7B030CEB2391CBDF00CD6622 /* Scoreboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scoreboard.cpp; sourceTree = "<group>"; };
-		7B030CEC2391CBDF00CD6622 /* Scoreboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scoreboard.hpp; sourceTree = "<group>"; };
-		7B030CED2391CBDF00CD6622 /* Star.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Star.hpp; sourceTree = "<group>"; };
 		7B030CEE2391CBDF00CD6622 /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Star.cpp; sourceTree = "<group>"; };
-		7B030CEF2391CBE000CD6622 /* BackgroundStars.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackgroundStars.hpp; sourceTree = "<group>"; };
-		7B030CF02391CBE000CD6622 /* StarLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StarLayer.hpp; sourceTree = "<group>"; };
 		7B030CF12391CBE000CD6622 /* StarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarLayer.cpp; sourceTree = "<group>"; };
 		7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundStars.cpp; sourceTree = "<group>"; };
 		7B030CF72391CC3600CD6622 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
-		7B030CF82391CC3600CD6622 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
 		7B392110234E1E190047FB73 /* GalagaSDL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GalagaSDL; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B392113234E1E190047FB73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B39211B234E1E880047FB73 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		7B39211F235DE39A0047FB73 /* Graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graphics.hpp; sourceTree = "<group>"; };
 		7B392120235DE4A80047FB73 /* Graphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
 		7B392122235DE6E20047FB73 /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
-		7B392123235DE6E20047FB73 /* GameManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
 		7B392125235DEA740047FB73 /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
-		7B392126235DEA740047FB73 /* Timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		7B453D79235F47C60064FC0D /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
-		7B453D7B235F52F00064FC0D /* MathHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MathHelper.hpp; sourceTree = "<group>"; };
 		7B453D7C235F558C0064FC0D /* GameEntity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameEntity.cpp; sourceTree = "<group>"; };
-		7B453D7D235F558C0064FC0D /* GameEntity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameEntity.hpp; sourceTree = "<group>"; };
 		7B59146E237465B700C597D5 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
 		7B5914702374690A00C597D5 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
-		7B5914722374697400C597D5 /* AnimatedTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimatedTexture.hpp; sourceTree = "<group>"; };
 		7B5914732374697400C597D5 /* AnimatedTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedTexture.cpp; sourceTree = "<group>"; };
-		7B591475237469A400C597D5 /* AudioManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioManager.hpp; sourceTree = "<group>"; };
 		7B591476237469A400C597D5 /* AudioManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
 		7B6A3551235FA32D00F80D46 /* AssetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
-		7B6A3552235FA32D00F80D46 /* AssetManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AssetManager.hpp; sourceTree = "<group>"; };
 		7B6A3554235FA74E00F80D46 /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
-		7B6A3555235FA74E00F80D46 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
-		7B72DE6E237CB3A40036C2D5 /* StartScreen.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StartScreen.hpp; sourceTree = "<group>"; };
 		7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StartScreen.cpp; sourceTree = "<group>"; };
-		7BB3F56E2391CFB8008E7684 /* PlayScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayScreen.hpp; sourceTree = "<group>"; };
+		7B8CC68A23A89F69002F75F6 /* StarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarLayer.h; sourceTree = "<group>"; };
+		7B8CC68B23A89F69002F75F6 /* BackgroundStars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundStars.h; sourceTree = "<group>"; };
+		7B8CC68C23A89F69002F75F6 /* ScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenManager.h; sourceTree = "<group>"; };
+		7B8CC68D23A89F69002F75F6 /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
+		7B8CC68E23A89F69002F75F6 /* PlayScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScreen.h; sourceTree = "<group>"; };
+		7B8CC68F23A89F69002F75F6 /* StartScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreen.h; sourceTree = "<group>"; };
+		7B8CC69023A89F69002F75F6 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		7B8CC69123A89F69002F75F6 /* PlaySideBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaySideBar.h; sourceTree = "<group>"; };
+		7B8CC69223A89F69002F75F6 /* Scoreboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scoreboard.h; sourceTree = "<group>"; };
+		7B8CC69323A89FBA002F75F6 /* AnimatedTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedTexture.h; sourceTree = "<group>"; };
+		7B8CC69423A89FBA002F75F6 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		7B8CC69523A89FBA002F75F6 /* GameEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEntity.h; sourceTree = "<group>"; };
+		7B8CC69623A8A015002F75F6 /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		7B8CC69723A8A015002F75F6 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		7B8CC69823A8A015002F75F6 /* AssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetManager.h; sourceTree = "<group>"; };
+		7B8CC69923A8A015002F75F6 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		7B8CC69A23A8A016002F75F6 /* Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
+		7B8CC69B23A8A016002F75F6 /* MathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathHelper.h; sourceTree = "<group>"; };
+		7B8CC69C23A8A016002F75F6 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		7B8CC69D23A8A016002F75F6 /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputManager.h; sourceTree = "<group>"; };
 		7BB3F56F2391CFB8008E7684 /* PlaySideBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlaySideBar.cpp; sourceTree = "<group>"; };
 		7BB3F5702391CFB8008E7684 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
-		7BB3F5712391CFB8008E7684 /* Level.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Level.hpp; sourceTree = "<group>"; };
 		7BB3F5722391CFB8008E7684 /* ScreenManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenManager.cpp; sourceTree = "<group>"; };
-		7BB3F5732391CFB8008E7684 /* ScreenManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScreenManager.hpp; sourceTree = "<group>"; };
 		7BB3F5742391CFB8008E7684 /* PlayScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayScreen.cpp; sourceTree = "<group>"; };
-		7BB3F5752391CFB8008E7684 /* PlaySideBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlaySideBar.hpp; sourceTree = "<group>"; };
 		7BCB98EB237CF15F009CBBA1 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = GalagaSDL/Assets; sourceTree = "<group>"; };
 		7BF952B4236A0966004A2957 /* InputManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
-		7BF952B5236A0966004A2957 /* InputManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,22 +134,22 @@
 			children = (
 				7B39211E235A17D30047FB73 /* Entities */,
 				7B72DE6D237CB3820036C2D5 /* Galaga */,
+				7B8CC69823A8A015002F75F6 /* AssetManager.h */,
 				7B6A3551235FA32D00F80D46 /* AssetManager.cpp */,
-				7B6A3552235FA32D00F80D46 /* AssetManager.hpp */,
+				7B8CC69723A8A015002F75F6 /* AudioManager.h */,
 				7B591476237469A400C597D5 /* AudioManager.cpp */,
-				7B591475237469A400C597D5 /* AudioManager.hpp */,
+				7B8CC69C23A8A016002F75F6 /* GameManager.h */,
 				7B392122235DE6E20047FB73 /* GameManager.cpp */,
-				7B392123235DE6E20047FB73 /* GameManager.hpp */,
-				7B39211F235DE39A0047FB73 /* Graphics.hpp */,
+				7B8CC69623A8A015002F75F6 /* Graphics.h */,
 				7B392120235DE4A80047FB73 /* Graphics.cpp */,
+				7B8CC69D23A8A016002F75F6 /* InputManager.h */,
 				7BF952B4236A0966004A2957 /* InputManager.cpp */,
-				7BF952B5236A0966004A2957 /* InputManager.hpp */,
 				7B392113234E1E190047FB73 /* main.cpp */,
-				7B453D7B235F52F00064FC0D /* MathHelper.hpp */,
+				7B8CC69B23A8A016002F75F6 /* MathHelper.h */,
+				7B8CC69A23A8A016002F75F6 /* Random.h */,
 				7B030CF72391CC3600CD6622 /* Random.cpp */,
-				7B030CF82391CC3600CD6622 /* Random.hpp */,
+				7B8CC69923A8A015002F75F6 /* Timer.h */,
 				7B392125235DEA740047FB73 /* Timer.cpp */,
-				7B392126235DEA740047FB73 /* Timer.hpp */,
 			);
 			path = GalagaSDL;
 			sourceTree = "<group>";
@@ -168,12 +168,12 @@
 		7B39211E235A17D30047FB73 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				7B8CC69323A89FBA002F75F6 /* AnimatedTexture.h */,
 				7B5914732374697400C597D5 /* AnimatedTexture.cpp */,
-				7B5914722374697400C597D5 /* AnimatedTexture.hpp */,
+				7B8CC69523A89FBA002F75F6 /* GameEntity.h */,
 				7B453D7C235F558C0064FC0D /* GameEntity.cpp */,
-				7B453D7D235F558C0064FC0D /* GameEntity.hpp */,
+				7B8CC69423A89FBA002F75F6 /* Texture.h */,
 				7B6A3554235FA74E00F80D46 /* Texture.cpp */,
-				7B6A3555235FA74E00F80D46 /* Texture.hpp */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -181,23 +181,23 @@
 		7B72DE6D237CB3820036C2D5 /* Galaga */ = {
 			isa = PBXGroup;
 			children = (
-				7BB3F5702391CFB8008E7684 /* Level.cpp */,
-				7BB3F5712391CFB8008E7684 /* Level.hpp */,
-				7BB3F5742391CFB8008E7684 /* PlayScreen.cpp */,
-				7BB3F56E2391CFB8008E7684 /* PlayScreen.hpp */,
-				7BB3F56F2391CFB8008E7684 /* PlaySideBar.cpp */,
-				7BB3F5752391CFB8008E7684 /* PlaySideBar.hpp */,
-				7BB3F5722391CFB8008E7684 /* ScreenManager.cpp */,
-				7BB3F5732391CFB8008E7684 /* ScreenManager.hpp */,
+				7B8CC68B23A89F69002F75F6 /* BackgroundStars.h */,
 				7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */,
-				7B030CEF2391CBE000CD6622 /* BackgroundStars.hpp */,
+				7B8CC69023A89F69002F75F6 /* Level.h */,
+				7BB3F5702391CFB8008E7684 /* Level.cpp */,
+				7B8CC68E23A89F69002F75F6 /* PlayScreen.h */,
+				7BB3F5742391CFB8008E7684 /* PlayScreen.cpp */,
+				7B8CC69123A89F69002F75F6 /* PlaySideBar.h */,
+				7BB3F56F2391CFB8008E7684 /* PlaySideBar.cpp */,
+				7B8CC68C23A89F69002F75F6 /* ScreenManager.h */,
+				7BB3F5722391CFB8008E7684 /* ScreenManager.cpp */,
+				7B8CC69223A89F69002F75F6 /* Scoreboard.h */,
 				7B030CEB2391CBDF00CD6622 /* Scoreboard.cpp */,
-				7B030CEC2391CBDF00CD6622 /* Scoreboard.hpp */,
+				7B8CC68D23A89F69002F75F6 /* Star.h */,
 				7B030CEE2391CBDF00CD6622 /* Star.cpp */,
-				7B030CED2391CBDF00CD6622 /* Star.hpp */,
+				7B8CC68A23A89F69002F75F6 /* StarLayer.h */,
 				7B030CF12391CBE000CD6622 /* StarLayer.cpp */,
-				7B030CF02391CBE000CD6622 /* StarLayer.hpp */,
-				7B72DE6E237CB3A40036C2D5 /* StartScreen.hpp */,
+				7B8CC68F23A89F69002F75F6 /* StartScreen.h */,
 				7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */,
 			);
 			path = Galaga;

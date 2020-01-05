@@ -1,4 +1,4 @@
- #include "ScreenManager.hpp"
+ #include "ScreenManager.h"
 
 ScreenManager * ScreenManager::sInstance = nullptr;
 

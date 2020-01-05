@@ -1,4 +1,4 @@
-#include "Scoreboard.hpp"
+#include "Scoreboard.h"
 
 Scoreboard::Scoreboard() 
 	: Scoreboard({230, 230, 230}) {

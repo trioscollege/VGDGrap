@@ -1,4 +1,4 @@
-#include "PlayScreen.hpp"
+#include "PlayScreen.h"
 
 void PlayScreen::StartNextLevel() {
 	mCurrentStage += 1;
@@ -11,7 +11,6 @@ void PlayScreen::StartNextLevel() {
 
 PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
-	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
 
 	mStars = BackgroundStars::Instance();
@@ -31,7 +30,7 @@ PlayScreen::PlayScreen() {
 
 PlayScreen::~PlayScreen() {
 	mTimer = nullptr;
-	mInput = nullptr;
+	mAudio = nullptr;
 
 	mStars = nullptr;
 
@@ -46,12 +45,12 @@ PlayScreen::~PlayScreen() {
 }
 
 void PlayScreen::StartNewGame() {
-	mStars->Scroll(false);
 	mSideBar->SetHighScore(30000);
 	mSideBar->SetShips(2);
+	mStars->Scroll(false);
 	mGameStarted = false;
-	mAudio->PlayMusic("MUS/GameStart.wav", 0);
 	mCurrentStage = 0;
+	mAudio->PlayMusic("MUS/GameStart.wav", 0);
 }
 
 void PlayScreen::Update() {
@@ -62,16 +61,18 @@ void PlayScreen::Update() {
 				StartNextLevel();
 			}
 		}
+		else {
+			mLevel->Update();
+		}
+
+		if (mCurrentStage > 0) {
+			mSideBar->Update();
+		}
 	}
 	else {
 		if (!Mix_PlayingMusic()) {
 			mGameStarted = true;
 		}
-	}
-	
-	if (mGameStarted && mLevelStarted) {
-		mSideBar->Update();
-		mLevel->Update();
 	}
 }
 
