@@ -160,8 +160,7 @@ Enemy::States Enemy::CurrentState() {
 	return mCurrentState;
 }
 
-Enemy::Types Enemy::Type()
-{
+Enemy::Types Enemy::Type() {
 	return mType;
 }
 
