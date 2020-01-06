@@ -11,16 +11,13 @@ Vector2 Butterfly::LocalFormationPosition()
 	return retVal;
 }
 
-void Butterfly::HandleDiveState()
-{
+void Butterfly::HandleDiveState(){
 }
 
-void Butterfly::HandleDeadState()
-{
+void Butterfly::HandleDeadState(){
 }
 
 void Butterfly::RenderDiveState() {
-
 }
 
 void Butterfly::RenderDeadState() {
