@@ -12,6 +12,10 @@
 		7B030CF52391CBE000CD6622 /* StarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF12391CBE000CD6622 /* StarLayer.cpp */; };
 		7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */; };
 		7B030CF92391CC3600CD6622 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF72391CC3600CD6622 /* Random.cpp */; };
+		7B35C83B23C2BFF80030B301 /* BezierPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83A23C2BFF80030B301 /* BezierPath.cpp */; };
+		7B35C84223C2C01A0030B301 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83D23C2C01A0030B301 /* Enemy.cpp */; };
+		7B35C84323C2C01A0030B301 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83E23C2C01A0030B301 /* Bullet.cpp */; };
+		7B35C84423C2C01A0030B301 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83F23C2C01A0030B301 /* Player.cpp */; };
 		7B392114234E1E190047FB73 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392113234E1E190047FB73 /* main.cpp */; };
 		7B39211D234E1EE40047FB73 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B39211B234E1E880047FB73 /* SDL2.framework */; };
 		7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B392120235DE4A80047FB73 /* Graphics.cpp */; };
@@ -53,6 +57,14 @@
 		7B030CF12391CBE000CD6622 /* StarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarLayer.cpp; sourceTree = "<group>"; };
 		7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundStars.cpp; sourceTree = "<group>"; };
 		7B030CF72391CC3600CD6622 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		7B35C83923C2BFF80030B301 /* BezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPath.h; sourceTree = "<group>"; };
+		7B35C83A23C2BFF80030B301 /* BezierPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BezierPath.cpp; sourceTree = "<group>"; };
+		7B35C83C23C2C01A0030B301 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		7B35C83D23C2C01A0030B301 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		7B35C83E23C2C01A0030B301 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		7B35C83F23C2C01A0030B301 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		7B35C84023C2C01A0030B301 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		7B35C84123C2C01A0030B301 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		7B392110234E1E190047FB73 /* GalagaSDL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GalagaSDL; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B392113234E1E190047FB73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B39211B234E1E880047FB73 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -138,6 +150,8 @@
 				7B6A3551235FA32D00F80D46 /* AssetManager.cpp */,
 				7B8CC69723A8A015002F75F6 /* AudioManager.h */,
 				7B591476237469A400C597D5 /* AudioManager.cpp */,
+				7B35C83923C2BFF80030B301 /* BezierPath.h */,
+				7B35C83A23C2BFF80030B301 /* BezierPath.cpp */,
 				7B8CC69C23A8A016002F75F6 /* GameManager.h */,
 				7B392122235DE6E20047FB73 /* GameManager.cpp */,
 				7B8CC69623A8A015002F75F6 /* Graphics.h */,
@@ -183,8 +197,14 @@
 			children = (
 				7B8CC68B23A89F69002F75F6 /* BackgroundStars.h */,
 				7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */,
+				7B35C83C23C2C01A0030B301 /* Bullet.h */,
+				7B35C83E23C2C01A0030B301 /* Bullet.cpp */,
+				7B35C84023C2C01A0030B301 /* Enemy.h */,
+				7B35C83D23C2C01A0030B301 /* Enemy.cpp */,
 				7B8CC69023A89F69002F75F6 /* Level.h */,
 				7BB3F5702391CFB8008E7684 /* Level.cpp */,
+				7B35C84123C2C01A0030B301 /* Player.h */,
+				7B35C83F23C2C01A0030B301 /* Player.cpp */,
 				7B8CC68E23A89F69002F75F6 /* PlayScreen.h */,
 				7BB3F5742391CFB8008E7684 /* PlayScreen.cpp */,
 				7B8CC69123A89F69002F75F6 /* PlaySideBar.h */,
@@ -260,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B35C83B23C2BFF80030B301 /* BezierPath.cpp in Sources */,
 				7BB3F5772391CFB8008E7684 /* Level.cpp in Sources */,
 				7B6A3553235FA32D00F80D46 /* AssetManager.cpp in Sources */,
 				7B6A3556235FA74E00F80D46 /* Texture.cpp in Sources */,
@@ -267,6 +288,7 @@
 				7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */,
 				7B392124235DE6E20047FB73 /* GameManager.cpp in Sources */,
 				7B030CF52391CBE000CD6622 /* StarLayer.cpp in Sources */,
+				7B35C84423C2C01A0030B301 /* Player.cpp in Sources */,
 				7BF952B6236A0966004A2957 /* InputManager.cpp in Sources */,
 				7B591477237469A400C597D5 /* AudioManager.cpp in Sources */,
 				7B030CF42391CBE000CD6622 /* Star.cpp in Sources */,
@@ -274,11 +296,13 @@
 				7B392114234E1E190047FB73 /* main.cpp in Sources */,
 				7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */,
 				7BB3F5792391CFB8008E7684 /* PlayScreen.cpp in Sources */,
+				7B35C84323C2C01A0030B301 /* Bullet.cpp in Sources */,
 				7B030CF92391CC3600CD6622 /* Random.cpp in Sources */,
 				7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */,
 				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
 				7BB3F5782391CFB8008E7684 /* ScreenManager.cpp in Sources */,
 				7B030CF32391CBE000CD6622 /* Scoreboard.cpp in Sources */,
+				7B35C84223C2C01A0030B301 /* Enemy.cpp in Sources */,
 				7BB3F5762391CFB8008E7684 /* PlaySideBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,8 +4,9 @@
 
 namespace SDLFramework {
 
-#define PI 3.1415926535
+#define PI 3.1415926535f
 #define DEG_TO_RAD PI / 180.0f
+#define RAD_TO_DEG 180.0f / PI
 
 	struct Vector2 {
 		float x;
@@ -24,7 +25,12 @@ namespace SDLFramework {
 
 		Vector2 Normalized() const {
 			float mag = Magnitude();
-			return Vector2(x / mag, y / mag);
+			if (mag == 0.0f) {
+				return Vector2(0.0f, 0.0f);
+			}
+			else {
+				return Vector2(x / mag, y / mag);
+			}
 		}
 
 		Vector2 & operator+=(const Vector2 & rhs) {
@@ -88,5 +94,26 @@ namespace SDLFramework {
 	const Vector2 Vec2_One = { 1.0f, 1.0f };
 	const Vector2 Vec2_Up = { 0.0f, 1.0f };
 	const Vector2 Vec2_Right = { 1.0f, 0.0f };
+
+	// cubic bezier curve
+	struct BezierCurve {
+		Vector2 p0;
+		Vector2 p1;
+		Vector2 p2;
+		Vector2 p3;
+
+		Vector2 CalculatePointAlongCurve(float t) {
+			float tt = t * t;
+			float ttt = tt * t;
+			float u = 1.0f - t;
+			float uu = u * u;
+			float uuu = uu * u;
+
+			Vector2 point = (uuu * p0) + (3 * uu * t * p1) + (3 * u * tt * p2) + (ttt * p3);
+			point.x = (float)round(point.x);
+			point.y = (float)round(point.y);
+			return point;
+		}
+	};
 }
 #endif

@@ -22,6 +22,8 @@ private:
 	bool mLevelStarted;
 	int mCurrentStage;
 
+	Player * mPlayer;
+
 	void StartNextLevel();
 
 public:
@@ -29,6 +31,8 @@ public:
 	~PlayScreen();
 
 	void StartNewGame();
+
+	bool GameOver();
 
 	void Update();
 	void Render();

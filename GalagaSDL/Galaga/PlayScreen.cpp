@@ -6,7 +6,7 @@ void PlayScreen::StartNextLevel() {
 	mLevelStarted = true;
 	
 	delete mLevel;
-	mLevel = new Level(mCurrentStage, mSideBar);
+	mLevel = new Level(mCurrentStage, mSideBar, mPlayer);
 }
 
 PlayScreen::PlayScreen() {
@@ -26,6 +26,10 @@ PlayScreen::PlayScreen() {
 	mLevel = nullptr;
 	mLevelStartDelay = 1.0f;
 	mLevelStarted = false;
+
+	mPlayer = nullptr;
+
+	Enemy::CreatePaths();
 }
 
 PlayScreen::~PlayScreen() {
@@ -42,15 +46,33 @@ PlayScreen::~PlayScreen() {
 
 	delete mLevel;
 	mLevel = nullptr;
+
+	delete mPlayer;
+	mPlayer = nullptr;
 }
 
 void PlayScreen::StartNewGame() {
+	delete mPlayer;
+	mPlayer = new Player();
+	mPlayer->Parent(this);
+	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.8f);
+	mPlayer->Active(false);
+
 	mSideBar->SetHighScore(30000);
-	mSideBar->SetShips(2);
+	mSideBar->SetShips(mPlayer->Lives());
+	mSideBar->SetPlayerScore(mPlayer->Score());
+	mSideBar->SetLevel(0);
+
 	mStars->Scroll(false);
 	mGameStarted = false;
+	mLevelStarted = false;
+	mLevelStartTimer = 0.0f;
 	mCurrentStage = 0;
 	mAudio->PlayMusic("MUS/GameStart.wav", 0);
+}
+
+bool PlayScreen::GameOver() {
+	return !mLevelStarted ? false : (mLevel->State() == Level::GameOver);
 }
 
 void PlayScreen::Update() {
@@ -63,11 +85,16 @@ void PlayScreen::Update() {
 		}
 		else {
 			mLevel->Update();
+			if (mLevel->State() == Level::Finished) {
+				mLevelStarted = false;
+			}
 		}
 
 		if (mCurrentStage > 0) {
 			mSideBar->Update();
 		}
+
+		mPlayer->Update();
 	}
 	else {
 		if (!Mix_PlayingMusic()) {
@@ -83,7 +110,12 @@ void PlayScreen::Render() {
 		mStartLabel->Render();
 	}
 
-	if (mGameStarted && mLevelStarted) {
-		mLevel->Render();
+	if (mGameStarted) {
+
+		if (mLevelStarted) {
+			mLevel->Render();
+		}
+
+		mPlayer->Render();
 	}
 }
