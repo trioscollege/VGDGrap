@@ -156,7 +156,6 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mFormation->Position(Graphics::SCREEN_WIDTH * 0.4f, 150.0f);
 	Enemy::SetFormation(mFormation);
 	
-	//mEnemy = new Butterfly(0, 0, false);
 	mButterflyCount = 0;
 	mWaspCount = 0;
 	mBossCount = 0;
@@ -181,9 +180,6 @@ Level::~Level() {
 
 	delete mFormation;
 	mFormation = nullptr;
-
-	/*delete mEnemy;
-	mEnemy = nullptr;*/
 
 	for (auto e : mEnemies) {
 		delete e;
