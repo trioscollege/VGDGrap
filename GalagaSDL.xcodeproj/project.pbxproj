@@ -123,6 +123,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B35C85223C2CAAE0030B301 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7B8CC69823A8A015002F75F6 /* AssetManager.h */,
+				7B6A3551235FA32D00F80D46 /* AssetManager.cpp */,
+				7B8CC69723A8A015002F75F6 /* AudioManager.h */,
+				7B591476237469A400C597D5 /* AudioManager.cpp */,
+				7B8CC69C23A8A016002F75F6 /* GameManager.h */,
+				7B392122235DE6E20047FB73 /* GameManager.cpp */,
+				7B8CC69623A8A015002F75F6 /* Graphics.h */,
+				7B392120235DE4A80047FB73 /* Graphics.cpp */,
+				7B8CC69D23A8A016002F75F6 /* InputManager.h */,
+				7BF952B4236A0966004A2957 /* InputManager.cpp */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		7B392107234E1E190047FB73 = {
 			isa = PBXGroup;
 			children = (
@@ -144,20 +161,11 @@
 		7B392112234E1E190047FB73 /* GalagaSDL */ = {
 			isa = PBXGroup;
 			children = (
+				7B35C85223C2CAAE0030B301 /* Managers */,
 				7B39211E235A17D30047FB73 /* Entities */,
 				7B72DE6D237CB3820036C2D5 /* Galaga */,
-				7B8CC69823A8A015002F75F6 /* AssetManager.h */,
-				7B6A3551235FA32D00F80D46 /* AssetManager.cpp */,
-				7B8CC69723A8A015002F75F6 /* AudioManager.h */,
-				7B591476237469A400C597D5 /* AudioManager.cpp */,
 				7B35C83923C2BFF80030B301 /* BezierPath.h */,
 				7B35C83A23C2BFF80030B301 /* BezierPath.cpp */,
-				7B8CC69C23A8A016002F75F6 /* GameManager.h */,
-				7B392122235DE6E20047FB73 /* GameManager.cpp */,
-				7B8CC69623A8A015002F75F6 /* Graphics.h */,
-				7B392120235DE4A80047FB73 /* Graphics.cpp */,
-				7B8CC69D23A8A016002F75F6 /* InputManager.h */,
-				7BF952B4236A0966004A2957 /* InputManager.cpp */,
 				7B392113234E1E190047FB73 /* main.cpp */,
 				7B8CC69B23A8A016002F75F6 /* MathHelper.h */,
 				7B8CC69A23A8A016002F75F6 /* Random.h */,
