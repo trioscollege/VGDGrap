@@ -43,7 +43,7 @@ Enemy::Enemy(int path, int index, bool challenge)
 	Position(sPaths[mCurrentPath][0]);
 
 	mTextures[0] = nullptr;
-	mTextures[2] = nullptr;
+	mTextures[1] = nullptr;
 
 	mSpeed = 400.0f;
 }

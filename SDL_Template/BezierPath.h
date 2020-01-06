@@ -1,4 +1,4 @@
-#ifndef __BEZIERPATH_h
+#ifndef __BEZIERPATH_H
 #define __BEZIERPATH_H
 #include "MathHelper.h"
 #include <vector>
