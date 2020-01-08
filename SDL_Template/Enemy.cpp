@@ -164,7 +164,11 @@ Enemy::Types Enemy::Type() {
 	return mType;
 }
 
-void Enemy::Dive() {
+int Enemy::Index() {
+	return mIndex;
+}
+
+void Enemy::Dive(int type) {
 	Parent(nullptr);
 	mCurrentState = Diving;
 	mDiveStartPosition = Position();

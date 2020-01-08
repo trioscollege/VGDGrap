@@ -67,7 +67,9 @@ public:
 
 	Types Type();
 
-	void Dive();
+	int Index();
+
+	virtual void Dive(int type = 0);
 
 	void Update();
 	void Render();
