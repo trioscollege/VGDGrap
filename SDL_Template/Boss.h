@@ -4,6 +4,10 @@
 
 class Boss : public Enemy {
 private:
+	static std::vector<std::vector<Vector2>> sDivePaths;
+
+	bool mCapture;
+
 	// Inherited via Enemy
 	Vector2 LocalFormationPosition() override;
 
@@ -14,6 +18,10 @@ private:
 	void RenderDeadState() override;
 
 public:
+	static void CreateDivePaths();
+
+	void Dive(int type = 0) override;
+
 	Boss(int path, int index, bool challenge);
 	~Boss();
 };
