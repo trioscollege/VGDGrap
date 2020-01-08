@@ -17,5 +17,4 @@ public:
 	Boss(int path, int index, bool challenge);
 	~Boss();
 };
-
 #endif

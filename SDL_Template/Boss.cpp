@@ -2,8 +2,9 @@
 
 Vector2 Boss::LocalFormationPosition() {
 	Vector2 retVal;
+	int dir = mIndex % 2 == 0 ? -1 : 1;
 
-	retVal.x = (sFormation->GridSize().x + sFormation->GridSize().x * 2 * (mIndex / 2)) * (float)pow(-1, mIndex % 2 + 1);
+	retVal.x = (sFormation->GridSize().x + sFormation->GridSize().x * 2 * (mIndex / 2)) * (float)dir;
 	retVal.y = -sFormation->GridSize().y;
 
 	return retVal;
@@ -16,11 +17,9 @@ void Boss::HandleDeadState() {
 }
 
 void Boss::RenderDiveState() {
-
 }
 
 void Boss::RenderDeadState() {
-
 }
 
 Boss::Boss(int path, int index, bool challenge)
