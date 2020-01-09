@@ -107,8 +107,6 @@ void PlayScreen::Update() {
 }
 
 void PlayScreen::Render() {
-	mSideBar->Render();
-
 	if (!mGameStarted) {
 		mStartLabel->Render();
 	}
@@ -121,4 +119,6 @@ void PlayScreen::Render() {
 
 		mPlayer->Render();
 	}
+
+	mSideBar->Render();
 }

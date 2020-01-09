@@ -59,16 +59,71 @@ void Level::HandlePlayerDeath() {
 }
 
 void Level::HandleEnemySpawning() {
-	if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_S) && mButterflyCount < MAX_BUTTERFLIES) {
-		mEnemies.push_back(new Butterfly(0, mButterflyCount++, false));
-	}
+	mSpawnTimer += mTimer->DeltaTime();
+	if (mSpawnTimer >= mSpawnDelay) {
+		XMLElement * element = mSpawningPatterns.FirstChildElement("Level")->FirstChild()->NextSiblingElement();
+		bool spawned = false;
+		bool priorityFound = false;
 
-	if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_D) && mWaspCount < MAX_WASPS) {
-		mEnemies.push_back(new Wasp(0, mWaspCount++, false, false));
-	}
+		while (element != nullptr) {
+			int priority = element->IntAttribute("priority");
+			int path = element->IntAttribute("path");
+			XMLElement * child = element->FirstChildElement();
 
-	if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_F) && mBossCount < MAX_BOSSES) {
-		mEnemies.push_back(new Boss(0, mBossCount++, false));
+			if (mCurrentFlyInPriority == priority) {
+				priorityFound = true;
+				
+				for (int i = 0; i < mCurrentFlyInIndex && child != nullptr; i++) {
+					child = child->NextSiblingElement();
+				}
+
+				if (child != nullptr) {
+					std::string type = child->Attribute("type");
+					int index = child->IntAttribute("index");
+
+					if (type.compare("Butterfly") == 0) {
+						mEnemies.push_back(new Butterfly(path, index, false));
+						mButterflyCount += 1;
+					}
+					else if (type.compare("Wasp") == 0) {
+						mEnemies.push_back(new Wasp(path, index, false, false));
+						mWaspCount += 1;
+					}
+					else if (type.compare("Boss") == 0) {
+						mEnemies.push_back(new Boss(path, index, false));
+						mBossCount += 1;
+					}
+
+					spawned = true;
+				}
+			}
+
+			element = element->NextSiblingElement();
+		}
+
+		if (!priorityFound) {
+			mSpawningFinished = true;
+		}
+		else {
+			if (!spawned) {
+				bool flyingIn = false;
+
+				for (auto e : mEnemies) {
+					if (flyingIn = (e->CurrentState() == Enemy::FlyIn)) {
+						break; // enemy still flying in, can stop checking
+					}
+				}
+
+				if (!flyingIn) {
+					mCurrentFlyInPriority += 1;
+					mCurrentFlyInIndex = 0;
+				}
+			}
+			else {
+				mCurrentFlyInIndex += 1;
+			}
+		}
+		mSpawnTimer = 0.0f;
 	}
 }
 
@@ -119,6 +174,7 @@ void Level::HandleEnemyDiving() {
 					int secondEscortIndex = firstEscortIndex + 4;
 
 					for (auto f : mEnemies) {
+						// verify the enemy is a butterfly in formation and has either the first or second escort index
 						if (f->Type() == Enemy::Butterfly && f->CurrentState() == Enemy::InFormation
 							&& (f->Index() == firstEscortIndex || f->Index() == secondEscortIndex)) {
 							f->Dive(1);
@@ -189,6 +245,16 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mButterflyCount = 0;
 	mWaspCount = 0;
 	mBossCount = 0;
+
+	std::string fullPath = SDL_GetBasePath();
+	fullPath.append("Data/Level1.xml");
+	mSpawningPatterns.LoadFile(fullPath.c_str());
+
+	mCurrentFlyInPriority = 0;
+	mCurrentFlyInIndex = 0;
+	mSpawningFinished = false;
+	mSpawnDelay = 0.2f;
+	mSpawnTimer = 0.0f;
 }
 
 Level::~Level() {
@@ -226,7 +292,9 @@ void Level::Update() {
 		HandleStartLabels();
 	}
 	else {
-		HandleEnemySpawning();
+		if (!mSpawningFinished) {
+			HandleEnemySpawning();
+		}
 		HandleEnemyFormation();
 		HandleEnemyDiving();
 		

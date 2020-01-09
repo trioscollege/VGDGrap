@@ -86,7 +86,8 @@
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)..\dep\devel\x86\*.dll" "$(OutDir)
-xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
+xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s
+xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -104,7 +105,8 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)..\dep\devel\x64\*.dll" "$(OutDir)
-xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
+xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s
+xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -126,7 +128,8 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)..\dep\devel\x86\*.dll" "$(OutDir)
-xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
+xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s
+xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,7 +151,8 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)..\dep\devel\x64\*.dll" "$(OutDir)
-xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
+xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s
+xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -179,6 +183,7 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Wasp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +214,7 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Wasp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

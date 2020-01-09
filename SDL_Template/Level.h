@@ -6,6 +6,9 @@
 #include "Butterfly.h"
 #include "Wasp.h"
 #include "Boss.h"
+#include "tinyxml2.h"
+
+using namespace tinyxml2;
 
 class Level : public GameEntity {
 public:
@@ -53,6 +56,14 @@ private:
 	int mWaspCount;
 	int mBossCount;
 	std::vector<Enemy*> mEnemies;
+
+	XMLDocument mSpawningPatterns;
+	int mCurrentFlyInPriority;
+	int mCurrentFlyInIndex;
+
+	bool mSpawningFinished;
+	float mSpawnDelay;
+	float mSpawnTimer;
 
 	void StartStage();
 	void HandleStartLabels();
