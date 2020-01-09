@@ -115,6 +115,6 @@ namespace SDLFramework {
 	}
 
 	void GameEntity::Rotate(float amount) {
-		mRotation += amount;
+		Rotation(mRotation + amount);
 	}
 }
