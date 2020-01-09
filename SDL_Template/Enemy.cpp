@@ -52,7 +52,7 @@ void Enemy::CreatePaths() {
 	delete path;
 
 	currentPath = 2;
-	int temp = screenMidPoint - 100.0f;
+	float temp = screenMidPoint - 100.0f;
 
 	path = new BezierPath();
 	path->AddCurve({
@@ -82,7 +82,7 @@ void Enemy::CreatePaths() {
 
 	currentPath = 3;
 	temp = screenMidPoint + 60.0f;
-	int temp2 = fullScreen - 40.0f;
+	float temp2 = fullScreen - 40.0f;
 
 	path = new BezierPath();
 	path->AddCurve({
@@ -147,7 +147,6 @@ void Enemy::PathComplete() {
 
 void Enemy::JoinFormation() {
 	Position(WorldFormationPosition());
-	Rotation(0);
 	Parent(sFormation);
 	mCurrentState = InFormation;
 }
@@ -194,6 +193,20 @@ void Enemy::HandleFlyInState() {
 
 void Enemy::HandleFormationState() {
 	Position(LocalFormationPosition());
+
+	float rotation = Rotation();
+
+	if (rotation != 0.0f) {
+		// epsilon for rotation
+		if (rotation > 5.0f) {
+			float rotationSpeed = 200.0f;
+			float rotationDir = (rotation == 180.0f) ? 1.0f : rotation - 180.0f;
+			Rotate((rotationDir / abs(rotationDir)) * mTimer->DeltaTime() * rotationSpeed);
+		}
+		else {
+			Rotation(0.0f);
+		}
+	}
 }
 
 void Enemy::HandleStates() {
