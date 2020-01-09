@@ -119,6 +119,7 @@ void Level::HandleEnemyDiving() {
 					int secondEscortIndex = firstEscortIndex + 4;
 
 					for (auto f : mEnemies) {
+						// verify the enemy is a butterfly in formation and has either the first or second escort index
 						if (f->Type() == Enemy::Butterfly && f->CurrentState() == Enemy::InFormation
 							&& (f->Index() == firstEscortIndex || f->Index() == secondEscortIndex)) {
 							f->Dive(1);
