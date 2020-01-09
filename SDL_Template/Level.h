@@ -72,6 +72,22 @@ private:
 	float mSpawnDelay;
 	float mSpawnTimer;
 
+	Butterfly * mDivingButterfly;
+	bool mSkipFirstButterfly;
+	float mButterflyDiveDelay;
+	float mButterflyDiveTimer;
+
+	Wasp * mDivingWasp;
+	Wasp * mDivingWasp2;
+	float mWaspDiveDelay;
+	float mWaspDiveTimer;
+
+	Boss * mDivingBoss;
+	bool mCaptureDive;
+	bool mSkipFirstBoss;
+	float mBossDiveDelay;
+	float mBossDiveTimer;
+
 	void StartStage();
 	void HandleStartLabels();
 	void HandleCollisions();

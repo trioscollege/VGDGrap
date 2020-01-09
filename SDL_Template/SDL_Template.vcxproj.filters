@@ -126,6 +126,9 @@
     <ClCompile Include="tinyxml2.cpp">
       <Filter>Source Files\TinyXML</Filter>
     </ClCompile>
+    <ClCompile Include="CaptureBeam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="tinyxml2.h">
       <Filter>Header Files\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptureBeam.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

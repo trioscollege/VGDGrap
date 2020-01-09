@@ -94,7 +94,7 @@ void Level::HandleEnemySpawning() {
 
 			if (mCurrentFlyInPriority == priority) {
 				priorityFound = true;
-				
+
 				for (int i = 0; i < mCurrentFlyInIndex && child != nullptr; i++) {
 					child = child->NextSiblingElement();
 				}
@@ -190,45 +190,99 @@ void Level::HandleEnemyFormation() {
 }
 
 void Level::HandleEnemyDiving() {
-	if (mFormation->Locked()) {
-		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_V)) {
-			for (auto e : mEnemies) {
-				if (e->Type() == Enemy::Wasp && e->CurrentState() == Enemy::InFormation) {
-					e->Dive();
-					break; // work done, leave loop.
-				}
-			}
-		}
+	// Butterfly diving
+	if (mDivingButterfly == nullptr) {
+		mButterflyDiveTimer += mTimer->DeltaTime();
 
-		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_B)) {
-			for (auto e : mEnemies) {
-				if (e->Type() == Enemy::Butterfly && e->CurrentState() == Enemy::InFormation) {
-					e->Dive();
-					break; // work done, leave loop.
-				}
-			}
-		}
+		if (mButterflyDiveTimer >= mButterflyDiveDelay) {
+			bool skipped = false;
 
-		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_H)) {
-			for (auto e : mEnemies) {
-				if (e->Type() == Enemy::Boss && e->CurrentState() == Enemy::InFormation) {
-					e->Dive();
-
-					int index = e->Index();
-					int firstEscortIndex = (index % 2 == 0) ? (index * 2) : (index * 2 - 1);
-					int secondEscortIndex = firstEscortIndex + 4;
-
-					for (auto f : mEnemies) {
-						// verify the enemy is a butterfly in formation and has either the first or second escort index
-						if (f->Type() == Enemy::Butterfly && f->CurrentState() == Enemy::InFormation
-							&& (f->Index() == firstEscortIndex || f->Index() == secondEscortIndex)) {
-							f->Dive(1);
-						}
+			for (int i = MAX_BUTTERFLIES - 1; i >= 0; i--) {
+				if (mFormationButterflies[i]->CurrentState() == Enemy::InFormation) {
+					if (!mSkipFirstButterfly || (mSkipFirstButterfly && skipped)) {
+						mDivingButterfly = mFormationButterflies[i];
+						mDivingButterfly->Dive();
+						mSkipFirstButterfly = !mSkipFirstButterfly;
+						break; // work done, leave loop
 					}
+				}
+				skipped = true;
+			}
+			mButterflyDiveTimer = 0.0f;
+		}
+	}
+	else {
+		if (mDivingButterfly->CurrentState() != Enemy::Diving) {
+			mDivingButterfly = nullptr;
+		}
+	}
 
-					break; // work done, leave loop.
+	// Wasp diving
+	mWaspDiveTimer += mTimer->DeltaTime();
+	if (mWaspDiveTimer >= mWaspDiveDelay) {
+		for (int i = MAX_WASPS - 1; i >= 0; i--) {
+			if (mFormationWasps[i]->CurrentState() == Enemy::InFormation) {
+				if (mDivingWasp == nullptr) {
+					mDivingWasp = mFormationWasps[i];
+					mDivingWasp->Dive();
+				}
+				else if (mDivingWasp2 == nullptr) {
+					mDivingWasp2 = mFormationWasps[i];
+					mDivingWasp2->Dive();
+				}
+				break;
+			}
+		}
+
+		mWaspDiveTimer = 0.0f;
+	}
+
+	if (mDivingWasp != nullptr && mDivingWasp->CurrentState() != Enemy::Diving) {
+		mDivingWasp = nullptr;
+	}
+	if (mDivingWasp2 != nullptr && mDivingWasp2->CurrentState() != Enemy::Diving) {
+		mDivingWasp2 = nullptr;
+	}
+
+	// Boss diving
+	if (mDivingBoss == nullptr) {
+		mBossDiveTimer += mTimer->DeltaTime();
+
+		if (mBossDiveTimer >= mBossDiveDelay) {
+			bool skipped = false;
+			for (int i = MAX_BOSSES - 1; i >= 0; i--) {
+				if (mFormationBosses[i]->CurrentState() == Enemy::InFormation) {
+					if (!mSkipFirstBoss || (mSkipFirstBoss && skipped)) {
+						mDivingBoss = mFormationBosses[i];
+						if (mCaptureDive) {
+							mDivingBoss->Dive(1);
+						}
+						else {
+							mDivingBoss->Dive();
+							int index = mDivingBoss->Index();
+							int firstEscortIndex = (index % 2 == 0) ? (index * 2) : (index * 2 - 1);
+							int secondEscortIndex = firstEscortIndex + 4;
+
+							if (mFormationButterflies[firstEscortIndex]->CurrentState() == Enemy::InFormation) {
+								mFormationButterflies[firstEscortIndex]->Dive(1); 
+							}
+							if (mFormationButterflies[secondEscortIndex]->CurrentState() == Enemy::InFormation) {
+								mFormationButterflies[secondEscortIndex]->Dive(1);
+							}
+						}
+						mSkipFirstBoss = !mSkipFirstBoss;
+						mCaptureDive = !mCaptureDive;
+						break;
+					}
+					skipped = true;
 				}
 			}
+			mBossDiveTimer = 0.0f;
+		}
+	}
+	else {
+		if (mDivingBoss->CurrentState() != Enemy::Diving) {
+			mDivingBoss = nullptr;
 		}
 	}
 }
@@ -282,7 +336,7 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mGameOverLabelOnScreen = 1.0f;
 
 	mCurrentState = Running;
-	
+
 	mButterflyCount = 0;
 	mWaspCount = 0;
 	mBossCount = 0;
@@ -316,6 +370,22 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mSpawningFinished = false;
 	mSpawnDelay = 0.2f;
 	mSpawnTimer = 0.0f;
+
+	mDivingButterfly = nullptr;
+	mSkipFirstButterfly = false;
+	mButterflyDiveDelay = 1.0f;
+	mButterflyDiveTimer = 0.0f;
+
+	mDivingWasp = nullptr;
+	mDivingWasp2 = nullptr;
+	mWaspDiveDelay = 3.0f;
+	mWaspDiveTimer = 0.0f;
+
+	mDivingBoss = nullptr;
+	mCaptureDive = true;
+	mSkipFirstBoss = true;
+	mBossDiveDelay = 5.0f;
+	mBossDiveTimer = 0.0f;
 }
 
 Level::~Level() {
