@@ -184,7 +184,7 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mCurrentState = Running;
 
 	mFormation = new Formation();
-	mFormation->Position(Graphics::SCREEN_WIDTH * 0.4f, 150.0f);
+	mFormation->Position(Graphics::SCREEN_WIDTH * 0.39f, 150.0f);
 	Enemy::SetFormation(mFormation);
 	
 	mButterflyCount = 0;
