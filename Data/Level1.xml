@@ -13,7 +13,7 @@
     <Enemy type="Wasp" index="2" />
     <Enemy type="Wasp" index="3" />
   </Spawn>
-  <Spawn path="2" priority="1">d
+  <Spawn path="2" priority="1">
     <Enemy type="Boss" index="2" />
     <Enemy type="Butterfly" index="4" />
     <Enemy type="Boss" index="0" />
