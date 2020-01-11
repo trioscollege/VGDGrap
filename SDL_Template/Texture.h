@@ -23,6 +23,8 @@ namespace SDLFramework {
 		Texture(std::string filename, int x, int y, int w, int h, bool managed = false);
 		~Texture();
 
+		Vector2 ScaledDimensions();
+
 		void Render() override;
 	};
 }
