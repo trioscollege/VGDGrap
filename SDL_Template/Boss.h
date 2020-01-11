@@ -6,7 +6,7 @@ class Boss : public Enemy {
 private:
 	static std::vector<std::vector<Vector2>> sDivePaths;
 
-	bool mCapture;
+	bool mCapturing;
 
 	// Inherited via Enemy
 	Vector2 LocalFormationPosition() override;
