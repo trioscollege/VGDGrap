@@ -81,7 +81,7 @@ void Boss::CreateDivePaths() {
 }
 
 void Boss::Dive(int type) {
-	mCapture = type != 0;
+	mCapturing = type != 0;
 
 	Enemy::Dive();
 }
@@ -99,7 +99,7 @@ Vector2 Boss::LocalFormationPosition() {
 void Boss::HandleDiveState() {
 	int currentPath = mIndex % 2;
 
-	if (mCapture) {
+	if (mCapturing) {
 		currentPath += 2;
 	}
 
@@ -140,7 +140,7 @@ void Boss::RenderDiveState() {
 
 	// debug render of dive path
 	int currentPath = mIndex % 2;
-	if (mCapture) {
+	if (mCapturing) {
 		currentPath += 2;
 	}
 
