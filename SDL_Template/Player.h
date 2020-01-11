@@ -7,7 +7,7 @@
 
 using namespace SDLFramework;
 
-class Player : public GameEntity {
+class Player : public PhysEntity {
 private:
 	Timer * mTimer;
 	InputManager * mInput;

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "BoxCollider.h"
 
 void Player::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
@@ -57,6 +58,10 @@ Player::Player() {
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i] = new Bullet();
 	}
+
+	AddCollider(new BoxCollider(Vector2(16.0f, 67.0f)));
+	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2( 18.0f, 10.0f));
+	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2(-18.0f, 10.0f));
 }
 
 Player::~Player() {
@@ -132,4 +137,6 @@ void Player::Render() {
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i]->Render();
 	}
+
+	PhysEntity::Render();
 }
