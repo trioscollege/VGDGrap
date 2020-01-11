@@ -37,6 +37,12 @@
     <Filter Include="Source Files\TinyXML">
       <UniqueIdentifier>{e52f03bb-6fbe-4a3d-9bcd-70ade8755aef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{61f1439d-e9a6-4520-8f3d-5668bad2ddc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{00af6f54-1535-4473-ba9e-3d535467e436}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,17 +123,26 @@
     <ClCompile Include="Formation.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
-    <ClCompile Include="Wasp.cpp">
-      <Filter>Source Files\Galaga</Filter>
-    </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
     <ClCompile Include="tinyxml2.cpp">
       <Filter>Source Files\TinyXML</Filter>
     </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysEntity.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Wasp.cpp">
+      <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
     <ClCompile Include="CaptureBeam.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Galaga</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +235,15 @@
     </ClInclude>
     <ClInclude Include="CaptureBeam.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysEntity.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

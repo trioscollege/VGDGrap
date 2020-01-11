@@ -162,9 +162,11 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="BackgroundStars.cpp" />
     <ClCompile Include="BezierPath.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="CaptureBeam.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Formation.cpp" />
     <ClCompile Include="GameEntity.cpp" />
@@ -173,6 +175,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhysEntity.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScreen.cpp" />
     <ClCompile Include="PlaySideBar.cpp" />
@@ -193,9 +196,11 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BackgroundStars.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="CaptureBeam.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Formation.h" />
     <ClInclude Include="GameEntity.h" />
@@ -205,6 +210,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="PhysEntity.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScreen.h" />
     <ClInclude Include="PlaySideBar.h" />

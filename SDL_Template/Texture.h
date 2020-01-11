@@ -24,6 +24,8 @@ namespace SDLFramework {
 		Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = false);
 		~Texture();
 
+		Vector2 ScaledDimensions();
+
 		void Render() override;
 	};
 }

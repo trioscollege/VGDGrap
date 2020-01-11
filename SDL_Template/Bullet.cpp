@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "BoxCollider.h"
 
 Bullet::Bullet() {
 	mTimer = Timer::Instance();
@@ -10,6 +11,8 @@ Bullet::Bullet() {
 	mSpeed = 500;
 
 	Reload();
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 }
 
 Bullet::~Bullet() {
@@ -42,5 +45,6 @@ void Bullet::Update() {
 void Bullet::Render() {
 	if (Active()) {
 		mTexture->Render();
+		PhysEntity::Render();
 	}
 }

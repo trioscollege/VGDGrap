@@ -3,8 +3,9 @@
 #include "AnimatedTexture.h"
 #include "BezierPath.h"
 #include "Formation.h"
+#include "PhysEntity.h"
 
-class Enemy : public GameEntity {
+class Enemy : public PhysEntity {
 public:
 	enum States { FlyIn, InFormation, Diving, Dead };
 	enum Types { Butterfly, Wasp, Boss };
