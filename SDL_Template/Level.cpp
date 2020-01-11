@@ -414,19 +414,16 @@ Level::~Level() {
 	delete mFormation;
 	mFormation = nullptr;
 
-	for (Butterfly * b : mFormationButterflies) {
+	for (auto b : mFormationButterflies) {
 		delete b;
-		b = nullptr;
 	}
 
-	for (Wasp * w : mFormationWasps) {
+	for (auto w : mFormationWasps) {
 		delete w;
-		w = nullptr;
 	}
 
-	for (Boss * b : mFormationBosses) {
+	for (auto b : mFormationBosses) {
 		delete b;
-		b = nullptr;
 	}
 
 	for (auto e : mEnemies) {

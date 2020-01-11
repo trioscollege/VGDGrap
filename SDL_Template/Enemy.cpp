@@ -133,9 +133,8 @@ Enemy::Enemy(int path, int index, bool challenge)
 Enemy::~Enemy() {
 	mTimer = nullptr;
 
-	for (int i = 0; i < 2; i++) {
-		delete mTextures[i];
-		mTextures[i] = nullptr;
+	for (auto t : mTextures) {
+		delete t;;
 	}
 }
 

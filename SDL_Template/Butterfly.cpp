@@ -213,7 +213,7 @@ Butterfly::Butterfly(int path, int index, bool challenge)
 	: Enemy(path, index, challenge) {
 
 	mTextures[0] = new Texture("AnimatedEnemies.png", 0, 0, 52, 40);
-	mTextures[1] = new Texture("AnimatedEnemies.png", 52, 0, 52, 40);
+	mTextures[1] = new Texture("AnimatedEnemies.png", 60, 0, 36, 40);
 	
 	for (int i = 0; i < 2; i++) {
 		mTextures[i]->Parent(this);

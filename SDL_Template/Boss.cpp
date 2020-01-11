@@ -209,8 +209,8 @@ void Boss::RenderDeadState() {
 
 Boss::Boss(int path, int index, bool challenge)
 	: Enemy(path, index, challenge) {
-	mTextures[0] = new Texture("Bosses.png", 0, 0, 64, 64);
-	mTextures[1] = new Texture("Bosses.png", 64, 0, 64, 64);
+	mTextures[0] = new Texture("Bosses.png", 0, 0, 60, 64);
+	mTextures[1] = new Texture("Bosses.png", 66, 0, 60, 64);
 	
 	for (int i = 0; i < 2; i++) {
 		mTextures[i]->Parent(this);
