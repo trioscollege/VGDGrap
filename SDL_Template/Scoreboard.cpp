@@ -42,10 +42,8 @@ void Scoreboard::Render() {
 }
 
 void Scoreboard::ClearBoard() {
-	for (unsigned i = 0; i < mScore.size(); i++) {
-		delete mScore[i];
-		mScore[i] = nullptr;
+	for (auto s : mScore) {
+		delete s;
 	}
-
 	mScore.clear();
 }
