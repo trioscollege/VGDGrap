@@ -18,6 +18,6 @@ public:
 	~CaptureBeam();
 
 	void ResetAnimation() override;
-	virtual void Render();
+	void Render() override;
 };
 #endif

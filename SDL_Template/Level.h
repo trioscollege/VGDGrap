@@ -68,9 +68,9 @@ private:
 	int mCurrentFlyInPriority;
 	int mCurrentFlyInIndex;
 
-	bool mSpawningFinished;
 	float mSpawnDelay;
 	float mSpawnTimer;
+	bool mSpawningFinished;
 
 	Butterfly * mDivingButterfly;
 	bool mSkipFirstButterfly;

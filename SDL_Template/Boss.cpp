@@ -220,7 +220,7 @@ Boss::Boss(int path, int index, bool challenge)
 	mType = Enemy::Boss;
 
 	mCaptureDive = false;
-	mCurrentPath = 1;
+	mCurrentPath = 0;
 	mCapturing = false;
 
 	mCaptureBeam = new CaptureBeam();

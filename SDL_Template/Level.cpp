@@ -89,11 +89,11 @@ void Level::HandleEnemySpawning() {
 
 		while (element != nullptr) {
 			int priority = element->IntAttribute("priority");
-			int path = element->IntAttribute("path");
-			XMLElement * child = element->FirstChildElement();
 
 			if (mCurrentFlyInPriority == priority) {
 				priorityFound = true;
+				int path = element->IntAttribute("path");
+				XMLElement * child = element->FirstChildElement();				
 
 				for (int i = 0; i < mCurrentFlyInIndex && child != nullptr; i++) {
 					child = child->NextSiblingElement();
@@ -139,16 +139,19 @@ void Level::HandleEnemySpawning() {
 		}
 
 		if (!priorityFound) {
+			// no priorities found means no more Spawn elements
 			mSpawningFinished = true;
 		}
 		else {
 			if (!spawned) {
+				// We have Spawn elements waiting, but we didn't spawn anything
 				if (!EnemyFlyingIn()) {
 					mCurrentFlyInPriority += 1;
 					mCurrentFlyInIndex = 0;
 				}
 			}
 			else {
+				// We haven't finished spawning this element's enemies, next index!
 				mCurrentFlyInIndex += 1;
 			}
 		}
@@ -198,7 +201,8 @@ void Level::HandleEnemyDiving() {
 			bool skipped = false;
 
 			for (int i = MAX_BUTTERFLIES - 1; i >= 0; i--) {
-				if (mFormationButterflies[i]->CurrentState() == Enemy::InFormation) {
+				if (mFormationButterflies[i] != nullptr 
+					&& mFormationButterflies[i]->CurrentState() == Enemy::InFormation) {
 					if (!mSkipFirstButterfly || (mSkipFirstButterfly && skipped)) {
 						mDivingButterfly = mFormationButterflies[i];
 						mDivingButterfly->Dive();
@@ -208,6 +212,7 @@ void Level::HandleEnemyDiving() {
 				}
 				skipped = true;
 			}
+
 			mButterflyDiveTimer = 0.0f;
 		}
 	}
@@ -230,7 +235,7 @@ void Level::HandleEnemyDiving() {
 					mDivingWasp2 = mFormationWasps[i];
 					mDivingWasp2->Dive();
 				}
-				break;
+				break; // work done, leave loop
 			}
 		}
 
@@ -272,11 +277,12 @@ void Level::HandleEnemyDiving() {
 						}
 						mSkipFirstBoss = !mSkipFirstBoss;
 						mCaptureDive = !mCaptureDive;
-						break;
+						break; // work done, leave loop
 					}
 					skipped = true;
 				}
 			}
+
 			mBossDiveTimer = 0.0f;
 		}
 	}
@@ -367,9 +373,9 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 
 	mCurrentFlyInPriority = 0;
 	mCurrentFlyInIndex = 0;
-	mSpawningFinished = false;
 	mSpawnDelay = 0.2f;
 	mSpawnTimer = 0.0f;
+	mSpawningFinished = false;
 
 	mDivingButterfly = nullptr;
 	mSkipFirstButterfly = false;

@@ -14,11 +14,11 @@ void CaptureBeam::RunAnimation() {
 		mSourceRect.x = (int)(mAnimationTimer / mTimePerFrame) * mWidth;
 
 		if (mCaptureTimer < 2.0f) {
-			float temp = (int)(mCaptureTimer * 3.5f);
+			int temp = (int)(mCaptureTimer * 3.5f);
 			mSourceRect.h = (int)(temp / 7.0f * mHeight);
 		}
-		else if (mCaptureTimer > mTotalCaptureTime - 2.0f) {
-			float temp = (int)((mTotalCaptureTime - mCaptureTimer) * 3.5f);
+		else if (mCaptureTimer > 4.0f) {
+			int temp = (int)((mTotalCaptureTime - mCaptureTimer) * 3.5f);
 			mSourceRect.h = (int)(temp / 7.0f * mHeight);
 		}
 		else {
@@ -49,7 +49,7 @@ void CaptureBeam::Render() {
 	mDestinationRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
 	mDestinationRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);
 	mDestinationRect.w = (int)(mWidth * scale.x);
-	mDestinationRect.h = (int)(mSourceRect.h);
+	mDestinationRect.h = mSourceRect.h;
 
 	mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
 }
