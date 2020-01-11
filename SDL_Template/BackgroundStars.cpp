@@ -38,8 +38,7 @@ BackgroundStars::BackgroundStars() {
 }
 
 BackgroundStars::~BackgroundStars() {
-	for (int i = 0; i < LAYER_COUNT; i++) {
-		delete mLayers[i];
-		mLayers[i] = nullptr;
+	for (auto l : mLayers) {
+		delete l;
 	}
 }

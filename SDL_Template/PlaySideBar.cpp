@@ -151,9 +151,8 @@ PlaySideBar::~PlaySideBar() {
 	delete mShips;
 	mShips = nullptr; 
 
-	for (int i = 0; i < MAX_SHIP_TEXTURES; ++i) {
-		delete mShipTextures[i];
-		mShipTextures[i] = nullptr;
+	for (auto t : mShipTextures) {
+		delete t;
 	}
 
 	delete mTotalShipsLabel;
