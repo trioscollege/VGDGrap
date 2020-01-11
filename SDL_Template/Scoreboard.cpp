@@ -45,6 +45,5 @@ void Scoreboard::ClearBoard() {
 	for (auto s : mScore) {
 		delete s;
 	}
-
 	mScore.clear();
 }
