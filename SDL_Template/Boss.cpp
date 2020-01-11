@@ -123,7 +123,7 @@ void Boss::Dive(int type) {
 
 	if (mCaptureDive) {
 		mCapturing = false;
-		mCurrentPath = 2 + rand() % 2;
+		mCurrentPath = 2 + Random::Instance()->RandomRange(0, 1);
 		mCaptureBeam->ResetAnimation();
 	}
 	else {

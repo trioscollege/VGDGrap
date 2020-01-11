@@ -2,6 +2,9 @@
 #define __BOSS_H
 #include "Enemy.h"
 #include "CaptureBeam.h"
+#include "Random.h"
+
+using namespace SDLFramework;
 
 class Boss : public Enemy {
 private:
