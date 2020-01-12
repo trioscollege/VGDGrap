@@ -12,15 +12,16 @@ private:
 	Vector2 LocalFormationPosition() override;
 
 	void HandleDiveState() override;
-	void HandleDeadState() override;
 
 	void RenderDiveState() override;
-	void RenderDeadState() override;
 
 public:
 	static void CreateDivePaths();
 
 	void Dive(int type = 0) override;
+
+	// Inherited from PhysEntity
+	void Hit(PhysEntity * other) override;
 
 	Butterfly(int path, int index, bool challenge);
 	~Butterfly();

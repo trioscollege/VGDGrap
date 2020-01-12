@@ -56,6 +56,10 @@ namespace SDLFramework {
 		return scaledDimensions;
 	}
 
+	void Texture::SetSourceRect(SDL_Rect * sourceRect) {
+		mSourceRect = *sourceRect;
+	}
+
 	void Texture::Render() {
 		Vector2 pos = Position(World);
 		Vector2 scale = Scale(World);

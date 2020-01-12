@@ -28,13 +28,13 @@ unsigned long PhysicsManager::RegisterEntity(PhysEntity * entity, CollisionLayer
 void PhysicsManager::UnregisterEntity(unsigned long id) {
 	bool found = false;
 
-	for (auto l : mCollisionLayers) {
-		for (int j = 0; j < l.size() && !found; j++) {
-			l.erase(l.begin() + j);
-			found = true;
+	for (int i = 0; i < static_cast<unsigned int>(CollisionLayers::MaxLayers) && !found; i++) {
+		for (int j = 0; j < mCollisionLayers[i].size() && !found; j++) {
+			if (mCollisionLayers[i][j]->GetId() == id) {
+				mCollisionLayers[i].erase(mCollisionLayers[i].begin() + j);
+				found = true;
+			}
 		}
-		if (found)
-			break; // work done, leave loop
 	}
 }
 
@@ -67,5 +67,4 @@ PhysicsManager::~PhysicsManager() {
 	for (auto l : mCollisionLayers) {
 		l.clear();
 	}
-
 }

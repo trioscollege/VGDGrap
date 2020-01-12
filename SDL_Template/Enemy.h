@@ -4,6 +4,7 @@
 #include "BezierPath.h"
 #include "Formation.h"
 #include "PhysEntity.h"
+#include "Player.h"
 
 class Enemy : public PhysEntity {
 public:
@@ -13,6 +14,7 @@ public:
 protected:
 	static std::vector<std::vector<Vector2>> sPaths;
 	static Formation * sFormation;
+	static Player * sPlayer;
 
 	Timer * mTimer;
 
@@ -34,6 +36,8 @@ protected:
 
 	Vector2 mDiveStartPosition;
 
+	AnimatedTexture * mDeathAnimation;
+
 protected:
 	virtual void PathComplete();
 
@@ -46,14 +50,14 @@ protected:
 	virtual void HandleFlyInState();
 	virtual void HandleFormationState();
 	virtual void HandleDiveState() = 0;
-	virtual void HandleDeadState() = 0;
+	virtual void HandleDeadState();
 
 	void HandleStates();
 
 	virtual void RenderFlyInState();
 	virtual void RenderFormationState();
 	virtual void RenderDiveState() = 0;
-	virtual void RenderDeadState() = 0;
+	virtual void RenderDeadState();
 
 	void RenderStates();
 
@@ -63,9 +67,13 @@ protected:
 public:
 	static void CreatePaths();
 	static void SetFormation(Formation * formation);
+	static void CurrentPlayer(Player * player);
 
 	Enemy(int path, int index, bool challenge);
 	virtual ~Enemy();
+
+	// Inherited from PhysEntity
+	virtual void Hit(PhysEntity * other) override;
 	
 	States CurrentState();
 
@@ -74,6 +82,8 @@ public:
 	int Index();
 
 	virtual void Dive(int type = 0);
+
+	bool InDeathAnimation();
 
 	void Update();
 	void Render();

@@ -15,6 +15,7 @@ private:
 
 	float mSpeed;
 
+	//Inherited from PhysEntity
 	bool IgnoreCollisions() override;
 
 public:

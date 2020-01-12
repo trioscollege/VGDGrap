@@ -1,5 +1,6 @@
 #include "Wasp.h"
 #include "BoxCollider.h"
+#include "AudioManager.h"
 
 std::vector<std::vector<Vector2>> Wasp::sDivePaths;
 
@@ -109,14 +110,8 @@ void Wasp::HandleDiveState() {
 	}
 }
 
-void Wasp::HandleDeadState() {
-}
-
 void Wasp::RenderDiveState() {
 	mTextures[0]->Render();
-}
-
-void Wasp::RenderDeadState(){
 }
 
 Wasp::Wasp(int path, int index, bool challenge, bool diver)
@@ -136,4 +131,10 @@ Wasp::Wasp(int path, int index, bool challenge, bool diver)
 }
 
 Wasp::~Wasp() {
+}
+
+void Wasp::Hit(PhysEntity * other) {
+	AudioManager::Instance()->PlaySFX("SFX/WaspDestroyed.wav", 0, 4);
+	sPlayer->AddScore(mCurrentState == Enemy::InFormation ? 50 : 100);
+	Enemy::Hit(other);
 }

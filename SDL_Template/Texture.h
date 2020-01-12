@@ -26,6 +26,8 @@ namespace SDLFramework {
 
 		Vector2 ScaledDimensions();
 
+		void SetSourceRect(SDL_Rect * sourceRect);
+
 		void Render() override;
 	};
 }

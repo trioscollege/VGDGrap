@@ -161,21 +161,32 @@ void Level::HandleEnemySpawning() {
 void Level::HandleEnemyFormation() {
 	mFormation->Update();
 
+	bool levelCleared = mSpawningFinished;
+
 	for (Butterfly * b : mFormationButterflies) {
 		if (b != nullptr) {
 			b->Update();
+			if (b->CurrentState() != Enemy::Dead || b->InDeathAnimation()) {
+				levelCleared = false;
+			}
 		}
 	}
 
 	for (Wasp * w : mFormationWasps) {
 		if (w != nullptr) {
 			w->Update();
+			if (w->CurrentState() != Enemy::Dead || w->InDeathAnimation()) {
+				levelCleared = false;
+			}
 		}
 	}
 
 	for (Boss * b : mFormationBosses) {
 		if (b != nullptr) {
 			b->Update();
+			if (b->CurrentState() != Enemy::Dead || b->InDeathAnimation()) {
+				levelCleared = false;
+			}
 		}
 	}
 
@@ -188,6 +199,10 @@ void Level::HandleEnemyFormation() {
 	}
 	else {
 		HandleEnemyDiving();
+	}
+
+	if (levelCleared) {
+		mCurrentState = Finished;
 	}
 }
 
@@ -391,6 +406,8 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mSkipFirstBoss = true;
 	mBossDiveDelay = 5.0f;
 	mBossDiveTimer = 0.0f;
+
+	Enemy::CurrentPlayer(mPlayer);
 }
 
 Level::~Level() {
@@ -457,11 +474,6 @@ void Level::Update() {
 
 		if (mPlayerHit) {
 			HandlePlayerDeath();
-		}
-		else {
-			if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_N)) {
-				mCurrentState = Finished;
-			}
 		}
 	}
 }
