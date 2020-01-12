@@ -13,5 +13,7 @@ private:
 public:
 	BoxCollider(Vector2 size);
 	~BoxCollider();
+
+	Vector2 GetFurthestPoint() override;
 };
 #endif

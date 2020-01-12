@@ -15,12 +15,17 @@ private:
 
 	float mSpeed;
 
+	bool IgnoreCollisions() override;
+
 public:
-	Bullet();
+	Bullet(bool friendly);
 	~Bullet();
 
 	void Fire(Vector2 pos);
 	void Reload();
+
+	// Inherited from PhysEntity
+	void Hit(PhysEntity * other) override;
 
 	void Update();
 	void Render();

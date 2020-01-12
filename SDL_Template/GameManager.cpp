@@ -46,6 +46,7 @@ namespace SDLFramework {
 
 	void GameManager::LateUpdate() {
 		mInputManager->UpdatePrevInput();
+		mPhysicsManager->Update();
 	}
 
 	void GameManager::Render() {
@@ -64,6 +65,12 @@ namespace SDLFramework {
 		mAssetManager = AssetManager::Instance();
 		mInputManager = InputManager::Instance();
 		mAudioManager = AudioManager::Instance();
+
+		mPhysicsManager = PhysicsManager::Instance();
+		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Friendly, PhysicsManager::CollisionFlags::Hostile | PhysicsManager::CollisionFlags::HostileProjectiles);
+		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::FriendlyProjectiles, PhysicsManager::CollisionFlags::Hostile);
+		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Hostile, PhysicsManager::CollisionFlags::Friendly | PhysicsManager::CollisionFlags::FriendlyProjectiles);
+		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::HostileProjectiles, PhysicsManager::CollisionFlags::Friendly);
 
 		mTimer = Timer::Instance();
 
@@ -85,6 +92,9 @@ namespace SDLFramework {
 
 		AssetManager::Release();
 		mAssetManager = nullptr;
+
+		PhysicsManager::Release();
+		mPhysicsManager = nullptr;
 
 		Graphics::Release();
 		mGraphics = nullptr;

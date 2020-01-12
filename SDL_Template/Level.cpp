@@ -19,8 +19,7 @@ void Level::HandleStartLabels() {
 
 void Level::HandleCollisions() {
 	if (!mPlayerHit) {
-		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_X)) {
-			mPlayer->WasHit();
+		if (mPlayer->WasHit()) {
 			mSideBar->SetShips(mPlayer->Lives());
 
 			mPlayerHit = true;

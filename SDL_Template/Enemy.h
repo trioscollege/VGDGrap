@@ -57,6 +57,9 @@ protected:
 
 	void RenderStates();
 
+	// Inherited from PhysEntity
+	bool IgnoreCollisions() override;
+
 public:
 	static void CreatePaths();
 	static void SetFormation(Formation * formation);

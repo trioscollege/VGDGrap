@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "PhysicsManager.h"
 
 std::vector<std::vector<Vector2>> Enemy::sPaths;
 Formation * Enemy::sFormation = nullptr;
@@ -128,6 +129,8 @@ Enemy::Enemy(int path, int index, bool challenge)
 	mTextures[1] = nullptr;
 
 	mSpeed = 400.0f;
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
 }
 
 Enemy::~Enemy() {
@@ -249,6 +252,11 @@ void Enemy::RenderStates() {
 	}
 
 	PhysEntity::Render();
+}
+
+bool Enemy::IgnoreCollisions()
+{
+	return mCurrentState == Dead;
 }
 
 Enemy::States Enemy::CurrentState() {

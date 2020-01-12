@@ -20,6 +20,10 @@ public:
 	Collider(ColliderType type);
 	virtual ~Collider();
 
+	virtual Vector2 GetFurthestPoint() = 0;
+
+	ColliderType GetType();
+
 	virtual void Render() override;
 };
 #endif

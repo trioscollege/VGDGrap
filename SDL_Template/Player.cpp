@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "BoxCollider.h"
+#include "PhysicsManager.h"
 
 void Player::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
@@ -39,6 +40,7 @@ Player::Player() {
 
 	mVisible = false;
 	mAnimating = false;
+	mWasHit = false;
 
 	mScore = 0;
 	mLives = 2;
@@ -62,6 +64,8 @@ Player::Player() {
 	AddCollider(new BoxCollider(Vector2(16.0f, 67.0f)));
 	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2( 18.0f, 10.0f));
 	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2(-18.0f, 10.0f));
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Friendly);
 }
 
 Player::~Player() {
@@ -100,15 +104,30 @@ void Player::AddScore(int change) {
 	mScore += change;
 }
 
-void Player::WasHit() {
+bool Player::IgnoreCollisions()
+{
+	return !mVisible || mAnimating;
+}
+
+void Player::Hit(PhysEntity * other) {
 	mLives -= 1;
 	mAnimating = true;
 	mDeathAnimation->ResetAnimation();
 	mAudio->PlaySFX("SFX/PlayerExplosion.wav");
+	mWasHit = true;
+}
+
+bool Player::WasHit() {
+	return mWasHit;
 }
 
 void Player::Update() {
 	if (mAnimating) {
+
+		if (mWasHit) {
+			mWasHit = false;
+		}
+
 		mDeathAnimation->Update();
 		mAnimating = mDeathAnimation->IsAnimating();
 	}
