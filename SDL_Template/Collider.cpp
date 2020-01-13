@@ -17,15 +17,11 @@ Collider::~Collider() {
 }
 
 
-Collider::ColliderType Collider::GetType()
-{
+Collider::ColliderType Collider::GetType() {
 	return mType;
 }
 
 void Collider::Render() {
-//#ifdef _DEBUG
-//	mDebugTexture->Render();
-//#endif
 	if (DEBUG_COLLIDERS) {
 		mDebugTexture->Render();
 	}

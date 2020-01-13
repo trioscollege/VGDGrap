@@ -26,8 +26,7 @@ void PhysEntity::AddCollider(Collider * collider, Vector2 localPos) {
 	};
 }
 
-bool PhysEntity::IgnoreCollisions()
-{
+bool PhysEntity::IgnoreCollisions() {
 	return false;
 }
 
@@ -49,8 +48,7 @@ PhysEntity::~PhysEntity() {
 	}
 }
 
-unsigned long PhysEntity::GetId()
-{
+unsigned long PhysEntity::GetId() {
 	return mId;
 }
 

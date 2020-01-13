@@ -24,8 +24,7 @@ BoxCollider::~BoxCollider() {
 	}
 }
 
-Vector2 BoxCollider::GetFurthestPoint()
-{
+Vector2 BoxCollider::GetFurthestPoint() {
 	Vector2 localPos = Position(GameEntity::Local);
 
 	int furthestIndex = 0;
