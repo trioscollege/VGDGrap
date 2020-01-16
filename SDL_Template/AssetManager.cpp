@@ -57,5 +57,8 @@ namespace SDLFramework {
 				}
 			}
 		}
+		else {
+			SDL_DestroyTexture(texture);
+		}
 	}
 }

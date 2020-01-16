@@ -36,6 +36,7 @@ namespace SDLFramework {
 		tex = SDL_CreateTextureFromSurface(mRenderer, surface);
 		if (tex == nullptr) {
 			std::cerr << "Unable to create texture from surface! IMG Error: " << IMG_GetError() << std::endl;
+			SDL_FreeSurface(surface);
 			return nullptr;
 		}
 
