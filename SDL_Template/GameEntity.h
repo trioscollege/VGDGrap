@@ -4,8 +4,7 @@
 
 namespace SDLFramework {
 
-	class GameEntity
-	{
+	class GameEntity {
 	public:
 		enum Space { Local = 0, World = 1 };
 
