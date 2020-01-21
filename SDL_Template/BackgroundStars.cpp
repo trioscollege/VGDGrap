@@ -33,7 +33,7 @@ void BackgroundStars::Render() {
 
 BackgroundStars::BackgroundStars() {
 	for (int i = 0; i < LAYER_COUNT; i++) {
-		mLayers[i] = new StarLayer(i);
+		mLayers[i] = new StarLayer(i + 1);
 	}
 }
 
