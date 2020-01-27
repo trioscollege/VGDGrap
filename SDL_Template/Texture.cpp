@@ -6,7 +6,8 @@ namespace SDLFramework {
 	Texture::Texture(std::string filename, bool managed) {
 		mGraphics = Graphics::Instance();
 		mTex = AssetManager::Instance()->GetTexture(filename, managed);
-		mSurf = AssetManager::Instance()->GetSurface(filename, managed);
+		mSurf = AssetManager::Instance()->GetSurfaceTexture(filename, managed);
+
 		SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
 		mClipped = false;
@@ -17,9 +18,8 @@ namespace SDLFramework {
 	Texture::Texture(std::string filename, int x, int y, int w, int h, bool managed) {
 		mGraphics = Graphics::Instance();
 		mTex = AssetManager::Instance()->GetTexture(filename, managed);
-		mSurf = AssetManager::Instance()->GetSurface(filename, managed);
+		mSurf = AssetManager::Instance()->GetSurfaceTexture(filename, managed);
 
-		
 		mWidth = w;
 		mHeight = h;
 
@@ -36,7 +36,8 @@ namespace SDLFramework {
 	Texture::Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed) {
 		mGraphics = Graphics::Instance();
 		mTex = AssetManager::Instance()->GetText(text, fontPath, size, color, managed);
-		//mSurf = AssetManager::Instance()->GetSurface(fontPath, managed);
+		mSurf = AssetManager::Instance()->GetSurfaceText(text, fontPath, size, color, managed);
+
 
 		mClipped = false;
 
@@ -72,7 +73,7 @@ namespace SDLFramework {
 		mDestinationRect.w = (int)(mWidth * scale.x);
 		mDestinationRect.h = (int)(mHeight * scale.y);
 
-		if (GraphicsGL::Instance() != nullptr)
+		if (GraphicsGL::Instance() == nullptr)
 		{
 			mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
 		}

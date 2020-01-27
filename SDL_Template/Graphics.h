@@ -20,14 +20,15 @@ namespace SDLFramework {
 		static bool sInitialized;
 
 		SDL_Window* mWindow;
+		SDL_Renderer* mRenderer;
 
 	public:
 		static Graphics* Instance();
 		static void Release();
 		static bool Initialized();
 
-		virtual SDL_Texture* LoadTexture(std::string path) { return nullptr; };
-		virtual SDL_Texture* CreateTextTexture(TTF_Font* font, std::string text, SDL_Color color) { return nullptr; };
+		SDL_Texture* LoadTexture(std::string path);
+		SDL_Texture* CreateTextTexture(TTF_Font* font, std::string text, SDL_Color color);
 		SDL_Surface* GetSurfaceTexture(std::string path);
 		SDL_Surface* GetSurfaceText(TTF_Font* font, std::string text, SDL_Color color);
 		virtual void DrawTexture(SDL_Texture* tex, SDL_Rect* srcRect = nullptr, SDL_Rect* dstRect = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE) { };
@@ -39,7 +40,7 @@ namespace SDLFramework {
 		Graphics();
 		~Graphics();
 
-		bool virtual Init();
+		virtual bool Init();
 	};
 }
 #endif

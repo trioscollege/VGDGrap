@@ -132,6 +132,14 @@ namespace SDLFramework {
 			float v;
 		} uv;
 
+		struct Color {
+			float r;
+			float g;
+			float b;
+			float a;
+		} color;
+
+
 		void SetPosition(float x, float y)
 		{
 			position.x = x;
@@ -141,6 +149,13 @@ namespace SDLFramework {
 		{
 			uv.u = u;
 			uv.v = v;
+		}
+		void SetColor(float r, float g, float b, float a)
+		{
+			color.r = r;
+			color.g = g;
+			color.b = b;
+			color.a = a;
 		}
 	};
 }

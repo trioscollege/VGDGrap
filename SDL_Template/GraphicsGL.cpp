@@ -15,7 +15,6 @@ namespace SDLFramework {
 	GraphicsGL::GraphicsGL() : Graphics(), orthoMatrix(1.0f)
 	{
 		sInitialized = Init();
-		time = 0;
 	}
 
 	GraphicsGL::~GraphicsGL()
@@ -31,13 +30,13 @@ namespace SDLFramework {
 
 		shaderUtil.Use();
 
+		//shaderUtil.SetVector4f("fragmentColor", glm::vec4(1.0, 1.0, 1.0, 1.0));
+
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture.ID);
-		GLint location = shaderUtil.GetUniformLocation("tSampler");
-		glUniform1i(location, GL_TEXTURE0);
 
-		//location = shaderUtil.GetUniformLocation("time");
-		//glUniform1f(location, time++);
+		GLint location = shaderUtil.GetUniformLocation("tSampler");
+		glUniform1i(location, 0);
 
 		location = shaderUtil.GetUniformLocation("proj");
 		glUniformMatrix4fv(location, 1, GL_FALSE, &(orthoMatrix[0][0]));
@@ -46,15 +45,21 @@ namespace SDLFramework {
 		glBindBuffer(GL_ARRAY_BUFFER, texture.ID);
 
 		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
 
 		//this is position
 		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+		//this is Color
+		glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 		//this is UV
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -124,12 +129,11 @@ namespace SDLFramework {
 
 		//Enables a double buffer window - removes flickering.
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-		glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		
 
 		//Enable Shader and Render data
 		InitLoadShaderData();
-		
 		return true;
 	}
 
@@ -165,6 +169,11 @@ namespace SDLFramework {
 		vertexData[5].position.x = x + w;
 		vertexData[5].position.y = y + h;
 		vertexData[5].SetUV(1.0, 1.0);
+
+		for (int i = 0; i < 6; i++)
+		{
+			//vertexData[i].SetColor(255,0,255,255);
+		}
 
 		glBindBuffer(GL_ARRAY_BUFFER, quadVAO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);

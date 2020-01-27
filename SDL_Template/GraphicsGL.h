@@ -17,10 +17,9 @@ namespace SDLFramework {
 
 		SDL_GLContext glContext;
 		ShaderUtil shaderUtil;
-		float time;
 
 		glm::mat4 orthoMatrix;
-
+		
 
 	protected:
 

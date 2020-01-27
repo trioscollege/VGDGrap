@@ -7,7 +7,7 @@
 namespace SDLFramework {
 
 	AssetManager * AssetManager::sInstance = nullptr;
-	std::map<std::string, ShaderUtil>       AssetManager::Shaders;
+	std::map<std::string, ShaderUtil> AssetManager::Shaders;
 
 	AssetManager * AssetManager::Instance() {
 		if (sInstance == nullptr) {
@@ -33,12 +33,19 @@ namespace SDLFramework {
 		}
 		mTextures.clear();
 
-		for (auto surf : mSurface) {
+		for (auto surf : mSurfaceText) {
 			if (surf.second != nullptr) {
 				SDL_FreeSurface(surf.second);
 			}
 		}
-		mSurface.clear();
+		mSurfaceText.clear();
+
+		for (auto surf : mSurfaceTextures) {
+			if (surf.second != nullptr) {
+				SDL_FreeSurface(surf.second);
+			}
+		}
+		mSurfaceTextures.clear();
 
 		for (auto text : mText) {
 			if (text.second != nullptr) {
@@ -85,20 +92,39 @@ namespace SDLFramework {
 	}
 
 
-	SDL_Surface* AssetManager::GetSurface(std::string filename, bool managed /*= false*/)
+	SDL_Surface* AssetManager::GetSurfaceTexture(std::string filename, bool managed /*= false*/)
 	{
 		std::string fullPath = SDL_GetBasePath();
 		fullPath.append("Assets/" + filename);
 
-		if (mSurface[fullPath] == nullptr) {
-			mSurface[fullPath] = Graphics::Instance()->GetSurfaceTexture(fullPath);
+		if (mSurfaceTextures[fullPath] == nullptr) {
+			mSurfaceTextures[fullPath] = Graphics::Instance()->GetSurfaceTexture(fullPath);
 		}
 
-		if (mSurface[fullPath] != nullptr && managed) {
-			mSurfaceRefCount[mSurface[fullPath]] += 1;
+		if (mSurfaceTextures[fullPath] != nullptr && managed) {
+			mSurfaceRefCount[mSurfaceTextures[fullPath]] += 1;
 		}
 
-		return mSurface[fullPath];
+		return mSurfaceTextures[fullPath];
+	}
+
+
+	SDL_Surface* AssetManager::GetSurfaceText(std::string text, std::string filename, int size, SDL_Color color, bool managed /*= false*/)
+	{
+		std::stringstream ss;
+		ss << size << (int)color.r << (int)color.g << (int)color.b;
+		std::string key = text + filename + ss.str();
+
+		if (mSurfaceText[key] == nullptr) {
+			TTF_Font* font = GetFont(filename, size);
+			mSurfaceText[key] = Graphics::Instance()->GetSurfaceText(font, text, color);
+		}
+
+		if (mSurfaceText[key] != nullptr && managed) {
+			mSurfaceRefCount[mSurfaceText[key]] += 1;
+		}
+
+		return mSurfaceText[key];
 	}
 
 	TTF_Font* AssetManager::GetFont(std::string filename, int size) {
@@ -263,14 +289,22 @@ namespace SDLFramework {
 		{
 			mSurfaceRefCount[surface] -= 1;
 			if (mSurfaceRefCount[surface] == 0) {
-				for (auto elem : mSurface) {
+				for (auto elem : mSurfaceTextures) {
 					if (elem.second == surface) {
 						SDL_FreeSurface(elem.second);
-						mSurface.erase(elem.first);
+						mSurfaceTextures.erase(elem.first);
+						return; // work finished, leave function
+					}
+				}
+				for (auto elem : mSurfaceText) {
+					if (elem.second == surface) {
+						SDL_FreeSurface(elem.second);
+						mSurfaceText.erase(elem.first);
 						return; // work finished, leave function
 					}
 				}
 			}
+
 		}
 	}
 

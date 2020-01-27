@@ -7,7 +7,7 @@ void Star::Scroll(bool b) {
 }
 
 Star::Star(int layer) 
-: Texture("Stars.png", 0, 0, 4, 4) {
+: TextureGL("Stars.png", 0, 0, 4, 4) {
 	mTimer = Timer::Instance();
 	mRand = Random::Instance();
 
@@ -58,6 +58,6 @@ void Star::Update() {
 
 void Star::Render() {
 	if (mVisible) {
-		Texture::Render();
+		TextureGL::Render();
 	}
 }

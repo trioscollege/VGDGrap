@@ -17,6 +17,7 @@ namespace SDLFramework {
 		GLuint Wrap_T;
 		GLuint Filter_Min;
 		GLuint Filter_Max;
+		int mode;
 
 		// Generates texture from image data
 		void Generate(GLuint width, GLuint height, void* data);

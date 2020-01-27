@@ -19,7 +19,8 @@ namespace SDLFramework {
 		std::map<std::string, SDL_Texture *> mText;
 		std::map<std::string, Mix_Music *> mMusic;
 		std::map<std::string, Mix_Chunk *> mSFX;
-		std::map<std::string, SDL_Surface*> mSurface;
+		std::map<std::string, SDL_Surface*> mSurfaceTextures;
+		std::map<std::string, SDL_Surface*> mSurfaceText;
 		static std::map<std::string, ShaderUtil> Shaders;
 
 
@@ -39,8 +40,9 @@ namespace SDLFramework {
 		static AssetManager * Instance();
 		static void Release();
 
-		SDL_Texture* GetTexture(std::string filename, bool managed = false);
-		SDL_Surface* GetSurface(std::string filename, bool managed = false);
+		SDL_Texture * GetTexture(std::string filename, bool managed = false);
+		SDL_Surface* GetSurfaceTexture(std::string filename, bool managed = false);
+		SDL_Surface* GetSurfaceText(std::string text, std::string filename, int size, SDL_Color color, bool managed = false);
 		SDL_Texture * GetText(std::string text, std::string filename, int size, SDL_Color color, bool managed = false);
 
 		Mix_Music * GetMusic(std::string filename, bool managed = false);

@@ -21,7 +21,6 @@ namespace SDLFramework {
 	{
 		Texture::Render();
 
-
 	}
 
 }

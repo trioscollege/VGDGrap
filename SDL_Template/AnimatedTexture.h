@@ -1,12 +1,12 @@
 #ifndef __ANIMATEDTEXTURE_H
 #define __ANIMATEDTEXTURE_H
-#include "Texture.h"
+#include "TextureGL.h"
 #include "Timer.h"
 
 namespace SDLFramework {
 
 	class AnimatedTexture :
-		public Texture
+		public TextureGL
 	{
 	public:
 		enum WrapMode { Once = 0, Loop = 1 };
