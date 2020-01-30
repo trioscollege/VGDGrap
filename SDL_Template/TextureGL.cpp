@@ -28,33 +28,16 @@ namespace SDLFramework {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void TextureGL::Bind() const
-	{
-		glBindTexture(GL_TEXTURE_2D, ID);
-	}
-
 	TextureGL::TextureGL(std::string filename, bool managed) : Texture(filename, managed)
 	{
-		if (mSurf != nullptr)
-			Generate(mWidth, mHeight, mSurf->pixels);
-		else
-			std::cout << "mSurf nullptr Texture 1 in TextureGL" << std::endl;
 	}
 
 	TextureGL::TextureGL(std::string filename, int x, int y, int w, int h, bool managed) : Texture(filename, x, y, w, h, managed)
 	{
-		if (mSurf != nullptr)
-			Generate(mWidth, mHeight, mSurf->pixels);
-		else
-			std::cout << "mSurf nullptr Texture 2 in TextureGL" << std::endl;
 	}
 
 	TextureGL::TextureGL(std::string text, std::string fontPath, int size, SDL_Color color, bool managed) : Texture(text, fontPath, size, color, managed)
 	{
-		if(mSurf != nullptr)
-			Generate(mWidth, mHeight, mSurf->pixels);
-		else
-			std::cout << "mSurf nullptr Text in TextureGL" << std::endl;
 	}
 
 

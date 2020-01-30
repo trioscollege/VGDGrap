@@ -12,14 +12,14 @@ uniform mat4 proj;
 
 void main()
 {
-    gl_Position.xy = (proj * vec4(vertexPosition, 0.0, 1.0)).xy;
+    //gl_Position.xy = vertexPosition
 
-    gl_Position.z = 0.0;
+    //gl_Position.z = 0.0;
 
-    gl_Position.w = 1.0;
+    //gl_Position.w = 1.0;
 
-    fragmentPosition = vertexPosition;
+    //fragmentPosition = vertexPosition;
 
-    fragmentColor = vertexColor;
-    fragmentUV = vertexUV;
+    //fragmentColor = vertexColor;
+    //fragmentUV = vertexUV;
 }

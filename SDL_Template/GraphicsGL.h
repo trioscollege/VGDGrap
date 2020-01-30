@@ -38,8 +38,6 @@ namespace SDLFramework {
 
 	protected:
 		virtual bool Init() override;
-		void InitRenderData(float x, float y, float w, float h, GLuint quadVAO);
-		void InitLoadShaderData();
 		glm::mat4 getOrthoMatrix() { return orthoMatrix; };
 
 	};

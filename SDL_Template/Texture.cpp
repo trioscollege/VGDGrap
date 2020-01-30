@@ -73,7 +73,7 @@ namespace SDLFramework {
 		mDestinationRect.w = (int)(mWidth * scale.x);
 		mDestinationRect.h = (int)(mHeight * scale.y);
 
-		if (GraphicsGL::Instance() == nullptr)
+		//if (GraphicsGL::Instance() == nullptr)
 		{
 			mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
 		}

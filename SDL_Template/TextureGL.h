@@ -21,8 +21,6 @@ namespace SDLFramework {
 
 		// Generates texture from image data
 		void Generate(GLuint width, GLuint height, void* data);
-		// Binds the texture as the current active GL_TEXTURE_2D texture object
-		void Bind() const;
 		TextureGL(std::string filename, bool managed = true);
 		TextureGL(std::string filename, int x, int y, int w, int h, bool managed = false);
 		TextureGL(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = false);

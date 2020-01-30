@@ -11,10 +11,10 @@ uniform sampler2D tSampler;
 void main()
 {
 
-    vec4 texColor = texture(tSampler, fragmentUV);
+   // vec4 texColor = texture(tSampler, fragmentUV);
     //if (texColor.a < 0.1)
     //    discard;
-    color = texColor;
+    //color = texColor;
 
     //color = vec4(1,0,0,0);
 }
