@@ -12,6 +12,7 @@
 		7B030CF52391CBE000CD6622 /* StarLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF12391CBE000CD6622 /* StarLayer.cpp */; };
 		7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */; };
 		7B030CF92391CC3600CD6622 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF72391CC3600CD6622 /* Random.cpp */; };
+		7B2CDFA223EB64D90060A0D1 /* CaptureBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CDFA123EB64D90060A0D1 /* CaptureBeam.cpp */; };
 		7B35C83B23C2BFF80030B301 /* BezierPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83A23C2BFF80030B301 /* BezierPath.cpp */; };
 		7B35C84223C2C01A0030B301 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83D23C2C01A0030B301 /* Enemy.cpp */; };
 		7B35C84323C2C01A0030B301 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83E23C2C01A0030B301 /* Bullet.cpp */; };
@@ -61,6 +62,9 @@
 		7B030CF12391CBE000CD6622 /* StarLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarLayer.cpp; sourceTree = "<group>"; };
 		7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundStars.cpp; sourceTree = "<group>"; };
 		7B030CF72391CC3600CD6622 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		7B2CDF9F23EB63F90060A0D1 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = GalagaSDL/Data; sourceTree = "<group>"; };
+		7B2CDFA023EB64D80060A0D1 /* CaptureBeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureBeam.h; sourceTree = "<group>"; };
+		7B2CDFA123EB64D90060A0D1 /* CaptureBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CaptureBeam.cpp; sourceTree = "<group>"; };
 		7B35C83923C2BFF80030B301 /* BezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPath.h; sourceTree = "<group>"; };
 		7B35C83A23C2BFF80030B301 /* BezierPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BezierPath.cpp; sourceTree = "<group>"; };
 		7B35C83C23C2C01A0030B301 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
@@ -135,6 +139,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B2CDFA323EB65100060A0D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7B35C83923C2BFF80030B301 /* BezierPath.h */,
+				7B35C83A23C2BFF80030B301 /* BezierPath.cpp */,
+				7B8CC69B23A8A016002F75F6 /* MathHelper.h */,
+				7B8CC69A23A8A016002F75F6 /* Random.h */,
+				7B030CF72391CC3600CD6622 /* Random.cpp */,
+				7B8CC69923A8A015002F75F6 /* Timer.h */,
+				7B392125235DEA740047FB73 /* Timer.cpp */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		7B35C85123C2C6710030B301 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +173,7 @@
 		7B392107234E1E190047FB73 = {
 			isa = PBXGroup;
 			children = (
+				7B2CDF9F23EB63F90060A0D1 /* Data */,
 				7BCB98EB237CF15F009CBBA1 /* Assets */,
 				7B392112234E1E190047FB73 /* GalagaSDL */,
 				7B392111234E1E190047FB73 /* Products */,
@@ -173,17 +192,11 @@
 		7B392112234E1E190047FB73 /* GalagaSDL */ = {
 			isa = PBXGroup;
 			children = (
+				7B2CDFA323EB65100060A0D1 /* Helpers */,
 				7B35C85123C2C6710030B301 /* Managers */,
 				7B39211E235A17D30047FB73 /* Entities */,
 				7B72DE6D237CB3820036C2D5 /* Galaga */,
-				7B35C83923C2BFF80030B301 /* BezierPath.h */,
-				7B35C83A23C2BFF80030B301 /* BezierPath.cpp */,
 				7B392113234E1E190047FB73 /* main.cpp */,
-				7B8CC69B23A8A016002F75F6 /* MathHelper.h */,
-				7B8CC69A23A8A016002F75F6 /* Random.h */,
-				7B030CF72391CC3600CD6622 /* Random.cpp */,
-				7B8CC69923A8A015002F75F6 /* Timer.h */,
-				7B392125235DEA740047FB73 /* Timer.cpp */,
 			);
 			path = GalagaSDL;
 			sourceTree = "<group>";
@@ -215,6 +228,8 @@
 		7B72DE6D237CB3820036C2D5 /* Galaga */ = {
 			isa = PBXGroup;
 			children = (
+				7B2CDFA123EB64D90060A0D1 /* CaptureBeam.cpp */,
+				7B2CDFA023EB64D80060A0D1 /* CaptureBeam.h */,
 				7B8CC68B23A89F69002F75F6 /* BackgroundStars.h */,
 				7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */,
 				7B35C84623C2C63A0030B301 /* Boss.h */,
@@ -333,6 +348,7 @@
 				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
 				7BB3F5782391CFB8008E7684 /* ScreenManager.cpp in Sources */,
 				7B35C84E23C2C63A0030B301 /* Wasp.cpp in Sources */,
+				7B2CDFA223EB64D90060A0D1 /* CaptureBeam.cpp in Sources */,
 				7B030CF32391CBE000CD6622 /* Scoreboard.cpp in Sources */,
 				7B35C84223C2C01A0030B301 /* Enemy.cpp in Sources */,
 				7BB3F5762391CFB8008E7684 /* PlaySideBar.cpp in Sources */,

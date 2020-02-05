@@ -1,6 +1,6 @@
 #ifndef __TIMER_H
 #define __TIMER_H
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 namespace SDLFramework {
 
