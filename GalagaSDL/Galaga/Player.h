@@ -7,7 +7,7 @@
 
 using namespace SDLFramework;
 
-class Player : public GameEntity {
+class Player : public PhysEntity {
 private:
 	Timer * mTimer;
 	InputManager * mInput;
@@ -15,6 +15,7 @@ private:
 
 	bool mVisible;
 	bool mAnimating;
+	bool mWasHit;
 
 	int mScore;
 	int mLives;
@@ -43,9 +44,13 @@ public:
 
 	void AddScore(int change);
 
-	void WasHit();
+	// Inherited from PhysEntity
+	bool IgnoreCollisions() override;
+	void Hit(PhysEntity * other) override;
+	
+	bool WasHit();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

@@ -1,7 +1,9 @@
 #include "Enemy.h"
+#include "PhysicsManager.h"
 
 std::vector<std::vector<Vector2>> Enemy::sPaths;
 Formation * Enemy::sFormation = nullptr;
+Player * Enemy::sPlayer = nullptr;
 
 void Enemy::CreatePaths() {
 	int screenMidPoint = (int)(Graphics::Instance()->SCREEN_WIDTH * 0.4f);
@@ -115,6 +117,10 @@ void Enemy::SetFormation(Formation * formation) {
 	sFormation = formation;
 }
 
+void Enemy::CurrentPlayer(Player * player) {
+	sPlayer = player;
+}
+
 Enemy::Enemy(int path, int index, bool challenge)
 	: mCurrentPath(path), mIndex(index), mChallengeStage(challenge) {
 	mTimer = Timer::Instance();
@@ -128,14 +134,23 @@ Enemy::Enemy(int path, int index, bool challenge)
 	mTextures[1] = nullptr;
 
 	mSpeed = 400.0f;
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
+
+	mDeathAnimation = new AnimatedTexture("EnemyExplosion.png", 0, 0, 128, 128, 5, 1.0f, AnimatedTexture::Horizontal);
+	mDeathAnimation->Parent(this);
+	mDeathAnimation->Position(Vec2_Zero);
+	mDeathAnimation->SetWrapMode(AnimatedTexture::Once);
 }
 
 Enemy::~Enemy() {
 	mTimer = nullptr;
 
 	for (auto t : mTextures) {
-		delete t;;
+		delete t;
 	}
+
+	delete mDeathAnimation;
 }
 
 void Enemy::PathComplete() {
@@ -207,6 +222,12 @@ void Enemy::HandleFormationState() {
 	}
 }
 
+void Enemy::HandleDeadState() {
+	if (mDeathAnimation->IsAnimating()) {
+		mDeathAnimation->Update();
+	}
+}
+
 void Enemy::HandleStates() {
 	switch (mCurrentState) {
 	case FlyIn:
@@ -232,6 +253,12 @@ void Enemy::RenderFormationState() {
 	mTextures[sFormation->GetTick() % 2]->Render();
 }
 
+void Enemy::RenderDeadState() {
+	if (mDeathAnimation->IsAnimating()) {
+		mDeathAnimation->Render();
+	}
+}
+
 void Enemy::RenderStates() {
 	switch (mCurrentState) {
 	case FlyIn:
@@ -247,6 +274,21 @@ void Enemy::RenderStates() {
 		RenderDeadState();
 		break;
 	}
+
+	PhysEntity::Render();
+}
+
+bool Enemy::IgnoreCollisions()
+{
+	return mCurrentState == Dead;
+}
+
+void Enemy::Hit(PhysEntity * other) {
+	if (mCurrentState == InFormation) {
+		Parent(nullptr);
+	}
+
+	mCurrentState = Dead;
 }
 
 Enemy::States Enemy::CurrentState() {
@@ -266,6 +308,10 @@ void Enemy::Dive(int type) {
 	mCurrentState = Diving;
 	mDiveStartPosition = Position();
 	mCurrentWaypoint = 1;
+}
+
+bool Enemy::InDeathAnimation() {
+	return mDeathAnimation->IsAnimating();
 }
 
 void Enemy::Update() {

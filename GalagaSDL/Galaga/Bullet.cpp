@@ -1,6 +1,12 @@
 #include "Bullet.h"
+#include "BoxCollider.h"
+#include "PhysicsManager.h"
 
-Bullet::Bullet() {
+bool Bullet::IgnoreCollisions() {
+	return !Active();
+}
+
+Bullet::Bullet(bool friendly) {
 	mTimer = Timer::Instance();
 
 	mTexture = new Texture("Bullet.png");
@@ -10,6 +16,15 @@ Bullet::Bullet() {
 	mSpeed = 500;
 
 	Reload();
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+
+	if (friendly) {
+		PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::FriendlyProjectiles);
+	}
+	else {
+		PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::FriendlyProjectiles);
+	}
 }
 
 Bullet::~Bullet() {
@@ -28,6 +43,10 @@ void Bullet::Reload() {
 	Active(false);
 }
 
+void Bullet::Hit(PhysEntity * other) {
+	Reload();
+}
+
 void Bullet::Update() {
 	if (Active()) {
 		Translate(-Vec2_Up * mSpeed * mTimer->DeltaTime());
@@ -42,5 +61,6 @@ void Bullet::Update() {
 void Bullet::Render() {
 	if (Active()) {
 		mTexture->Render();
+		PhysEntity::Render();
 	}
 }

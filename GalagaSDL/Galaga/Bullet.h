@@ -1,11 +1,11 @@
 #ifndef __BULLET_H
 #define __BULLET_H
-#include "Texture.h"
+#include "PhysEntity.h"
 #include "Timer.h"
 
 using namespace SDLFramework;
 
-class Bullet : public GameEntity {
+class Bullet : public PhysEntity {
 private:
 	static const int OFFSCREEN_BUFFER = 10;
 
@@ -15,14 +15,20 @@ private:
 
 	float mSpeed;
 
+	//Inherited from PhysEntity
+	bool IgnoreCollisions() override;
+
 public:
-	Bullet();
+	Bullet(bool friendly);
 	~Bullet();
 
 	void Fire(Vector2 pos);
 	void Reload();
 
-	void Update();
-	void Render();
+	// Inherited from PhysEntity
+	void Hit(PhysEntity * other) override;
+
+	void Update() override;
+	void Render() override;
 };
 #endif

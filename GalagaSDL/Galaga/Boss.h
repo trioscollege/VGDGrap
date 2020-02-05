@@ -16,21 +16,23 @@ private:
 
 	CaptureBeam * mCaptureBeam;
 
+	bool mWasHit;
+
 	void HandleCaptureBeam();
 
 	// Inherited via Enemy
 	Vector2 LocalFormationPosition() override;
 
 	void HandleDiveState() override;
-	void HandleDeadState() override;
 
 	void RenderDiveState() override;
-	void RenderDeadState() override;
 
 public:
 	static void CreateDivePaths();
 
+	// Inherited from Enemy
 	void Dive(int type = 0) override;
+	void Hit(PhysEntity * other) override;
 
 	Boss(int path, int index, bool challenge);
 	~Boss();

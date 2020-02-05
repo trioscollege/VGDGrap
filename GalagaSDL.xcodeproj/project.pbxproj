@@ -37,6 +37,11 @@
 		7B6A3553235FA32D00F80D46 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A3551235FA32D00F80D46 /* AssetManager.cpp */; };
 		7B6A3556235FA74E00F80D46 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A3554235FA74E00F80D46 /* Texture.cpp */; };
 		7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B72DE6F237CB5A70036C2D5 /* StartScreen.cpp */; };
+		7B91A02323EB76A500345F12 /* PhysicsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B91A01B23EB76A400345F12 /* PhysicsManager.cpp */; };
+		7B91A02423EB76A500345F12 /* BoxCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B91A01D23EB76A400345F12 /* BoxCollider.cpp */; };
+		7B91A02523EB76A500345F12 /* CircleCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B91A01E23EB76A400345F12 /* CircleCollider.cpp */; };
+		7B91A02623EB76A500345F12 /* PhysEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B91A01F23EB76A400345F12 /* PhysEntity.cpp */; };
+		7B91A02723EB76A500345F12 /* Collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B91A02023EB76A400345F12 /* Collider.cpp */; };
 		7BB3F5762391CFB8008E7684 /* PlaySideBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3F56F2391CFB8008E7684 /* PlaySideBar.cpp */; };
 		7BB3F5772391CFB8008E7684 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3F5702391CFB8008E7684 /* Level.cpp */; };
 		7BB3F5782391CFB8008E7684 /* ScreenManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3F5722391CFB8008E7684 /* ScreenManager.cpp */; };
@@ -121,6 +126,17 @@
 		7B8CC69B23A8A016002F75F6 /* MathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathHelper.h; sourceTree = "<group>"; };
 		7B8CC69C23A8A016002F75F6 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		7B8CC69D23A8A016002F75F6 /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputManager.h; sourceTree = "<group>"; };
+		7B91A01823EB76A400345F12 /* PhysEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysEntity.h; sourceTree = "<group>"; };
+		7B91A01923EB76A400345F12 /* BoxCollider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxCollider.h; sourceTree = "<group>"; };
+		7B91A01A23EB76A400345F12 /* PhysicsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsHelper.h; sourceTree = "<group>"; };
+		7B91A01B23EB76A400345F12 /* PhysicsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsManager.cpp; sourceTree = "<group>"; };
+		7B91A01C23EB76A400345F12 /* Collider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collider.h; sourceTree = "<group>"; };
+		7B91A01D23EB76A400345F12 /* BoxCollider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCollider.cpp; sourceTree = "<group>"; };
+		7B91A01E23EB76A400345F12 /* CircleCollider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleCollider.cpp; sourceTree = "<group>"; };
+		7B91A01F23EB76A400345F12 /* PhysEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysEntity.cpp; sourceTree = "<group>"; };
+		7B91A02023EB76A400345F12 /* Collider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collider.cpp; sourceTree = "<group>"; };
+		7B91A02123EB76A400345F12 /* CircleCollider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleCollider.h; sourceTree = "<group>"; };
+		7B91A02223EB76A400345F12 /* PhysicsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsManager.h; sourceTree = "<group>"; };
 		7BB3F56F2391CFB8008E7684 /* PlaySideBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlaySideBar.cpp; sourceTree = "<group>"; };
 		7BB3F5702391CFB8008E7684 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		7BB3F5722391CFB8008E7684 /* ScreenManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenManager.cpp; sourceTree = "<group>"; };
@@ -199,6 +215,7 @@
 		7B392112234E1E190047FB73 /* GalagaSDL */ = {
 			isa = PBXGroup;
 			children = (
+				7B91A01723EB767500345F12 /* Physics */,
 				7B2CDFA323EB65100060A0D1 /* Helpers */,
 				7B35C85123C2C6710030B301 /* Managers */,
 				7B39211E235A17D30047FB73 /* Entities */,
@@ -273,6 +290,24 @@
 			path = Galaga;
 			sourceTree = "<group>";
 		};
+		7B91A01723EB767500345F12 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				7B91A01D23EB76A400345F12 /* BoxCollider.cpp */,
+				7B91A01923EB76A400345F12 /* BoxCollider.h */,
+				7B91A01E23EB76A400345F12 /* CircleCollider.cpp */,
+				7B91A02123EB76A400345F12 /* CircleCollider.h */,
+				7B91A02023EB76A400345F12 /* Collider.cpp */,
+				7B91A01C23EB76A400345F12 /* Collider.h */,
+				7B91A01F23EB76A400345F12 /* PhysEntity.cpp */,
+				7B91A01823EB76A400345F12 /* PhysEntity.h */,
+				7B91A01A23EB76A400345F12 /* PhysicsHelper.h */,
+				7B91A01B23EB76A400345F12 /* PhysicsManager.cpp */,
+				7B91A02223EB76A400345F12 /* PhysicsManager.h */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,11 +367,13 @@
 			files = (
 				7B35C84F23C2C63A0030B301 /* Boss.cpp in Sources */,
 				7B35C83B23C2BFF80030B301 /* BezierPath.cpp in Sources */,
+				7B91A02523EB76A500345F12 /* CircleCollider.cpp in Sources */,
 				7BB3F5772391CFB8008E7684 /* Level.cpp in Sources */,
 				7B6A3553235FA32D00F80D46 /* AssetManager.cpp in Sources */,
 				7B6A3556235FA74E00F80D46 /* Texture.cpp in Sources */,
 				7B5914742374697400C597D5 /* AnimatedTexture.cpp in Sources */,
 				7B392121235DE4A80047FB73 /* Graphics.cpp in Sources */,
+				7B91A02623EB76A500345F12 /* PhysEntity.cpp in Sources */,
 				7B392124235DE6E20047FB73 /* GameManager.cpp in Sources */,
 				7B030CF52391CBE000CD6622 /* StarLayer.cpp in Sources */,
 				7B35C84423C2C01A0030B301 /* Player.cpp in Sources */,
@@ -347,11 +384,14 @@
 				7B453D7E235F558C0064FC0D /* GameEntity.cpp in Sources */,
 				7B392114234E1E190047FB73 /* main.cpp in Sources */,
 				7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */,
+				7B91A02323EB76A500345F12 /* PhysicsManager.cpp in Sources */,
 				7BB3F5792391CFB8008E7684 /* PlayScreen.cpp in Sources */,
 				7B35C84323C2C01A0030B301 /* Bullet.cpp in Sources */,
+				7B91A02723EB76A500345F12 /* Collider.cpp in Sources */,
 				7B030CF92391CC3600CD6622 /* Random.cpp in Sources */,
 				7B72DE70237CB5A70036C2D5 /* StartScreen.cpp in Sources */,
 				7B35C85023C2C63A0030B301 /* Formation.cpp in Sources */,
+				7B91A02423EB76A500345F12 /* BoxCollider.cpp in Sources */,
 				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
 				7BB3F5782391CFB8008E7684 /* ScreenManager.cpp in Sources */,
 				7B2CDFA623EB662D0060A0D1 /* tinyxml2.cpp in Sources */,

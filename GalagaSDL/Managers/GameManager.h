@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include "AudioManager.h"
 #include "ScreenManager.h"
+#include "PhysicsManager.h"
 
 namespace SDLFramework {
 
@@ -18,6 +19,7 @@ namespace SDLFramework {
 		AssetManager * mAssetManager;
 		InputManager * mInputManager;
 		AudioManager * mAudioManager;
+		PhysicsManager * mPhysicsManager;
 
 		Timer * mTimer;
 

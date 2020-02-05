@@ -14,15 +14,16 @@ private:
 	Vector2 LocalFormationPosition() override;
 
 	void HandleDiveState() override;
-	void HandleDeadState() override;
 
 	void RenderDiveState() override;
-	void RenderDeadState() override;
 
 public:
 	static void CreateDivePaths();
 
 	Wasp(int path, int index, bool challenge, bool diver);
 	~Wasp();
+
+	// Inherited from PhysEntity
+	void Hit(PhysEntity * other) override;
 };
 #endif
