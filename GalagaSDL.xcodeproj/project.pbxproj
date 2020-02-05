@@ -13,6 +13,8 @@
 		7B030CF62391CBE000CD6622 /* BackgroundStars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF22391CBE000CD6622 /* BackgroundStars.cpp */; };
 		7B030CF92391CC3600CD6622 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B030CF72391CC3600CD6622 /* Random.cpp */; };
 		7B2CDFA223EB64D90060A0D1 /* CaptureBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CDFA123EB64D90060A0D1 /* CaptureBeam.cpp */; };
+		7B2CDFA623EB662D0060A0D1 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CDFA423EB662D0060A0D1 /* tinyxml2.cpp */; };
+		7B2CDFA723EB671E0060A0D1 /* Data in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CDF9F23EB63F90060A0D1 /* Data */; };
 		7B35C83B23C2BFF80030B301 /* BezierPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83A23C2BFF80030B301 /* BezierPath.cpp */; };
 		7B35C84223C2C01A0030B301 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83D23C2C01A0030B301 /* Enemy.cpp */; };
 		7B35C84323C2C01A0030B301 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B35C83E23C2C01A0030B301 /* Bullet.cpp */; };
@@ -50,6 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				7B2CDFA723EB671E0060A0D1 /* Data in CopyFiles */,
 				7BCB98EC237CF160009CBBA1 /* Assets in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +68,8 @@
 		7B2CDF9F23EB63F90060A0D1 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = GalagaSDL/Data; sourceTree = "<group>"; };
 		7B2CDFA023EB64D80060A0D1 /* CaptureBeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureBeam.h; sourceTree = "<group>"; };
 		7B2CDFA123EB64D90060A0D1 /* CaptureBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CaptureBeam.cpp; sourceTree = "<group>"; };
+		7B2CDFA423EB662D0060A0D1 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
+		7B2CDFA523EB662D0060A0D1 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
 		7B35C83923C2BFF80030B301 /* BezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPath.h; sourceTree = "<group>"; };
 		7B35C83A23C2BFF80030B301 /* BezierPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BezierPath.cpp; sourceTree = "<group>"; };
 		7B35C83C23C2C01A0030B301 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
@@ -142,6 +147,8 @@
 		7B2CDFA323EB65100060A0D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7B2CDFA423EB662D0060A0D1 /* tinyxml2.cpp */,
+				7B2CDFA523EB662D0060A0D1 /* tinyxml2.h */,
 				7B35C83923C2BFF80030B301 /* BezierPath.h */,
 				7B35C83A23C2BFF80030B301 /* BezierPath.cpp */,
 				7B8CC69B23A8A016002F75F6 /* MathHelper.h */,
@@ -347,6 +354,7 @@
 				7B35C85023C2C63A0030B301 /* Formation.cpp in Sources */,
 				7B392127235DEA740047FB73 /* Timer.cpp in Sources */,
 				7BB3F5782391CFB8008E7684 /* ScreenManager.cpp in Sources */,
+				7B2CDFA623EB662D0060A0D1 /* tinyxml2.cpp in Sources */,
 				7B35C84E23C2C63A0030B301 /* Wasp.cpp in Sources */,
 				7B2CDFA223EB64D90060A0D1 /* CaptureBeam.cpp in Sources */,
 				7B030CF32391CBE000CD6622 /* Scoreboard.cpp in Sources */,
