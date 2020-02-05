@@ -70,9 +70,8 @@ Player::~Player() {
 	delete mDeathAnimation;
 	mDeathAnimation = nullptr;
 
-	for (int i = 0; i < MAX_BULLETS; ++i) {
-		delete mBullets[i];
-		mBullets[i] = nullptr;
+	for (auto b : mBullets) {
+		delete b;
 	}
 }
 

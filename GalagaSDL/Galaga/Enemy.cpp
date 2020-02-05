@@ -51,9 +51,8 @@ Enemy::Enemy(int path, int index, bool challenge)
 Enemy::~Enemy() {
 	mTimer = nullptr;
 
-	for (int i = 0; i < 2; i++) {
-		delete mTextures[i];
-		mTextures[i] = nullptr;
+	for (auto t : mTextures) {
+		delete t;
 	}
 }
 
@@ -164,7 +163,11 @@ Enemy::Types Enemy::Type() {
 	return mType;
 }
 
-void Enemy::Dive() {
+int Enemy::Index() {
+	return mIndex;
+}
+
+void Enemy::Dive(int type) {
 	Parent(nullptr);
 	mCurrentState = Diving;
 	mDiveStartPosition = Position();

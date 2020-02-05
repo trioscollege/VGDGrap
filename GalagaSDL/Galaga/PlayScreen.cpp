@@ -31,6 +31,8 @@ PlayScreen::PlayScreen() {
 
 	Enemy::CreatePaths();
 	Wasp::CreateDivePaths();
+	Butterfly::CreateDivePaths();
+	Boss::CreateDivePaths();
 }
 
 PlayScreen::~PlayScreen() {
@@ -105,8 +107,6 @@ void PlayScreen::Update() {
 }
 
 void PlayScreen::Render() {
-	mSideBar->Render();
-
 	if (!mGameStarted) {
 		mStartLabel->Render();
 	}
@@ -119,4 +119,6 @@ void PlayScreen::Render() {
 
 		mPlayer->Render();
 	}
+
+	mSideBar->Render();
 }

@@ -99,6 +99,37 @@ void Level::HandleEnemyDiving() {
 				}
 			}
 		}
+
+		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_B)) {
+			for (auto e : mEnemies) {
+				if (e->Type() == Enemy::Butterfly && e->CurrentState() == Enemy::InFormation) {
+					e->Dive();
+					break; // work done, leave loop.
+				}
+			}
+		}
+
+		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_H)) {
+			for (auto e : mEnemies) {
+				if (e->Type() == Enemy::Boss && e->CurrentState() == Enemy::InFormation) {
+					e->Dive();
+
+					int index = e->Index();
+					int firstEscortIndex = (index % 2 == 0) ? (index * 2) : (index * 2 - 1);
+					int secondEscortIndex = firstEscortIndex + 4;
+
+					for (auto f : mEnemies) {
+						// verify the enemy is a butterfly in formation and has either the first or second escort index
+						if (f->Type() == Enemy::Butterfly && f->CurrentState() == Enemy::InFormation
+							&& (f->Index() == firstEscortIndex || f->Index() == secondEscortIndex)) {
+							f->Dive(1);
+						}
+					}
+
+					break; // work done, leave loop.
+				}
+			}
+		}
 	}
 }
 
@@ -153,7 +184,7 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 	mCurrentState = Running;
 
 	mFormation = new Formation();
-	mFormation->Position(Graphics::SCREEN_WIDTH * 0.4f, 150.0f);
+	mFormation->Position(Graphics::SCREEN_WIDTH * 0.39f, 150.0f);
 	Enemy::SetFormation(mFormation);
 	
 	mButterflyCount = 0;
