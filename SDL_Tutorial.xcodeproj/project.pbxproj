@@ -74,15 +74,14 @@
 		7B392112234E1E190047FB73 /* SDL_Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				7B47710823A8924B00790091 /* GameEntity.h */,
+				7B8EDB3523EC6B6000D79250 /* Entities */,
 				7B47710723A8924B00790091 /* GameManager.h */,
+				7B392122235DE6E20047FB73 /* GameManager.cpp */,
 				7B47710B23A8924B00790091 /* Graphics.h */,
+				7B392120235DE4A80047FB73 /* Graphics.cpp */,
+				7B392113234E1E190047FB73 /* main.cpp */,
 				7B47710A23A8924B00790091 /* MathHelper.h */,
 				7B47710923A8924B00790091 /* Timer.h */,
-				7BAB81EE2391AC0B00976859 /* GameEntity.cpp */,
-				7B392113234E1E190047FB73 /* main.cpp */,
-				7B392120235DE4A80047FB73 /* Graphics.cpp */,
-				7B392122235DE6E20047FB73 /* GameManager.cpp */,
 				7B392125235DEA740047FB73 /* Timer.cpp */,
 			);
 			path = SDL_Tutorial;
@@ -94,6 +93,15 @@
 				7B39211B234E1E880047FB73 /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B8EDB3523EC6B6000D79250 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7B47710823A8924B00790091 /* GameEntity.h */,
+				7BAB81EE2391AC0B00976859 /* GameEntity.cpp */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
