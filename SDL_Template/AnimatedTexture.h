@@ -6,8 +6,7 @@
 namespace SDLFramework {
 
 	class AnimatedTexture :
-		public Texture
-	{
+		public Texture {
 	public:
 		enum WrapMode { Once = 0, Loop = 1 };
 		enum AnimDir { Horizontal = 0, Vertical = 1 };
@@ -39,7 +38,7 @@ namespace SDLFramework {
 		virtual void ResetAnimation();
 		bool IsAnimating();
 
-		void Update();
+		void Update() override;
 	};
 }
 #endif

@@ -15,7 +15,7 @@ public:
 
 	void Score(int score);
 
-	void Render();
+	void Render() override;
 
 private:
 	void ClearBoard();
