@@ -37,6 +37,7 @@ private:
 	float mFlagTimer;
 	float mFlagInterval;
 
+private:
 	void ClearFlags();
 	void AddNextFlag();
 	void AddFlag(std::string filename, float width, int value);
@@ -50,7 +51,7 @@ public:
 	void SetShips(int ships);
 	void SetLevel(int level);
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

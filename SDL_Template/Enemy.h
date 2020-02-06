@@ -85,7 +85,7 @@ public:
 
 	bool InDeathAnimation();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

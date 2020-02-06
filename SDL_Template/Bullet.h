@@ -15,6 +15,7 @@ private:
 
 	float mSpeed;
 
+private:
 	//Inherited from PhysEntity
 	bool IgnoreCollisions() override;
 
@@ -28,7 +29,7 @@ public:
 	// Inherited from PhysEntity
 	void Hit(PhysEntity * other) override;
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

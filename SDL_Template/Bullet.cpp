@@ -20,10 +20,10 @@ Bullet::Bullet(bool friendly) {
 	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 
 	if (friendly) {
-		PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::FriendlyProjectiles);
+		mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::FriendlyProjectiles);
 	}
 	else {
-		PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::FriendlyProjectiles);
+		mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::HostileProjectiles);
 	}
 }
 

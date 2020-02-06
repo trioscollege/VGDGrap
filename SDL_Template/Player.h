@@ -29,6 +29,7 @@ private:
 	static const int MAX_BULLETS = 2;
 	Bullet * mBullets[MAX_BULLETS];
 
+private:
 	void HandleMovement();
 	void HandleFiring();
 
@@ -50,7 +51,7 @@ public:
 	
 	bool WasHit();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

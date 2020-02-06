@@ -38,6 +38,6 @@ public:
 
 	bool Locked();
 
-	void Update();
+	void Update() override;
 };
 #endif

@@ -24,6 +24,7 @@ private:
 
 	Player * mPlayer;
 
+private:
 	void StartNextLevel();
 
 public:
@@ -34,7 +35,7 @@ public:
 
 	bool GameOver();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

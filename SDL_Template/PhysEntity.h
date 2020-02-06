@@ -17,7 +17,7 @@ protected:
 
 public:
 	PhysEntity();
-	~PhysEntity();
+	virtual ~PhysEntity();
 
 	unsigned long GetId();
 
