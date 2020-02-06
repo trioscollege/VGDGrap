@@ -1,6 +1,10 @@
 #ifndef __TIMER_H
 #define __TIMER_H
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL.h>
+#elif defined(__APPLE__)
+#include <SDL2/SDL.h>
+#endif
 
 namespace SDLFramework {
 

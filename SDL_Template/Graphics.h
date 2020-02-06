@@ -1,8 +1,14 @@
 #ifndef __GRAPHICS_H
 #define __GRAPHICS_H
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#elif defined(__APPLE__)
+#include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
+#include <SDL2_ttf/SDL_ttf.h>
+#endif
 #include <iostream>
 #include <string>
 
