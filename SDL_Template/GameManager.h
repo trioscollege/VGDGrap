@@ -1,8 +1,5 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
-#include <SDL.h>
-#include "Timer.h"
-#include "AudioManager.h"
 #include "ScreenManager.h"
 
 namespace SDLFramework {
