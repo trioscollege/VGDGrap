@@ -1,5 +1,6 @@
 #ifndef __ASSETMANAGER_H
 #define __ASSETMANAGER_H
+#include "Graphics.h"
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL_mixer.h>
 #elif defined(__APPLE__)
@@ -7,7 +8,6 @@
 #endif
 #include <map>
 #include <sstream>
-#include "Graphics.h"
 
 namespace SDLFramework {
 
