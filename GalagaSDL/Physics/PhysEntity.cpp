@@ -23,7 +23,7 @@ void PhysEntity::AddCollider(Collider * collider, Vector2 localPos) {
 		mBroadPhaseCollider = new CircleCollider(furthestDistance, true);
 		mBroadPhaseCollider->Parent(this);
 		mBroadPhaseCollider->Position(Vec2_Zero);
-	};
+	}
 }
 
 bool PhysEntity::IgnoreCollisions() {

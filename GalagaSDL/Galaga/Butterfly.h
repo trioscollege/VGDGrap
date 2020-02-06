@@ -8,6 +8,7 @@ private:
 
 	bool mEscort;
 
+private:
 	// Inherited via Enemy
 	Vector2 LocalFormationPosition() override;
 

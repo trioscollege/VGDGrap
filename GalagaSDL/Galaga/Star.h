@@ -26,8 +26,8 @@ public:
 	Star(int layer);
 	~Star();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 
 private:
 	void ScrollStar();

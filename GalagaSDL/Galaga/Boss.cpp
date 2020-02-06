@@ -249,5 +249,5 @@ Boss::Boss(int path, int index, bool challenge)
 
 Boss::~Boss() {
 	delete mCaptureBeam;
-	mCaptureBeam = nullptr;
+	mCaptureBeam = false;
 }

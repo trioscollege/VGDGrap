@@ -18,6 +18,7 @@ private:
 
 	bool mWasHit;
 
+private:
 	void HandleCaptureBeam();
 
 	// Inherited via Enemy

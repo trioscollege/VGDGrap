@@ -372,17 +372,17 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 		mFormation->Position(Graphics::SCREEN_WIDTH * 0.39f, 150.0f);
 		Enemy::SetFormation(mFormation);
 
-		for (unsigned i = 0; i < MAX_BUTTERFLIES; i++) {
-            mFormationButterflies[i] = nullptr;
-        }
+		for (Butterfly * b : mFormationButterflies) {
+			b = nullptr;
+		}
 
-        for (unsigned i = 0; i < MAX_WASPS; i++) {
-            mFormationWasps[i] = nullptr;
-        }
+		for (Wasp * w : mFormationWasps) {
+			w = nullptr;
+		}
 
-        for (unsigned i = 0; i < MAX_BOSSES; i++) {
-            mFormationBosses[i] = nullptr;
-        }
+		for (Boss * b : mFormationBosses) {
+			b = nullptr;
+		}
 	}
 
 	mCurrentFlyInPriority = 0;
@@ -490,23 +490,23 @@ void Level::Render() {
 	}
 	else {
 		if (!mChallengeStage) {
-            for (auto b : mFormationButterflies) {
-                if (b != nullptr) {
-                    b->Render();
-                }
-            }
-            
-            for (auto w : mFormationWasps) {
-                if (w != nullptr) {
-                    w->Render();
-                }
-            }
-            
-            for (auto b : mFormationBosses) {
-                if (b != nullptr) {
-                    b->Render();
-                }
-            }
+			for (Butterfly * b : mFormationButterflies) {
+				if (b != nullptr) {
+					b->Render();
+				}
+			}
+
+			for (Wasp * w : mFormationWasps) {
+				if (w != nullptr) {
+					w->Render();
+				}
+			}
+
+			for (Boss * b : mFormationBosses) {
+				if (b != nullptr) {
+					b->Render();
+				}
+			}
 		}
 		else {
 			for (auto e : mEnemies) {
