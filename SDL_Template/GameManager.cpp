@@ -86,7 +86,7 @@ namespace SDLFramework {
 
 		mTimer = Timer::Instance();
 
-		mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22);
+		mTex = new Texture("SpriteSheet.png", 182, 54, 22, 22, true);
 		mTex->Position(Vector2(Graphics::SCREEN_WIDTH*0.5f, Graphics::SCREEN_HEIGHT*0.5f));
 	}
 

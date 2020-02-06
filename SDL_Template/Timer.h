@@ -6,8 +6,7 @@
 
 namespace SDLFramework {
 
-	class Timer
-	{
+	class Timer {
 	private:
 		static Timer * sInstance;
 

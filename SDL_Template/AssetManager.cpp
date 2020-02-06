@@ -17,6 +17,23 @@ namespace SDLFramework {
 		sInstance = nullptr;
 	}
 
+	void AssetManager::UnloadTexture(SDL_Texture * texture) {
+		bool found = false;
+		std::string key;
+		std::map<std::string, SDL_Texture *>::iterator it;
+
+		for (it = mTextures.begin(); it != mTextures.end() && !found; it++) {
+			if ((found = it->second == texture)) {
+				SDL_DestroyTexture(it->second);
+				key = it->first;
+			}
+		}
+
+		if (found) {
+			mTextures.erase(key);
+		}
+	}
+
 	AssetManager::AssetManager() {
 	}
 
@@ -45,20 +62,17 @@ namespace SDLFramework {
 	}
 
 	void AssetManager::DestroyTexture(SDL_Texture * texture) {
-		if (mTextureRefCount.find(texture) != mTextureRefCount.end()) {
-			mTextureRefCount[texture] -= 1;
-			if (mTextureRefCount[texture] == 0) {
-				for (auto elem : mTextures) {
-					if (elem.second == texture) {
-						SDL_DestroyTexture(elem.second);
-						mTextures.erase(elem.first);
-						return; // work finished, leave function
-					}
-				}
+		std::map<SDL_Texture *, unsigned>::iterator it = mTextureRefCount.find(texture);
+		
+		if (it != mTextureRefCount.end()) {
+			it->second -= 1;
+			if (it->second == 0) {
+				UnloadTexture(it->first);
+				mTextureRefCount.erase(it->first);
 			}
 		}
 		else {
-			SDL_DestroyTexture(texture);
+			UnloadTexture(texture);
 		}
 	}
 }
