@@ -23,8 +23,7 @@ Formation::~Formation() {
 	mTimer = nullptr;
 }
 
-Vector2 Formation::GridSize()
-{
+Vector2 Formation::GridSize() {
 	return mGridSize;
 }
 
