@@ -71,7 +71,7 @@ public:
 
 	virtual void Dive(int type = 0);
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

@@ -11,6 +11,7 @@ private:
 	float mTotalCaptureTime;
 	float mCaptureTimer;
 
+private:
 	void RunAnimation() override;
 
 public:

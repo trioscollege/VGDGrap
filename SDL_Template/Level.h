@@ -88,6 +88,7 @@ private:
 	float mBossDiveDelay;
 	float mBossDiveTimer;
 
+private:
 	void StartStage();
 	void HandleStartLabels();
 	void HandleCollisions();
@@ -104,7 +105,7 @@ public:
 
 	LevelStates State();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

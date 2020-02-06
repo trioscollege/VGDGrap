@@ -22,7 +22,7 @@ public:
 	void Fire(Vector2 pos);
 	void Reload();
 
-	void Update();
-	void Render();
+	void Update() override;
+	void Render() override;
 };
 #endif

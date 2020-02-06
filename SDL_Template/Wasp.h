@@ -8,6 +8,7 @@ private:
 
 	bool mDiver;
 
+private:
 	// Inherited via Enemy
 	void FlyInComplete() override;
 
