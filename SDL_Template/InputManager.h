@@ -8,8 +8,7 @@
 
 namespace SDLFramework {
 
-	class InputManager
-	{
+	class InputManager {
 	public:
 		enum MouseButton { Left = 0, Right, Middle, Back, Forward };
 

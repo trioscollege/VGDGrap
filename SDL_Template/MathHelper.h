@@ -3,8 +3,8 @@
 #include <math.h>
 
 namespace SDLFramework {
-
-#define PI 3.1415926535
+	
+#define PI 3.1415926535f
 #define DEG_TO_RAD PI / 180.0f
 
 	struct Vector2 {

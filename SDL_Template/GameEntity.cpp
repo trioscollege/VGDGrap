@@ -92,8 +92,7 @@ namespace SDLFramework {
 		mParent = parent;
 	}
 
-	GameEntity * GameEntity::Parent() const
-	{
+	GameEntity * GameEntity::Parent() const {
 		return mParent;
 	}
 

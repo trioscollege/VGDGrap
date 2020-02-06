@@ -14,15 +14,19 @@ namespace SDLFramework {
 
 		std::map<std::string, SDL_Texture *> mTextures;
 		std::map<std::string, TTF_Font *> mFonts;
-		std::map<std::string, SDL_Texture *> mText;
 		std::map<std::string, Mix_Music *> mMusic;
 		std::map<std::string, Mix_Chunk *> mSFX;
 
 		std::map<SDL_Texture *, unsigned> mTextureRefCount;
 		std::map<Mix_Music *, unsigned> mMusicRefCount;
-		std::map<Mix_Chunk *, unsigned*> mSFXRefCount;
+		std::map<Mix_Chunk *, unsigned> mSFXRefCount;
 
 		TTF_Font * GetFont(std::string filename, int size);
+
+	private:
+		void UnloadTexture(SDL_Texture * texture);
+		void UnloadMusic(Mix_Music * music);
+		void UnloadSFX(Mix_Chunk * chunk);
 
 		AssetManager();
 		~AssetManager();
