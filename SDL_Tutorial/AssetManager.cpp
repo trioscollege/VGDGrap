@@ -223,7 +223,7 @@ namespace SDLFramework {
         if (it != mSFXRefCount.end()) {
             it->second -= 1;
             if (it->second == 0) {
-                UnloadSFX(chunk);
+                UnloadSFX(it->first);
                 mSFXRefCount.erase(it->first);
             }
         }
