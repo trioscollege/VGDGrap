@@ -3,8 +3,7 @@
 #include "PlaySideBar.h"
 #include "BackgroundStars.h"
 
-class Level : public GameEntity
-{
+class Level : public GameEntity {
 private:
 	Timer * mTimer;
 	PlaySideBar * mSideBar;
