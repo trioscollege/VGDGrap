@@ -28,8 +28,7 @@ namespace SDLFramework {
 		return mPrevKeyboardState[scancode] && !mKeyboardState[scancode];
 	}
 
-	bool InputManager::MouseButtonDown(MouseButton button)
-	{
+	bool InputManager::MouseButtonDown(MouseButton button) {
 		Uint32 mask = 0;
 
 		switch (button) {
@@ -53,8 +52,7 @@ namespace SDLFramework {
 		return (mMouseState & mask) != 0;
 	}
 
-	bool InputManager::MouseButtonPressed(MouseButton button)
-	{
+	bool InputManager::MouseButtonPressed(MouseButton button) {
 		Uint32 mask = 0;
 
 		switch (button) {
@@ -78,8 +76,7 @@ namespace SDLFramework {
 		return !(mPrevMouseState & mask) && (mMouseState & mask);
 	}
 
-	bool InputManager::MouseButtonReleased(MouseButton button)
-	{
+	bool InputManager::MouseButtonReleased(MouseButton button) {
 		Uint32 mask = 0;
 
 		switch (button) {
