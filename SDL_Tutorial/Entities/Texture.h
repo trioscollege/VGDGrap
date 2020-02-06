@@ -19,9 +19,9 @@ namespace SDLFramework {
 		SDL_Rect mDestinationRect;
 
 	public:
-		Texture(std::string filename);
-		Texture(std::string filename, int x, int y, int w, int h);
-		Texture(std::string text, std::string fontPath, int size, SDL_Color color);
+		Texture(std::string filename, bool managed = false);
+		Texture(std::string filename, int x, int y, int w, int h, bool managed = false);
+        Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = false);
 		~Texture();
 
 		void Render() override;
