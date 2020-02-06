@@ -9,13 +9,16 @@ class Scoreboard : public GameEntity {
 private:
 	std::vector<Texture *> mScore;
 
+	SDL_Color mColor;
+
 public:
 	Scoreboard();
+	Scoreboard(SDL_Color color);
 	~Scoreboard();
 
 	void Score(int score);
 
-	void Render() override;
+	void Render();
 
 private:
 	void ClearBoard();
