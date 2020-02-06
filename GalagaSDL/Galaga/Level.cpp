@@ -372,17 +372,17 @@ Level::Level(int stage, PlaySideBar * sideBar, Player * player) {
 		mFormation->Position(Graphics::SCREEN_WIDTH * 0.39f, 150.0f);
 		Enemy::SetFormation(mFormation);
 
-		for (Butterfly * b : mFormationButterflies) {
-			b = nullptr;
-		}
+        for (unsigned i = 0; i < MAX_BUTTERFLIES; i++) {
+            mFormationButterflies[i] = nullptr;
+        }
 
-		for (Wasp * w : mFormationWasps) {
-			w = nullptr;
-		}
+		for (unsigned i = 0; i < MAX_WASPS; i++) {
+            mFormationWasps[i] = nullptr;
+        }
 
-		for (Boss * b : mFormationBosses) {
-			b = nullptr;
-		}
+		for (unsigned i = 0; i < MAX_BOSSES; i++) {
+            mFormationBosses[i] = nullptr;
+        }
 	}
 
 	mCurrentFlyInPriority = 0;
