@@ -1,8 +1,10 @@
 #ifndef __GRAPHICS_H
 #define __GRAPHICS_H
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL.h>
-// MacOS using XCode
-// #include <SDL2/SDL.h>
+#elif defined(__APPLE__)
+#include <SDL2/SDL.h>
+#endif
 #include <iostream>
 #include <string>
 
