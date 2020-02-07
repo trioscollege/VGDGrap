@@ -1,10 +1,11 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL.h>
-// MacOS using XCode
-// #include <SDL2/SDL.h>
+#elif defined(__APPLE__)
+#include <SDL2/SDL.h>
+#endif
 #include "AnimatedTexture.h"
-#include "Timer.h"
 #include "InputManager.h"
 #include "AudioManager.h"
 
