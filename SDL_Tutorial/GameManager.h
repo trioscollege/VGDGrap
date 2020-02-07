@@ -1,6 +1,5 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
-#include <SDL2/SDL.h>
 #include "Graphics.h"
 #include "Timer.h"
 #include "GameEntity.h"
