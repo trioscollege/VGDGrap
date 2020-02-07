@@ -8,7 +8,6 @@
 using namespace SDLFramework;
 
 class StartScreen : public GameEntity {
-
 private:
 	Timer * mTimer;
 	InputManager * mInput;

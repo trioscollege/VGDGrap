@@ -4,8 +4,7 @@ namespace SDLFramework {
 
 	GameManager * GameManager::sInstance = nullptr;
 
-	GameManager * GameManager::Instance()
-	{
+	GameManager * GameManager::Instance() {
 		if (sInstance == nullptr) {
 			sInstance = new GameManager();
 		}
