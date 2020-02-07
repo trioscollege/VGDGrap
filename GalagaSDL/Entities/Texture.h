@@ -1,6 +1,5 @@
 #ifndef __TEXTURE_H
 #define __TEXTURE_H
-#include "Graphics.h"
 #include "GameEntity.h"
 #include "AssetManager.h"
 
@@ -19,10 +18,12 @@ namespace SDLFramework {
 		SDL_Rect mDestinationRect;
 
 	public:
-		Texture(std::string filename, bool managed = false);
-		Texture(std::string filename, int x, int y, int w, int h, bool managed = false);
-		Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = false);
+		Texture(std::string filename, bool managed = true);
+		Texture(std::string filename, int x, int y, int w, int h, bool managed = true);
+		Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = true);
 		~Texture();
+
+		Vector2 ScaledDimensions();
 
 		void Render() override;
 	};

@@ -77,8 +77,6 @@ void PlayScreen::Update() {
 }
 
 void PlayScreen::Render() {
-	mSideBar->Render();
-
 	if (!mGameStarted) {
 		mStartLabel->Render();
 	}
@@ -86,4 +84,6 @@ void PlayScreen::Render() {
 	if (mGameStarted && mLevelStarted) {
 		mLevel->Render();
 	}
+
+	mSideBar->Render();
 }

@@ -7,7 +7,6 @@
 using namespace SDLFramework;
 
 class Star : public Texture {
-
 private:
 	static bool mScroll;
 

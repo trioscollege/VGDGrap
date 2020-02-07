@@ -28,13 +28,6 @@ namespace SDLFramework {
 		}
 		mTextures.clear();
 
-		for (auto text : mText) {
-			if (text.second != nullptr) {
-				SDL_DestroyTexture(text.second);
-			}
-		}
-		mText.clear();
-
 		for (auto font : mFonts) {
 			if (font.second != nullptr) {
 				TTF_CloseFont(font.second);
@@ -58,19 +51,19 @@ namespace SDLFramework {
 	}
 
 	SDL_Texture * AssetManager::GetTexture(std::string filename, bool managed) {
-			std::string fullPath = SDL_GetBasePath();
-			fullPath.append("Assets/" + filename);
+		std::string fullPath = SDL_GetBasePath();
+		fullPath.append("Assets/" + filename);
 
-			if (mTextures[fullPath] == nullptr) {
-				mTextures[fullPath] = Graphics::Instance()->LoadTexture(fullPath);
-			}
-
-			if (mTextures[fullPath] != nullptr && managed) {
-				mTextureRefCount[mTextures[fullPath]] += 1;
-			}
-
-			return mTextures[fullPath];
+		if (mTextures[fullPath] == nullptr) {
+			mTextures[fullPath] = Graphics::Instance()->LoadTexture(fullPath);
 		}
+
+		if (mTextures[fullPath] != nullptr && managed) {
+			mTextureRefCount[mTextures[fullPath]] += 1;
+		}
+
+		return mTextures[fullPath];
+	}
 
 	TTF_Font * AssetManager::GetFont(std::string filename, int size) {
 		std::string fullPath = SDL_GetBasePath();
@@ -90,21 +83,72 @@ namespace SDLFramework {
 		return mFonts[key];
 	}
 
+	void AssetManager::UnloadTexture(SDL_Texture * texture) {
+		bool found = false;
+		std::string key;
+		std::map<std::string, SDL_Texture *>::iterator it;
+
+		for (it = mTextures.begin(); it != mTextures.end() && !found; it++) {
+			if ((found = it->second == texture)) {
+				SDL_DestroyTexture(it->second);
+				key = it->first;
+			}
+		}
+
+		if (found) {
+			mTextures.erase(key);
+		}
+	}
+
+	void AssetManager::UnloadMusic(Mix_Music * music) {
+		bool found = false;
+		std::string key;
+		std::map<std::string, Mix_Music *>::iterator it;
+
+		for (it = mMusic.begin(); it != mMusic.end() && !found; it++) {
+			if ((found = it->second == music)) {
+				Mix_FreeMusic(it->second);
+				key = it->first;
+			}
+		}
+
+		if (found) {
+			mMusic.erase(key);
+		}
+	}
+
+	void AssetManager::UnloadSFX(Mix_Chunk * chunk) {
+		bool found = false;
+		std::string key;
+		std::map<std::string, Mix_Chunk *>::iterator it;
+
+		for (it = mSFX.begin(); it != mSFX.end() && !found; it++) {
+			if ((found = it->second == chunk)) {
+				Mix_FreeChunk(it->second);
+				key = it->first;
+			}
+		}
+
+		if (found) {
+			mSFX.erase(key);
+		}
+	}
+
 	SDL_Texture * AssetManager::GetText(std::string text, std::string filename, int size, SDL_Color color, bool managed) {
 		std::stringstream ss;
 		ss << size << (int)color.r << (int)color.g << (int)color.b;
 		std::string key = text + filename + ss.str();
 
-		if (mText[key] == nullptr) {
+		if (mTextures[key] == nullptr) {
 			TTF_Font * font = GetFont(filename, size);
-			mText[key] = Graphics::Instance()->CreateTextTexture(font, text, color);
+			mTextures[key] = Graphics::Instance()->CreateTextTexture(font, text, color);
 		}
 
-		if (mText[key] != nullptr && managed) {
-			mTextureRefCount[mText[key]] += 1;
+		if (mTextures[key] != nullptr && managed) {
+			mTextureRefCount[mTextures[key]] += 1;
 		}
 
-		return mText[key];
+		return mTextures[key];
 	}
 
 	Mix_Music * AssetManager::GetMusic(std::string filename, bool managed) {
@@ -144,55 +188,48 @@ namespace SDLFramework {
 	}
 
 	void AssetManager::DestroyTexture(SDL_Texture * texture) {
+		std::map<SDL_Texture *, unsigned>::iterator it = mTextureRefCount.find(texture);
 
-		if (mTextureRefCount.find(texture) != mTextureRefCount.end())
-		{
-			mTextureRefCount[texture] -= 1;
-			if (mTextureRefCount[texture] == 0) {
-				for (auto elem : mTextures) {
-					if (elem.second == texture) {
-						SDL_DestroyTexture(elem.second);
-						mTextures.erase(elem.first);
-						return; // work finished, leave function
-					}
-				}
-
-				for (auto elem : mText) {
-					if (elem.second == texture) {
-						SDL_DestroyTexture(elem.second);
-						mText.erase(elem.first);
-						return; // work finished, leave function
-					}
-				}
+		if (it != mTextureRefCount.end()) {
+			it->second -= 1;
+			if (it->second == 0) {
+				UnloadTexture(it->first);
+				mTextureRefCount.erase(it->first);
 			}
+		}
+		else {
+			UnloadTexture(texture);
 		}
 	}
 
-	void AssetManager::DestroyMusic(Mix_Music * music) {
-		for (auto elem : mMusic) {
-			if (elem.second == music) {
-				mMusicRefCount[elem.second] -= 1;
 
-				if (mMusicRefCount[elem.second] == 0) {
-					Mix_FreeMusic(elem.second);
-					mMusic.erase(elem.first);
-				}
-				return; // work finished, leave function
+	void AssetManager::DestroyMusic(Mix_Music * music) {
+		std::map<Mix_Music *, unsigned>::iterator it = mMusicRefCount.find(music);
+
+		if (it != mMusicRefCount.end()) {
+			it->second -= 1;
+			if (it->second == 0) {
+				UnloadMusic(it->first);
+				mMusicRefCount.erase(it->first);
 			}
+		}
+		else {
+			UnloadMusic(music);
 		}
 	}
 
 	void AssetManager::DestroySFX(Mix_Chunk * sfx) {
-		for (auto elem : mSFX) {
-			if (elem.second == sfx) {
-				mSFXRefCount[elem.second] -= 1;
+		std::map<Mix_Chunk *, unsigned>::iterator it = mSFXRefCount.find(sfx);
 
-				if (mSFXRefCount[elem.second] == 0) {
-					Mix_FreeChunk(elem.second);
-					mSFX.erase(elem.first);
-				}
-				return; // work finished, leave function
+		if (it != mSFXRefCount.end()) {
+			it->second -= 1;
+			if (it->second == 0) {
+				UnloadSFX(it->first);
+				mSFXRefCount.erase(it->first);
 			}
+		}
+		else {
+			UnloadSFX(sfx);
 		}
 	}
 }
