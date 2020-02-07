@@ -3,7 +3,7 @@
 #include "Graphics.h"
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL_mixer.h>
-#elif defined(__APPLE__);
+#elif defined(__APPLE__)
 #include <SDL2_mixer/SDL_mixer.h>
 #endif
 #include <map>
