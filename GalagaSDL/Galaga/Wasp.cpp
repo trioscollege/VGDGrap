@@ -127,7 +127,7 @@ void Wasp::RenderDiveState() {
 	Graphics::Instance()->DrawLine(pathEndPos.x, pathEndPos.y, finalPos.x, finalPos.y);
 }
 
-void Wasp::RenderDeadState(){
+void Wasp::RenderDeadState() {
 }
 
 Wasp::Wasp(int path, int index, bool challenge, bool diver)

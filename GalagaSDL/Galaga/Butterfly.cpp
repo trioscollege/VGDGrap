@@ -146,8 +146,7 @@ void Butterfly::CreateDivePaths() {
 	delete path;
 }
 
-Vector2 Butterfly::LocalFormationPosition()
-{
+Vector2 Butterfly::LocalFormationPosition() {
 	Vector2 retVal;
 	int dir = mIndex % 2 == 0 ? -1 : 1;
 
