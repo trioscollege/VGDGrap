@@ -100,8 +100,7 @@ namespace SDLFramework {
 		mParent = parent;
 	}
 
-	GameEntity * GameEntity::Parent() const
-	{
+	GameEntity * GameEntity::Parent() const {
 		return mParent;
 	}
 
@@ -115,6 +114,6 @@ namespace SDLFramework {
 	}
 
 	void GameEntity::Rotate(float amount) {
-		mRotation += amount;
+		Rotation(mRotation + amount);
 	}
 }
