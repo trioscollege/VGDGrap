@@ -6,15 +6,19 @@ namespace SDLFramework {
 		: mPosition(x, y), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {
 	}
 
+	SDLFramework::GameEntity::GameEntity(const Vector2 & position)
+		: mPosition(position), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {
+	}
+
 
 	GameEntity::~GameEntity() {
 		mParent = nullptr;
 	}
 
-    void GameEntity::Position(float x, float y) {
-        mPosition = Vector2(x, y);
-    }
-    
+	void GameEntity::Position(float x, float y) {
+		mPosition = Vector2(x, y);
+	}
+
 	void GameEntity::Position(const Vector2 & pos) {
 		mPosition = pos;
 	}
@@ -96,8 +100,7 @@ namespace SDLFramework {
 		mParent = parent;
 	}
 
-	GameEntity * GameEntity::Parent() const
-	{
+	GameEntity * GameEntity::Parent() const {
 		return mParent;
 	}
 
@@ -111,6 +114,6 @@ namespace SDLFramework {
 	}
 
 	void GameEntity::Rotate(float amount) {
-		mRotation += amount;
+		Rotation(mRotation + amount);
 	}
 }

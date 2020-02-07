@@ -4,7 +4,7 @@
 
 namespace SDLFramework {
 
-#define PI 3.1415926535
+#define PI 3.1415926535f
 #define DEG_TO_RAD PI / 180.0f
 
 	struct Vector2 {
@@ -38,6 +38,10 @@ namespace SDLFramework {
 			y -= rhs.y;
 			return *this;
 		}
+
+		Vector2 operator-() const {
+			return Vector2(-x, -y);
+		}
 	};
 
 	inline Vector2 operator+(const Vector2 & lhs, const Vector2 & rhs) {
@@ -51,10 +55,10 @@ namespace SDLFramework {
 	inline Vector2 operator*(const Vector2 & lhs, float rhs) {
 		return Vector2(lhs.x * rhs, lhs.y * rhs);
 	}
-    
-    inline Vector2 operator*(float lhs, const Vector2 & rhs) {
-        return Vector2(lhs * rhs.x, lhs * rhs.y);
-    }
+
+	inline Vector2 operator*(float lhs, const Vector2 &  rhs) {
+		return Vector2(lhs * rhs.x, lhs * rhs.y);
+	}
 
 	inline Vector2 Lerp(const Vector2 & start, const Vector2 & end, float time) {
 		if (time <= 0.0f) {

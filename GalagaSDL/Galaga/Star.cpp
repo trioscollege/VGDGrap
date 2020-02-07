@@ -23,7 +23,7 @@ Star::Star(int layer)
 	float inverseLayer = 1.0f / layer;
 	Scale(Vec2_One * inverseLayer);
 
-	mScrollSpeed = 4.0f / layer;
+	mScrollSpeed = 8.0f / layer;
 }
 
 Star::~Star() {

@@ -7,9 +7,8 @@ StarLayer::StarLayer(int layer) {
 }
 
 StarLayer::~StarLayer() {
-	for (int i = 0; i < STAR_COUNT; i++) {
-		delete mStars[i];
-		mStars[i] = nullptr;
+	for (auto s : mStars) {
+		delete s;
 	}
 }
 

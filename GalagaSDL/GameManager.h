@@ -1,6 +1,5 @@
 #ifndef __GAMEMANAGER_H
 #define __GAMEMANAGER_H
-#include <SDL2/SDL.h>
 #include "Timer.h"
 #include "AudioManager.h"
 #include "StartScreen.h"
@@ -8,8 +7,7 @@
 
 namespace SDLFramework {
 
-	class GameManager
-	{
+	class GameManager {
 	private:
 		static GameManager * sInstance;
 		const int FRAME_RATE = 60;

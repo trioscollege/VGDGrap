@@ -1,13 +1,16 @@
 #ifndef __INPUTMANAGER_H
 #define __INPUTMANAGER_H
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
+#include <SDL.h>
+#elif defined(__APPLE__)
 #include <SDL2/SDL.h>
+#endif
 #include <string>
 #include "MathHelper.h"
 
 namespace SDLFramework {
 
-	class InputManager
-	{
+	class InputManager {
 	public:
 		enum MouseButton { Left = 0, Right, Middle, Back, Forward };
 
