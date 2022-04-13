@@ -20,7 +20,7 @@ namespace SDLFramework {
 		}
 
 		float Magnitude() const {
-			return (float)sqrt(x * x + y * y);
+			return (float)sqrt((double)(x * x) + (double)(y * y));
 		}
 
 		Vector2 Normalized() const {
@@ -90,6 +90,19 @@ namespace SDLFramework {
 		);
 	}
 
+	inline float Dot(const Vector2& vec1, const Vector2& vec2) {
+		return vec1.x * vec2.x + vec1.y * vec2.y;
+	}
+
+	inline float Clamp(const float& value, const float& min, const float& max) {
+		if (value > max)
+			return max;
+		if (value < min)
+			return min;
+		return value;
+	}
+
+
 	const Vector2 Vec2_Zero = { 0.0f, 0.0f };
 	const Vector2 Vec2_One = { 1.0f, 1.0f };
 	const Vector2 Vec2_Up = { 0.0f, 1.0f };
@@ -115,5 +128,28 @@ namespace SDLFramework {
 			return point;
 		}
 	};
+
+	inline float PointToLineDistance(const Vector2 & lineStart, const Vector2 & lineEnd, const Vector2& point) {
+		Vector2 slope = lineEnd - lineStart;
+		float param = Clamp(Dot(point - lineStart, slope) / slope.MagnitudeSqr(), 0.0f,	1.0f);
+		Vector2 nearestPoint = lineStart + slope * param;
+
+		return (point - nearestPoint).Magnitude();
+	}
+
+	inline bool PointInPolygon(Vector2* verts, int vertCount, const Vector2& point) {
+		bool retVal = false;
+
+		for (int i = 0, j = vertCount - 1; i < vertCount; j = i++) {
+			if ((verts[i].y >= point.y) != (verts[j].y >= point.y)) {
+				Vector2 vec1 = (verts[i] - verts[j]).Normalized();
+				Vector2 proj = verts[j] + vec1 * Dot(point - verts[j], vec1);
+				if (proj.x > point.x) {
+					retVal = !retVal;
+				}
+			}
+		}
+		return retVal;
+	}
 }
 #endif

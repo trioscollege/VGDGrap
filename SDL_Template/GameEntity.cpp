@@ -27,10 +27,19 @@ namespace SDLFramework {
 		if (space == Local || mParent == nullptr) {
 			return mPosition;
 		}
-		Vector2 parentScale = mParent->Scale(World);
-		Vector2 rotPosition = RotateVector(mPosition, mParent->Rotation(Local));
+		
+		GameEntity* parent = mParent;
+		Vector2 finalPos = mPosition, parentScale = Vec2_Zero;
 
-		return mParent->Position(World) + Vector2(rotPosition.x * parentScale.x, rotPosition.y * parentScale.y);
+		do {
+			parentScale = mParent->Scale(Local);
+			finalPos = RotateVector(Vector2(finalPos.x * parentScale.x, finalPos.y * parentScale.y), parent->Rotation(Local));
+			finalPos += parent->Position(Local);
+
+			parent = parent->Parent();
+		} while (parent != nullptr);
+
+		return finalPos;
 	}
 
 	void GameEntity::Rotation(float rot) {

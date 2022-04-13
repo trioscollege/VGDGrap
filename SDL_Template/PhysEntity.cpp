@@ -52,13 +52,31 @@ unsigned long PhysEntity::GetId() {
 	return mId;
 }
 
-bool PhysEntity::CheckCollision(PhysEntity * other)
-{
+bool PhysEntity::CheckCollision(PhysEntity * other) {
 	if (IgnoreCollisions() || other->IgnoreCollisions()) {
 		return false;
 	}
 
-	return ColliderVsColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
+	bool narrowPhaseCheck = false;
+
+	if (mBroadPhaseCollider && other->mBroadPhaseCollider) {
+		narrowPhaseCheck = ColliderVsColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
+	}
+	else {
+		narrowPhaseCheck = true;
+	}
+	
+	if (narrowPhaseCheck) {
+		for (int i = 0; i < mColliders.size(); i++) {
+			for (int j = 0; j < other->mColliders.size(); j++) {
+				if (ColliderVsColliderCheck(mColliders[i], other->mColliders[j])) {
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
 }
 
 void PhysEntity::Render() {
