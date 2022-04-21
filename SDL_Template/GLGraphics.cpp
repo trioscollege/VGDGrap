@@ -5,7 +5,6 @@
 #include <glew.h>
 #include <glm.hpp>
 #include <gtx/transform.hpp>
-#include <gtx/euler_angles.hpp>
 
 namespace SDLFramework {
 	void GLGraphics::DrawSprite(GLTexture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect, float angle, SDL_RendererFlip flip) {
@@ -26,8 +25,6 @@ namespace SDLFramework {
 
 		GLint loc = shaderUtil.GetUniformLocation("tSampler");
 		glUniform1i(loc, 0);
-		/*loc = shaderUtil.GetUniformLocation("rot");
-		glUniform1f(loc, rad);*/
 
 		loc = shaderUtil.GetUniformLocation("scaleMatrix");
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(scaleMatrix[0][0]));
@@ -86,27 +83,21 @@ namespace SDLFramework {
 		}
 
 		Vertex vertData[6];
-		//vertData[0].SetPosition(x + w, y + h);
 		vertData[0].SetPosition(0.5f, 0.5f);
 		vertData[0].SetUV(topRight.x, topRight.y);
 
-		//vertData[1].SetPosition(x, y + h);
 		vertData[1].SetPosition(-0.5f, 0.5f);
 		vertData[1].SetUV(topLeft.x, topLeft.y);
 
-		//vertData[2].SetPosition(x, y);
 		vertData[2].SetPosition(-0.5f, -0.5f);
 		vertData[2].SetUV(bottomLeft.x, bottomLeft.y);
 
-		//vertData[3].SetPosition(x, y);
 		vertData[3].SetPosition(-0.5f, -0.5f);
 		vertData[3].SetUV(bottomLeft.x, bottomLeft.y);
 
-		//vertData[4].SetPosition(x + w, y);
 		vertData[4].SetPosition(0.5f, -0.5f);
 		vertData[4].SetUV(bottomRight.x, bottomRight.y);
 
-		//vertData[5].SetPosition(x + w, y + h);
 		vertData[5].SetPosition(0.5f, 0.5f);
 		vertData[5].SetUV(topRight.x, topRight.y);
 
