@@ -1,6 +1,6 @@
 #ifndef __PLAYER_H
 #define __PLAYER_H
-#include "AnimatedTexture.h"
+#include "AnimatedGLTexture.h"
 #include "AudioManager.h"
 #include "InputManager.h"
 #include "Bullet.h"
@@ -21,7 +21,7 @@ private:
 	int mLives;
 
 	Texture * mShip;
-	AnimatedTexture * mDeathAnimation;
+	AnimatedGLTexture * mDeathAnimation;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;

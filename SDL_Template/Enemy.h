@@ -1,6 +1,6 @@
 #ifndef __ENEMY_H
 #define __ENEMY_H
-#include "AnimatedTexture.h"
+#include "AnimatedGLTexture.h"
 #include "BezierPath.h"
 #include "Formation.h"
 #include "PhysEntity.h"
@@ -36,7 +36,7 @@ protected:
 
 	Vector2 mDiveStartPosition;
 
-	AnimatedTexture * mDeathAnimation;
+	AnimatedGLTexture * mDeathAnimation;
 
 protected:
 	virtual void PathComplete();

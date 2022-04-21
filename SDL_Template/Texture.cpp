@@ -9,6 +9,9 @@ namespace SDLFramework {
 		SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
 		mClipped = false;
+
+		mSourceRect = SDL_Rect();
+
 		mDestinationRect.w = mWidth;
 		mDestinationRect.h = mHeight;
 	}
@@ -38,6 +41,8 @@ namespace SDLFramework {
 
 		SDL_QueryTexture(mTex, nullptr, nullptr, &mWidth, &mHeight);
 
+		mSourceRect = SDL_Rect();
+
 		mDestinationRect.w = mWidth;
 		mDestinationRect.h = mHeight;
 	}
@@ -61,13 +66,17 @@ namespace SDLFramework {
 	}
 
 	void Texture::Render() {
+		UpdateDstRect();
+
+		mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
+	}
+
+	void Texture::UpdateDstRect() {
 		Vector2 pos = Position(World);
 		Vector2 scale = Scale(World);
 		mDestinationRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
 		mDestinationRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);
 		mDestinationRect.w = (int)(mWidth * scale.x);
 		mDestinationRect.h = (int)(mHeight * scale.y);
-
-		mGraphics->DrawTexture(mTex, mClipped ? &mSourceRect : nullptr, &mDestinationRect, Rotation(World));
 	}
 }

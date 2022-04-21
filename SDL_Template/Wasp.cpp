@@ -117,8 +117,8 @@ void Wasp::RenderDiveState() {
 Wasp::Wasp(int path, int index, bool challenge, bool diver)
 	: Enemy(path, index, challenge), mDiver(diver) {
 	
-	mTextures[0] = new Texture("AnimatedEnemies.png", 0, 40, 52, 40);
-	mTextures[1] = new Texture("AnimatedEnemies.png", 60, 40, 36, 40);
+	mTextures[0] = new GLTexture("AnimatedEnemies.png", 0, 40, 52, 40);
+	mTextures[1] = new GLTexture("AnimatedEnemies.png", 60, 40, 36, 40);
 	
 	for (int i = 0; i < 2; i++) {
 		mTextures[i]->Parent(this);

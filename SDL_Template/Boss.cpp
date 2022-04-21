@@ -223,8 +223,8 @@ void Boss::RenderDiveState() {
 
 Boss::Boss(int path, int index, bool challenge)
 	: Enemy(path, index, challenge) {
-	mTextures[0] = new Texture("Bosses.png", 0, 0, 60, 64);
-	mTextures[1] = new Texture("Bosses.png", 66, 4, 60, 60);
+	mTextures[0] = new GLTexture("Bosses.png", 0, 0, 60, 64);
+	mTextures[1] = new GLTexture("Bosses.png", 66, 4, 60, 60);
 	
 	for (int i = 0; i < 2; i++) {
 		mTextures[i]->Parent(this);

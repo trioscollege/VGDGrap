@@ -1,6 +1,6 @@
 #ifndef __COLLIDER_H
 #define __COLLIDER_H
-#include "Texture.h"
+#include "GLTexture.h"
 
 using namespace SDLFramework;
 

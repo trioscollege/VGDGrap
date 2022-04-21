@@ -1,11 +1,11 @@
 #ifndef __CAPTUREBEAM_H
 #define __CAPTUREBEAM_H
-#include "AnimatedTexture.h"
+#include "AnimatedGLTexture.h"
 
 using namespace SDLFramework;
 
 class CaptureBeam :
-	public AnimatedTexture 
+	public AnimatedGLTexture 
 {
 private:
 	float mTotalCaptureTime;

@@ -45,17 +45,17 @@ Player::Player() {
 	mScore = 0;
 	mLives = 2;
 	
-	mShip = new Texture("PlayerShips.png", 0, 0, 60, 64);
+	mShip = new GLTexture("PlayerShips.png", 0, 0, 60, 64);
 	mShip->Parent(this);
 	mShip->Position(Vec2_Zero);
 
 	mMoveSpeed = 300.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);
 
-	mDeathAnimation = new AnimatedTexture("PlayerExplosion.png", 0, 0, 128, 128, 4, 1.0f, AnimatedTexture::Horizontal);
+	mDeathAnimation = new AnimatedGLTexture("PlayerExplosion.png", 0, 0, 128, 128, 4, 1.0f, Animation::Layouts::Horizontal);
 	mDeathAnimation->Parent(this);
 	mDeathAnimation->Position(Vec2_Zero);
-	mDeathAnimation->SetWrapMode(AnimatedTexture::Once);
+	mDeathAnimation->SetWrapMode(Animation::WrapModes::Once);
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i] = new Bullet(true);

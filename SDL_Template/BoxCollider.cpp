@@ -13,7 +13,7 @@ BoxCollider::BoxCollider(Vector2 size)
 	AddVert(3, Vector2( 0.5f*size.x, 0.5f*size.y));
 
 	if (DEBUG_COLLIDERS) {
-		SetDebugTexture(new Texture("BoxCollider.png"));
+		SetDebugTexture(new GLTexture("BoxCollider.png"));
 		mDebugTexture->Scale(size);
 	}
 }

@@ -1,12 +1,12 @@
 #ifndef __STAR_H
 #define __STAR_H
-#include "Texture.h"
+#include "GLTexture.h"
 #include "Timer.h"
 #include "Random.h"
 
 using namespace SDLFramework;
 
-class Star : public Texture {
+class Star : public GLTexture {
 
 private:
 	static bool mScroll;

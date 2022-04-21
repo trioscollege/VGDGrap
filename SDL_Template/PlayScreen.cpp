@@ -19,7 +19,7 @@ PlayScreen::PlayScreen() {
 	mSideBar->Parent(this);
 	mSideBar->Position(Graphics::SCREEN_WIDTH * 0.87f, Graphics::SCREEN_HEIGHT * 0.05f);
 
-	mStartLabel = new Texture("START", "emulogic.ttf", 32, { 150, 0, 0 });
+	mStartLabel = new GLTexture("START", "emulogic.ttf", 32, { 150, 0, 0 });
 	mStartLabel->Parent(this);
 	mStartLabel->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.5f);
 

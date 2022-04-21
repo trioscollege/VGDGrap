@@ -27,7 +27,10 @@ namespace SDLFramework {
 
 		void SetSourceRect(SDL_Rect * sourceRect);
 
-		void Render() override;
+		virtual void Render() override;
+
+	protected:
+		void UpdateDstRect();
 	};
 }
 #endif

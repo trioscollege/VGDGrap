@@ -5,36 +5,37 @@
 
 namespace SDLFramework {
 
+	struct Animation {
+		enum class WrapModes { Once = 0, Loop = 1 } wrapMode;
+		enum class Layouts { Horizontal = 0, Vertical = 1 } layout;
+
+		unsigned startX, startY;
+
+		unsigned frameCount; // total frames
+
+		float speed; // in seconds
+		float timePerFrame; // time to display
+		float frameTimer; // time displayed
+
+		bool done;
+	};
+
 	class AnimatedTexture :
 		public Texture
 	{
-	public:
-		enum WrapMode { Once = 0, Loop = 1 };
-		enum AnimDir { Horizontal = 0, Vertical = 1 };
-
 	protected:
 		Timer * mTimer;
-		int mStartX;
-		int mStartY;
-
-		int mFrameCount; // total frames
-
-		float mAnimationSpeed; // in seconds
-		float mTimePerFrame; // time to display
-		float mAnimationTimer; // time displayed
-
-		WrapMode mWrapMode;
-		AnimDir mAnimationDirection;
-
-		bool mAnimationDone;
-
+		
 		virtual void RunAnimation();
 
+	private:
+		Animation mAnim;
+
 	public:
-		AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed = false);
+		AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, Animation::Layouts layout, bool managed = false);
 		~AnimatedTexture();
 
-		void SetWrapMode(WrapMode mode);
+		void SetWrapMode(Animation::WrapModes mode);
 
 		virtual void ResetAnimation();
 		bool IsAnimating();

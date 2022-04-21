@@ -1,62 +1,63 @@
 #include "AnimatedTexture.h"
 
 namespace SDLFramework {
-	void AnimatedTexture::RunAnimation() {
-		if (!mAnimationDone) {
-			mAnimationTimer += mTimer->DeltaTime();
 
-			if (mAnimationTimer >= mAnimationSpeed) {
-				if (mWrapMode == Loop) {
+	void AnimatedTexture::RunAnimation() {
+		if (!mAnim.done) {
+			mAnim.frameTimer += mTimer->DeltaTime();
+
+			if (mAnim.frameTimer >= mAnim.speed) {
+				if (mAnim.wrapMode == Animation::WrapModes::Loop) {
 					// reset timer, accounting for extra time
-					mAnimationTimer -= mAnimationSpeed;
+					mAnim.frameTimer -= mAnim.speed;
 				}
 				else {
-					mAnimationDone = true;
+					mAnim.done = true;
 					// back up the timer to the last frame
-					mAnimationTimer = mAnimationSpeed - mTimePerFrame;
+					mAnim.frameTimer = mAnim.speed - mAnim.timePerFrame;
 				}
 			}
 
-			if (mAnimationDirection == Horizontal) {
-				mSourceRect.x = mStartX + (int)(mAnimationTimer / mTimePerFrame) * mWidth;
+			if (mAnim.layout == Animation::Layouts::Horizontal) {
+				mSourceRect.x = mAnim.startX + (int)(mAnim.frameTimer / mAnim.timePerFrame) * mWidth;
 			}
 			else {
-				mSourceRect.y = mStartY + (int)(mAnimationTimer / mTimePerFrame) * mHeight;
+				mSourceRect.y = mAnim.startY + (int)(mAnim.frameTimer / mAnim.timePerFrame) * mHeight;
 			}
 		}
 	}
 
-	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, AnimDir animationDir, bool managed)
+	AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, Animation::Layouts layout, bool managed)
 		: Texture(filename, x, y, w, h, managed) {
 		mTimer = Timer::Instance();
 
-		mStartX = x;
-		mStartY = y;
+		mAnim.startX = x;
+		mAnim.startY = y;
 
-		mFrameCount = frameCount;
-		mAnimationSpeed = animationSpeed;
-		mTimePerFrame = mAnimationSpeed / mFrameCount;
-		mAnimationTimer = 0.0f;
+		mAnim.frameCount = frameCount;
+		mAnim.speed = animationSpeed;
+		mAnim.timePerFrame = mAnim.speed / mAnim.frameCount;
+		mAnim.frameTimer = 0.0f;
 
-		mWrapMode = Loop;
-		mAnimationDirection = animationDir;
+		mAnim.wrapMode = Animation::WrapModes::Loop;
+		mAnim.layout = layout;
 
-		mAnimationDone = false;
+		mAnim.done = false;
 	}
 
 	AnimatedTexture::~AnimatedTexture() { }
 
-	void AnimatedTexture::SetWrapMode(WrapMode wrapMode) {
-		mWrapMode = wrapMode;
+	void AnimatedTexture::SetWrapMode(Animation::WrapModes wrapMode) {
+		mAnim.wrapMode = wrapMode;
 	}
 
 	void AnimatedTexture::ResetAnimation() {
-		mAnimationTimer = 0.0f;
-		mAnimationDone = false;
+		mAnim.frameTimer = 0.0f;
+		mAnim.done = false;
 	}
 
 	bool AnimatedTexture::IsAnimating() {
-		return !mAnimationDone;
+		return !mAnim.done;
 	}
 
 	void AnimatedTexture::Update() {

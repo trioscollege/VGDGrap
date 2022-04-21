@@ -1,6 +1,6 @@
 #ifndef __STARTSCREEN_H
 #define __STARTSCREEN_H
-#include "AnimatedTexture.h"
+#include "AnimatedGLTexture.h"
 #include "InputManager.h"
 #include "BackgroundStars.h"
 #include "Scoreboard.h"
@@ -24,7 +24,7 @@ private:
 
 	// Logo Entities
 	Texture * mLogo;
-	AnimatedTexture * mAnimatedLogo;
+	AnimatedGLTexture * mAnimatedLogo;
 
 	// Play Mode Entities
 	GameEntity * mPlayModes;

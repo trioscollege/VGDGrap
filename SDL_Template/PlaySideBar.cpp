@@ -62,7 +62,7 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 		break;
 	}
 
-	mFlagTextures.push_back(new Texture(filename, x, 0, (int)width - 2, 64));
+	mFlagTextures.push_back(new GLTexture(filename, x, 0, (int)width - 2, 64));
 	mFlagTextures[index]->Parent(mFlags);
 	
 	mFlagTextures[index]->Position(mFlagXOffset, mFlagYOffset);
@@ -75,16 +75,16 @@ PlaySideBar::PlaySideBar() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 
-	mBackground = new Texture("Black.png");
+	mBackground = new GLTexture("Black.png");
 	mBackground->Parent(this);
 	mBackground->Scale(Vector2(3.0f, 10.0f));
 	mBackground->Position(45.0f, 380.0f);
 
-	mHighLabel = new Texture("HIGH", "emulogic.ttf", 32, { 150, 0, 0 });
+	mHighLabel = new GLTexture("HIGH", "emulogic.ttf", 32, { 150, 0, 0 });
 	mHighLabel->Parent(this);
 	mHighLabel->Position(-25.0f, 0.0f);
 
-	mScoreLabel = new Texture("SCORE", "emulogic.ttf", 32, { 150, 0, 0 });
+	mScoreLabel = new GLTexture("SCORE", "emulogic.ttf", 32, { 150, 0, 0 });
 	mScoreLabel->Parent(this);
 	mScoreLabel->Position(25.0f, 32.0f);
 
@@ -92,7 +92,7 @@ PlaySideBar::PlaySideBar() {
 	mHighScoreboard->Parent(this);
 	mHighScoreboard->Position(90.0f, 64.0f);
 
-	mPlayerOneLabel = new Texture("1UP", "emulogic.ttf", 32, { 150, 0, 0 });
+	mPlayerOneLabel = new GLTexture("1UP", "emulogic.ttf", 32, { 150, 0, 0 });
 	mPlayerOneLabel->Parent(this);
 	mPlayerOneLabel->Position(-45.0f, 160.0f);
 
@@ -109,7 +109,7 @@ PlaySideBar::PlaySideBar() {
 	mShips->Position(-40.0f, 420.0f);
 
 	for (int i = 0; i < MAX_SHIP_TEXTURES; ++i) {
-		mShipTextures[i] = new Texture("PlayerShips.png", 0, 0, 60, 64);
+		mShipTextures[i] = new GLTexture("PlayerShips.png", 0, 0, 60, 64);
 		mShipTextures[i]->Parent(mShips);
 		mShipTextures[i]->Position(62.0f * (i % 3), 70.0f * (i / 3));
 	}

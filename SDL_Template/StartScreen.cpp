@@ -6,9 +6,9 @@ StartScreen::StartScreen() {
 
 	// top bar entities
 	mTopBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, 80.0f);
-	mPlayerOne = new Texture("1UP", "emulogic.ttf", 32, { 200, 0, 0 });
-	mPlayerTwo = new Texture("2UP", "emulogic.ttf", 32, { 200, 0, 0 });
-	mHiScore = new Texture("HI SCORE", "emulogic.ttf", 32, { 200, 0, 0 });
+	mPlayerOne = new GLTexture("1UP", "emulogic.ttf", 32, { 200, 0, 0 });
+	mPlayerTwo = new GLTexture("2UP", "emulogic.ttf", 32, { 200, 0, 0 });
+	mHiScore = new GLTexture("HI SCORE", "emulogic.ttf", 32, { 200, 0, 0 });
 	mPlayerOneScore = new Scoreboard();
 	mPlayerTwoScore = new Scoreboard();
 	mTopScore = new Scoreboard();
@@ -32,8 +32,8 @@ StartScreen::StartScreen() {
 	mTopScore->Score(645987);
 
 	// logo entities
-	mLogo = new Texture("GalagaLogo.png", 0, 0, 360, 180);
-	mAnimatedLogo = new AnimatedTexture("GalagaLogo.png", 0, 0, 360, 180, 3, 0.2f, AnimatedTexture::Vertical);
+	mLogo = new GLTexture("GalagaLogo.png", 0, 0, 360, 180);
+	mAnimatedLogo = new AnimatedGLTexture("GalagaLogo.png", 0, 0, 360, 180, 3, 0.2f, Animation::Layouts::Vertical);
 	
 	mLogo->Parent(this);
 	mAnimatedLogo->Parent(this);
@@ -43,9 +43,9 @@ StartScreen::StartScreen() {
 
 	// play mode entities
 	mPlayModes = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
-	mOnePlayerMode = new Texture("1 Player ", "emulogic.ttf", 32, { 230, 230, 230 });
-	mTwoPlayerMode = new Texture("2 Players", "emulogic.ttf", 32, { 230, 230, 230 });
-	mCursor = new Texture("Cursor.png");
+	mOnePlayerMode = new GLTexture("1 Player ", "emulogic.ttf", 32, { 230, 230, 230 });
+	mTwoPlayerMode = new GLTexture("2 Players", "emulogic.ttf", 32, { 230, 230, 230 });
+	mCursor = new GLTexture("Cursor.png");
 
 	mPlayModes->Parent(this);
 	mOnePlayerMode->Parent(mPlayModes);
@@ -62,9 +62,9 @@ StartScreen::StartScreen() {
 
 	// bottom bar entities
 	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.7f);
-	mNamco = new Texture("namcot", "namco__.ttf", 36, { 200, 0, 0 });
-	mDates = new Texture("1981 1985 NAMCO LTD.", "emulogic.ttf", 32, { 230, 230, 230 });
-	mRights = new Texture("ALL RIGHTS RESERVED", "emulogic.ttf", 32, { 230, 230, 230 });
+	mNamco = new GLTexture("namcot", "namco__.ttf", 36, { 200, 0, 0 });
+	mDates = new GLTexture("1981 1985 NAMCO LTD.", "emulogic.ttf", 32, { 230, 230, 230 });
+	mRights = new GLTexture("ALL RIGHTS RESERVED", "emulogic.ttf", 32, { 230, 230, 230 });
 
 	mBottomBar->Parent(this);
 	mNamco->Parent(mBottomBar);

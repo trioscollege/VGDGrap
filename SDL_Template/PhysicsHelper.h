@@ -80,8 +80,8 @@ inline bool BoxVsBoxCollision(BoxCollider* b1, BoxCollider* b2) {
 		if (abs(midPoint1 - midPoint2) > (halfDist1 + halfDist2)) {
 			return false;
 		}
-
 	}
+	return true;
 }
 
 inline bool ColliderVsColliderCheck(Collider* c1, Collider* c2) {

@@ -3,15 +3,15 @@
 void CaptureBeam::RunAnimation() {
 	mCaptureTimer += mTimer->DeltaTime();
 	if (mCaptureTimer >= mTotalCaptureTime) {
-		mAnimationDone = true;
+		mAnim.done = true;
 	}
 	else {
-		mAnimationTimer += mTimer->DeltaTime();
-		if (mAnimationTimer >= mAnimationSpeed) {
-			mAnimationTimer -= mAnimationSpeed;
+		mAnim.frameTimer += mTimer->DeltaTime();
+		if (mAnim.frameTimer >= mAnim.speed) {
+			mAnim.frameTimer -= mAnim.speed;
 		}
 
-		mSourceRect.x = (int)(mAnimationTimer / mTimePerFrame) * mWidth;
+		mSourceRect.x = (int)(mAnim.frameTimer / mAnim.timePerFrame) * mWidth;
 
 		if (mCaptureTimer < 2.0f) {
 			int temp = (int)(mCaptureTimer * 3.5f);
@@ -28,7 +28,7 @@ void CaptureBeam::RunAnimation() {
 }
 
 CaptureBeam::CaptureBeam()
-: AnimatedTexture("CaptureBeam.png", 0, 0, 184, 320, 3, 0.5f, Horizontal) {
+: AnimatedGLTexture("CaptureBeam.png", 0, 0, 184, 320, 3, 0.5f, Animation::Layouts::Horizontal) {
 	mTotalCaptureTime = 6.0f;
 	ResetAnimation();
 }
@@ -38,7 +38,7 @@ CaptureBeam::~CaptureBeam() {
 }
 
 void CaptureBeam::ResetAnimation() {
-	AnimatedTexture::ResetAnimation();
+	AnimatedGLTexture::ResetAnimation();
 	mCaptureTimer = 0.0f;
 	mSourceRect.h = 0;
 }
