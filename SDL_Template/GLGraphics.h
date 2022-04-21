@@ -17,7 +17,7 @@ namespace SDLFramework {
 		glm::mat4 orthoMatrix;
 
 	public:
-		void InitRenderData(Texture* texture, SDL_Rect* srcRect, float x, float y, float w, float h, GLuint quadVAO);
+		void InitRenderData(Texture* texture, SDL_Rect* srcRect, GLuint quadVAO);
 		void InitLoadShaderData();
 
 		// Inherited from Graphics

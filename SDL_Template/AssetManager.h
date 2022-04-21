@@ -36,6 +36,7 @@ namespace SDLFramework {
 		TTF_Font* GetFont(std::string filename, int size);
 
 		void UnloadTexture(SDL_Texture* texture);
+		void UnloadSurface(SDL_Surface* surface);
 		void UnloadMusic(Mix_Music* music);
 		void UnloadSFX(Mix_Chunk* chunk);
 

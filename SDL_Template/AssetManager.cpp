@@ -108,6 +108,23 @@ namespace SDLFramework {
 		}
 	}
 
+	void AssetManager::UnloadSurface(SDL_Surface* surface) {
+		bool found = false;
+		std::string key;
+		std::map<std::string, SDL_Surface*>::iterator it;
+
+		for (it = mSurfaces.begin(); it != mSurfaces.end() && !found; it++) {
+			if ((found = it->second == surface)) {
+				SDL_FreeSurface(it->second);
+				key = it->first;
+			}
+		}
+
+		if (found) {
+			mSurfaces.erase(key);
+		}
+	}
+
 	void AssetManager::UnloadMusic(Mix_Music* music) {
 		bool found = false;
 		std::string key;
@@ -288,8 +305,19 @@ namespace SDLFramework {
 		}
 	}
 
-	void AssetManager::DestroySurface(SDL_Surface* surface)
-	{
+	void AssetManager::DestroySurface(SDL_Surface* surface) {
+		std::map<SDL_Surface*, unsigned>::iterator it = mSurfaceRefCount.find(surface);
+
+		if (it != mSurfaceRefCount.end()) {
+			it->second -= 1;
+			if (it->second == 0) {
+				UnloadSurface(it->first);
+				mSurfaceRefCount.erase(it->first);
+			}
+		}
+		else {
+			UnloadSurface(surface);
+		}
 	}
 
 	void AssetManager::DestroyMusic(Mix_Music* music) {

@@ -44,6 +44,11 @@ namespace SDLFramework {
 		mHeight = Surface->h;
 	}
 
+	GLTexture::~GLTexture() {
+		AssetManager::Instance()->DestroySurface(Surface);
+		Surface = nullptr;
+	}
+
 	void GLTexture::Generate() {
 		SDL_PixelFormat format = *Surface->format;
 

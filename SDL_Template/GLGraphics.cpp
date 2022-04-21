@@ -11,7 +11,7 @@ namespace SDLFramework {
 		float rad = angle * DEG_TO_RAD;
 		Vector2 pos = texture->Position(GameEntity::Space::World);
 
-		InitRenderData(texture, srcRect, (float)dstRect->x, (float)dstRect->y, (float)dstRect->w, (float)dstRect->h, texture->ID);
+		InitRenderData(texture, srcRect, texture->ID);
 
 		shaderUtil.Use();
 		glBindTexture(GL_TEXTURE_2D, texture->ID);
@@ -55,7 +55,7 @@ namespace SDLFramework {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLGraphics::InitRenderData(Texture* texture, SDL_Rect* srcRect, float x, float y, float w, float h, GLuint quadVAO) {
+	void GLGraphics::InitRenderData(Texture* texture, SDL_Rect* srcRect, GLuint quadVAO) {
 		GLTexture* glTexture = dynamic_cast<GLTexture*>(texture);
 
 		if (glTexture == nullptr) {

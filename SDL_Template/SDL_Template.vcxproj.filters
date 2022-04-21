@@ -31,12 +31,6 @@
     <Filter Include="Source Files\Managers">
       <UniqueIdentifier>{43e9b4d6-a99b-491b-ac2b-e9c3ba38f52c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\TinyXML">
-      <UniqueIdentifier>{06e5c1b2-6a35-4d20-b63e-1a4f7780da0e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TinyXML">
-      <UniqueIdentifier>{e52f03bb-6fbe-4a3d-9bcd-70ade8755aef}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{61f1439d-e9a6-4520-8f3d-5668bad2ddc8}</UniqueIdentifier>
     </Filter>
@@ -123,9 +117,6 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
-    <ClCompile Include="tinyxml2.cpp">
-      <Filter>Source Files\TinyXML</Filter>
-    </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
@@ -167,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="AnimaterGLTexture.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -242,9 +236,6 @@
     <ClInclude Include="Boss.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
-    <ClInclude Include="tinyxml2.h">
-      <Filter>Header Files\TinyXML</Filter>
-    </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
@@ -289,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="AnimatedGLTexture.h">
       <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
