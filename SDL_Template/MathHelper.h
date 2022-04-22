@@ -154,7 +154,7 @@ namespace SDLFramework {
 	}
 
 	struct Vertex {
-		Vector2 position;
+		glm::vec3 position;
 
 		struct UV {
 			float u;
@@ -168,9 +168,10 @@ namespace SDLFramework {
 			float a;
 		} color;
 
-		void SetPosition(float x, float y) {
+		void SetPosition(float x, float y, float z = 0) {
 			position.x = x;
 			position.y = y;
+			position.z = z;
 		}
 
 		void SetUV(float u, float v) {
@@ -184,11 +185,6 @@ namespace SDLFramework {
 			color.b = b;
 			color.a = a;
 		}
-	};
-
-	struct Vertex3D {
-		glm::vec3 position;
-		glm::vec2 texCoord;
 	};
 }
 #endif

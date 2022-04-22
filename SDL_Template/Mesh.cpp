@@ -2,10 +2,10 @@
 
 namespace SDLFramework {
 	
-	Mesh::Mesh(const std::vector<Vertex3D>& vertices, const std::vector<uint32_t>& indices)
+	Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices)
 	: vertices(vertices), indices(indices) {}
 	
-	const std::vector<Vertex3D>& Mesh::getVertices() const
+	const std::vector<Vertex>& Mesh::getVertices() const
 	{
 		return vertices;
 	}

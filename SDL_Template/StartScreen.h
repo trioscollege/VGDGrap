@@ -5,6 +5,7 @@
 #include "BackgroundStars.h"
 #include "Scoreboard.h"
 #include "Model.h"
+#include "Camera.h"
 
 using namespace SDLFramework;
 

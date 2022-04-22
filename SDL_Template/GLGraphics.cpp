@@ -19,22 +19,23 @@ namespace SDLFramework {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		glm::mat4 scaleMatrix = glm::scale(glm::vec3(dstRect->w, dstRect->h, 1.0f));
-		glm::mat4 rotateMatrix = glm::rotate(rad, glm::vec3(0.0f, 0.0f, 1.0f));
 		glm::mat4 translateMatrix = glm::translate(glm::vec3(pos.x, pos.y, 0.0f));
+		glm::mat4 rotateMatrix = glm::rotate(rad, glm::vec3(0.0f, 0.0f, 1.0f));
+		glm::mat4 scaleMatrix = glm::scale(glm::vec3(dstRect->w, dstRect->h, 1.0f));
 
 		GLint loc = shaderUtil.GetUniformLocation("tSampler");
 		glUniform1i(loc, 0);
 
-		loc = shaderUtil.GetUniformLocation("scaleMatrix");
+		/*loc = shaderUtil.GetUniformLocation("scaleMatrix");
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(scaleMatrix[0][0]));
 		loc = shaderUtil.GetUniformLocation("rotateMatrix");
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(rotateMatrix[0][0]));
 		loc = shaderUtil.GetUniformLocation("translateMatrix");
-		glUniformMatrix4fv(loc, 1, GL_FALSE, &(translateMatrix[0][0]));
+		glUniformMatrix4fv(loc, 1, GL_FALSE, &(translateMatrix[0][0]));*/
 
-		loc = shaderUtil.GetUniformLocation("proj");
-		glUniformMatrix4fv(loc, 1, GL_FALSE, &(orthoMatrix[0][0]));
+		glm::mat4 transform = translateMatrix *	rotateMatrix * scaleMatrix;
+		glm::mat4 mvp =	camera->GetProjectionMatrix() * camera->GetViewMatrix() * transform;
+		shaderUtil.SetMatrix4f("mvp", mvp);
 
 		glBindBuffer(GL_ARRAY_BUFFER, texture->ID);
 		glEnableVertexAttribArray(0);
@@ -82,7 +83,7 @@ namespace SDLFramework {
 			bottomRight = glm::vec2((srcRect->x + srcRect->w) / width, srcRect->y / height);
 		}
 
-		Vertex vertData[6];
+		Vertex vertData[6] = {};
 		vertData[0].SetPosition(0.5f, 0.5f);
 		vertData[0].SetUV(topRight.x, topRight.y);
 
@@ -122,8 +123,6 @@ namespace SDLFramework {
 		orthoMatrix = glm::ortho(0.0f, (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f, -1.0f, 1.0f);
 		
 		shaderUtil.Use();
-		shaderUtil.SetVector2f("vertexPosition", glm::vec2(0, 0));
-		shaderUtil.SetMatrix4f("proj", orthoMatrix);
 	}
 
 	void GLGraphics::ClearBackBuffer() {
@@ -139,6 +138,11 @@ namespace SDLFramework {
 			return false;
 		}
 
+		camera = new Camera(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
+		camera->position = glm::vec3(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f, -800.0f);
+		camera->target = glm::vec3(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f, 0.0f);
+		camera->up = glm::vec3(0.0f, -1.0f, 0.0f);
+		camera->Update();
 		InitLoadShaderData();
 
 		return true;

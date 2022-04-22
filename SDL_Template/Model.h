@@ -7,24 +7,32 @@
 #include <vector>
 #include <string>
 
-#include <glm.hpp>
+#include <glew.h>
 
 namespace SDLFramework {
 
 	class Model
 		: public GameEntity {
-	public:
-		
-
 	private:
 		Mesh* mMesh;
-		std::vector<GLTexture*> mTextures;
+
+		GLuint vBufferID;
+		GLuint iBufferID;
+		uint32_t numIndices;
 
 	public:
 		Model(std::string filename);
 		~Model();
 
+		const GLuint& GetVertexBufferID();
+		const GLuint& GetIndexBufferID();
+		const uint32_t& GetNumIndices();
+
 		virtual void Render() override;
+
+	private:
+		GLuint CreateVertexBuffer();
+		GLuint CreateIndexBuffer();
 	};
 
 }

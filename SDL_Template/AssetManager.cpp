@@ -102,7 +102,7 @@ namespace SDLFramework {
 		std::map<std::string, SDL_Texture*>::iterator it;
 
 		for (it = mTextures.begin(); it != mTextures.end() && !found; it++) {
-			if ((found = it->second == texture)) {
+			if (found = it->second == texture) {
 				SDL_DestroyTexture(it->second);
 				key = it->first;
 			}
@@ -119,7 +119,7 @@ namespace SDLFramework {
 		std::map<std::string, SDL_Surface*>::iterator it;
 
 		for (it = mSurfaces.begin(); it != mSurfaces.end() && !found; it++) {
-			if ((found = it->second == surface)) {
+			if (found = it->second == surface) {
 				SDL_FreeSurface(it->second);
 				key = it->first;
 			}
@@ -136,7 +136,7 @@ namespace SDLFramework {
 		std::map<std::string, Mix_Music*>::iterator it;
 
 		for (it = mMusic.begin(); it != mMusic.end() && !found; it++) {
-			if ((found = it->second == music)) {
+			if (found = it->second == music) {
 				Mix_FreeMusic(it->second);
 				key = it->first;
 			}
@@ -153,7 +153,7 @@ namespace SDLFramework {
 		std::map<std::string, Mix_Chunk*>::iterator it;
 
 		for (it = mSFX.begin(); it != mSFX.end() && !found; it++) {
-			if ((found = it->second == chunk)) {
+			if (found = it->second == chunk) {
 				Mix_FreeChunk(it->second);
 				key = it->first;
 			}
@@ -161,6 +161,23 @@ namespace SDLFramework {
 
 		if (found) {
 			mSFX.erase(key);
+		}
+	}
+
+	void AssetManager::UnloadMesh(Mesh* mesh) {
+		bool found = false;
+		std::string key;
+		std::map<std::string, Mesh*>::iterator it;
+
+		for (it = mMeshes.begin(); it != mMeshes.end() && !found; it++) {
+			if (found = it->second == mesh) {
+				delete it->second;
+				key = it->first;
+			}
+		}
+
+		if (found) {
+			mMeshes.erase(key);
 		}
 	}
 
@@ -320,7 +337,7 @@ namespace SDLFramework {
 					std::cerr << "Unable to load mesh " << filename << "!" << std::endl;
 				}
 				else {
-					std::vector<Vertex3D> vertices;
+					std::vector<Vertex> vertices;
 					std::vector<uint32_t> indices;
 					std::unordered_map<glm::vec3, uint32_t> uniqueVertices;
 
@@ -333,7 +350,7 @@ namespace SDLFramework {
 
 							if (uniqueVertices.count(pos) == 0) {
 								uniqueVertices[pos] = static_cast<uint32_t>(vertices.size());
-								vertices.push_back(Vertex3D{pos});
+								vertices.push_back(Vertex{pos});
 							}
 							indices.push_back(uniqueVertices[pos]);
 						}
@@ -407,6 +424,20 @@ namespace SDLFramework {
 		}
 		else {
 			UnloadSFX(sfx);
+		}
+	}
+	void AssetManager::DestroyMesh(Mesh* mesh) {
+		std::map<Mesh*, unsigned>::iterator it = mMeshRefCount.find(mesh);
+
+		if (it != mMeshRefCount.end()) {
+			it->second -= 1;
+			if (it->second == 0) {
+				UnloadMesh(it->first);
+				mMeshRefCount.erase(it->first);
+			}
+		}
+		else {
+			UnloadMesh(mesh);
 		}
 	}
 }

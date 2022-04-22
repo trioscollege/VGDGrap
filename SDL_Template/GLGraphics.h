@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "GLTexture.h"
 #include "ShaderUtil.h"
+#include "Camera.h"
 
 namespace SDLFramework {
 	
@@ -13,6 +14,8 @@ namespace SDLFramework {
 	private:
 		SDL_GLContext mGLContext;
 		ShaderUtil shaderUtil;
+
+		Camera* camera;
 
 		glm::mat4 orthoMatrix;
 
