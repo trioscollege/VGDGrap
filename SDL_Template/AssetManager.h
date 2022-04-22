@@ -2,6 +2,7 @@
 #define __ASSETMANAGER_H
 #include "Graphics.h"
 #include "ShaderUtil.h"
+#include "Mesh.h"
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 #include <SDL_mixer.h>
 #elif defined(__APPLE__)
@@ -24,11 +25,13 @@ namespace SDLFramework {
 		std::map<std::string, SDL_Surface*> mSurfaceText;
 		std::map<std::string, Mix_Music*> mMusic;
 		std::map<std::string, Mix_Chunk*> mSFX;
+		std::map<std::string, Mesh*> mMeshes;
 
 		std::map<SDL_Texture*, unsigned> mTextureRefCount;
 		std::map<SDL_Surface*, unsigned> mSurfaceRefCount;
 		std::map<Mix_Music*, unsigned> mMusicRefCount;
 		std::map<Mix_Chunk*, unsigned> mSFXRefCount;
+		std::map<Mesh*, unsigned> mMeshRefCount;
 
 		std::map<std::string, ShaderUtil> mShaders;
 
@@ -39,6 +42,7 @@ namespace SDLFramework {
 		void UnloadSurface(SDL_Surface* surface);
 		void UnloadMusic(Mix_Music* music);
 		void UnloadSFX(Mix_Chunk* chunk);
+		void UnloadMesh(Mesh* mesh);
 
 		AssetManager();
 		~AssetManager();
@@ -58,11 +62,15 @@ namespace SDLFramework {
 		void LoadShader(const GLchar* vertShader, const GLchar* fragShader, const GLchar* geomShader = nullptr, std::string name = "Default");
 		ShaderUtil GetShaderUtil(std::string name);
 
+		Mesh* GetMesh(std::string filename, bool managed = true);
+
 		void DestroyTexture(SDL_Texture* texture);
 		void DestroySurface(SDL_Surface* surface);
 
 		void DestroyMusic(Mix_Music* music);
 		void DestroySFX(Mix_Chunk* sfx);
+
+		void DestroyMesh(Mesh* mesh);
 	};
 }
 #endif

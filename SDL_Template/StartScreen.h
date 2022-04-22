@@ -4,12 +4,15 @@
 #include "InputManager.h"
 #include "BackgroundStars.h"
 #include "Scoreboard.h"
+#include "Model.h"
 
 using namespace SDLFramework;
 
 class StartScreen : public GameEntity {
 
 private:
+	Model* mModel;
+
 	Timer * mTimer;
 	InputManager * mInput;
 

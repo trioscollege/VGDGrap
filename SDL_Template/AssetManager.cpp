@@ -1,5 +1,10 @@
+#define GLM_ENABLE_EXPERIMENTAL
 #include "AssetManager.h"
+#include "Model.h"
+
 #include <fstream>
+#include <unordered_map>
+#include <gtx/hash.hpp>
 
 namespace SDLFramework {
 
@@ -288,6 +293,61 @@ namespace SDLFramework {
 			std::cerr << "GetShaderUtil:: Unable to find shader " << name << "!" << std::endl;
 		}
 		return mShaders[name];
+	}
+
+	Mesh* AssetManager::GetMesh(std::string filename, bool managed) {
+		std::string basePath = SDL_GetBasePath();
+		std::string fullPath = basePath;
+		fullPath.append("Assets/" + filename);
+
+		if (mMeshes[fullPath] == nullptr) {
+			SDL_RWops* file = SDL_RWFromFile(fullPath.c_str(), "r");
+			if (file != nullptr) {
+				size_t fileLength = static_cast<size_t>(SDL_RWsize(file));
+				void* data = SDL_LoadFile_RW(file, nullptr, 1);
+				std::string content(static_cast<char*>(data), fileLength);
+				SDL_free(data);
+
+				std::istringstream source(content);
+
+				tinyobj::attrib_t attributes;
+				std::vector<tinyobj::shape_t> shapes;
+				std::vector<tinyobj::material_t> materials;
+				std::string warning;
+				std::string error;
+
+				if (!tinyobj::LoadObj(&attributes, &shapes, &materials, &warning, &error, &source)) {
+					std::cerr << "Unable to load mesh " << filename << "!" << std::endl;
+				}
+				else {
+					std::vector<Vertex3D> vertices;
+					std::vector<uint32_t> indices;
+					std::unordered_map<glm::vec3, uint32_t> uniqueVertices;
+
+					for (const auto& shape : shapes) {
+						for (const auto& index : shape.mesh.indices) {
+							glm::vec3 pos = glm::vec3(
+								attributes.vertices[3 * index.vertex_index + 0],
+								attributes.vertices[3 * index.vertex_index + 1],
+								attributes.vertices[3 * index.vertex_index + 2]);
+
+							if (uniqueVertices.count(pos) == 0) {
+								uniqueVertices[pos] = static_cast<uint32_t>(vertices.size());
+								vertices.push_back(Vertex3D{pos});
+							}
+							indices.push_back(uniqueVertices[pos]);
+						}
+					}
+					mMeshes[fullPath] = new Mesh(vertices, indices);
+				}
+			}
+		}
+
+		if (mMeshes[fullPath] != nullptr && managed) {
+			mMeshRefCount[mMeshes[fullPath]] += 1;
+		}
+
+		return mMeshes[fullPath];
 	}
 
 	void AssetManager::DestroyTexture(SDL_Texture* texture) {

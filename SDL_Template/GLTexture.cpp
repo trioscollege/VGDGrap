@@ -85,10 +85,6 @@ namespace SDLFramework {
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 
-	void GLTexture::Bind() {
-		glBindTexture(GL_TEXTURE_2D, ID);
-	}
-
 	void GLTexture::SetSurfaceTexture(std::string filename, bool managed) {
 		Surface = AssetManager::Instance()->GetSurface(filename, managed);
 		Data = Surface->pixels;

@@ -1,6 +1,7 @@
 #ifndef __MATHHELPER_H
 #define __MATHHELPER_H
 #include <math.h>
+#include <glm.hpp>
 
 namespace SDLFramework {
 
@@ -183,6 +184,11 @@ namespace SDLFramework {
 			color.b = b;
 			color.a = a;
 		}
+	};
+
+	struct Vertex3D {
+		glm::vec3 position;
+		glm::vec2 texCoord;
 	};
 }
 #endif

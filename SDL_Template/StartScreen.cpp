@@ -1,6 +1,8 @@
 #include "StartScreen.h"
 
 StartScreen::StartScreen() {
+	mModel = new Model("MDL/UAV_Trident.obj");
+	
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
 
@@ -84,6 +86,8 @@ StartScreen::StartScreen() {
 
 
 StartScreen::~StartScreen() {
+	delete mModel;
+
 	// top bar entities
 	delete mTopBar;
 	mTopBar = nullptr;
@@ -184,6 +188,7 @@ void StartScreen::Update() {
 }
 
 void StartScreen::Render() {
+	mModel->Render();
 	mPlayerOne->Render();
 	mPlayerTwo->Render();
 	mHiScore->Render();

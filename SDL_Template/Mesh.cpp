@@ -1,0 +1,16 @@
+#include "Mesh.h"
+
+namespace SDLFramework {
+	
+	Mesh::Mesh(const std::vector<Vertex3D>& vertices, const std::vector<uint32_t>& indices)
+	: vertices(vertices), indices(indices) {}
+	
+	const std::vector<Vertex3D>& Mesh::getVertices() const
+	{
+		return vertices;
+	}
+	const std::vector<uint32_t>& Mesh::getIndices() const
+	{
+		return indices;
+	}
+}
