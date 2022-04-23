@@ -7,6 +7,9 @@
 #include <gtx/transform.hpp>
 
 namespace SDLFramework {
+
+	Camera* GLGraphics::sMainCamera = new Camera(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
+
 	void GLGraphics::DrawSprite(GLTexture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect, float angle, SDL_RendererFlip flip) {
 		float rad = angle * DEG_TO_RAD;
 		Vector2 pos = texture->Position(GameEntity::Space::World);
@@ -34,7 +37,7 @@ namespace SDLFramework {
 		glUniformMatrix4fv(loc, 1, GL_FALSE, &(translateMatrix[0][0]));*/
 
 		glm::mat4 transform = translateMatrix *	rotateMatrix * scaleMatrix;
-		glm::mat4 mvp =	camera->GetProjectionMatrix() * camera->GetViewMatrix() * transform;
+		glm::mat4 mvp =	sMainCamera->GetProjectionMatrix() * sMainCamera->GetViewMatrix() * transform;
 		shaderUtil.SetMatrix4f("mvp", mvp);
 
 		glBindBuffer(GL_ARRAY_BUFFER, texture->ID);
@@ -54,6 +57,10 @@ namespace SDLFramework {
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
+	ShaderUtil& GLGraphics::GetShader() {
+		return shaderUtil;
 	}
 
 	void GLGraphics::InitRenderData(Texture* texture, SDL_Rect* srcRect, GLuint quadVAO) {
@@ -138,11 +145,11 @@ namespace SDLFramework {
 			return false;
 		}
 
-		camera = new Camera(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
-		camera->position = glm::vec3(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f, -800.0f);
-		camera->target = glm::vec3(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f, 0.0f);
-		camera->up = glm::vec3(0.0f, -1.0f, 0.0f);
-		camera->Update();
+		sMainCamera->position = glm::vec3(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f, -800.0f);
+		sMainCamera->target = glm::vec3(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f, 0.0f);
+		sMainCamera->up = glm::vec3(0.0f, -1.0f, 0.0f);
+		sMainCamera->Update();
+
 		InitLoadShaderData();
 
 		return true;

@@ -1,7 +1,8 @@
 #include "StartScreen.h"
+#include "GLGraphics.h"
 
 StartScreen::StartScreen() {
-	mModel = new Model("MDL/UAV_Trident.obj");
+	mModel = new Model("MDL/UAV_Trident.obj", dynamic_cast<GLGraphics*>(Graphics::Instance())->GetShader());
 	
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
@@ -162,6 +163,8 @@ void StartScreen::ChangeSelectedMode(int change) {
 }
 
 void StartScreen::Update() {
+	mModel->Update();
+
 	if (!mAnimationDone) {
 		mAnimationTimer += mTimer->DeltaTime();
 		Position(Lerp(mAnimationStartPos, mAnimationEndPos, mAnimationTimer / mAnimationTotalTime));
@@ -189,7 +192,7 @@ void StartScreen::Update() {
 
 void StartScreen::Render() {
 	mModel->Render();
-	mPlayerOne->Render();
+	/*mPlayerOne->Render();
 	mPlayerTwo->Render();
 	mHiScore->Render();
 	mPlayerOneScore->Render();
@@ -209,5 +212,5 @@ void StartScreen::Render() {
 
 	mNamco->Render();
 	mDates->Render();
-	mRights->Render();
+	mRights->Render();*/
 }

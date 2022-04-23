@@ -10,16 +10,18 @@ namespace SDLFramework {
 	class GLGraphics
 		: public Graphics {
 		friend class Graphics;
+	public:
+		static Camera* sMainCamera;
 
 	private:
 		SDL_GLContext mGLContext;
 		ShaderUtil shaderUtil;
 
-		Camera* camera;
-
 		glm::mat4 orthoMatrix;
 
 	public:
+		ShaderUtil& GetShader();
+
 		void InitRenderData(Texture* texture, SDL_Rect* srcRect, GLuint quadVAO);
 		void InitLoadShaderData();
 

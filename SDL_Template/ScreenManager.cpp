@@ -38,7 +38,7 @@ void ScreenManager::Update() {
 }
 
 void ScreenManager::Render() { 
-	mBackgroundStars->Render();
+	//mBackgroundStars->Render();
 
 	switch (mCurrentScreen) {
 	case Start:

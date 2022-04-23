@@ -15,24 +15,26 @@ namespace SDLFramework {
 		: public GameEntity {
 	private:
 		Mesh* mMesh;
+		ShaderUtil* mShader;
 
 		GLuint vBufferID;
 		GLuint iBufferID;
 		uint32_t numIndices;
 
+		glm::mat4 positionMatrix;
+		glm::mat4 rotationMatrix;
+		glm::mat4 scaleMatrix;
+
 	public:
-		Model(std::string filename);
+		Model(std::string filename, ShaderUtil& shader);
 		~Model();
 
-		const GLuint& GetVertexBufferID();
-		const GLuint& GetIndexBufferID();
-		const uint32_t& GetNumIndices();
-
+		virtual void Update() override;
 		virtual void Render() override;
 
 	private:
-		GLuint CreateVertexBuffer();
-		GLuint CreateIndexBuffer();
+		void CreateVertexBuffer();
+		void CreateIndexBuffer();
 	};
 
 }
